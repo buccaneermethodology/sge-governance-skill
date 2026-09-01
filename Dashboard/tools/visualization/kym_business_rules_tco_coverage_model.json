@@ -1,0 +1,2478 @@
+{
+  "schema": "semx.visualization.tco_coverage_model.v1",
+  "source_tco_model": "Dashboard/tools/visualization/kym_business_rules_tco_model.json",
+  "target_state_overrides": {
+    "runtime_state_schema": "schema_validator",
+    "runtime_event_schema": "schema_validator",
+    "runtime_lifecycle": "test_bound",
+    "state_transition_validator": "schema_validator",
+    "executor_adapter_interface": "schema_validator",
+    "run_plan_dag_candidate": "schema_validator",
+    "sag_observation_graph": "schema_validator"
+  },
+  "coverage": [
+    {
+      "tco_node_id": "runtime_state_schema",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "已落地 maintained state vocabulary/record validator；不等于通用持久 state service。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "state vocabulary 与 category",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "current state、sequence、hash 与 provenance",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "evidence refs 与 authority refs",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "serialization 与 read-model shape",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "runtime_event_schema",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "已落地 maintained transition-event validator；不等于任意 event bus。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_state_transition_event_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "event type vocabulary",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "actor、timestamp 与 run reference",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "payload、evidence refs 与 authority refs",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "event-to-transition mapping",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "runtime_lifecycle",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "维护测试覆盖 lifecycle、suspended/terminal 和 CONVERGED->FINAL 边界；不证明完整 Kernel。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "active、suspended 与 terminal categories",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "entry/exit conditions",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "terminal closure rules",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "resume 与 recovery boundary",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "state_transition_validator",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "已落地 declared transition/evidence/authority fail-closed validator；不拥有外部 truth authority。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "declared transition catalog",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "from/to compatibility",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "trigger 与 required evidence checks",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "authority-scope checks",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "accepted/rejected report",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rejection no-write behavior",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "state_store_apply",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只证明一个本地有界 apply/no-write/readback 行为；不是 daemon 或 production store。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_store_apply.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_store_apply_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_state_store_apply_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_store_apply_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "expected sequence 与 state hash guard",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "duplicate/conflict detection",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "accepted mutation 与 rejected no-write",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "transition/rejection history",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "readback verification",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "runtime_graph_derivation",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "Stage 1 可从 trace 确定性重建 state 与 runtime graph；该图不是 SAG truth。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_orchestration.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_stage1_acceptance_suite.py"
+        },
+        {
+          "kind": "kb",
+          "ref": "semx-kb/docs/strategy/Strategy_Runtime_Orchestration_Stage1.md"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_stage1_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "node/edge vocabulary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "trace-to-graph derivation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph hash 与 deterministic replay",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph/read-model export",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "runtime graph 与 SAG boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "runtime_control_surface",
+      "coverage_state": "unknown",
+      "claim_ceiling": "group 状态只由 Sub M 与 Scope 派生，不能配置直接完成状态。",
+      "evidence": [
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_controlled_stop_acceptance_suite.py"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "operator-facing rejection/error display",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "controlled-stop/read-model tests expose reason, state, evidence refs and next action."
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": [
+        "其余 Scope 项由同名 Sub M 自动 roll up。"
+      ]
+    },
+    {
+      "tco_node_id": "run_phase_artifact_inspect_read_model",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有 test-only run ledger、phase receipt 与 stop read model；尚无统一通用 runtime inspect CLI。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_run_ledger.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_run_ledger_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_run_ledger_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "run lookup 与 state summary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase receipt 与 invocation-kind display",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "artifact refs/digests/provenance",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "blocked/review reason",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "advisory next action 与 authority-boundary display",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "event_submission_and_state_update_surface",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有受控 event-to-apply runner surface；尚无通用 runtime update CLI。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_store_apply.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_store_apply_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_store_apply_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "request input 与 validation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "transition validator invocation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "accepted apply",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rejected no-write result",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "trace/report link",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "trace_inspect_surface",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected-run ledger、phase receipt 与 transition read models 已提供有界 trace inspect 行为；不是统一操作员控制台或 arbitrary-run query service。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_receipts.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_receipts_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_receipts_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "trace loading 与 filtering",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "selected-run receipt/read-model 可按 run 与 phase 读取 trace-linked evidence；不覆盖 arbitrary-run query。"
+        },
+        {
+          "scope": "event/transition sequence",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rejection history",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "artifact/provider/replay refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "operator-readable explanation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "trace_state_replay_verification",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "runtime-replay 可确定性重放并校验 state/graph hash；不证明任意 P00-P17 replay engine。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_orchestration.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_stage1_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_stage1_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "deterministic trace replay",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "state/trace reconciliation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph hash comparison",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "tamper/conflict detection",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "verification report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "runtime_graph_inspect",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "runtime-replay 可输出 graph/read model；尚无独立通用 graph-inspect service。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_orchestration.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_stage2_read_model_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_stage2_read_model_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "node/edge summary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase/artifact/event relations",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "gate/validation relations",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph hash 与 source trace refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "derived-view boundary display",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "human_checkpoint_and_continuation",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有 selected-path 人工 checkpoint/authorization 与 continuation 证据；本节点不把授权入口等同 retry engine。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_p00_p17_checkpoint_continuation.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_checkpoint_continuation_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_checkpoint_continuation_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "decision submission 与 actor identity",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "checkpoint digest/precondition",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "human authority receipt",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "duplicate/conflict rejection",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "authorized action 与 current-state display",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "unified_runtime_control_cli",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "SP-059 已落地 selected/test-only `semx rcp` inspect/update/trace verify CLI；不等于 generic runtime control CLI、production console 或 arbitrary-run controller。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_rcp_operator_cli.py"
+        },
+        {
+          "kind": "code",
+          "ref": "semx/cli.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_rcp_operator_cli_report_v1.schema.json"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_rcp_operator_cli_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_rcp_operator_cli_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {"scope": "runtime inspect", "coverage_state": "test_bound", "source": "repo_evidence_review", "notes": "SP-059 `rcp inspect runtime` 展示 selected run identity、state、phase map、artifact refs、stop reason 和 next action。"},
+        {"scope": "runtime update", "coverage_state": "test_bound", "source": "repo_evidence_review", "notes": "SP-059 `rcp update` 复用现有 state-store apply；accepted 写显式 out/state-out，rejected no-write。"},
+        {"scope": "trace inspect", "coverage_state": "test_bound", "source": "repo_evidence_review", "notes": "SP-059 `rcp inspect trace` 展示 transition、receipt、trace、provider/replay refs，仅供检查。"},
+        {"scope": "trace verify", "coverage_state": "test_bound", "source": "repo_evidence_review", "notes": "SP-059 `rcp trace verify` 验证 receipt、transition、artifact digest 和 replay binding。"},
+        {"scope": "consistent rejection/error output", "coverage_state": "test_bound", "source": "repo_evidence_review", "notes": "SP-059 固定 unified envelope、exit code、JSON 输出和中文 operator-readable summary。"}
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "lifecycle_event_transition_policy",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "allowed lifecycle/event/transition policy 由 maintained contract 测试约束；不是 runtime completion。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "allowed state/category table",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "allowed event types 与 producer constraints",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "allowed transition pairs",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "required evidence/authority per transition",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "terminal-state restrictions",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "rejection_and_no_write_semantics",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "维护测试覆盖 rejection、duplicate/conflict 与 no-write；不证明所有外部 store 原子性。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_store_apply.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_state_store_apply_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_state_store_apply_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "rejection reason taxonomy",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "state/store no-write guarantee",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rejection trace/report",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "operator explanation",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "duplicate/conflict handling",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "failure_blocked_review_taxonomy",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "已有 state/phase stop taxonomy 和 read-model 证据；仍是 selected-boundary vocabulary。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_state_contract.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_controlled_stop_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_controlled_stop_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "failure category vocabulary",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "recoverable/terminal split",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "blocked/review entry conditions",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "stop reason 与 next-action rules",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "resume/unblock evidence",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "audit_requirements",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "ledger、receipt、trace 与 authority refs 有 maintained 审计证据；不等于生产审计平台。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_run_ledger.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_run_ledger_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_run_ledger_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "actor/timestamp/provenance",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "state mutation/rejection audit",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "artifact/provider/replay refs",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "digest/readback evidence",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "authority receipt",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "truth_and_authority_boundary",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "维护门禁验证 execution/observation/P06/canonical truth 分层；不产生新的 authority。",
+      "evidence": [
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_authority_boundary_acceptance_suite.py"
+        },
+        {
+          "kind": "kb",
+          "ref": "semx-kb/docs/strategy/Strategy_Runtime_Kernel_V1_Target_Contract.md"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_authority_boundary_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "execution coordination truth",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "observation/advisory evidence",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "P06 formalization eligibility authority",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "commit authority",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "canonical truth authority",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "forbidden promotion/wording",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "run_identity_and_manifest",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "test-only run ledger 持久化独立 run identity/manifest；不是 production lifecycle service。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_run_ledger.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_run_ledger_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_run_ledger_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_run_ledger_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "run/lifecycle identity",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "source repo/config refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "workspace/store refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase/output indexes",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "manifest digest 与 provenance",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "phase_state_registry",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已保存固定 P00-P17 phase inventory/state/stop projection；不表示 18 个 phase 都独立执行。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_receipts.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_receipts_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_receipts_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "fixed phase inventory",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase state vocabulary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "current/completed/remaining phase",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "actual invocation/composite/group projection classification",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "stop/review/failed reason",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "artifact_registry_and_digest",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected run ledger/trial 已登记 artifact refs、digests 和 provenance；不是全局 artifact service。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_p00_p17_live_chain_ledger_integration.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_live_chain_ledger_integration_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_live_chain_ledger_integration_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "append-only artifact registry",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "input/output refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "digest 与 readback",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "producer/provenance",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "validation/report refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "event_log_and_execution_trace",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected run 可追加 state/phase/stop/continuation trace；不是分布式 event log。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_run_ledger.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_run_ledger_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_run_ledger_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "append ordering 与 sequence",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "accepted/rejected transition records",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase invocation receipts",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "stop/continuation/retry events",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "trace hash 与 audit read model",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "provider_call_trace",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected trial 记录 fake/replay transport request/response digest 与 mode；不证明 real Provider authority。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_retry_transport.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_retry_transport_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_retry_transport_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "provider/transport identity",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "request/response digests",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "run/phase/trace refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "test-double/replay mode 与 real-mode flag separation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "只证明 test-double/replay 与 real_provider_invoked=false 的区分；不证明真实 Provider 调用。"
+        },
+        {
+          "scope": "network 与 provider-authority flags",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "real_provider_call_trace",
+      "coverage_state": "not_started",
+      "claim_ceiling": "当前 selected RCP runway 没有真实 Provider/network invocation evidence；不得由 mode flag 推断真实调用。",
+      "evidence": [],
+      "scope_coverage": [
+        {"scope": "approved provider identity", "coverage_state": "not_started", "source": "gap_assessment", "notes": "无真实 Provider trial evidence。"},
+        {"scope": "real request/response digest", "coverage_state": "not_started", "source": "gap_assessment", "notes": "无真实 request/response evidence。"},
+        {"scope": "network invocation evidence", "coverage_state": "not_started", "source": "gap_assessment", "notes": "当前证据明确 network_allowed=false。"},
+        {"scope": "run/phase/trace binding", "coverage_state": "not_started", "source": "gap_assessment", "notes": "无真实 Provider 调用可绑定。"},
+        {"scope": "provider output non-authority boundary", "coverage_state": "not_started", "source": "gap_assessment", "notes": "真实调用路径尚未建立。"}
+      ],
+      "missing_scope_items": ["approved provider identity", "real request/response digest", "network invocation evidence", "run/phase/trace binding", "provider output non-authority boundary"],
+      "notes": []
+    },
+    {
+      "tco_node_id": "replay_manifest_and_reference",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected run 可保存 replay refs 并做一致性校验；不是通用逐 phase replay engine。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_p00_p17_replay_consistency.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_replay_consistency_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_replay_consistency_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "source run/checkpoint refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "ledger/trace/artifact digests",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "recorded response refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "deterministic comparison",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "replay consistency report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "persistence_integrity_and_isolation",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "本地 test-only ledger 有 path isolation、hash/sequence/conflict 和 readback 证据；不等于 durable production store。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_run_ledger.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_run_ledger_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_run_ledger_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "path/store guard",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "run/workspace isolation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "sequence/hash conflict detection",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "atomic write/readback",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "retention boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "next_action_advisory",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有 state/stop 到 advisory next action 的有界映射；不能自动调度或执行。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_control_loop.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_event_failure_next_action_contract_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_event_failure_next_action_contract_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "state-to-action mapping",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "ready/blocked/review decision",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "candidate phase/action",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "human precondition",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "explain-only boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "phase_transition_receipts",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected fixed P00-P17 sequence 已生成并校验相邻 phase transition receipts；不是动态 DAG 或任意跳转。",
+      "evidence": [
+        {"kind": "code", "ref": "semx/runners/runtime_phase_transitions.py"},
+        {"kind": "test", "ref": "tests/contract/semx_runtime_phase_transitions_acceptance_suite.py"},
+        {"kind": "command", "gate": "semx_runtime_phase_transitions_acceptance"}
+      ],
+      "scope_coverage": [
+        {"scope": "closed adjacent transition matrix", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "固定 P00-P17 相邻边界矩阵。"},
+        {"scope": "before/after phase state", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "receipt 绑定 transition 前后 phase state。"},
+        {"scope": "transition cause 与 guard", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "receipt 记录原因与 guard evidence。"},
+        {"scope": "state/trace/digest refs", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "selected-run receipts 绑定 state、trace 和 digest refs。"},
+        {"scope": "skip/reverse/duplicate fail-closed", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "maintained negatives 拒绝跳过、逆序和重复 transition。"}
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "executor_adapter_interface",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "只证明 single executor adapter interface schema/validator/report boundary；不执行 phase，也没有 scheduler authority。",
+      "evidence": [
+        {"kind": "code", "ref": "semx/runners/runtime_executor_adapter.py"},
+        {"kind": "test", "ref": "tests/contract/semx_runtime_executor_adapter_acceptance_suite.py"},
+        {"kind": "command", "gate": "semx_runtime_executor_adapter_acceptance"}
+      ],
+      "scope_coverage": [
+        {"scope": "invocation identity 与 selected boundary", "coverage_state": "schema_validator", "source": "repo_evidence_review", "notes": "single adapter contract 固定 invocation identity 与 selected boundary。"},
+        {"scope": "input/output refs", "coverage_state": "schema_validator", "source": "repo_evidence_review", "notes": "validator 检查 input/output refs。"},
+        {"scope": "disposition 与 exit status", "coverage_state": "schema_validator", "source": "repo_evidence_review", "notes": "report contract 约束 disposition/exit status。"},
+        {"scope": "failure taxonomy", "coverage_state": "schema_validator", "source": "repo_evidence_review", "notes": "maintained fixtures 覆盖失败分类。"},
+        {"scope": "forbidden execution/authority claims", "coverage_state": "schema_validator", "source": "repo_evidence_review", "notes": "negative fixtures 阻断 phase execution 和 scheduler claims。"}
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "queue_step_selection",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "S-311 只确定性选择一个 queue step；不是 phase scheduler 或 controller runtime。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_controller_scheduler_minimum.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_controller_scheduler_minimum_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_controller_scheduler_minimum_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "candidate queue schema",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "eligibility checks",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "deterministic selection policy",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rejected-step reasons",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "selected-step report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "budget_retry_persistent_context_decision",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只证明一次 deterministic continue/stop/retry-candidate decision；不是 production enforcement、automatic retry loop 或 durable context store。",
+      "evidence": [
+        {"kind": "code", "ref": "semx/runners/runtime_budget_retry_persistent_context_runtime.py"},
+        {"kind": "test", "ref": "tests/contract/semx_runtime_budget_retry_persistent_context_runtime_acceptance_suite.py"},
+        {"kind": "command", "gate": "semx_runtime_budget_retry_persistent_context_runtime_acceptance"}
+      ],
+      "scope_coverage": [
+        {"scope": "budget decision boundary", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "bounded decision 明确 enforcement=false。"},
+        {"scope": "retry eligibility/count/stop decision", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "确定性计算 eligibility、count 与 stop。"},
+        {"scope": "persisted context refs", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "消费并校验有界 persisted context refs。"},
+        {"scope": "continuation preconditions", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "未满足前置条件时 fail closed。"},
+        {"scope": "enforcement/store non-authority flags", "coverage_state": "bounded_runtime", "source": "repo_evidence_review", "notes": "明确不是 enforcement 或 durable store authority。"}
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "phase_input_output_binding_and_receipts",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected P00-P17 路径已有 binding/receipt/digest/provenance 证据；不虚构独立调用。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_binding_registry.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_binding_registry_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_binding_registry_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "phase binding registry",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "input/output refs 与 digests",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "actual invocation/composite/group projection",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "producer ownership",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "receipt query/read model",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "selected_phase_invocation_and_sequential_run",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有 selected repo/family/test-store 的 fixed-sequence actual invocation 试跑；不是 generic executor。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_p00_p17_live_golden_trial.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_live_golden_trial_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_live_golden_trial_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "explicit adapter boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "fixed sequential path",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "phase result normalization",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "stop/no-write handling",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "final selected-run report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "controlled_stop_and_review",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "selected path 覆盖 early/mid/late stop、review 与 no-write；不是自动恢复。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_p00_p17_controlled_stop.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_p00_p17_controlled_stop_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_p00_p17_controlled_stop_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "closed adjacent transition checks",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "stop classification",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "completed prefix 与 remaining phases",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "review authority",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "inspect/next-action evidence",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "retry_and_resume_coordination",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只证明一次受限 failed-phase retry 和人工 continuation；不是 automatic retry/resume engine。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_retry_transport.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_retry_transport_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_retry_transport_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "retry/resume eligibility",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "retry budget 与 stop rules",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "checkpoint/digest guard",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "no upstream reinvocation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "retry/resume trace",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "repair_candidate_and_revalidation",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只证明人工授权的 advisory repair candidate 与 bounded revalidation witness；不代表 repair accepted。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_feedback_controlled_runtime_slice.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_repair_revalidation_witness_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_repair_revalidation_witness_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "failure evidence intake",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "advisory repair candidate",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "human authorization",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "bounded reinjection/revalidation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "repair acceptance boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "fresh_run_repeatability_and_cross_path_comparison",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已有 fresh-run repeatability 与两个预声明 selected paths 比较；不证明 arbitrary path 泛化。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_phase_repeatability.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_phase_repeatability_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_phase_repeatability_acceptance"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sp058_final_cross_path_audit_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sp058_final_cross_path_audit_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "independent run identities/workspaces",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "normalized receipts/inventory/provenance",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "allowed nondeterminism",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "cross-path contract-shape comparison",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "repeatability/final audit report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "run_plan_dag_candidate",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "已落地 route/planner DAG dry-run schema/validator；候选计划不可自动执行。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_router_planner_dry_run.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_router_planner_dry_run_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_planner_dag_candidate_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_router_planner_dry_run_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "route candidate",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "DAG nodes/edges/dependencies",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "input/output requirements",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "manual checkpoints",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "dry-run validation/read model",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "async_parallel_control",
+      "coverage_state": "not_started",
+      "claim_ceiling": "已有 fresh selected runs 的 workspace/run identity 隔离证据；没有 async/concurrent scheduler、state control、trace merge 或 conflict runtime。",
+      "evidence": [
+        {"kind": "code", "ref": "semx/runners/runtime_phase_repeatability.py"},
+        {"kind": "test", "ref": "tests/contract/semx_runtime_phase_repeatability_acceptance_suite.py"},
+        {"kind": "command", "gate": "semx_runtime_phase_repeatability_acceptance"}
+      ],
+      "scope_coverage": [
+        {
+          "scope": "parallel eligibility",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "无 maintained parallel eligibility contract。"
+        },
+        {
+          "scope": "run/task isolation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "fresh-run repeatability 已证明 selected runs 使用独立 run identity/workspace；不证明并发执行。"
+        },
+        {
+          "scope": "concurrent state update control",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "无 concurrent state update maintained evidence。"
+        },
+        {
+          "scope": "trace merge/separation",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "无并发 trace merge/separation maintained evidence。"
+        },
+        {
+          "scope": "conflict handling",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "无 async/concurrent conflict handling evidence。"
+        }
+      ],
+      "missing_scope_items": [
+        "parallel eligibility",
+        "concurrent state update control",
+        "trace merge/separation",
+        "conflict handling"
+      ],
+      "notes": []
+    },
+    {
+      "tco_node_id": "sag_observation_graph",
+      "coverage_state": "schema_validator",
+      "claim_ceiling": "已落地 closed-vocabulary observation graph schema/validator；不是 SAG truth。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_observation_graph.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_observation_graph_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_sag_observation_graph_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_observation_graph_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "closed node/edge vocabulary",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "claimed-effects vocabulary",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "authority type/scope compatibility",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph schema/validator",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "fail-closed hidden-overclaim checks",
+          "coverage_state": "schema_validator",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "observation_snapshot_store_and_query",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已落地 append-only test observation snapshot/reload/query；不是 canonical SAG store。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_observation_store.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_observation_store_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_observation_store_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "append-only snapshot",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "graph/digest/provenance refs",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "duplicate/conflict no-write",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "reload/readback",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "bounded query/read model",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "semantic_diff_observation",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已落地 digest-bound deterministic semantic-diff observation；不解决 semantic contradiction。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_observation_store_semantic_diff.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_observation_store_semantic_diff_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_observation_store_semantic_diff_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "added/removed/changed nodes",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "added/removed/changed edges",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "authority-ref changes",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "claimed-effect changes",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "source graph/hash binding",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "contradiction_and_affected_refs_advisory",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只产生 contradiction/affected-refs/invalidation advisory；不自动传播或裁决 truth。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_contradiction_triage.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_contradiction_triage_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_contradiction_triage_acceptance"
+        },
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_invalidation_model_runner.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_invalidation_model_runner_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "contradiction/evidence-gap classification",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "affected refs calculation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "invalidation proposal",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "review queue handoff",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "advisory-only boundary",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "human_review_and_rollback_authority_chain",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "已记录 request/precondition/human decision/approval/execution-precondition 链；不等于自动 rollback。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_human_decision_recording.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_human_decision_recording_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_human_decision_recording_acceptance"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_rollback_decision_request_observation_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_rollback_decision_request_observation_acceptance"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_human_decision_precondition_observation_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_human_decision_precondition_observation_acceptance"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_rollback_approval_recording_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_rollback_approval_recording_acceptance"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_rollback_execution_precondition_observation_acceptance_suite.py"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_rollback_execution_precondition_observation_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "rollback request observation",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "decision-precondition check",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "human decision record",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "approval receipt",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "execution precondition report",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "isolated_test_target_rollback_execution",
+      "coverage_state": "bounded_runtime",
+      "claim_ceiling": "只在隔离 test target 执行已批准 rollback/readback；不触碰 canonical/production target。",
+      "evidence": [
+        {
+          "kind": "code",
+          "ref": "semx/runners/runtime_sag_isolated_rollback_execution.py"
+        },
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_sag_isolated_rollback_execution_acceptance_suite.py"
+        },
+        {
+          "kind": "schema",
+          "ref": "semx/schemas/runtime_sag_isolated_rollback_execution_v1.schema.json"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_sag_isolated_rollback_execution_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "approved target/version binding",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "isolated path/store guard",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "rollback write/readback",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "conflict/no-write negatives",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "execution receipt",
+          "coverage_state": "bounded_runtime",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    },
+    {
+      "tco_node_id": "sag_to_p06_evidence_adapter",
+      "coverage_state": "not_started",
+      "claim_ceiling": "当前 P06 可独立作出 DecisionRecord；尚无 maintained SAG-to-P06 evidence adapter。",
+      "evidence": [],
+      "scope_coverage": [
+        {
+          "scope": "observation input shape",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 maintained SAG-to-P06 adapter evidence。"
+        },
+        {
+          "scope": "digest/provenance validation",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 adapter 层 digest/provenance validation evidence。"
+        },
+        {
+          "scope": "P06 evidence mapping",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 SAG observation 到 P06 evidence 的 maintained mapping。"
+        },
+        {
+          "scope": "authority/scope checks",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 adapter authority/scope checks。"
+        },
+        {
+          "scope": "disposition non-authority",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "adapter 尚未落地，因此 disposition non-authority 仍是缺口。"
+        }
+      ],
+      "missing_scope_items": [
+        "observation input shape",
+        "digest/provenance validation",
+        "P06 evidence mapping",
+        "authority/scope checks",
+        "disposition non-authority"
+      ],
+      "notes": []
+    },
+    {
+      "tco_node_id": "canonical_sag_identity_store_query",
+      "coverage_state": "not_started",
+      "claim_ceiling": "当前只有 observation store；canonical SAG identity/store/query 尚未落地。",
+      "evidence": [],
+      "scope_coverage": [
+        {
+          "scope": "canonical identity/versioning",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "当前 observation identity 不是 canonical SAG identity。"
+        },
+        {
+          "scope": "transactional write/readback",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 canonical SAG transactional store evidence。"
+        },
+        {
+          "scope": "multi-run isolation",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 canonical SAG store 的 multi-run isolation evidence。"
+        },
+        {
+          "scope": "query API/read model",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 canonical SAG query/read-model evidence。"
+        },
+        {
+          "scope": "retention 与 visual query",
+          "coverage_state": "not_started",
+          "source": "gap_assessment",
+          "notes": "未发现 retention 或 visual query contract。"
+        }
+      ],
+      "missing_scope_items": [
+        "canonical identity/versioning",
+        "transactional write/readback",
+        "multi-run isolation",
+        "query API/read model",
+        "retention 与 visual query"
+      ],
+      "notes": []
+    },
+    {
+      "tco_node_id": "semx_authority_model",
+      "coverage_state": "test_bound",
+      "claim_ceiling": "KB 与 maintained authority gate 已冻结 P02/P05/P06/Formalizer/Committer/Archive 分层；不产生 semantic authority。",
+      "evidence": [
+        {
+          "kind": "test",
+          "ref": "tests/contract/semx_runtime_authority_boundary_acceptance_suite.py"
+        },
+        {
+          "kind": "kb",
+          "ref": "semx-kb/docs/strategy/Strategy_Runtime_Kernel_SAG_Artifact_Graph_C0_2.md"
+        },
+        {
+          "kind": "command",
+          "gate": "semx_runtime_authority_boundary_acceptance"
+        }
+      ],
+      "scope_coverage": [
+        {
+          "scope": "producer identity",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "domain of authority",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "allowed/forbidden claims",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "promotion path",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        },
+        {
+          "scope": "P02/P05/P06/Formalizer/Committer/Archive split",
+          "coverage_state": "test_bound",
+          "source": "repo_evidence_review",
+          "notes": "由同一节点的 repo evidence 与 claim boundary 覆盖。"
+        }
+      ],
+      "missing_scope_items": [],
+      "notes": []
+    }
+  ],
+  "authority_note": "Coverage is a reviewed repo-evidence inventory for human visualization. It is not KB canonical truth, implementation approval, or RCP/Runtime Kernel/SAG completion."
+}

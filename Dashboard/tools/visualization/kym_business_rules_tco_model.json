@@ -1,0 +1,1104 @@
+{
+  "schema": "semx.visualization.tco_model.v1",
+  "source_section": "Business Rules",
+  "root": "business_rules",
+  "target_profiles": [
+    {
+      "id": "rcp_selected_test_runway",
+      "label": "RCP 当前阶段：selected test runway",
+      "description": "对照 RCP Panorama RC-01..RC-14，只判断 selected repo/family/test-store/fixed P00-P17 sequence 的有界试验跑道证据。",
+      "claim_ceiling": "profile 达标只表示 RC-01..RC-14 均有 bounded selected-runway evidence；不表示 generic RCP、Runtime Kernel、real Provider、production 或 SP-038 complete。",
+      "requirements": [
+        {"id": "RC-01", "title": "run identity", "node_ids": ["run_identity_and_manifest"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-02", "title": "phase state", "node_ids": ["phase_state_registry"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-03", "title": "artifact registry", "node_ids": ["artifact_registry_and_digest"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-04", "title": "execution trace", "node_ids": ["event_log_and_execution_trace"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-05", "title": "transition validation", "node_ids": ["phase_transition_receipts"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-06", "title": "inspect state", "node_ids": ["run_phase_artifact_inspect_read_model"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-07", "title": "update state", "node_ids": ["event_submission_and_state_update_surface"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-08", "title": "failure / review / blocked", "node_ids": ["controlled_stop_and_review"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-09", "title": "next action", "node_ids": ["next_action_advisory"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-10", "title": "phase input/output binding", "node_ids": ["phase_input_output_binding_and_receipts"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-11", "title": "artifact digest", "node_ids": ["artifact_registry_and_digest"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-12", "title": "retry / resume 基础能力", "node_ids": ["retry_and_resume_coordination"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-13", "title": "provider call trace", "node_ids": ["provider_call_trace"], "target_coverage_state": "bounded_runtime"},
+        {"id": "RC-14", "title": "replay reference", "node_ids": ["replay_manifest_and_reference"], "target_coverage_state": "bounded_runtime"}
+      ]
+    },
+    {
+      "id": "rcp_broader_bounded_target",
+      "label": "RCP broader bounded capability tree",
+      "description": "检查 RCP 五个功能域下所有 capability/policy 是否达到各自 node target；该 profile 不是 generic RCP completion contract。",
+      "claim_ceiling": "只显示 broader bounded capability gaps；不等于批准实现、generic integration 或 production readiness。",
+      "root_ids": ["runtime_kernel", "runtime_control_surface", "runtime_governance_contract", "runtime_evidence_store", "runtime_orchestration_layer"]
+    },
+    {
+      "id": "sag_future_target",
+      "label": "SAG future bounded target",
+      "description": "检查 SAG observation、authority、adapter 和 future store/query 节点的各自 target coverage。",
+      "claim_ceiling": "该 profile 不产生 SAG truth、semantic resolution、P06 disposition 或 canonical KB authority。",
+      "root_ids": ["sag"]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "business_rules",
+      "node_kind": "group",
+      "title": "Business Rules",
+      "topic": "将 RCP 与 SAG 相关的业务规则拆解为可实现、可测试、可追踪的功能点，形成完整的 Testing Coverage Outline。",
+      "scope": [
+        "Runtime Kernel",
+        "Runtime Control Surface",
+        "Runtime Governance Contract",
+        "Runtime Evidence Store / Trace Store",
+        "Runtime Orchestration Layer",
+        "SAG"
+      ],
+      "purpose": "确保所有实现、测试和复核工作围绕同一组可追踪的业务功能点展开，每个功能点都具备独立的实现和验收依据。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "runtime_kernel",
+        "runtime_control_surface",
+        "runtime_governance_contract",
+        "runtime_evidence_store",
+        "runtime_orchestration_layer",
+        "sag"
+      ]
+    },
+    {
+      "id": "runtime_kernel",
+      "node_kind": "group",
+      "title": "Runtime Kernel",
+      "topic": "定义 run 的状态、事件、生命周期、转换、写入和派生执行图的底层运行规则，确保所有控制面操作有统一的执行协调基础。",
+      "scope": [
+        "Runtime State Schema",
+        "Runtime Event Schema",
+        "Runtime Lifecycle",
+        "State Transition Validator",
+        "State Store Apply",
+        "Runtime Graph Derivation"
+      ],
+      "purpose": "为所有控制面读写提供一致、可校验、可拒绝的执行协调基础，防止各实现自行解释 run 状态。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "runtime_state_schema",
+        "runtime_event_schema",
+        "runtime_lifecycle",
+        "state_transition_validator",
+        "state_store_apply",
+        "runtime_graph_derivation"
+      ]
+    },
+    {
+      "id": "runtime_state_schema",
+      "node_kind": "capability",
+      "title": "Runtime State Schema",
+      "topic": "定义一次 run 当前的 execution coordination state 的结构和表达方式。",
+      "scope": [
+        "state vocabulary 与 category",
+        "current state、sequence、hash 与 provenance",
+        "evidence refs 与 authority refs",
+        "serialization 与 read-model shape"
+      ],
+      "purpose": "让系统能够稳定保存、读取和比较 run 当前状态，避免依赖散乱日志或自然语言描述。",
+      "ref_titles": [
+        "当前 maintained Kernel state contract 使用 `INIT`、`INGESTED`、`GENERATED`、`VALIDATING`、`VALIDATED`、`DERIVING`、`DERIVED`、`REPAIR_REQUIRED`、`REPAIRING`、`REVALIDATING`、`CONVERGED`、`FINAL`，以及 `BLOCKED`、`HUMAN_REVIEW_REQUIRED`、`ROLLBACK_REQUIRED`、`INVALID_INPUT`、`FAILED`。Run ledger 中的 phase state 是另一层对象，不能与 Kernel state vocabulary 混用。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_event_schema",
+      "node_kind": "capability",
+      "title": "Runtime Event Schema",
+      "topic": "定义可以请求或记录 runtime 状态变化的结构化事件模型。",
+      "scope": [
+        "event type vocabulary",
+        "actor、timestamp 与 run reference",
+        "payload、evidence refs 与 authority refs",
+        "event-to-transition mapping"
+      ],
+      "purpose": "让状态变化由可追踪、可验证的 event 驱动，避免直接改字段或用任意文本推动 lifecycle。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_lifecycle",
+      "node_kind": "capability",
+      "title": "Runtime Lifecycle",
+      "topic": "定义 run 从初始化到终止、失败、阻塞或人工 review 的允许路径和状态分类。",
+      "scope": [
+        "active、suspended 与 terminal categories",
+        "entry/exit conditions",
+        "terminal closure rules",
+        "resume 与 recovery boundary"
+      ],
+      "purpose": "区分正常推进、等待人工、受阻、可恢复失败和终止，避免所有非成功结果被压成同一种状态。",
+      "ref_titles": [
+        "当前 maintained finalization path 必须经过 `CONVERGED -> FINAL`；`DERIVED -> FINAL` 不是允许的 shortcut。Runtime lifecycle 只表达 execution coordination，不证明 semantic truth。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "state_transition_validator",
+      "node_kind": "capability",
+      "title": "State Transition Validator",
+      "topic": "判断一次 from-state、event、evidence 和 authority 是否允许产生目标状态。",
+      "scope": [
+        "declared transition catalog",
+        "from/to compatibility",
+        "trigger 与 required evidence checks",
+        "authority-scope checks",
+        "accepted/rejected report",
+        "rejection no-write behavior"
+      ],
+      "purpose": "防止非法跳转、缺证据推进和越权写入，并为每次拒绝留下确定性理由。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "state_store_apply",
+      "node_kind": "capability",
+      "title": "State Store Apply",
+      "topic": "把已通过 transition validation 的事件有界地应用到 runtime-owned state store。",
+      "scope": [
+        "expected sequence 与 state hash guard",
+        "duplicate/conflict detection",
+        "accepted mutation 与 rejected no-write",
+        "transition/rejection history",
+        "readback verification"
+      ],
+      "purpose": "把“规则允许”落实为可验证写入，同时保证重复、冲突和非法请求不会静默污染 state。",
+      "ref_titles": [
+        "当前 Repo 只证明 bounded apply path 和 test-only/local evidence，不代表通用持久 state service、daemon 或 production store。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_graph_derivation",
+      "node_kind": "capability",
+      "title": "Runtime Graph Derivation",
+      "topic": "从 execution trace 确定性派生 run、phase、artifact、event、transition 和 gate 的执行关系图。",
+      "scope": [
+        "node/edge vocabulary",
+        "trace-to-graph derivation",
+        "graph hash 与 deterministic replay",
+        "graph/read-model export",
+        "runtime graph 与 SAG boundary"
+      ],
+      "purpose": "为 inspect、replay、lineage 和审计提供结构化执行视图，而不把 derived graph 变成 semantic truth 或 transition authority。",
+      "ref_titles": [
+        "当前 Repo 的 Stage 1 `runtime-replay` 已能确定性重建 runtime state 与 graph skeleton；这不是 canonical SAG graph，也不是实时 graph daemon。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_control_surface",
+      "node_kind": "group",
+      "title": "Runtime Control Surface",
+      "topic": "提供人或 Agent 查看 run、提交受控请求、验证 trace 和执行人工 checkpoint 的操作入口。",
+      "scope": [
+        "Run / Phase / Artifact Inspect Read Model",
+        "Event Submission and State Update Surface",
+        "Trace Inspect Surface",
+        "Trace / State Replay Verification",
+        "Runtime Graph Inspect",
+        "Human Checkpoint and Authorization Surface",
+        "Unified Runtime Control CLI",
+        "operator-facing rejection/error display"
+      ],
+      "purpose": "让操作员能够回答“当前在哪里、做过什么、为什么停下、下一步是什么、能否安全继续”，而不绕过 Kernel 或 authority contract。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "run_phase_artifact_inspect_read_model",
+        "event_submission_and_state_update_surface",
+        "trace_inspect_surface",
+        "trace_state_replay_verification",
+        "runtime_graph_inspect",
+        "human_checkpoint_and_continuation",
+        "unified_runtime_control_cli"
+      ]
+    },
+    {
+      "id": "run_phase_artifact_inspect_read_model",
+      "node_kind": "capability",
+      "title": "Run / Phase / Artifact Inspect Read Model",
+      "topic": "查询 run、phase、artifact、stop reason 和 advisory next action 的操作员视图。",
+      "scope": [
+        "run lookup 与 state summary",
+        "phase receipt 与 invocation-kind display",
+        "artifact refs/digests/provenance",
+        "blocked/review reason",
+        "advisory next action 与 authority-boundary display"
+      ],
+      "purpose": "让操作员无需解析多个底层 JSON 文件也能理解一次 run 的当前位置和证据边界。",
+      "ref_titles": [
+        "当前 Repo 已有 test-only ledger inspect、phase receipt/read model 和 stop explanation；尚无统一的通用 `semx runtime inspect RUN_ID` CLI。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "event_submission_and_state_update_surface",
+      "node_kind": "capability",
+      "title": "Event Submission and State Update Surface",
+      "topic": "接收 runtime event request，并经 schema、transition 和 authority checks 后请求 state update。",
+      "scope": [
+        "request input 与 validation",
+        "transition validator invocation",
+        "accepted apply",
+        "rejected no-write result",
+        "trace/report link"
+      ],
+      "purpose": "防止 CLI 或外部 Agent 绕过 Kernel 直接改 state。",
+      "ref_titles": [
+        "当前 Repo 有 bounded runner/API evidence；尚无统一通用的 `semx runtime update` CLI。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "trace_inspect_surface",
+      "node_kind": "capability",
+      "title": "Trace Inspect Surface",
+      "topic": "按 run、phase、event 或 state 查看 execution trace 与 rejection history。",
+      "scope": [
+        "trace loading 与 filtering",
+        "event/transition sequence",
+        "rejection history",
+        "artifact/provider/replay refs",
+        "operator-readable explanation"
+      ],
+      "purpose": "让人能够说明一次运行实际发生过什么，而不只看到最终状态。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "trace_state_replay_verification",
+      "node_kind": "capability",
+      "title": "Trace / State Replay Verification",
+      "topic": "重放 trace 并验证当前 state、graph 和 evidence references 是否一致。",
+      "scope": [
+        "deterministic trace replay",
+        "state/trace reconciliation",
+        "graph hash comparison",
+        "tamper/conflict detection",
+        "verification report"
+      ],
+      "purpose": "防止 state、trace 和 derived graph 分叉，并为审计提供可重复验证的执行依据。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_graph_inspect",
+      "node_kind": "capability",
+      "title": "Runtime Graph Inspect",
+      "topic": "查看 trace 派生的 runtime graph 和 phase-to-artifact lineage。",
+      "scope": [
+        "node/edge summary",
+        "phase/artifact/event relations",
+        "gate/validation relations",
+        "graph hash 与 source trace refs",
+        "derived-view boundary display"
+      ],
+      "purpose": "让执行关系可理解，同时明确它不是 SAG truth 或独立 authority。",
+      "ref_titles": [
+        "当前 Repo 可通过 `runtime-replay --graph-out/--read-model-out` 获取相关产物，但没有独立通用 `graph inspect` 命令。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "human_checkpoint_and_continuation",
+      "node_kind": "capability",
+      "title": "Human Checkpoint and Authorization Surface",
+      "topic": "在 stop/review/failed checkpoint 上接收、校验并记录人工授权，形成后续 continuation 或 retry 可消费的 authority receipt。",
+      "scope": [
+        "decision submission 与 actor identity",
+        "checkpoint digest/precondition",
+        "human authority receipt",
+        "duplicate/conflict rejection",
+        "authorized action 与 current-state display"
+      ],
+      "purpose": "把“谁批准了什么”与“系统如何继续执行”分开，使后续 orchestration 只能消费明确授权，而不能自行生成或推断人工决定。",
+      "ref_titles": [
+        "当前 Repo 已有 selected-path 的一次 operator continuation、一次 failed-phase retry 和 Path B drill；本节点只描述 checkpoint/authorization surface，实际 retry/resume 行为归入 Runtime Orchestration Layer。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "unified_runtime_control_cli",
+      "node_kind": "capability",
+      "title": "Unified Runtime Control CLI",
+      "topic": "通过一致命令入口查看、更新和验证受支持 run 的 state、trace、artifact 和 graph read model。",
+      "scope": [
+        "runtime inspect",
+        "runtime update",
+        "trace inspect",
+        "trace verify",
+        "consistent rejection/error output"
+      ],
+      "purpose": "把分散的 bounded runner/read-model 能力收敛为稳定操作入口，同时保持 Kernel、ledger 和 authority checks。",
+      "ref_titles": [
+        "SP-059 已提供 selected/test-only `semx rcp inspect/update/trace verify` 统一入口；它只覆盖现有 selected runway，不是 generic runtime control CLI、production console 或 arbitrary-run controller。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_governance_contract",
+      "node_kind": "group",
+      "title": "Runtime Governance Contract",
+      "topic": "定义 Runtime 层允许表达、必须拒绝、必须审计以及不得越权的规则。",
+      "scope": [
+        "Lifecycle / Event / Transition Policy",
+        "Rejection and No-write Semantics",
+        "Failure / Blocked / Review Taxonomy",
+        "Audit Requirements",
+        "Truth and Authority Boundary"
+      ],
+      "purpose": "防止 execution evidence、semantic truth、失败、拒绝、阻塞和人工 review 被混用，也防止 RCP 演变成拥有所有 authority 的超级系统。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "lifecycle_event_transition_policy",
+        "rejection_and_no_write_semantics",
+        "failure_blocked_review_taxonomy",
+        "audit_requirements",
+        "truth_and_authority_boundary"
+      ]
+    },
+    {
+      "id": "lifecycle_event_transition_policy",
+      "node_kind": "policy",
+      "title": "Lifecycle / Event / Transition Policy",
+      "topic": "约束允许的状态词汇、事件类型和 transition catalog，定义生命周期、事件和状态转换的政策。",
+      "scope": [
+        "allowed state/category table",
+        "allowed event types 与 producer constraints",
+        "allowed transition pairs",
+        "required evidence/authority per transition",
+        "terminal-state restrictions"
+      ],
+      "purpose": "为 schema、validator 和 runtime apply 提供同一套可执行政策来源。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "rejection_and_no_write_semantics",
+      "node_kind": "policy",
+      "title": "Rejection and No-write Semantics",
+      "topic": "定义非法、重复、冲突或越权请求被拒绝时必须保留的状态和证据。",
+      "scope": [
+        "rejection reason taxonomy",
+        "state/store no-write guarantee",
+        "rejection trace/report",
+        "operator explanation",
+        "duplicate/conflict handling"
+      ],
+      "purpose": "避免静默覆盖、部分写入或把拒绝误当作普通执行失败。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "failure_blocked_review_taxonomy",
+      "node_kind": "policy",
+      "title": "Failure / Blocked / Review Taxonomy",
+      "topic": "区分 runtime error、validation failure、rejection、BLOCKED、review_required 和 terminal failure。",
+      "scope": [
+        "failure category vocabulary",
+        "recoverable/terminal split",
+        "blocked/review entry conditions",
+        "stop reason 与 next-action rules",
+        "resume/unblock evidence"
+      ],
+      "purpose": "让每种停止状态具有明确原因和恢复边界，而不是全部压成 `FAILED` 或 `BLOCKED`。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "audit_requirements",
+      "node_kind": "policy",
+      "title": "Audit Requirements",
+      "topic": "规定 state mutation、transition decision、artifact、provider、replay 和人工决定必须留下哪些审计记录。",
+      "scope": [
+        "actor/timestamp/provenance",
+        "state mutation/rejection audit",
+        "artifact/provider/replay refs",
+        "digest/readback evidence",
+        "authority receipt"
+      ],
+      "purpose": "让 inspect、replay、Validation 和人工复核能够重建执行因果链。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "truth_and_authority_boundary",
+      "node_kind": "policy",
+      "title": "Truth and Authority Boundary",
+      "topic": "限定 Runtime、SAG、P06、Formalizer、Committer 和 Archive 各自可以作出的 claim，防止越权和错误升级。",
+      "scope": [
+        "execution coordination truth",
+        "observation/advisory evidence",
+        "P06 formalization eligibility authority",
+        "commit authority",
+        "canonical truth authority",
+        "forbidden promotion/wording"
+      ],
+      "purpose": "防止 `phase completed`、trace、graph、P06 decision 或 test-store commit 被错误升级为 canonical semantic truth。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_evidence_store",
+      "node_kind": "group",
+      "title": "Runtime Evidence Store / Trace Store",
+      "topic": "持久保存一次 run 的 identity、phase state、artifact、trace、provider 和 replay references。",
+      "scope": [
+        "Run Identity and Manifest",
+        "Phase State Registry",
+        "Artifact Registry and Digest",
+        "Event Log and Execution Trace",
+        "Provider Call Trace",
+        "Real Provider Call Trace",
+        "Replay Manifest and Reference",
+        "Persistence Integrity and Isolation"
+      ],
+      "purpose": "让一次 run 的执行事实可以落盘、重载、查询、校验和比较，而不是散落在临时文件或会话记忆中。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "run_identity_and_manifest",
+        "phase_state_registry",
+        "artifact_registry_and_digest",
+        "event_log_and_execution_trace",
+        "provider_call_trace",
+        "real_provider_call_trace",
+        "replay_manifest_and_reference",
+        "persistence_integrity_and_isolation"
+      ]
+    },
+    {
+      "id": "run_identity_and_manifest",
+      "node_kind": "capability",
+      "title": "Run Identity and Manifest",
+      "topic": "保存 run identity、输入边界、配置、workspace/store 和关键证据索引。",
+      "scope": [
+        "run/lifecycle identity",
+        "source repo/config refs",
+        "workspace/store refs",
+        "phase/output indexes",
+        "manifest digest 与 provenance"
+      ],
+      "purpose": "让每次运行可唯一定位，并与其他 fresh run 或 replay run 明确区分。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "phase_state_registry",
+      "node_kind": "capability",
+      "title": "Phase State Registry",
+      "topic": "保存 P00-P17 每个 phase 的状态、输入输出、停止原因和下一动作。",
+      "scope": [
+        "fixed phase inventory",
+        "phase state vocabulary",
+        "current/completed/remaining phase",
+        "actual invocation/composite/group projection classification",
+        "stop/review/failed reason"
+      ],
+      "purpose": "让操作员逐 phase 理解执行进度，同时避免把 grouped projection 冒充为独立调用。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "artifact_registry_and_digest",
+      "node_kind": "capability",
+      "title": "Artifact Registry and Digest",
+      "topic": "登记 run 中读取、生成或验证的 artifact refs、digests、producer 和 provenance。",
+      "scope": [
+        "append-only artifact registry",
+        "input/output refs",
+        "digest 与 readback",
+        "producer/provenance",
+        "validation/report refs"
+      ],
+      "purpose": "让 phase state、trace 和 replay 能定位真实证据并检测陈旧、漂移或篡改。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "event_log_and_execution_trace",
+      "node_kind": "capability",
+      "title": "Event Log and Execution Trace",
+      "topic": "追加记录 event、transition、phase invocation、stop、retry、continuation 和 rejection。",
+      "scope": [
+        "append ordering 与 sequence",
+        "accepted/rejected transition records",
+        "phase invocation receipts",
+        "stop/continuation/retry events",
+        "trace hash 与 audit read model"
+      ],
+      "purpose": "保存状态为何变化、为何停止和如何继续的因果证据。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "provider_call_trace",
+      "node_kind": "capability",
+      "title": "Provider Call Trace",
+      "topic": "把 provider 或 test transport 的 request/response digest、mode 和 authority boundary 绑定到 run 与 phase。",
+      "scope": [
+        "provider/transport identity",
+        "request/response digests",
+        "run/phase/trace refs",
+        "test-double/replay mode 与 real-mode flag separation",
+        "network 与 provider-authority flags"
+      ],
+      "purpose": "让外部调用可审计，并防止 test double、recorded response 或 provider output 被误读为真实 authority。",
+      "ref_titles": [
+        "当前 Repo 已证明一次 test-double transport invocation 和 recorded-response replay，且固定 `real_provider_invoked=false`、`network_allowed=false`；未证明真实 Provider 跑道。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "real_provider_call_trace",
+      "node_kind": "capability",
+      "title": "Real Provider Call Trace",
+      "topic": "在明确批准的真实 Provider 调用中记录 transport、request/response digest、network 和 authority boundary。",
+      "scope": [
+        "approved provider identity",
+        "real request/response digest",
+        "network invocation evidence",
+        "run/phase/trace binding",
+        "provider output non-authority boundary"
+      ],
+      "purpose": "区分真实外部调用与 test-double/replay，防止仅有 mode flag 的报告被误读为真实 Provider execution evidence。",
+      "ref_titles": [
+        "当前 RCP selected runway 没有真实 Provider 调用或 network evidence；该能力不属于当前阶段完成标准。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "replay_manifest_and_reference",
+      "node_kind": "capability",
+      "title": "Replay Manifest and Reference",
+      "topic": "保存 replay source、snapshot digest、artifact inventory 和比较结果。",
+      "scope": [
+        "source run/checkpoint refs",
+        "ledger/trace/artifact digests",
+        "recorded response refs",
+        "deterministic comparison",
+        "replay consistency report"
+      ],
+      "purpose": "让重放能够证明使用了什么历史证据、哪些内容一致、哪些内容发生漂移。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "persistence_integrity_and_isolation",
+      "node_kind": "policy",
+      "title": "Persistence Integrity and Isolation",
+      "topic": "约束 test-only evidence store 的路径、隔离、原子写入、版本和冲突行为。",
+      "scope": [
+        "path/store guard",
+        "run/workspace isolation",
+        "sequence/hash conflict detection",
+        "atomic write/readback",
+        "retention boundary"
+      ],
+      "purpose": "防止跨 run 污染、部分写入和错误覆盖，并为未来持久化实现保留清晰边界。",
+      "ref_titles": [
+        "当前 Repo 只有 local/test-only store evidence，不代表 production database、daemon、HA、SLO 或 durable queue。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "runtime_orchestration_layer",
+      "node_kind": "group",
+      "title": "Runtime Orchestration Layer",
+      "topic": "基于 run state、evidence、policy 和人工 authority 选择并执行受控的下一步。",
+      "scope": [
+        "Next Action Advisory",
+        "Queue-step Selection",
+        "Phase Input / Output Binding and Receipts",
+        "Phase Transition Receipts",
+        "Executor Adapter Interface",
+        "Selected Phase Invocation and Sequential Run",
+        "Controlled Stop and Review",
+        "Retry and Resume Coordination",
+        "Budget / Retry / Persistent Context Decision",
+        "Repair Candidate and Revalidation",
+        "Fresh-run Repeatability and Cross-path Comparison",
+        "Run Plan / DAG Candidate",
+        "Async / Parallel Control"
+      ],
+      "purpose": "把单点 validator、runner 和 evidence store 组织成可解释的试验跑道，同时保持自动 scheduler、repair 和并行能力的边界清晰。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "next_action_advisory",
+        "queue_step_selection",
+        "phase_input_output_binding_and_receipts",
+        "phase_transition_receipts",
+        "executor_adapter_interface",
+        "selected_phase_invocation_and_sequential_run",
+        "controlled_stop_and_review",
+        "retry_and_resume_coordination",
+        "budget_retry_persistent_context_decision",
+        "repair_candidate_and_revalidation",
+        "fresh_run_repeatability_and_cross_path_comparison",
+        "run_plan_dag_candidate",
+        "async_parallel_control"
+      ]
+    },
+    {
+      "id": "next_action_advisory",
+      "node_kind": "capability",
+      "title": "Next Action Advisory",
+      "topic": "根据当前 state、evidence 和 stop reason 生成下一步候选动作。",
+      "scope": [
+        "state-to-action mapping",
+        "ready/blocked/review decision",
+        "candidate phase/action",
+        "human precondition",
+        "explain-only boundary"
+      ],
+      "purpose": "让操作员知道如何继续，但不把建议变成 scheduler authority 或自动执行命令。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "phase_transition_receipts",
+      "node_kind": "capability",
+      "title": "Phase Transition Receipts",
+      "topic": "为 fixed P00-P17 sequence 的相邻 phase boundary 生成并校验 transition receipt。",
+      "scope": [
+        "closed adjacent transition matrix",
+        "before/after phase state",
+        "transition cause 与 guard",
+        "state/trace/digest refs",
+        "skip/reverse/duplicate fail-closed"
+      ],
+      "purpose": "让 phase-to-phase 推进具有独立、可查询和可拒绝的证据，而不把 stop report 或 Kernel state transition 当作同一个对象。",
+      "ref_titles": [
+        "当前 Repo 的 S-422 已有 selected fixed sequence 的 17 条相邻 transition receipts；这不是动态 DAG 或任意 phase 跳转。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "executor_adapter_interface",
+      "node_kind": "capability",
+      "title": "Executor Adapter Interface",
+      "topic": "定义一个 phase runner/gate 如何被受控调用并返回规范化 invocation/report 的接口边界。",
+      "scope": [
+        "invocation identity 与 selected boundary",
+        "input/output refs",
+        "disposition 与 exit status",
+        "failure taxonomy",
+        "forbidden execution/authority claims"
+      ],
+      "purpose": "在真实 selected invocation 之前冻结可维护的 adapter contract，避免把单个 runner 包装器误读为 broad executor。",
+      "ref_titles": [
+        "当前 Repo 的 S-290 只证明 single executor adapter interface validator/report layer，不执行 phase，也不拥有 scheduler authority。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "queue_step_selection",
+      "node_kind": "capability",
+      "title": "Queue-step Selection",
+      "topic": "从满足 evidence、authority 和 priority 条件的候选队列中确定一个 selected step。",
+      "scope": [
+        "candidate queue schema",
+        "eligibility checks",
+        "deterministic selection policy",
+        "rejected-step reasons",
+        "selected-step report"
+      ],
+      "purpose": "把“下一步候选”变成确定性选择证据，同时保持 phase execution 与 broad scheduler 为独立能力。",
+      "ref_titles": [
+        "当前 Repo 的 S-311 只证明 queue-step selection，不执行 phase、不自动执行 plan，也不拥有 generic scheduler authority。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "budget_retry_persistent_context_decision",
+      "node_kind": "capability",
+      "title": "Budget / Retry / Persistent Context Decision",
+      "topic": "基于有界 budget、retry count、checkpoint 和 persisted context refs 生成一次 deterministic continue/stop/retry-candidate decision。",
+      "scope": [
+        "budget decision boundary",
+        "retry eligibility/count/stop decision",
+        "persisted context refs",
+        "continuation preconditions",
+        "enforcement/store non-authority flags"
+      ],
+      "purpose": "让 retry/resume 消费明确的预算和上下文决定，同时不把 advisory decision 升级为自动 retry executor 或 durable context store。",
+      "ref_titles": [
+        "当前 Repo 有 imported supplemental bounded decision evidence；它不是 production budget enforcement、automatic retry loop 或 persistent daemon/store。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "phase_input_output_binding_and_receipts",
+      "node_kind": "capability",
+      "title": "Phase Input / Output Binding and Receipts",
+      "topic": "为每个 phase 绑定输入、输出、digest、provenance、状态和 invocation kind。",
+      "scope": [
+        "phase binding registry",
+        "input/output refs 与 digests",
+        "actual invocation/composite/group projection",
+        "producer ownership",
+        "receipt query/read model"
+      ],
+      "purpose": "让 P00-P17 每个 phase 都可解释“读了什么、产出什么”，又不虚构 18 次独立执行。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "selected_phase_invocation_and_sequential_run",
+      "node_kind": "capability",
+      "title": "Selected Phase Invocation and Sequential Run",
+      "topic": "按预声明 selected path 调用受维护 phase adapter，并串联 state、artifact、trace 和 authority evidence。",
+      "scope": [
+        "explicit adapter boundary",
+        "fixed sequential path",
+        "phase result normalization",
+        "stop/no-write handling",
+        "final selected-run report"
+      ],
+      "purpose": "证明一个有界 repo/family/test-store 路径能够真实试跑，而不是只做 metadata dry-run。",
+      "ref_titles": [
+        "当前 Repo 已有两个预声明 selected paths 的 bounded P00-P17 evidence；这不等于 arbitrary repo/family、generic executor 或 RCP completion。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "controlled_stop_and_review",
+      "node_kind": "capability",
+      "title": "Controlled Stop and Review",
+      "topic": "在 early/mid/late 或 authority checkpoint 上受控停止并输出可解释状态。",
+      "scope": [
+        "closed adjacent transition checks",
+        "stop classification",
+        "completed prefix 与 remaining phases",
+        "review authority",
+        "inspect/next-action evidence"
+      ],
+      "purpose": "让系统在不能继续时明确停下，并告诉操作员为什么停和需要什么决定。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "retry_and_resume_coordination",
+      "node_kind": "capability",
+      "title": "Retry and Resume Coordination",
+      "topic": "在人工授权、budget 和 checkpoint preconditions 下执行一次受限 retry 或 continuation。",
+      "scope": [
+        "retry/resume eligibility",
+        "retry budget 与 stop rules",
+        "checkpoint/digest guard",
+        "no upstream reinvocation",
+        "retry/resume trace"
+      ],
+      "purpose": "支持试验跑道从失败或中断处继续，同时避免无限重试、重复提交和自动恢复。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "repair_candidate_and_revalidation",
+      "node_kind": "capability",
+      "title": "Repair Candidate and Revalidation",
+      "topic": "把 failure 转成 advisory repair candidate，并在人工授权后产生 bounded revalidation evidence。",
+      "scope": [
+        "failure evidence intake",
+        "advisory repair candidate",
+        "human authorization",
+        "bounded reinjection/revalidation",
+        "repair acceptance boundary"
+      ],
+      "purpose": "让失败进入可审计修复流程，而不让系统自动修改 truth 或自行接受 repair。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "fresh_run_repeatability_and_cross_path_comparison",
+      "node_kind": "capability",
+      "title": "Fresh-run Repeatability and Cross-path Comparison",
+      "topic": "比较 fresh runs 或预声明 paths 的 normalized phase、artifact、trace、authority、transport 和 replay evidence。",
+      "scope": [
+        "independent run identities/workspaces",
+        "normalized receipts/inventory/provenance",
+        "allowed nondeterminism",
+        "cross-path contract-shape comparison",
+        "repeatability/final audit report"
+      ],
+      "purpose": "判断有界试验跑道是否可重复、可解释，而不是依赖单个 committed fixture 或硬编码路径偶然成功。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "run_plan_dag_candidate",
+      "node_kind": "capability",
+      "title": "Run Plan / DAG Candidate",
+      "topic": "描述 phase 目标、依赖、输入输出、人工 checkpoint 和终止条件的候选计划。",
+      "scope": [
+        "route candidate",
+        "DAG nodes/edges/dependencies",
+        "input/output requirements",
+        "manual checkpoints",
+        "dry-run validation/read model"
+      ],
+      "purpose": "为未来调度提供可校验计划对象，而不把 dry-run candidate 直接变成 executable plan。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "async_parallel_control",
+      "node_kind": "capability",
+      "title": "Async / Parallel Control",
+      "topic": "规定多个 run、task 或 phase 何时可并行以及如何隔离 state、trace 和 evidence。",
+      "scope": [
+        "parallel eligibility",
+        "run/task isolation",
+        "concurrent state update control",
+        "trace merge/separation",
+        "conflict handling"
+      ],
+      "purpose": "防止并行执行造成状态竞争、证据混淆或跨 run 污染。",
+      "ref_titles": [
+        "当前 Repo 尚无受维护的通用 async/parallel runtime control evidence。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "sag",
+      "node_kind": "group",
+      "title": "SAG",
+      "topic": "用 Semantic Artifact Graph 表达 artifact、evidence、derivation、validation、authority 和 promotion-lineage 的关系。",
+      "scope": [
+        "SAG Observation Graph",
+        "Observation Snapshot Store and Query",
+        "Semantic Diff Observation",
+        "Contradiction and Affected-refs Advisory",
+        "Human Review and Rollback Authority Chain",
+        "Isolated Test-target Rollback Execution",
+        "SAG-to-P06 Evidence Adapter",
+        "Canonical SAG Identity / Store / Query",
+        "Semx Authority Model"
+      ],
+      "purpose": "把分散在 P05 artifact、P06 report、validation result 和 review record 中的关系变成可查询 evidence view，同时不替代 P06、Committer 或 Archive 的 authority。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": [
+        "sag_observation_graph",
+        "observation_snapshot_store_and_query",
+        "semantic_diff_observation",
+        "contradiction_and_affected_refs_advisory",
+        "human_review_and_rollback_authority_chain",
+        "isolated_test_target_rollback_execution",
+        "sag_to_p06_evidence_adapter",
+        "canonical_sag_identity_store_query",
+        "semx_authority_model"
+      ]
+    },
+    {
+      "id": "sag_observation_graph",
+      "node_kind": "capability",
+      "title": "SAG Observation Graph",
+      "topic": "记录 artifact/evidence/validation nodes、relationship edges、claimed effects 和 authority refs。",
+      "scope": [
+        "closed node/edge vocabulary",
+        "claimed-effects vocabulary",
+        "authority type/scope compatibility",
+        "graph schema/validator",
+        "fail-closed hidden-overclaim checks"
+      ],
+      "purpose": "为关系观察建立可校验结构，避免任意 edge 或 authority ref 被解释成 semantic truth。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "observation_snapshot_store_and_query",
+      "node_kind": "capability",
+      "title": "Observation Snapshot Store and Query",
+      "topic": "追加保存已验证 observation graph snapshot，并提供 digest-bound reload/query read model。",
+      "scope": [
+        "append-only snapshot",
+        "graph/digest/provenance refs",
+        "duplicate/conflict no-write",
+        "reload/readback",
+        "bounded query/read model"
+      ],
+      "purpose": "让 observation evidence 可持久定位和比较，而不是只存在于一次 validator report 中。",
+      "ref_titles": [
+        "当前能力是 observation store，不是 canonical SAG truth store。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "semantic_diff_observation",
+      "node_kind": "capability",
+      "title": "Semantic Diff Observation",
+      "topic": "在两个已验证 graph versions 之间生成确定性的结构化差异记录。",
+      "scope": [
+        "added/removed/changed nodes",
+        "added/removed/changed edges",
+        "authority-ref changes",
+        "claimed-effect changes",
+        "source graph/hash binding"
+      ],
+      "purpose": "让关系变化可审计，并为 contradiction、invalidation advisory 和人工 review 提供输入。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "contradiction_and_affected_refs_advisory",
+      "node_kind": "capability",
+      "title": "Contradiction and Affected-refs Advisory",
+      "topic": "根据 observation/diff 生成 contradiction、evidence gap、authority mismatch 和 affected refs 的建议记录。",
+      "scope": [
+        "contradiction/evidence-gap classification",
+        "affected refs calculation",
+        "invalidation proposal",
+        "review queue handoff",
+        "advisory-only boundary"
+      ],
+      "purpose": "把潜在影响显式交给人工判断，而不自动传播 invalidation 或裁决 case truth。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "human_review_and_rollback_authority_chain",
+      "node_kind": "capability",
+      "title": "Human Review and Rollback Authority Chain",
+      "topic": "记录 rollback request、decision precondition、human decision、approval 和 execution precondition。",
+      "scope": [
+        "rollback request observation",
+        "decision-precondition check",
+        "human decision record",
+        "approval receipt",
+        "execution precondition report"
+      ],
+      "purpose": "把 rollback authority 与 observation evidence 分开，确保没有人工授权和前置证据时不能执行。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "isolated_test_target_rollback_execution",
+      "node_kind": "capability",
+      "title": "Isolated Test-target Rollback Execution",
+      "topic": "在隔离 test target 上按已批准 precondition 恢复 prior version 并验证 readback。",
+      "scope": [
+        "approved target/version binding",
+        "isolated path/store guard",
+        "rollback write/readback",
+        "conflict/no-write negatives",
+        "execution receipt"
+      ],
+      "purpose": "证明 rollback authority chain 可以落到一个有界执行动作，同时不触碰 canonical 或 production target。",
+      "ref_titles": [],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "sag_to_p06_evidence_adapter",
+      "node_kind": "capability",
+      "title": "SAG-to-P06 Evidence Adapter",
+      "topic": "把 SAG observation 作为满足 P06 evidence contract 的 advisory input 提供给 P06。",
+      "scope": [
+        "observation input shape",
+        "digest/provenance validation",
+        "P06 evidence mapping",
+        "authority/scope checks",
+        "disposition non-authority"
+      ],
+      "purpose": "让 P06 可以消费关系 evidence，但仍由 P06 ruleset、validation 和 review authority 作出 disposition。",
+      "ref_titles": [
+        "当前 Repo 没有已确认的直接 SAG-to-P06 evidence adapter；P06 authority-preserving adapter 不能自动替代该能力。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "canonical_sag_identity_store_query",
+      "node_kind": "capability",
+      "title": "Canonical SAG Identity / Store / Query",
+      "topic": "建立 canonical SAG node/edge identity、versioning、transactional store 和 query contract。",
+      "scope": [
+        "canonical identity/versioning",
+        "transactional write/readback",
+        "multi-run isolation",
+        "query API/read model",
+        "retention 与 visual query"
+      ],
+      "purpose": "让 SAG 关系长期可演化、可查询、可隔离，而不依赖临时 observation snapshots。",
+      "ref_titles": [
+        "当前 Repo 尚未落地 canonical SAG store/query；现有 observation store 不能作为其完成证据。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    },
+    {
+      "id": "semx_authority_model",
+      "node_kind": "policy",
+      "title": "Semx Authority Model",
+      "topic": "定义 artifact producer、authority domain、claim 规则和 promotion path，明确各组件的 authority 分层。",
+      "scope": [
+        "producer identity",
+        "domain of authority",
+        "allowed/forbidden claims",
+        "promotion path",
+        "P02/P05/P06/Formalizer/Committer/Archive split"
+      ],
+      "purpose": "防止 candidate evidence、formalization eligibility、commit authority 和 canonical truth 被压成同一层。",
+      "ref_titles": [
+        "当前架构中 P06 不依赖 SAG runtime 才能产生 DecisionRecord；SAG observation 最多是 advisory evidence，不能直接变成 `eligible_for_formalization`、accepted semantic truth、canonical M1 或 rollback/repair authority。"
+      ],
+      "ref_depth": 1,
+      "children": []
+    }
+  ]
+}
