@@ -1,0 +1,34 @@
+{
+  "schema_version": "dashboard_session_archive_manifest_v1",
+  "created_by_session": "S-485",
+  "source": {
+    "source_path": "/Users/xiaomei/Documents/projects/semx-cli/Dashboard/Sessions.md",
+    "source_sha256": "9d5fd44c3e4ba3a21bed49a81ba95d24f9847c95ac62e9784ab0d5e987d14c25",
+    "source_line_count": 695,
+    "source_record_count": 487,
+    "source_narrative_line_count": 204,
+    "source_narrative_sha256": "fd7730990c5f8b96f7eb949afcd1cb77b09d3c5baa609d03d9175e1ad5c90a5c"
+  },
+  "record_count": 6,
+  "current_count": 5,
+  "archive_count": 1,
+  "index_count": 6,
+  "canonical_key_count": 6,
+  "historical_id_collision_count": 0,
+  "historical_id_collisions": {},
+  "current_retention": {
+    "statuses": [
+      "To do",
+      "Doing"
+    ],
+    "recent_numeric_floor": 450
+  },
+  "archive_files": {
+    "SP-001.md": 1
+  },
+  "legacy_repairs": {
+    "S-224": "joined the accidental extra Deliverable cell",
+    "S-377": "added the missing empty Notes cell"
+  },
+  "claim_ceiling": "DASHBOARD_SESSION_EXECUTION_MEMORY_REFACTORED_ONLY"
+}
