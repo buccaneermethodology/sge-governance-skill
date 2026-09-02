@@ -32,6 +32,11 @@
 | [SP001_S002_SGECore_Closeout.md](Artifacts/SP001_S002_SGECore_Closeout.md) | S-002 阶段性收束草案 | 等待独立 Validation 覆盖后，才可按批准例外关闭 S-002 |
 | [SP001_StrategySourceExpansion_GoalPatch.md](Artifacts/SP001_StrategySourceExpansion_GoalPatch.md) | 经用户批准的 SP-001 Scope Expansion | 新增 MH-11 并把 strategy 审计分配到 S-002..S-006；不启动迁移 |
 | [SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md) | SP-002 durable tracking contract | 规划未来 public candidate 与 newcomer readiness；依赖 SP-001 complete，当前未启动 |
+| [SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md) | SP-002 resolved Loop Goal handoff | 纳入 SGE glossary v1 与 public/private execution-surface contract；SP-002 仍为 To do，未启动 |
+| [SP002_SGEOpenSourceNewcomerReadiness_GoalPatch.md](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_GoalPatch.md) | SP-002 Goal Patch | 记录从 tracking Stage Plan 到可下发 Goal 的显式范围增量与解析规则 |
+| [SP002_SGEOpenSourceNewcomerReadiness_GoalDesign_Closeout.md](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_GoalDesign_Closeout.md) | SP-002 Goal 设计中文收束 | 仅证明 Goal handoff 已落库；不关闭 SP-002 或 S-007 |
+| [SP002_SGEOpenSourceNewcomerReadiness_GoalContextBootstrap.json](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_GoalContextBootstrap.json) | SP-002 Goal 设计 Context Bootstrap | 记录本轮 Goal 设计的 authority、写入面和验证边界 |
+| [SP002_SGEOpenSourceNewcomerReadiness_GoalContextBootstrap_Prompt.txt](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_GoalContextBootstrap_Prompt.txt) | SP-002 Goal 设计渲染提示 | Context Bootstrap 的可复现提示面 |
 | [SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json) | 本轮 implementation Context Bootstrap | 保留用户原文、56-file 边界、禁止复制/发布和 final Validation surfaces |
 | [SP002_PlanningAndSP001StrategyExpansion_Closeout.md](Artifacts/SP002_PlanningAndSP001StrategyExpansion_Closeout.md) | 本轮中文 closeout | 只关闭规划/来源裁决落库；不关闭 SP-001 或 SP-002 |
 | [SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md](Artifacts/SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md) | 本轮独立 full-baseline + delta Validation | 保留首轮 blocked 与修复后 pass；最终 Dashboard/closeout 状态仍由 post-closeout reconciliation 覆盖 |

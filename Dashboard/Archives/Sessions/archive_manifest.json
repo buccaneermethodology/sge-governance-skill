@@ -4,7 +4,7 @@
   "authoritative_surfaces": {
     "current": "Dashboard/Sessions.md",
     "archives": "Dashboard/Archives/Sessions/*.md",
-    "record_set_sha256": "b409d73b0df566fc8f87695a6a12007e747ed23ff8e68109e447fb7852996b33"
+    "record_set_sha256": "660ac290f9b805ad7eb43f69c8e971e9d493533a641cc760d1f96120c761c750"
   },
   "record_count": 15,
   "current_count": 5,

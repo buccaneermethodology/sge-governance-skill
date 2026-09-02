@@ -4,8 +4,9 @@
 
 - Status：`To do`
 - 依赖：`SP-001 complete`
-- 当前入口：`S-007`，但依赖未满足，因此当前不可启动。
-- 本轮只创建跟踪合同，不执行、不发布、不写全局 Skills。
+- 当前入口：`S-007`；依赖已满足，但仍需用户明确启动授权，因此当前不自动启动。
+- 正式 Goal：[SP-002 Loop Goal](SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md)。
+- 本阶段计划只定义未来执行边界；不执行、不发布、不写全局 Skills。
 
 ## 目标
 
@@ -25,18 +26,27 @@
 | SP002-MH-08 | KYM/TCO 保持 optional domain extensions | 未安装时核心与 Quick Start 仍通过；安装时有显式接口与 provenance |
 | SP002-MH-09 | clean-room 身份隔离与无绝对路径验收 | 新 repo 安装、doctor、示例、卸载均无 Semx/audio-transcriptor 私有路径残留 |
 | SP002-MH-10 | 独立 Validation、Semantic Review、closeout 与发布授权边界 | final candidate 覆盖实际 diff；实际公开发布仍需单独人类批准 |
+| SP002-MH-11 | 建立去项目化 SGE Governance Glossary v1 | canonical JSON/Markdown、source refs、negative cases 和 renderer check 通过 |
+| SP002-MH-12 | 将公共 Skill 与本仓库特定执行面物理/合同隔离 | default-deny staging export 排除 Dashboard、Agent Logs、历史 provenance 和内部 evidence |
 
 ## Session DAG
 
 | Session | Topic | Scope | Deliverable | Exit Criteria |
 | --- | --- | --- | --- | --- |
-| S-007 | 公共合同与分层冻结 | license/provenance、public export、四层架构、ERBE | Public Contract、manifest/schema、Design/Semantic Review | provenance 完整，边界/negative cases 冻结 |
+| S-007 | 公共合同、glossary 与分层冻结 | license/provenance、public export、SGE glossary、四层架构、执行面隔离、ERBE | Public Contract、manifest/schema、Glossary Design、Design/Semantic Review | provenance、glossary scope、边界/negative cases 冻结 |
 | S-008 | 新手指南与 bootstrap 工具 | Beginner Guide、Quick Start、示例、install/doctor/bootstrap/upgrade/uninstall | docs、minimal repo、工具与 fixtures | 文档命令与 clean-room 行为一致 |
 | S-009 | 高级编排与扩展接口 | `run-sge-loop-goal-cycle`、companion hooks、KYM/TCO optional interface | orchestrator Skill candidate、extension registry | 无 Semx/KYM/TCO 默认依赖，核心独立通过 |
 | S-010 | clean-room 小白验收 | 全新环境安装、按指南执行、故障恢复、卸载 | 独立 UAT evidence 与修复闭环 | `user-acceptance-test` 对真实入口给出有界通过结论 |
 | S-011 | 公共候选 closeout | package manifest、独立 Validation/Semantic、OPCM、final reconciliation | release candidate 与中文 closeout | candidate gates 全部通过；发布仍 pending human authority |
 
 固定依赖为 `S-007 → S-008 → S-009 → S-010 → S-011`。Session closeout 不是 Goal 停止点；启动 SP-002 后，下一 Session ready 且无需人类决定时自动继续。
+
+## 公共包与执行面分层
+
+- Public candidate 只从干净 staging 目录按 default-deny manifest 生成；允许 core Skill、去项目化 KB/glossary、Beginner Guide、必要 tests/examples、LICENSE/NOTICE 和公共 metadata。
+- 本仓库的 Dashboard、Sessions、Stage Plans、Agent Logs、OPCM、closeout、完整 doctor/Validation 报告、历史迁移 provenance、绝对路径和 dirty worktree 属于 private execution/provenance surface，默认不进入公共包。
+- 使用者的 `AGENTS.md`、Dashboard、Goal、Session、project profile 和领域扩展属于 target-project overlay；安装公共 Skill 后在目标项目维护，不从本仓库复制执行状态。
+- 任何例外必须逐文件写入 manifest、license/provenance 裁决，并由 clean-room negative case 验证；目录名或 `.gitignore` 不能代替边界。
 
 ## Skill 分层
 
@@ -55,4 +65,3 @@ Beginner Guide 是用户操作文档；`user-acceptance-test` 是独立验收 Sk
 - 最大主张：`SGE Governance 公共发布候选及新手流程已在规定 clean-room 范围内通过结构、安装与独立可用性验收`。
 
 实际发布属于外部状态变更，必须在 S-011 后由用户针对具体 repository、tag、license 和 payload 单独授权。
-
