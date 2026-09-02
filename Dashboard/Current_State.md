@@ -2,11 +2,11 @@
 
 ## SGE Governance Skill 当前状态
 
-- 当前判断：通用 `sge-governed-checkpoints` Skill 已完成 repo-local 有界验收；原 audio-transcriptor 迁移记录仅作为历史 provenance。
+- 当前判断：通用 `sge-governed-checkpoints` Skill 的 active legacy 清理与通用性验收由 `SP-001/S-012` 处理；在其独立 Validation 和 post-closeout 对账完成前，SP-001 不得标记完成。
 - 当前仓库身份：`sge-governance-skill`；不包含任何具体产品设计或产品源代码。
 - 权威入口：[SGE Governance Skill](../.codex/skills/sge-governed-checkpoints/SKILL.md)、[SGE profile](../kb/data/strategy/sge_project_profile_v1.json)。
 - 执行记忆：[Dashboard README](README.md)；稳定治理 truth 位于 `kb/`。
-- 下一步：公共提取、新手指南和发布候选仍需另行启动与验证，不在本次变更内。
+- 下一步：完成 S-012 的 active surface 清理、generic clean-room portability test、独立 Validation 与最终对账；公共提取、新手指南和发布候选仍需另行启动与验证。
 
 ## 历史迁移 provenance（只读）
 

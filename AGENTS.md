@@ -19,7 +19,7 @@
 - 新建、更新、关闭或归档 Session，或改动 `Dashboard/Sessions.md`、`Dashboard/Session_Index.md`、`Dashboard/Archives/Sessions/*.md`、`Dashboard/Archives/Sessions/archive_manifest.json` 任一表面时，必须运行 `python3 Dashboard/tools/session_registry.py reconcile --repo . --check` 与 `python3 Dashboard/tools/session_registry.py validate --repo .`；任一命令非零时，不得把受影响 Session 标为 `Done` 或使用等价关闭措辞。
 - 只有 `reconcile --check` 报告可重建的派生漂移、且预检没有 error 时，才可显式运行 `python3 Dashboard/tools/session_registry.py reconcile --repo . --apply`；随后必须重跑相同的 `--check` 与 `validate`。identity、row、Status、unknown archive surface 或历史说明表面错误必须人工处理，不能让日常命令猜测、first-wins 或删除未知文件。
 - registry check 与 validate 通过后，若本次变更影响 Dashboard KG / DKG，才以 `Dashboard/tools/generate_dashboard_kg.py` 的显式输出路径重建 DKG，并运行 focused registry gate；DKG 不是 reconcile 的副作用，也不反向成为 registry 真源。
-- `migrate` 仅用于 S-485 frozen 487-record legacy bootstrap；`migrate-references` 仅用于受控 locator migration。两者均不是日常同步或 repair 命令，也不得被 `reconcile` 隐式调用。
+- 本仓库不提供历史迁移命令；`reconcile --check/--apply` 只维护当前 SGE Dashboard registry，禁止隐式执行外部迁移或 locator rewrite。
 
 ## ERBE Specification-First Gate
 

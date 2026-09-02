@@ -91,7 +91,7 @@ python3 Dashboard/tools/session_registry.py validate --repo .
 
 在任一 check/validate 非零时，不能把受影响 Session 标为 `Done` 或写等价关闭结论。duplicate canonical key、malformed row、unknown Status、ambiguous identity、unexpected archive surface 或历史说明表面错误必须人工处理；日常 `--apply` 不得猜测记录、first-wins、删除未知 archive 文件或改写 `Legacy_Execution_Notes.md`。
 
-当 registry check/validate 已通过且变更影响 Dashboard KG / DKG 时，才使用 `Dashboard/tools/generate_dashboard_kg.py` 的显式输出路径重建 DKG，并运行 focused registry gate。DKG 是生成的查询/阅读投影，不是 reconcile 的副作用，也不反向决定记录身份或修复内容。`migrate` 仅为 S-485 frozen 487-record legacy bootstrap；`migrate-references` 仅为受控 locator migration；二者都不是日常同步或 repair 命令。
+当 registry check/validate 已通过且变更影响 Dashboard KG / DKG 时，才使用 `Dashboard/tools/generate_dashboard_kg.py` 的显式输出路径重建 DKG，并运行 focused registry gate。DKG 是生成的查询/阅读投影，不是 reconcile 的副作用，也不反向决定记录身份或修复内容。本仓库不提供历史迁移命令。
 
 The current surface retains all `To do` and `Doing` records plus a bounded recent window. Closed older rows move to archives but remain fully discoverable through the index. Status remains one of the four display values from `Dashboard/Rules.md`; prior compound wording is preserved separately as `Historical Status Snapshot`.
 
@@ -281,7 +281,7 @@ A `Goal Conformance / Scope Delta Gate` is the scope-integrity check for non-tri
 
 A `Contract Delta Scan` is the closeout action that checks whether an approved Dashboard artifact, proposal, reviewed baseline, matrix, or gate artifact contains stable contract or promotion semantics. The scan routes each actual delta to KB JSON, Dashboard-only evidence, gate docs, runtime/tests, or a deferred session; it does not make every Dashboard artifact canonical truth.
 
-A `Multi-Agent Activation Gate` is the first control-plane check for tracked or non-trivial governed work. Standing user authorization is in effect for future Semx non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed. In this repository, AI may decide to start subagents / delegation for tracked Session, Stage Plan, or non-trivial governed work even when the user has not explicitly asked for subagents. A human request to execute or start a tracked Session or Stage Plan is sufficient authorization for governed multi-agent execution unless the human says single-agent. After C0 approval, the approved scope automatically enters governed implementation mode unless the human says single-agent / no multi-agent or the task is truly trivial. Default governed execution starts Design, Builder, Validation, and Closure lanes; missing default lanes must be recorded as a `Single-Agent Exception` in the closeout artifact. The absence of an explicit subagent request is not itself a valid exception reason.
+A `Multi-Agent Activation Gate` is the first control-plane check for tracked or non-trivial governed work. Standing user authorization is in effect for future SGE non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed. In this repository, AI may decide to start subagents / delegation for tracked Session, Stage Plan, or non-trivial governed work even when the user has not explicitly asked for subagents. A human request to execute or start a tracked Session or Stage Plan is sufficient authorization for governed multi-agent execution unless the human says single-agent. After C0 approval, the approved scope automatically enters governed implementation mode unless the human says single-agent / no multi-agent or the task is truly trivial. Default governed execution starts Design, Builder, Validation, and Closure lanes; missing default lanes must be recorded as a `Single-Agent Exception` in the closeout artifact. The absence of an explicit subagent request is not itself a valid exception reason.
 
 ## Dashboard Agent Mode
 
@@ -300,7 +300,7 @@ Dashboard updates from this role are proposals by default. The agent should list
 ## Delegation Guidance
 
 - Start with a short local decomposition before spawning agents.
-- Standing user authorization applies to future Semx non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed, subject to the Multi-Agent Activation Gate.
+- Standing user authorization applies to future SGE non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed, subject to the Multi-Agent Activation Gate.
 - Treat `执行 S-xxx`, `启动 S-xxx`, `execute S-xxx`, or `执行 SP-xxx` as governed multi-agent activation by default unless the human says single-agent. For other non-trivial governed work, AI should use the Multi-Agent Activation Gate to decide whether subagents / delegation are warranted; it does not need a separate explicit user request for subagents.
 - After C0 approval, start governed implementation mode automatically for the approved scope unless the human says single-agent / no multi-agent or the task is truly trivial.
 - For tracked Session / Stage Plan execution and other non-trivial governed work, spawn or assign Design, Builder, Validation, and Closure lanes before substantial work. Deciding not to do so requires a recorded `Single-Agent Exception`.

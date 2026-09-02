@@ -276,7 +276,7 @@ def build_graph(repo_root: Path, created_by_session: str, created_at: str) -> di
     located_sessions = load_session_records(dashboard)
     by_historical, _session_by_key = session_resolver(located_sessions)
 
-    add_node(nodes, {"id": "dashboard", "type": "Dashboard", "title": "Semx Dashboard", "authority": "execution_memory"})
+    add_node(nodes, {"id": "dashboard", "type": "Dashboard", "title": "SGE Governance Dashboard", "authority": "execution_memory"})
     add_node(nodes, {"id": "file:Dashboard/Current_State.md", "type": "ControlSurface", "title": "Current Execution Surface", "path": "Dashboard/Current_State.md"})
     add_node(nodes, {"id": "file:Dashboard/Artifacts_Index.md", "type": "ControlSurface", "title": "Dashboard Artifacts Index", "path": "Dashboard/Artifacts_Index.md"})
     add_edge(edges, "dashboard", "file:Dashboard/Current_State.md", "HAS_CONTROL_SURFACE")
@@ -404,7 +404,7 @@ def build_graph(repo_root: Path, created_by_session: str, created_at: str) -> di
 
     validate_edge_endpoints(nodes, edges)
     graph = {
-        "schema_id": "semx.dashboard_kg.dkg_l1",
+        "schema_id": "sge.dashboard_kg.dkg_l1",
         "schema_version": "dkg-l1.0",
         "graph_layer": "DKG-L1",
         "authority": {
@@ -569,7 +569,7 @@ def to_graphology(graph: dict[str, Any]) -> dict[str, Any]:
             "allowSelfLoops": False,
         },
         "attributes": {
-            "name": "Semx Dashboard Operating Graph",
+            "name": "SGE Governance Dashboard Operating Graph",
             "schema_id": graph.get("schema_id", ""),
             "schema_version": graph.get("schema_version", ""),
             "graph_layer": graph.get("graph_layer", ""),
@@ -641,7 +641,7 @@ def write_gexf(graph: dict[str, Any], out: Path) -> None:
         },
     )
     meta = ET.SubElement(gexf, "{http://www.gexf.net/1.3}meta")
-    ET.SubElement(meta, "{http://www.gexf.net/1.3}creator").text = "Semx Dashboard KG"
+    ET.SubElement(meta, "{http://www.gexf.net/1.3}creator").text = "SGE Governance Dashboard KG"
     ET.SubElement(meta, "{http://www.gexf.net/1.3}description").text = (
         "Generated Dashboard Operating Graph visual export. "
         "Dashboard Markdown remains the authority for execution memory."

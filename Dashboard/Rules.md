@@ -51,7 +51,7 @@ Do not encode claim ceilings, caveats, boundedness, topology exceptions, approva
 - 新建、更新、关闭、归档 Session 或改动 registry 任一表面时，先运行 `reconcile --check` 与 `validate`；若编辑造成可重建派生 drift，仅可在预检无 error 时显式运行 `reconcile --apply`，随后重跑两项检查。任一命令非零时不得把受影响 Session 标为 `Done` 或等价关闭。
 - duplicate canonical key、malformed row、unknown Status、ambiguous identity、unexpected archive surface 或历史说明表面错误必须人工处理；日常 `--apply` 不得猜测、first-wins、删除未知 archive 文件或改写 `Legacy_Execution_Notes.md`。
 - registry check/validate 通过后，若 Dashboard KG / DKG 受影响，才以 `Dashboard/tools/generate_dashboard_kg.py` 的显式输出路径重建 DKG 并运行 focused registry gate；reconcile 不生成 DKG，DKG 也不是 registry 真源。
-- `migrate` 仅用于 S-485 frozen 487-record legacy bootstrap，`migrate-references` 仅用于受控 locator migration；二者不是日常同步或 repair 命令。
+- 本仓库不提供历史迁移命令；`reconcile --check/--apply` 只维护当前 SGE Dashboard registry，禁止隐式执行外部迁移或 locator rewrite。
 - Stable links to Session history should use `Session_Index.md` or an archive anchor. Line-number links into `Sessions.md` are not stable after archival.
 - Rows in the same table should remain in numeric ID order unless that file explicitly documents another ordering scheme.
 - Every `Big Idea`, `Stage Plan`, and `Session` row must expose `Topic`, `Scope`, and `Purpose`.
@@ -66,7 +66,7 @@ Do not encode claim ceilings, caveats, boundedness, topology exceptions, approva
 - Stage Plans should point to one or more concrete sessions or explicitly bounded session units.
 - Decisions should state the recommended option even when unresolved.
 - Sessions should carry explicit priority.
-- Standing user authorization applies to future Semx non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed, subject to the Multi-Agent Activation Gate.
+- Standing user authorization applies to future SGE non-trivial governed tasks: AI is explicitly authorized to use subagents / delegation as needed, subject to the Multi-Agent Activation Gate.
 - AI may decide to start subagents / delegation for tracked Session, Stage Plan, or non-trivial governed work even when the user has not explicitly asked for subagents. A user request to execute or start a tracked Session or Stage Plan, such as `执行 S-xxx`, `启动 S-xxx`, `execute S-xxx`, or `执行 SP-xxx`, is sufficient authorization for governed multi-agent execution by default unless the user says single-agent or no multi-agent.
 - Before substantial work on a tracked Session, Stage Plan, or non-trivial governed task, run a Multi-Agent Activation Gate. If the task changes KB truth, Dashboard state, acceptance posture, fixtures/tests, runtime/schema behavior, or requires design handoff, validation handoff, or closeout artifact, start Design, Builder, Validation, and Closure lanes by default. C0 approval automatically enters this governed implementation mode unless the user says single-agent / no multi-agent or the task is truly trivial. Do not treat the absence of an explicit subagent request as a valid Single-Agent Exception by itself.
 - If a default Design / Builder / Validation / Closure lane is not started, record a `Single-Agent Exception` in the closeout artifact with the reason, risk, compensating checks, and whether an independent Design artifact or Validation verdict is missing. Valid reasons include explicit human single-agent direction, true triviality, or a concrete external runtime/tool constraint.
@@ -131,7 +131,7 @@ Do not encode claim ceilings, caveats, boundedness, topology exceptions, approva
 - Prefer adding sessions that are likely to be chosen in the next one to three work cycles.
 - If several candidates emerge, add the highest-priority concrete candidates; lower-priority or speculative candidates can be captured later if they remain relevant.
 
-## Semx-Specific Boundary
+## SGE Governance Boundary
 
 - `Dashboard/` is the execution layer.
 - `kb/` is the canonical semantic and contract layer.

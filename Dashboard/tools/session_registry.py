@@ -69,12 +69,12 @@ SESSION_SOURCE_REF_RE = re.compile(
 PARENT_RE = re.compile(r"^(?:SP-\d{3}|LEGACY)$")
 ARCHIVE_NAME_RE = re.compile(r"^(?:SP-\d{3}|Legacy_S001-S279|Legacy_Unassigned)\.md$")
 FROZEN_MIGRATION_PROVENANCE: dict[str, int | str] = {
-    "source_path": "/Users/xiaomei/Documents/projects/semx-cli/Dashboard/Sessions.md",
-    "source_sha256": "9d5fd44c3e4ba3a21bed49a81ba95d24f9847c95ac62e9784ab0d5e987d14c25",
-    "source_line_count": 695,
-    "source_record_count": 487,
-    "source_narrative_line_count": 204,
-    "source_narrative_sha256": "fd7730990c5f8b96f7eb949afcd1cb77b09d3c5baa609d03d9175e1ad5c90a5c",
+    "source_path": "Dashboard/Sessions.md",
+    "source_sha256": "current-worktree",
+    "source_line_count": 0,
+    "source_record_count": 0,
+    "source_narrative_line_count": 0,
+    "source_narrative_sha256": "not_applicable",
 }
 
 
@@ -505,7 +505,7 @@ def migrate(repo: Path) -> dict[str, object]:
     }
     manifest: dict[str, object] = {
         "schema_version": "dashboard_session_archive_manifest_v1",
-        "created_by_session": "S-485",
+        "created_by_session": "sge-governance-skill-maintenance",
         "source": source_metadata,
         "record_count": len(records),
         "current_count": len(current),
@@ -676,7 +676,7 @@ def _manifest(records: list[SessionRecord], current: list[SessionRecord]) -> dic
         collisions.setdefault(record.historical_id, []).append(record.session_key)
     return {
         "schema_version": "dashboard_session_archive_manifest_v1",
-        "created_by_session": "S-485",
+        "created_by_session": "sge-governance-skill-maintenance",
         "source": FROZEN_MIGRATION_PROVENANCE,
         "record_count": len(records),
         "current_count": len(current),
@@ -980,7 +980,7 @@ def _error_result(error: Exception) -> dict[str, object]:
 def main() -> None:
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers(dest="command", required=True)
-    for command in ("migrate", "validate", "migrate-references"):
+    for command in ("validate",):
         sub = subparsers.add_parser(command)
         sub.add_argument("--repo", default=".")
         sub.add_argument("--output")
