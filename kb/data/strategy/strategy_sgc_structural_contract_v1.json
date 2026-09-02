@@ -9,22 +9,19 @@
     "owner": "sge-core",
     "updated_at": "2026-07-01",
     "source_scope": [
-      "contract/SGC_v1.md",
       "AGENTS.md",
       "Dashboard/Methodology.md",
       "Dashboard/Rules.md",
       "Dashboard/Sessions.md",
-      "Dashboard/Artifacts/S247_SGCStructuralContractV1_Closeout.md",
-      "kb/docs/strategy/Strategy_Human_AI_Development.md",
-      "kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md",
-      "kb/docs/strategy/Strategy_KB_Promotion_and_Graph_Source_Policy.md",
-      "Codex Goal objective: Goal execution governance hardening, 2026-07-01",
+      "kb/data/strategy/strategy_human_ai_development.json",
+      "kb/data/strategy/strategy_semantic_surface_engineering.json",
+      "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
       "Dashboard/Artifacts/SP001_SGEGovernanceMigration_LoopGoal.md"
     ],
     "depends_on_docs": [
       "sge-strategy-human-ai-development",
       "sge-strategy-semantic-surface-engineering",
-      "sge-strategy-kb-promotion-and-graph-source-policy"
+      "sge-strategy-kb-promotion-and-source-policy"
     ],
     "tags": [
       "strategy",

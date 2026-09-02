@@ -4,7 +4,7 @@
 
 - 本计划只建设可运行、可验证的 Governance 基础设施，不实现音频转写产品能力。
 - 项目/Skill 身份为 `audio-transcriptor`，CLI 预留为 `audio-transcript`，仓库目录保持 `audio-transcriptor-skill`。
-- [原始设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)保持字节不变，继续作为唯一产品设计 authority。
+- 原计划要求产品设计字节不变；当前独立仓库已删除产品文件，只保留[历史 locator](Tombstones/Removed_Audio_Transcriptor_Design.md)，不再把它作为当前 authority 或 current-byte witness。
 - 新建通用 repo-local Skill `sge-governed-checkpoints`，通过项目 profile 适配 audio-transcriptor。
 - Semx 迁移源固定为 semx-cli `main@19e967a782e2e95d24475770bc234d86ad7c583e`；其他本机 Skill 来源也必须记录路径、revision/digest 与适配说明。
 - 完成声明只覆盖治理框架的有界迁移和本地验收。
@@ -125,7 +125,7 @@
 
 | ID | Session / 对象 | 正例与负例 / gate | 命令或 authority | 预期结果 | Durable evidence | Claim ceiling |
 | --- | --- | --- | --- | --- | --- | --- |
-| MH-01 | S-001 Git seed | seed/current 原始设计摘要对比；最终 diff 不得修改产品设计 | Git seed、[原始设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md) | seed 可恢复且设计字节一致 | S-001 Validation/closeout 的可点击证据与摘要报告 | 只证明整理前状态可恢复 |
+| MH-01 | S-001 Git seed | seed 中原始设计可通过 Git locator 恢复；当前 repo 不恢复产品文件 | Git seed、[历史设计 locator](Tombstones/Removed_Audio_Transcriptor_Design.md) | seed 可恢复；当时摘要记录保留，当前不主张字节相等 | S-001 Validation/closeout 与 S-015 修正说明 | 只证明整理前状态可恢复 |
 | MH-02 | S-002 source provenance | 每个复制对象均有 source path、revision/digest、裁决；脏源或缺裁决失败 | source manifest schema + frozen source revision | manifest 全量、源干净、无未登记复制 | 受版本控制 source manifest、Validation Review | 不证明目标实现正确 |
 | MH-03 | S-002 core/profile | 合法 profile 通过；缺 root、错 project_id、路径逃逸和 Semx identity 失败 | frozen ERBE Contract/Cases、profile schema validator | trusted RED/GREEN 使用同一 case identity，profile fail closed | Contract/Cases、RED/GREEN report、pre-Builder Semantic Review | 只证明设计冻结与最小入口可实现 |
 | MH-04 | S-003 Skills/scripts/gates | 所有 checklist modes、context、Goal、lane、workflow 正例通过；未知 mode/digest drift/非法路径失败 | repo-local Skill 命令与治理 acceptance runner | 目标接口通过，删除接口无静默 fallback | tests、readable cards、runner report、Builder/Validation logs | 只证明 repo-local 治理工具合同 |

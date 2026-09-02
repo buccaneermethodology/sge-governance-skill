@@ -1,25 +1,26 @@
-# SP-001 audio-transcriptor 可复用 SGE Governance 迁移 Loop Goal
+# SP-001 可复用 SGE Governance 迁移与质量恢复 Loop Goal
 
 ## 文档身份
 
 - Goal ID：`SP-001`
 - Goal 类型：多 Session、连续执行的治理迁移 Loop Goal
-- 当前状态：Final Goal 已落库，迁移执行未启动
-- 当前入口：`S-002`
+- 当前状态：历史迁移切片已落地；质量恢复正在执行
+- 当前入口：`S-012`
 - 原始授权：用户要求先设计 Loop Goal，并将 Loop Goal 与已确认迁移计划放入 Dashboard；随后明确要求实施该落库计划。
-- 最大主张：`本仓库的 repo-local SGE Governance 框架已完成有界迁移并通过本地结构与治理验收`。
+- 当前 Goal Patch：[SP001_QualityRecovery_GoalPatch.md](SP001_QualityRecovery_GoalPatch.md)，新增 MH-12..MH-15 与 S-012..S-015 恢复 DAG。
+- 最大主张：`本仓库的 repo-local SGE Governance 框架已完成有界迁移与质量恢复，并通过本地结构、治理、引用和工具链验收`。
 
 ## 中文任务解释
 
-本 Goal 要把当前由 semx-cli 复制来的空框架整理成 audio-transcriptor 可实际使用、同时可在未来抽取为跨仓库 Skill 的 SGE 治理工程。工作对象是 Governance、Skills、KB/Dashboard 分层、deterministic gates 和 closeout evidence，不是音频转写产品本身。
+本 Goal 要把历史迁移形成的治理框架整理为独立的 `sge-governance-skill`：active authority 不依赖 Semx 或其他产品身份，canonical KB、Dashboard、引用图和验收工具链可确定性验证，并为未来独立公共候选建立前置质量。历史 audio-transcriptor/Semx 材料只保留为 provenance，不是当前仓库身份。
 
-本次 S-001 只把 Goal 与计划变成 durable Dashboard contract。它不启动 S-002，也不证明治理迁移已经发生。
+S-001..S-006 是历史迁移证据；本轮通过 S-012..S-015 修复审计发现的 active/public 污染、证据缺口、引用断链和工具链假绿问题。公共发布仍属于 SP-002，不能由本 Goal 推导。
 
 ## Read Manifest
 
 ### 已读
 
-- [用户批准的原始产品设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)：唯一 audio-transcriptor 产品设计来源，本 Goal 不改写其内容。
+- [历史产品设计 locator](Tombstones/Removed_Audio_Transcriptor_Design.md)：迁移前唯一产品设计来源；当前仓库已删除其内容，本 Goal 只保留 provenance，不再主张当前字节存在或相等。
 - [仓库硬门](../../AGENTS.md)：当前复制自 semx-cli，迁移完成前仍包含待适配项目身份。
 - [Dashboard Rules](../Rules.md)、[Dashboard Methodology](../Methodology.md)、[Dashboard README](../README.md)：当前 Dashboard 表结构、Status vocabulary 和 registry 操作边界。
 - semx-cli `main@19e967a782e2e95d24475770bc234d86ad7c583e` 下的 `.codex/skills/semx-governed-checkpoints/`：本轮 bootstrap checkpoint 与未来迁移来源。
@@ -49,7 +50,11 @@
 | MH-08 | 完成身份、schema、ERBE、Goal、lane、context、registry、DKG、语言门禁验收。 | 维护中的 acceptance runner 全绿且证据持久化。 | S-005 / Validation | 未启动 |
 | MH-09 | 保留 Design、Builder、独立 Validation、Closure 与触发式 Semantic Reviewer 时序证据。 | lane card、task identity、Agent Log 和 verdict 可定位。 | 全程 / Orchestrator | S-001 只完成规划落库证据 |
 | MH-10 | 形成中文 closeout、OPCM、Scope Delta、KB/Dashboard review 和 post-closeout reconciliation。 | S-006 最终 artifact 覆盖实际最终状态和 diff。 | S-006 / Closure+Validation | 未启动 |
-| MH-11 | 逐一审计 semx-cli `semx-kb/docs/strategy/` 全部表面并追溯 canonical JSON；只迁移经去项目化改造且有 provenance 的通用策略。 | 56 个文件逐行有 `adapt_extract`、`reference_only`、`remove` 或有界 `migrate_after_refreeze` 裁决；S-002 完成 canonical mapping，S-004 排除 Semx/KYM/TCO/P00-P17/runtime 产品 truth，S-005 验证身份、链接、schema 与 forbidden collapse。 | S-002..S-006 / Design+Builder+Validation | 本轮已完成 docs 表面初筛并登记 Scope Expansion；迁移未启动 |
+| MH-11 | 逐一审计 semx-cli `semx-kb/docs/strategy/` 全部表面并追溯 canonical JSON；只迁移经去项目化改造且有 provenance 的通用策略。 | 56 个文件逐行有 `adapt_extract`、`reference_only`、`remove` 或有界 `migrate_after_refreeze` 裁决；S-002 完成 canonical mapping，S-004 排除 Semx/KYM/TCO/P00-P17/runtime 产品 truth，S-005 验证身份、链接、schema 与 forbidden collapse。 | S-002..S-006 / Design+Builder+Validation | 历史初筛和有界迁移证据已落地；S-013 对实际缺失的 semantic-governance truth 补做 canonical 复核 |
+| MH-12 | 清除 active/public 表面的旧项目身份、绝对来源路径、legacy migrate 入口和 registry 漂移。 | active allowlist 扫描无未批准身份；registry check/validate 通过；历史 provenance 仍可定位。 | S-012 / Builder+Validation | Doing |
+| MH-13 | 恢复 Human-AI、Semantic Surface、KB Promotion 三类通用 semantic-governance canonical truth。 | canonical JSON 存在；来源逐节裁决；Markdown 由 renderer 生成且 `--check` 通过。 | S-013 / Design+Builder+Semantic | To do |
+| MH-14 | 修复缺失引用、历史 locator、KB renderer、DKG 和标准 doctor/acceptance 入口。 | 引用检查、KB check、DKG、非零测试发现、doctor 正负例通过。 | S-014 / Builder+Validation | To do |
+| MH-15 | 用当前硬门重建全量 OPCM、Scope Delta、独立 Validation、Semantic Review、中文 closeout 与 post-closeout reconciliation。 | 每个原始 MH/AC 均有证据行；最终 verdict 覆盖实际 closeout、最终 Dashboard/KB 和完整 diff。 | S-015 / Validation+Semantic+Closure | To do |
 
 ## S-001 可观察验收判定
 
@@ -76,8 +81,12 @@
 | S-004 | KB、AGENTS、Dashboard tools 整理及污染清除 | S-003 | 新项目 authority surfaces、Semx/runtime strategy 删除与替代清单 | 身份、路径、KB/Dashboard gates 通过，排除项不残留为 authority |
 | S-005 | 集成验收、独立 Validation 与 Semantic Review | S-004 | acceptance evidence、56 文件覆盖复核、Validation、Semantic Review | blocker 清零或明确终止；docs/read-model 与 canonical JSON authority 未折叠 |
 | S-006 | closeout、覆盖审计与最终对账 | S-005 | Closeout、MH-11 OPCM、Scope Delta、post-closeout reconciliation | Goal completion rule 全部满足 |
+| S-012 | active/public 身份与 registry 修复 | S-006 | 有效执行合同、registry 修复、active identity 清理与独立 Validation | MH-12 predicates 通过；不伪造历史时序 |
+| S-013 | semantic-governance canonical 恢复 | S-012 | 三类 canonical JSON、来源裁决、派生 Markdown 与 Semantic Review | MH-13 predicates 与 renderer check 通过 |
+| S-014 | 引用与验收工具链修复 | S-013 | locator 修复、KB/DKG、doctor 与正负例 | MH-14 predicates 通过且测试发现非零 |
+| S-015 | SP-001 最终集成与关闭 | S-014 | OPCM、Scope Delta、Validation、Semantic、closeout、post-closeout | MH-01..MH-15 completion rule 全部满足 |
 
-固定依赖为 `S-001 → S-002 → S-003 → S-004 → S-005 → S-006`。Builder 不得修改冻结的 Contract/Cases/RED/claim ceiling；需要变更时走 Contract Patch、Scope Delta 与 re-RED。
+历史依赖为 `S-001 → S-002 → S-003 → S-004 → S-005 → S-006`；当前恢复依赖为 `S-012 → S-013 → S-014 → S-015`。Builder 不得修改冻结的 Contract/Cases/RED/claim ceiling；需要变更时走 Contract Patch、Scope Delta 与 re-RED。
 
 ## Governance Workflow
 
@@ -99,14 +108,15 @@
 
 只有同时满足以下条件才允许写 `Goal complete`：
 
-1. MH-01..MH-11 均有逐项、可点击且与最终 diff 对齐的证据；
+1. MH-01..MH-15 均有逐项、可点击且与最终 diff 对齐的证据；
 2. 所有相关 Session registry check/validate 通过；
 3. 原始设计摘要与种子基线一致；
 4. 无未批准的 Semx 项目身份或绝对源路径残留；
-5. SGE profile、Skill contracts、ERBE、Goal/lane/context 工具和 Dashboard DKG 验收通过；
+5. SGE profile、Skill contracts、ERBE、Goal/lane/context 工具、KB renderer、引用检查、非零测试 doctor 和 Dashboard DKG 验收通过；
 6. 独立 Validation 与 Semantic Review 覆盖实际 closeout、最终 KB/Dashboard 和最终 diff；
 7. closeout-language gate 明确通过；
-8. 没有未落地且未经批准延期的原始 must-have。
+8. 没有未落地且未经批准延期的原始 must-have；S-004/S-005 历史证据缺口已由当前 final-state reconciliation 明确吸收；
+9. 公共候选、验证、批准、Git、发布和生产状态未发生 forbidden collapse。
 
 ## Termination Conditions
 

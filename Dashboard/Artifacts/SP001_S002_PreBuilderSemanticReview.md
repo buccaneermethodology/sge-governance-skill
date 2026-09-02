@@ -96,7 +96,7 @@
 
 ### B-03（已关闭）：通用 core 与项目/Session acceptance adapter 尚未隔离
 
-[repo-local SGE Skill](../../.codex/skills/sge-governed-checkpoints/SKILL.md) 中的 `profile_validator.py` 已参数化；S-002 专属 `s002_erbe_acceptance.py` 已移至 [Dashboard/tools/sge](../../Dashboard/tools/sge/s002_erbe_acceptance.py)，不再属于可提取 core Skill。
+[repo-local SGE Skill](../../.codex/skills/sge-governed-checkpoints/SKILL.md) 中的 `profile_validator.py` 已参数化；S-002 专属 runner 后续已从 maintained runtime 删除，历史定位见 [S-002 ERBE runner tombstone](Tombstones/Removed_S002_ERBE_Runner.md)，不再属于可提取 core Skill。
 
 处置结果：core API 与项目 adapter 已分层；最终 clean-room/public export 仍留给 SP-002。
 

@@ -2,11 +2,11 @@
 
 ## SGE Governance Skill 当前状态
 
-- 当前判断：通用 `sge-governed-checkpoints` Skill 的 active legacy 清理与通用性验收由 `SP-001/S-012` 处理；在其独立 Validation 和 post-closeout 对账完成前，SP-001 不得标记完成。
+- 当前判断：`SP-001` 已在 B-01..B-05、RB-01/RB-02 修复通过后重新执行受控状态收束；最终有界结论只由新的[关闭后独立对账](Artifacts/SP001_S015_PostCloseoutReconciliation.md)与 ERBE GREEN 共同支持。
 - 当前仓库身份：`sge-governance-skill`；不包含任何具体产品设计或产品源代码。
 - 权威入口：[SGE Governance Skill](../.codex/skills/sge-governed-checkpoints/SKILL.md)、[SGE profile](../kb/data/strategy/sge_project_profile_v1.json)。
 - 执行记忆：[Dashboard README](README.md)；稳定治理 truth 位于 `kb/`。
-- 下一步：完成 S-012 的 active surface 清理、generic clean-room portability test、独立 Validation 与最终对账；公共提取、新手指南和发布候选仍需另行启动与验证。
+- 下一步：SP-001 Goal terminal；SP-002 仍保持 `To do`，等待用户另行明确启动，不自动进入 S-007。
 
 ## 历史迁移 provenance（只读）
 
@@ -16,6 +16,6 @@
 
 ## SP-002 开源提取与新手可用性
 
-- `SP-002` 已登记为 `To do`，依赖 `SP-001 complete`；当前入口 `S-007` 尚不可启动。
+- `SP-002` 已登记为 `To do`；SP-001 功能依赖已满足，但仍须用户另行明确启动，当前入口 `S-007` 没有自动进入 `Doing`。
 - 已规划 license/provenance、default-deny public export、中文 Beginner Guide、install/doctor/bootstrap、`run-sge-loop-goal-cycle` 通用化、独立 `user-acceptance-test` 与 release candidate closeout。
 - 权威入口：[SP-002 Stage Plan](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md)。本轮不创建、不发布或同步任何 Skill。

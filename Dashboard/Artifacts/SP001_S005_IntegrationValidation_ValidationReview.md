@@ -9,7 +9,7 @@
 | Must-have | 可观察验收 | 证据 | 实际结果 | 状态 | claim ceiling |
 | --- | --- | --- | --- | --- | --- |
 | MH-01 | seed commit 可定位 | Git history `389087e` | 已建立 | pass | 仅基线 |
-| MH-02 | source revision/file inventory | [Provenance](SP001_SGEGovernanceSkill_ProvenanceInventory.json)、[Manifest](../kb/data/strategy/sge_strategy_source_manifest_v1.json) | 固定且可追溯 | pass | 不等于发布授权 |
+| MH-02 | source revision/file inventory | [Provenance](SP001_SGEGovernanceSkill_ProvenanceInventory.json)、[Manifest](../../kb/data/strategy/sge_strategy_source_manifest_v1.json) | 固定且可追溯 | pass | 不等于发布授权 |
 | MH-03 | core/profile/schema | [S-002 Closeout](SP001_S002_SGECore_Closeout.md) | 通过 | pass | repo-local |
 | MH-04 | tooling/workflow registry | [S-003 Closeout](SP001_S003_GovernanceTooling_Closeout.md) | 通过 | pass | 有界技术切片 |
 | MH-05 | KB/Dashboard truth split | [S-004 Closeout](SP001_S004_SemanticCleanup_Closeout.md) | 通过 | pass | 本仓库路由 |
@@ -32,4 +32,3 @@
 ## 明确不证明
 
 不证明 audio-transcriptor 转写质量、FFmpeg/Whisper/provider、生产 readiness、公共开源或跨仓库普遍适用性。
-

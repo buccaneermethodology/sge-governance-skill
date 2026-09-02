@@ -1,34 +1,26 @@
 {
   "schema_version": "dashboard_session_archive_manifest_v1",
-  "created_by_session": "S-485",
-  "source": {
-    "source_path": "/Users/xiaomei/Documents/projects/semx-cli/Dashboard/Sessions.md",
-    "source_sha256": "9d5fd44c3e4ba3a21bed49a81ba95d24f9847c95ac62e9784ab0d5e987d14c25",
-    "source_line_count": 695,
-    "source_record_count": 487,
-    "source_narrative_line_count": 204,
-    "source_narrative_sha256": "fd7730990c5f8b96f7eb949afcd1cb77b09d3c5baa609d03d9175e1ad5c90a5c"
+  "created_by_session": "sge-governance-skill-maintenance",
+  "authoritative_surfaces": {
+    "current": "Dashboard/Sessions.md",
+    "archives": "Dashboard/Archives/Sessions/*.md",
+    "record_set_sha256": "b409d73b0df566fc8f87695a6a12007e747ed23ff8e68109e447fb7852996b33"
   },
-  "record_count": 11,
+  "record_count": 15,
   "current_count": 5,
-  "archive_count": 6,
-  "index_count": 11,
-  "canonical_key_count": 11,
+  "archive_count": 10,
+  "index_count": 15,
+  "canonical_key_count": 15,
   "historical_id_collision_count": 0,
   "historical_id_collisions": {},
   "current_retention": {
     "statuses": [
       "To do",
       "Doing"
-    ],
-    "recent_numeric_floor": 450
+    ]
   },
   "archive_files": {
-    "SP-001.md": 6
+    "SP-001.md": 10
   },
-  "legacy_repairs": {
-    "S-224": "joined the accidental extra Deliverable cell",
-    "S-377": "added the missing empty Notes cell"
-  },
-  "claim_ceiling": "DASHBOARD_SESSION_EXECUTION_MEMORY_REFACTORED_ONLY"
+  "claim_ceiling": "CURRENT_SESSION_REGISTRY_PROJECTION_ONLY"
 }

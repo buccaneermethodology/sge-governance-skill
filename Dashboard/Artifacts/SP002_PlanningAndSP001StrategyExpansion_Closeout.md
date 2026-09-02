@@ -15,7 +15,7 @@
 
 - 未复制或修改 `kb/`、`.codex/skills/`、strategy canonical JSON、schema、runner 或 runtime。
 - 未启动 S-002、SP-001 或 SP-002；未公开发布、push、写全局 Skills。
-- 未修改[原始产品设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)，也不声称 audio-transcriptor 产品可用。
+- 当前仓库已删除历史产品文件；本轮仅保留[产品设计 locator](Tombstones/Removed_Audio_Transcriptor_Design.md)，未恢复其内容，也不声称来源产品可用。
 
 ## 原始目标覆盖矩阵
 

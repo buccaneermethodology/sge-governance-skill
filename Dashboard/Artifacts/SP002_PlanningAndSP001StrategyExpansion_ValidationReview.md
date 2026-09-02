@@ -8,7 +8,7 @@
 
 ## 首轮 Read Manifest
 
-独立 reviewer 已读并重算：[AGENTS](../../AGENTS.md)、[Dashboard Rules](../Rules.md)、[SP-001 Final Goal](SP001_SGEGovernanceMigration_LoopGoal.md)、[Plan](SP001_SGEGovernanceMigration_Plan.md)、[Goal Patch](SP001_StrategySourceExpansion_GoalPatch.md)、[56-file Inventory](SP001_StrategySourceMigration_Inventory.md)、[SP-002 Stage Plan](SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md)、[Context](SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json)、[Closeout](SP002_PlanningAndSP001StrategyExpansion_Closeout.md)、Big Ideas/Stage Plans/Sessions/Index/Current State/Artifacts Index/Decisions/Exceptions/archive manifest、[原始产品设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)、semx-cli strategy 源文件集合及完整 tracked/untracked diff。
+独立 reviewer 已读并重算：[AGENTS](../../AGENTS.md)、[Dashboard Rules](../Rules.md)、[SP-001 Final Goal](SP001_SGEGovernanceMigration_LoopGoal.md)、[Plan](SP001_SGEGovernanceMigration_Plan.md)、[Goal Patch](SP001_StrategySourceExpansion_GoalPatch.md)、[56-file Inventory](SP001_StrategySourceMigration_Inventory.md)、[SP-002 Stage Plan](SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md)、[Context](SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json)、[Closeout](SP002_PlanningAndSP001StrategyExpansion_Closeout.md)、Big Ideas/Stage Plans/Sessions/Index/Current State/Artifacts Index/Decisions/Exceptions/archive manifest、[原始产品设计](Tombstones/Removed_Audio_Transcriptor_Design.md)、semx-cli strategy 源文件集合及完整 tracked/untracked diff。
 
 未把 `semx-kb/data/strategy/*.json` mapping 冒充已完成：该工作明确属于 SP-001/S-002。未读/未执行 runtime/schema/test bodies 与音频产品 runtime，因为本轮禁止迁移实现。
 

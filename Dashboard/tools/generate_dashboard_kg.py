@@ -269,7 +269,12 @@ def resolve_session_refs(
     return matches
 
 
-def build_graph(repo_root: Path, created_by_session: str, created_at: str) -> dict[str, Any]:
+def build_graph(
+    repo_root: Path,
+    created_by_session: str,
+    created_at: str,
+    quality_metrics_input: str,
+) -> dict[str, Any]:
     dashboard = repo_root / "Dashboard"
     nodes: dict[str, dict[str, Any]] = {}
     edges: list[dict[str, Any]] = []
@@ -375,20 +380,31 @@ def build_graph(repo_root: Path, created_by_session: str, created_at: str) -> di
                 add_node(nodes, {"id": aid, "type": "Artifact", "path": produced, "title": Path(produced).name})
                 add_edge(edges, node_id, aid, "PRODUCES")
 
-    for row in parse_table(dashboard / "Quality_Metrics.md"):
-        value = row.values
-        metric_id = value.get("ID", "")
-        if not metric_id.startswith("QM-"):
-            continue
-        add_node(nodes, {
-            "id": metric_id,
-            "type": "QualityMetric",
-            "title": value.get("Metric", ""),
-            "status": value.get("Status", ""),
-            "definition": value.get("Definition", ""),
-            "source": {"path": "Dashboard/Quality_Metrics.md", "line": row.line},
-        })
-        add_edge(edges, "dashboard", metric_id, "HAS_QUALITY_METRIC")
+    quality_metrics_path = (
+        None
+        if quality_metrics_input == "none"
+        else (repo_root / quality_metrics_input).resolve()
+    )
+    if quality_metrics_path is not None:
+        if repo_root.resolve() not in quality_metrics_path.parents:
+            raise ValueError("quality metrics input escapes repository root")
+        if not quality_metrics_path.is_file():
+            raise FileNotFoundError(f"explicit quality metrics input missing: {quality_metrics_path}")
+    if quality_metrics_path is not None:
+        for row in parse_table(quality_metrics_path):
+            value = row.values
+            metric_id = value.get("ID", "")
+            if not metric_id.startswith("QM-"):
+                continue
+            add_node(nodes, {
+                "id": metric_id,
+                "type": "QualityMetric",
+                "title": value.get("Metric", ""),
+                "status": value.get("Status", ""),
+                "definition": value.get("Definition", ""),
+                "source": {"path": quality_metrics_path.relative_to(repo_root).as_posix(), "line": row.line},
+            })
+            add_edge(edges, "dashboard", metric_id, "HAS_QUALITY_METRIC")
 
     current_text = (dashboard / "Current_State.md").read_text(encoding="utf-8")
     for ref in ids_in(current_text):
@@ -423,10 +439,12 @@ def build_graph(repo_root: Path, created_by_session: str, created_at: str) -> di
                 "Dashboard/Sessions.md",
                 "Dashboard/Session_Index.md",
                 "Dashboard/Archives/Sessions/archive_manifest.json",
-                "Dashboard/Quality_Metrics.md",
                 "Dashboard/Current_State.md",
                 "Dashboard/Artifacts_Index.md",
-            ],
+            ] + ([quality_metrics_path.relative_to(repo_root).as_posix()] if quality_metrics_path is not None else []),
+            "optional_inputs": {
+                "quality_metrics": quality_metrics_path.relative_to(repo_root).as_posix() if quality_metrics_path is not None else "explicit_none"
+            },
         },
         "nodes": sorted(nodes.values(), key=lambda node: node["id"]),
         "edges": sorted(edges, key=lambda edge: edge["id"]),
@@ -736,17 +754,22 @@ def write_gexf(graph: dict[str, Any], out: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--repo-root", default=".")
+    parser.add_argument("--repo-root", required=True)
     parser.add_argument("--out", required=True)
     parser.add_argument("--query-report", required=True)
     parser.add_argument("--graphology-out")
     parser.add_argument("--gexf-out")
     parser.add_argument("--created-by-session", default="S-237")
     parser.add_argument("--created-at", default=str(date.today()))
+    parser.add_argument(
+        "--quality-metrics",
+        required=True,
+        help="Repository-relative Quality Metrics Markdown path, or literal 'none'.",
+    )
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
-    graph = build_graph(repo_root, args.created_by_session, args.created_at)
+    graph = build_graph(repo_root, args.created_by_session, args.created_at, args.quality_metrics)
     out = Path(args.out)
     report = Path(args.query_report)
     out.parent.mkdir(parents=True, exist_ok=True)

@@ -22,20 +22,6 @@ SESSION_ID_RE = re.compile(r"^S-(\d{3})(?:-([A-Z0-9]+))?$")
 SP_RE = re.compile(r"\bSP-\d{3}\b")
 LINK_RE = re.compile(r"\[([^\]]+)\]\(([^)]+)\)")
 STANDARD_STATUSES = {"To do", "Doing", "Done", "Cancelled"}
-LEGACY_HEADERS = [
-    "ID",
-    "Topic",
-    "Scope",
-    "Purpose",
-    "Track",
-    "Priority",
-    "Historical Status Snapshot",
-    "Depends On",
-    "Deliverable",
-    "Exit Criteria",
-    "Next Step",
-    "Notes",
-]
 REGISTRY_HEADERS = [
     "Session Key",
     "Historical ID",
@@ -62,22 +48,8 @@ INDEX_HEADERS = [
     "Primary Evidence",
     "Topic",
 ]
-SESSION_SOURCE_REF_RE = re.compile(
-    r"Dashboard/Sessions\.md "
-    r"(S-\d{3}(?:\s+to\s+S-\d{3}|(?:/S-\d{3})*)?)"
-)
 PARENT_RE = re.compile(r"^(?:SP-\d{3}|LEGACY)$")
 ARCHIVE_NAME_RE = re.compile(r"^(?:SP-\d{3}|Legacy_S001-S279|Legacy_Unassigned)\.md$")
-FROZEN_MIGRATION_PROVENANCE: dict[str, int | str] = {
-    "source_path": "Dashboard/Sessions.md",
-    "source_sha256": "current-worktree",
-    "source_line_count": 0,
-    "source_record_count": 0,
-    "source_narrative_line_count": 0,
-    "source_narrative_sha256": "not_applicable",
-}
-
-
 class RegistryError(ValueError):
     """A fail-closed registry input or projection error with a stable code."""
 
@@ -190,125 +162,10 @@ def strip_code(value: str) -> str:
     return value
 
 
-def normalize_status(snapshot: str) -> str:
-    value = strip_code(snapshot)
-    if value == "Cancelled":
-        return "Cancelled"
-    if (
-        value.startswith("Done")
-        or value.startswith("done")
-        or value == "bounded evaluator slice passed"
-        or value.startswith("Provider observation materialized")
-    ):
-        return "Done"
-    if value.startswith("Doing"):
-        return "Doing"
-    if (
-        value == "To do"
-        or value.startswith("Partial")
-        or value.startswith("PARTIAL")
-        or value.startswith("Blocked")
-    ):
-        return "To do"
-    raise ValueError(f"unmapped historical status snapshot: {snapshot!r}")
-
-
-def infer_parent(values: dict[str, str]) -> str:
-    for field in (
-        "Topic",
-        "Scope",
-        "Purpose",
-        "Depends On",
-        "Deliverable",
-        "Exit Criteria",
-        "Next Step",
-        "Notes",
-    ):
-        match = SP_RE.search(values.get(field, ""))
-        if match:
-            return match.group(0)
-    return "LEGACY"
-
-
 def canonical_key(parent: str, historical_id: str) -> str:
     if not SESSION_ID_RE.fullmatch(historical_id):
         raise ValueError(f"unsupported session identity: {historical_id}")
     return f"{parent}/{historical_id}"
-
-
-def repair_legacy_cells(cells: list[str], line_no: int) -> list[str]:
-    historical_id = strip_code(cells[0]) if cells else ""
-    if historical_id == "S-224" and len(cells) == 13:
-        return cells[:8] + [f"{cells[8]}; {cells[9]}"] + cells[10:]
-    if historical_id == "S-377" and len(cells) == 11:
-        return cells + [""]
-    if len(cells) != len(LEGACY_HEADERS):
-        raise ValueError(
-            f"Dashboard/Sessions.md:{line_no}: expected {len(LEGACY_HEADERS)} cells, "
-            f"got {len(cells)} for {historical_id or 'unknown row'}"
-        )
-    return cells
-
-
-def parse_legacy_sessions(path: Path) -> tuple[list[SessionRecord], str, dict[str, int | str]]:
-    text = path.read_text(encoding="utf-8")
-    lines = text.splitlines()
-    records: list[SessionRecord] = []
-    narrative_lines: list[str] = []
-    header_seen = False
-    for line_no, line in enumerate(lines, start=1):
-        if not line.startswith("|"):
-            narrative_lines.append(line)
-            continue
-        cells = split_markdown_row(line)
-        first = strip_code(cells[0]) if cells else ""
-        if first == "ID":
-            header_seen = True
-            continue
-        if first.startswith("---"):
-            continue
-        if not SESSION_ID_RE.fullmatch(first):
-            narrative_lines.append(line)
-            continue
-        if not header_seen:
-            raise ValueError(f"{path}:{line_no}: Session row appears before header")
-        cells = repair_legacy_cells(cells, line_no)
-        values = {
-            header: strip_code(cell)
-            for header, cell in zip(LEGACY_HEADERS, cells)
-        }
-        parent = infer_parent(values)
-        records.append(
-            SessionRecord(
-                session_key=canonical_key(parent, values["ID"]),
-                historical_id=values["ID"],
-                parent=parent,
-                topic=values["Topic"],
-                scope=values["Scope"],
-                purpose=values["Purpose"],
-                track=values["Track"],
-                priority=values["Priority"],
-                status=normalize_status(values["Historical Status Snapshot"]),
-                historical_status=values["Historical Status Snapshot"],
-                depends_on=values["Depends On"],
-                deliverable=values["Deliverable"],
-                exit_criteria=values["Exit Criteria"],
-                next_step=values["Next Step"],
-                notes=values["Notes"],
-                source_line=line_no,
-            )
-        )
-    narrative = "\n".join(narrative_lines).rstrip() + "\n"
-    metadata: dict[str, int | str] = {
-        "source_path": str(path),
-        "source_sha256": sha256_text(text),
-        "source_line_count": len(lines),
-        "source_record_count": len(records),
-        "source_narrative_line_count": len(narrative_lines),
-        "source_narrative_sha256": sha256_text(narrative),
-    }
-    ensure_unique(records)
-    return records, narrative, metadata
 
 
 def ensure_unique(records: Iterable[SessionRecord]) -> None:
@@ -324,7 +181,7 @@ def ensure_unique(records: Iterable[SessionRecord]) -> None:
 
 
 def keep_current(record: SessionRecord) -> bool:
-    return record.status in {"To do", "Doing"} or record.numeric_id >= 450
+    return record.status in {"To do", "Doing"}
 
 
 def archive_filename(record: SessionRecord) -> str:
@@ -345,6 +202,23 @@ def rewrite_archive_links(value: str) -> str:
     return value
 
 
+def normalize_registry_links_for_digest(value: str) -> str:
+    """Return a location-independent registry value for record-set identity.
+
+    Current and archive projections use different relative Markdown paths for
+    the same logical evidence target.  The manifest digest must not change only
+    because a record moved from the current table into its archive.
+    """
+    value = value.replace("(../../Artifacts/", "(Artifacts/")
+    value = value.replace("(../../../examples/", "(../examples/")
+    return value
+
+
+def rewrite_current_links(value: str) -> str:
+    """Rewrite archive-relative evidence links for the Dashboard current table."""
+    return normalize_registry_links_for_digest(value)
+
+
 def render_registry_table(records: list[SessionRecord], archive: bool = False) -> str:
     lines = [
         render_row(REGISTRY_HEADERS),
@@ -355,6 +229,11 @@ def render_registry_table(records: list[SessionRecord], archive: bool = False) -
         if archive:
             cells = [
                 rewrite_archive_links(cell) if index >= 10 else cell
+                for index, cell in enumerate(cells)
+            ]
+        else:
+            cells = [
+                rewrite_current_links(cell) if index >= 10 else cell
                 for index, cell in enumerate(cells)
             ]
         cells[0] = f'<a id="{record.anchor}"></a>`{record.session_key}`'
@@ -386,7 +265,7 @@ def render_current(records: list[SessionRecord]) -> str:
             "",
             "本文件只保留当前与近期 Session。全量定位请使用 [Session Index](Session_Index.md)，完整历史请使用 [Session Archives](Archives/Sessions/)。",
             "",
-            "Session 的 canonical identity 是 `Parent/Historical ID`。历史 ID 可能重复；例如 `SP-063/S-478` 与 `SP-064/S-478` 是两条不同记录，禁止按裸 `S-478` first-wins。",
+            "Session 的 canonical identity 是 `Parent/Historical ID`。不同 Parent 可能复用 Historical ID，禁止按裸 Historical ID first-wins。",
             "",
             "迁移前的表外执行说明完整保存在 [Legacy Execution Notes](Archives/Sessions/Legacy_Execution_Notes.md)。",
             "",
@@ -438,99 +317,6 @@ def render_archive(records: list[SessionRecord], filename: str) -> str:
             "",
         ]
     )
-
-
-def render_legacy_notes(narrative: str, metadata: dict[str, int | str]) -> str:
-    return "\n".join(
-        [
-            "# 历史 Session 表外执行说明",
-            "",
-            "以下内容从重构前 `Dashboard/Sessions.md` 原样迁移。它是历史执行记忆，不是当前状态或 canonical truth；当前入口见 [Sessions](../../Sessions.md)。",
-            "",
-            f"- Source SHA-256：`{metadata['source_sha256']}`",
-            f"- Source narrative SHA-256：`{metadata['source_narrative_sha256']}`",
-            f"- Source narrative lines：`{metadata['source_narrative_line_count']}`",
-            "",
-            "## 原始表外内容",
-            "",
-            narrative.rstrip(),
-            "",
-        ]
-    )
-
-
-def migrate(repo: Path) -> dict[str, object]:
-    dashboard = repo / "Dashboard"
-    source = dashboard / "Sessions.md"
-    records, narrative, source_metadata = parse_legacy_sessions(source)
-    if len(records) != 487:
-        raise ValueError(f"expected frozen migration baseline of 487 records, got {len(records)}")
-
-    current = [record for record in records if keep_current(record)]
-    archived = [record for record in records if not keep_current(record)]
-    current_keys = {record.session_key for record in current}
-    archive_groups: dict[str, list[SessionRecord]] = {}
-    for record in archived:
-        archive_groups.setdefault(archive_filename(record), []).append(record)
-
-    archive_root = dashboard / "Archives" / "Sessions"
-    archive_root.mkdir(parents=True, exist_ok=True)
-    expected_archive_files = set(archive_groups) | {
-        "Legacy_Execution_Notes.md",
-        "archive_manifest.json",
-    }
-    for old in archive_root.iterdir():
-        if old.is_file() and old.name not in expected_archive_files:
-            raise ValueError(f"unexpected existing archive file would be orphaned: {old}")
-
-    source.write_text(render_current(current), encoding="utf-8")
-    (dashboard / "Session_Index.md").write_text(
-        render_index(records, current_keys, repo), encoding="utf-8"
-    )
-    for filename, group in sorted(archive_groups.items()):
-        (archive_root / filename).write_text(
-            render_archive(group, filename), encoding="utf-8"
-        )
-    (archive_root / "Legacy_Execution_Notes.md").write_text(
-        render_legacy_notes(narrative, source_metadata), encoding="utf-8"
-    )
-
-    collisions: dict[str, list[str]] = {}
-    for record in records:
-        collisions.setdefault(record.historical_id, []).append(record.session_key)
-    collisions = {
-        historical_id: keys
-        for historical_id, keys in collisions.items()
-        if len(keys) > 1
-    }
-    manifest: dict[str, object] = {
-        "schema_version": "dashboard_session_archive_manifest_v1",
-        "created_by_session": "sge-governance-skill-maintenance",
-        "source": source_metadata,
-        "record_count": len(records),
-        "current_count": len(current),
-        "archive_count": len(archived),
-        "index_count": len(records),
-        "canonical_key_count": len({record.session_key for record in records}),
-        "historical_id_collision_count": len(collisions),
-        "historical_id_collisions": collisions,
-        "current_retention": {
-            "statuses": ["To do", "Doing"],
-            "recent_numeric_floor": 450,
-        },
-        "archive_files": {
-            filename: len(group) for filename, group in sorted(archive_groups.items())
-        },
-        "legacy_repairs": {
-            "S-224": "joined the accidental extra Deliverable cell",
-            "S-377": "added the missing empty Notes cell",
-        },
-        "claim_ceiling": "DASHBOARD_SESSION_EXECUTION_MEMORY_REFACTORED_ONLY",
-    }
-    (archive_root / "archive_manifest.json").write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
-    return manifest
 
 
 def parse_registry_file(path: Path) -> list[SessionRecord]:
@@ -677,7 +463,20 @@ def _manifest(records: list[SessionRecord], current: list[SessionRecord]) -> dic
     return {
         "schema_version": "dashboard_session_archive_manifest_v1",
         "created_by_session": "sge-governance-skill-maintenance",
-        "source": FROZEN_MIGRATION_PROVENANCE,
+        "authoritative_surfaces": {
+            "current": "Dashboard/Sessions.md",
+            "archives": "Dashboard/Archives/Sessions/*.md",
+            "record_set_sha256": sha256_text(
+                json.dumps(
+                    [
+                        [normalize_registry_links_for_digest(cell) for cell in record.registry_cells()]
+                        for record in sorted(records, key=sort_key)
+                    ],
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                )
+            ),
+        },
         "record_count": len(records),
         "current_count": len(current),
         "archive_count": len(records) - len(current),
@@ -689,18 +488,11 @@ def _manifest(records: list[SessionRecord], current: list[SessionRecord]) -> dic
             for historical_id, keys in collisions.items()
             if len(keys) > 1
         },
-        "current_retention": {
-            "statuses": ["To do", "Doing"],
-            "recent_numeric_floor": 450,
-        },
+        "current_retention": {"statuses": ["To do", "Doing"]},
         "archive_files": {
             filename: len(group) for filename, group in sorted(archive_groups.items())
         },
-        "legacy_repairs": {
-            "S-224": "joined the accidental extra Deliverable cell",
-            "S-377": "added the missing empty Notes cell",
-        },
-        "claim_ceiling": "DASHBOARD_SESSION_EXECUTION_MEMORY_REFACTORED_ONLY",
+        "claim_ceiling": "CURRENT_SESSION_REGISTRY_PROJECTION_ONLY",
     }
 
 
@@ -892,80 +684,6 @@ def reconcile(repo: Path, mode: str) -> dict[str, object]:
     return result
 
 
-def reference_map(repo: Path) -> dict[str, list[str]]:
-    dashboard = repo / "Dashboard"
-    records = parse_registry_file(dashboard / "Sessions.md")
-    archive_root = dashboard / "Archives" / "Sessions"
-    for path in sorted(archive_root.glob("*.md")):
-        if path.name != "Legacy_Execution_Notes.md":
-            records.extend(parse_registry_file(path))
-    mapping: dict[str, list[str]] = {}
-    for record in records:
-        mapping.setdefault(record.historical_id, []).append(record.session_key)
-    return mapping
-
-
-def rewrite_session_reference_text(
-    text: str,
-    mapping: dict[str, list[str]],
-) -> tuple[str, list[str]]:
-    ambiguous: list[str] = []
-
-    def replace(match: re.Match[str]) -> str:
-        expression = match.group(1)
-        historical_ids = re.findall(r"S-\d{3}", expression)
-        resolved: list[str] = []
-        for historical_id in historical_ids:
-            matches = mapping.get(historical_id, [])
-            if len(matches) != 1:
-                ambiguous.append(historical_id)
-                return match.group(0)
-            resolved.append(matches[0])
-        if " to " in expression:
-            rewritten = f"{resolved[0]} to {resolved[1]}"
-        else:
-            rewritten = ", ".join(resolved)
-        return f"Dashboard/Session_Index.md {rewritten}"
-
-    return SESSION_SOURCE_REF_RE.sub(replace, text), ambiguous
-
-
-def migrate_references(repo: Path) -> dict[str, object]:
-    mapping = reference_map(repo)
-    candidate_paths = sorted((repo / "kb" / "data").rglob("*.json"))
-    candidate_paths += [
-        repo / "Dashboard" / filename
-        for filename in (
-            "Current_State.md",
-            "Big_Ideas.md",
-            "Stage_Plans.md",
-            "Decisions.md",
-            "Risks.md",
-            "Quality_Metrics.md",
-            "Artifacts_Index.md",
-        )
-    ]
-    changed: list[str] = []
-    ambiguous: dict[str, list[str]] = {}
-    for path in candidate_paths:
-        if not path.exists():
-            continue
-        before = path.read_text(encoding="utf-8")
-        after, unresolved = rewrite_session_reference_text(before, mapping)
-        if unresolved:
-            ambiguous[path.relative_to(repo).as_posix()] = sorted(set(unresolved))
-        if after != before:
-            path.write_text(after, encoding="utf-8")
-            changed.append(path.relative_to(repo).as_posix())
-    return {
-        "schema_version": "dashboard_session_reference_migration_v1",
-        "changed_files": changed,
-        "changed_file_count": len(changed),
-        "ambiguous_references": ambiguous,
-        "verdict": "pass" if not ambiguous else "pass_with_ambiguous_historical_refs_preserved",
-    }
-
-
 def _error_result(error: Exception) -> dict[str, object]:
     error_code = error.error_code if isinstance(error, RegistryError) else "malformed_registry"
     return {
@@ -993,16 +711,14 @@ def main() -> None:
     repo = Path(args.repo).resolve()
     exit_code = 0
     try:
-        if args.command == "migrate":
-            result = migrate(repo)
-        elif args.command == "validate":
+        if args.command == "validate":
             result = validate(repo)
         elif args.command == "reconcile":
             result = reconcile(repo, "check" if args.check else "apply")
             if result["verdict"] == "drift":
                 exit_code = 1
-        else:
-            result = migrate_references(repo)
+        else:  # pragma: no cover - argparse enforces the command vocabulary.
+            raise RegistryError("unsupported_command", args.command)
     except (RegistryError, ValueError, OSError, json.JSONDecodeError) as exc:
         result = _error_result(exc)
         exit_code = 2

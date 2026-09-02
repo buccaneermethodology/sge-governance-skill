@@ -16,7 +16,7 @@
 - [Final Loop Goal](SP001_SGEGovernanceMigration_LoopGoal.md)、[迁移计划](SP001_SGEGovernanceMigration_Plan.md)、[Design Review](S001_SGEGovernancePlanningLanding_Design.md)、[S-001 closeout 草案](S001_SGEGovernancePlanningLanding_Closeout.md)。
 - Design、Builder、Closure、Validation 的 lane cards/prompts，以及 [Closure Agent Log](../Agent_Logs/2026-09-01__S-001__closure.md)。
 - [Big Ideas](../Big_Ideas.md)、[Stage Plans](../Stage_Plans.md)、[Sessions](../Sessions.md)、[Session Index](../Session_Index.md)、[Current State](../Current_State.md)、[Artifacts Index](../Artifacts_Index.md)、[Decisions](../Decisions.md)、[Exceptions](../Exceptions.md)、[archive manifest](../Archives/Sessions/archive_manifest.json) 与 [Legacy Execution Notes](../Archives/Sessions/Legacy_Execution_Notes.md)。
-- [Dashboard Rules](../Rules.md)、[Dashboard Methodology](../Methodology.md) 与唯一产品设计来源 [audio-transcriptor-skill_design_v1.0.md](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)。
+- [Dashboard Rules](../Rules.md)、[Dashboard Methodology](../Methodology.md) 与[历史产品设计 locator](Tombstones/Removed_Audio_Transcriptor_Design.md)；tombstone 只定位 Git 历史，不是产品内容证据。
 - 当前完整 tracked/untracked/ignored inventory、root seed commit、无 remote 状态、当前分支、原始设计 seed/current 摘要、Markdown target、registry、Context、closeout-language、DKG 失败指纹与 `git diff --check`。
 
 ### 缺失或未形成
@@ -31,7 +31,7 @@
 
 | 证据项 | 当前状态 | 独立判断 |
 | --- | --- | --- |
-| Git seed 与原始设计可恢复 | 通过 | root commit `389087ef01d1c345810367033f5d837b6361b393` 可定位；seed/current [原始设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)摘要均为 `3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4`。这只证明字节未变，不证明产品设计已冻结或实现。 |
+| Git seed 与原始设计可恢复 | 通过（历史判定） | root commit `389087ef01d1c345810367033f5d837b6361b393` 可定位；当时 seed/current 摘要记录为 `3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4`。当前仓库已删除产品文件，[tombstone](Tombstones/Removed_Audio_Transcriptor_Design.md)只支持 Git locator，不再支持 current-byte equality。 |
 | Final Loop Goal / MH ledger / S001 AC | 通过 | [Goal](SP001_SGEGovernanceMigration_LoopGoal.md)包含 MH-01..10、S001-AC-01..03、DAG、continuation、completion 和 claim ceiling。 |
 | Raw User Intent authority | 不通过 | [Context Bootstrap 第 5-8 行](SP001_SGEGovernanceMigration_ContextBootstrap.json)把用户完整实施请求压缩为一句摘要，却标记为 `authority`。 |
 | 完整迁移计划 | 不通过 | [迁移计划](SP001_SGEGovernanceMigration_Plan.md)有阶段摘要、Skill 取舍与一般验收列表，但没有用户点名要求的接口变化合同和逐项验收矩阵，也缺少 S-005/S-006 实施章节。 |

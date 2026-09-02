@@ -3,9 +3,24 @@
 
 | Artifact | Role | 当前判断 |
 | --- | --- | --- |
-| [SP001_SGEGovernanceMigration_LoopGoal.md](Artifacts/SP001_SGEGovernanceMigration_LoopGoal.md) | SP-001 Final Loop Goal / durable execution contract | Final Goal 已落库；迁移尚未启动 |
+| [SP001_SGEGovernanceMigration_LoopGoal.md](Artifacts/SP001_SGEGovernanceMigration_LoopGoal.md) | SP-001 Final Loop Goal / durable execution contract | 历史规划入口；后续迁移与质量恢复已执行，当前终态仍受最新 closeout/post-closeout verdict 约束 |
 | [SP001_SGEGovernanceMigration_Plan.md](Artifacts/SP001_SGEGovernanceMigration_Plan.md) | 经用户确认的完整迁移实施计划 | 作为 S-002..S-006 的范围、取舍与验收 authority |
 | [SP001_SGEGovernanceMigration_ContextBootstrap.json](Artifacts/SP001_SGEGovernanceMigration_ContextBootstrap.json) | S-001 implementation profile 启动包 | 保留 Raw User Intent authority、边界、Read Set、影响面和 topology |
+| [SP001_QualityRecovery_GoalPatch.md](Artifacts/SP001_QualityRecovery_GoalPatch.md) | SP-001 当前质量恢复 Scope Expansion | 新增 MH-12..MH-15 与 S-012..S-015；不授权公共发布 |
+| [SP001_QualityRecovery_ContextBootstrap.json](Artifacts/SP001_QualityRecovery_ContextBootstrap.json) | 本轮 implementation 启动包 | 绑定四类审计 finding、source boundary、完成谓词和验证拓扑 |
+| [SP001_QualityRecovery_Design.md](Artifacts/SP001_QualityRecovery_Design.md) | 质量恢复设计冻结 | 定义最小安全实现阶梯、authority routing 和 future-agent misuse 场景 |
+| [SP001_QualityRecovery_ERBE_Contract.json](Artifacts/SP001_QualityRecovery_ERBE_Contract.json) | 冻结的 ERBE 合同 | 定义状态轴、predicates、invariants、forbidden collapses 和 claim ceiling |
+| [SP001_QualityRecovery_ERBE_Cases.json](Artifacts/SP001_QualityRecovery_ERBE_Cases.json) | 冻结的 ERBE Cases | 固定 QR-RED-01..06 与 GREEN identity |
+| [SP001_S012_QualityRecovery_Closeout.md](Artifacts/SP001_S012_QualityRecovery_Closeout.md) | S-012 中文 closeout | active/public 身份与 registry 修复证据；不包含公共发布合同 |
+| [SP001_S013_SemanticGovernance_Closeout.md](Artifacts/SP001_S013_SemanticGovernance_Closeout.md) | S-013 中文 closeout | 三份 repo-local strategy 的来源裁决、active promotion 与边界 |
+| [SP001_S014_ToolchainQuality_Closeout.md](Artifacts/SP001_S014_ToolchainQuality_Closeout.md) | S-014 中文 closeout | references、KB/DKG、doctor 与 nonzero tests 证据 |
+| [SP001_S015_KBPromotionDecision.md](Artifacts/SP001_S015_KBPromotionDecision.md) | 三份 strategy 显式 Promotion Decision | 只批准 reviewed_candidate→active 与派生渲染，不扩大 runtime/public/release |
+| [SP001_S015_PostPromotionValidation.md](Artifacts/SP001_S015_PostPromotionValidation.md) | Promotion 后独立 delta Validation | 证明三项 status 写入无内容或语义扩大；不单独关闭 SP-001 |
+| [SP001_S015_FinalClosure_OPCM.md](Artifacts/SP001_S015_FinalClosure_OPCM.md) | SP-001 最终 OPCM 与 Scope Delta | 逐项覆盖 MH-01..MH-15、S001-AC 与流程 must-have |
+| [SP001_S015_FinalClosure_Closeout.md](Artifacts/SP001_S015_FinalClosure_Closeout.md) | SP-001 质量恢复最终中文 closeout | repo-local 有界结论；保留 Builder topology 例外与 public/release 非目标 |
+| [SP001_S015_FinalValidationReview.md](Artifacts/SP001_S015_FinalValidationReview.md) | 状态收束前最终集成 Validation | 只授权受控 mutation；最终状态仍需关闭后对账 |
+| [SP001_S015_SemanticReview.md](Artifacts/SP001_S015_SemanticReview.md) | 状态收束前最终集成 Semantic Review | active truth placement、状态压缩与 future-agent misuse 复核 |
+| [SP001_S015_PostCloseoutReconciliation.md](Artifacts/SP001_S015_PostCloseoutReconciliation.md) | SP-001 mutation 后独立最终对账 | 唯一终态 verdict；覆盖实际 closeout、Dashboard/KB、registry 与完整 diff |
 | [S001_SGEGovernancePlanningLanding_Closeout.md](Artifacts/S001_SGEGovernancePlanningLanding_Closeout.md) | S-001 中文 closeout | 只关闭规划落库；明确不关闭 SP-001，不证明治理迁移或产品实现 |
 | [S001_SGEGovernancePlanningLanding_ValidationReview.md](Artifacts/S001_SGEGovernancePlanningLanding_ValidationReview.md) | S-001 独立 Validation Review | 首轮 fail 后修复；delta verdict 为 `pass-with-findings`，中文含义是允许 S-001 状态收束但仍需关闭后独立对账 |
 | [S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md](Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md) | S-001 关闭后独立对账 | 最终关闭 verdict authority；其正文必须覆盖实际 closeout、Dashboard/KB 状态和完整 diff，不能由本索引代替 |

@@ -31,6 +31,7 @@ SECTION_KINDS = {
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
+RENDER_MANIFEST = ROOT / "render_manifest_v1.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -40,6 +41,17 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DATA_DIR,
         help="Directory containing kb JSON sources.",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Verify rendered Markdown is present and byte-identical without writing files.",
+    )
+    parser.add_argument(
+        "--manifest",
+        type=Path,
+        default=RENDER_MANIFEST,
+        help="Explicit source/output/adapter allowlist for renderable KB documents.",
     )
     return parser.parse_args()
 
@@ -386,13 +398,74 @@ def render_index(doc: dict[str, Any]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
-def render_file(path: Path, data_dir: Path) -> Path:
-    doc = load_json(path)
-    validate_doc(path, doc)
-    output_path = data_dir.parent / doc["output_path"]
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+def render_erbe_strategy(doc: dict[str, Any]) -> str:
+    """Render the frozen structured ERBE strategy without inventing sections."""
+    metadata = doc["metadata"]
+    lines = [
+        f"# {doc['title']}",
+        "",
+        f"_Owner: {metadata['owner']} | Version: {doc['version']} | Status: {doc['status']} | Updated: {metadata['updated_at']}_",
+        "",
+        "## 权威分层",
+        "",
+    ]
+    for key, value in doc.get("authority", {}).items():
+        lines.append(f"- `{key}`：{value}")
+    list_sections = [
+        ("适用性", "applicability"),
+        ("生命周期", "lifecycle"),
+        ("合同必需字段", "required_contract_fields"),
+        ("不变量", "invariants"),
+        ("明确非目标", "non_goals"),
+    ]
+    for heading, field in list_sections:
+        lines.extend(["", f"## {heading}", ""])
+        for item in doc.get(field, []):
+            lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            "## Builder 规则",
+            "",
+            str(doc.get("builder_rule", "")),
+            "",
+            "## Claim Ceiling",
+            "",
+            f"`{doc.get('claim_ceiling', '')}`",
+            "",
+            "## Source Scope",
+            "",
+        ]
+    )
+    for source in metadata["source_scope"]:
+        lines.append(f"- `{source}`")
+    return "\n".join(lines).rstrip() + "\n"
 
-    rendered = render_index(doc) if doc.get("kind") == "kb_index" else render_doc(doc)
+
+def render_file(path: Path, data_dir: Path, *, adapter: str, expected_output: Path, check: bool = False) -> Path:
+    doc = load_json(path)
+    if adapter == "sectioned_doc_v1":
+        validate_doc(path, doc)
+        rendered = render_index(doc) if doc.get("kind") == "kb_index" else render_doc(doc)
+    elif adapter == "erbe_strategy_v1":
+        required = {"doc_id", "doc_type", "title", "version", "status", "metadata", "authority", "claim_ceiling"}
+        missing = sorted(required - set(doc))
+        if missing:
+            raise ValueError(f"{path}: erbe adapter missing fields: {', '.join(missing)}")
+        rendered = render_erbe_strategy(doc)
+    else:
+        raise ValueError(f"{path}: unsupported render adapter {adapter!r}")
+    declared_output = data_dir.parent / doc["output_path"]
+    if declared_output.resolve() != expected_output.resolve():
+        raise ValueError(f"{path}: manifest output disagrees with document output_path")
+    output_path = expected_output
+    if check:
+        if not output_path.is_file():
+            raise ValueError(f"{path}: rendered output missing: {output_path}")
+        if output_path.read_text(encoding="utf-8") != rendered:
+            raise ValueError(f"{path}: rendered output differs: {output_path}")
+        return output_path
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(rendered, encoding="utf-8")
     return output_path
 
@@ -400,12 +473,44 @@ def render_file(path: Path, data_dir: Path) -> Path:
 def main() -> None:
     args = parse_args()
     data_dir = args.data_dir.resolve()
-    rendered_paths = []
-    for path in sorted(data_dir.rglob("*.json")):
-        rendered_paths.append(render_file(path, data_dir))
+    kb_root = data_dir.parent.resolve()
+    manifest_path = args.manifest.resolve()
+    manifest = load_json(manifest_path)
+    if manifest.get("schema_version") != "kb_render_manifest_v1":
+        raise SystemExit("render-kb: unsupported manifest schema")
+    rendered_paths: list[Path] = []
+    seen_sources: set[Path] = set()
+    seen_outputs: set[Path] = set()
+    for entry in manifest.get("documents", []):
+        source = (kb_root / entry["source"]).resolve()
+        output = (kb_root / entry["output"]).resolve()
+        if kb_root not in source.parents or kb_root not in output.parents:
+            raise SystemExit("render-kb: manifest path escapes kb root")
+        if source in seen_sources or output in seen_outputs:
+            raise SystemExit("render-kb: duplicate source or output in manifest")
+        if not source.is_file():
+            raise SystemExit(f"render-kb: manifest source missing: {source}")
+        seen_sources.add(source)
+        seen_outputs.add(output)
+        rendered_paths.append(
+            render_file(
+                source,
+                data_dir,
+                adapter=entry["adapter"],
+                expected_output=output,
+                check=args.check,
+            )
+        )
+
+    if not rendered_paths:
+        raise SystemExit("render-kb: no renderable KB documents discovered")
 
     for path in rendered_paths:
         print(path.relative_to(data_dir.parent))
+    print(
+        f"render-kb: {'check passed' if args.check else 'rendered'} "
+        f"{len(rendered_paths)} manifest documents"
+    )
 
 
 if __name__ == "__main__":

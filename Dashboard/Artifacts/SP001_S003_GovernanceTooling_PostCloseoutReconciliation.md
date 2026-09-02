@@ -10,7 +10,7 @@
 - [S-003 Validation Review](SP001_S003_GovernanceTooling_ValidationReview.md)
 - [S-003 Context](SP001_S003_GovernanceTooling_ContextBootstrap.json)
 - [S-003 Lane Task Card](SP001_S003_GovernanceTooling_LaneTaskCard.json)
-- [当前 Session 表](../Sessions.md#sp-001-s-003)
+- [已归档 Session 行](../Archives/Sessions/SP-001.md#sp-001-s-003)
 - [SP-001 当前状态](../Current_State.md)
 
 ## 独立 verdict
@@ -25,4 +25,3 @@
 - `session_registry.py validate`：通过。
 - `closeout-language`：通过。
 - `git diff --check`：通过。
-

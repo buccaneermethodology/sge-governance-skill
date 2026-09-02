@@ -18,5 +18,4 @@
 ## 工具
 
 - `.codex/skills/sge-governed-checkpoints/`：治理 checkpoint、schema 与确定性脚本。
-- `kb/tools/render_kb.py`：从 JSON 生成 Markdown 投影。
-- `kb/tools/glossary_v21_validator.py`：验证术语 JSON 的结构和边界。
+- `kb/tools/render_kb.py`：从带 `doc_id`/`doc_type` 或 `kind=kb_index` 的 JSON 生成 Markdown 投影；`--check` 只验证、不写入。

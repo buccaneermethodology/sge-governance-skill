@@ -15,7 +15,7 @@
 - 实际 [S-001 closeout](S001_SGEGovernancePlanningLanding_Closeout.md)、[独立 Validation Review](S001_SGEGovernancePlanningLanding_ValidationReview.md) 及其首轮 `fail`、repair、delta `pass-with-findings` 时序。
 - [Sessions](../Sessions.md)、[S-001 archive row](../Archives/Sessions/SP-001.md)、[Session Index](../Session_Index.md)、[archive manifest](../Archives/Sessions/archive_manifest.json)、[Legacy Execution Notes](../Archives/Sessions/Legacy_Execution_Notes.md)。
 - [Current State](../Current_State.md)、[Artifacts Index](../Artifacts_Index.md)、[Exceptions](../Exceptions.md)、[Stage Plans](../Stage_Plans.md)、[Big Ideas](../Big_Ideas.md)、[Decisions](../Decisions.md)。
-- [原始产品设计](../../kb/bm-doc/audio-transcriptor-skill_design_v1.0.md)、seed commit、完整 tracked/untracked/ignored inventory、Git branch/remote 和所有 S-001 lane artifacts/logs。
+- [原始产品设计](Tombstones/Removed_Audio_Transcriptor_Design.md)、seed commit、完整 tracked/untracked/ignored inventory、Git branch/remote 和所有 S-001 lane artifacts/logs。
 
 ### 未读或不适用
 
