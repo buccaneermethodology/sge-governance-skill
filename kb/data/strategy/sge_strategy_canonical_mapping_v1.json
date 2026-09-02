@@ -1,0 +1,56 @@
+{
+  "schema_version": "sge_strategy_mapping_policy_v1",
+  "policy_id": "sge-generic-mapping-policy-v1",
+  "purpose": "为任意来源策略表面提供可审计的分层、canonical truth 追溯和 promotion 边界；不承载某个项目的逐文件迁移裁决。",
+  "authority_chain": [
+    "source manifest 固定来源 revision 与 provenance",
+    "Dashboard execution ledger 逐文件给出 decision",
+    "同 revision 的 canonical JSON 或明确的 null reason 提供稳定 truth 依据",
+    "独立 Validation 重算 ledger 覆盖与 policy 合规性"
+  ],
+  "decision_vocabulary": {
+    "migrate_after_refreeze": {
+      "meaning": "可在去项目化、重新冻结合同并完成 RED/GREEN 后进入 canonical truth",
+      "required_fields": ["source_doc", "canonical_source_json", "target_owner", "identity_scrub", "refreeze_evidence"],
+      "promotion": "只允许通过新的 machine-readable contract 与独立验证后 promotion"
+    },
+    "adapt_extract": {
+      "meaning": "只抽取可迁移治理不变量，不复制来源项目的阶段、产品 ontology、runtime executor 或历史编号",
+      "required_fields": ["source_doc", "invariants_extracted", "excluded_semantics", "target_owner", "canonical_source_or_null_reason"],
+      "promotion": "抽取结果须单独归属目标 contract；来源阅读面本身不成为 truth"
+    },
+    "reference_only": {
+      "meaning": "仅作 provenance、read-manifest、反例或设计参考",
+      "required_fields": ["source_doc", "reference_reason", "non_promotion_boundary"],
+      "promotion": "禁止直接进入 canonical KB truth"
+    },
+    "remove": {
+      "meaning": "从目标仓库排除，并记录通用替代、非适用理由或未来 follow-on",
+      "required_fields": ["source_doc", "removal_reason", "replacement_or_not_applicable"],
+      "promotion": "不得以删除记录推断替代机制已经实现"
+    }
+  },
+  "ledger_contract": {
+    "carrier": "Dashboard execution artifact supplied by the active project",
+    "one_entry_per_source_surface": true,
+    "required_columns": ["source_doc", "decision", "reason", "target_or_replacement", "claim_ceiling"],
+    "unknown_decision": "reject",
+    "duplicate_source": "reject",
+    "missing_source": "reject"
+  },
+  "canonical_truth_policy": {
+    "reading_surface_is_truth": false,
+    "allowed_carriers": ["same_revision_canonical_json", "newly_refrozen_target_contract"],
+    "no_canonical_source": "必须显式记录 null_reason；不得从 Markdown 阅读面隐式 promotion",
+    "dashboard_is_canonical_truth": false,
+    "derived_projection_is_canonical_truth": false
+  },
+  "forbidden_collapses": [
+    "inventory decision = canonical truth",
+    "schema-valid = semantic acceptance",
+    "reference-only = migrated",
+    "adapt-extract = completed implementation",
+    "removed source = implemented replacement"
+  ],
+  "claim_ceiling": "仅定义可复用的 mapping/promotion policy；不证明任何项目的逐文件迁移、产品、runtime 或公共发布状态。"
+}

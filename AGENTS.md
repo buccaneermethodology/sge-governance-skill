@@ -1,6 +1,6 @@
-# Semx Repo Hard Gates
+# SGE Repo Hard Gates
 
-这些规则适用于本仓库中的所有工作。`AGENTS.md` 只保留必须执行的硬门；详细流程、模板、检查清单和解释规则放在 `.codex/skills/semx-governed-checkpoints/`、`semx-kb/` 和 `Dashboard/`。
+这些规则适用于本仓库中的所有工作。`AGENTS.md` 只保留必须执行的硬门；详细流程、模板、检查清单和解释规则放在 `.codex/skills/sge-governed-checkpoints/`、`kb/` 和 `Dashboard/`。
 
 ## 输出语言
 
@@ -10,9 +10,9 @@
 
 ## Source Of Truth Split
 
-- `semx-kb/` 是 canonical truth：架构、pipeline、contracts、strategy、terminology、evolution、稳定治理规则。
+- `kb/` 是 canonical truth：架构、contracts、strategy、terminology、evolution、稳定治理规则。
 - `Dashboard/` 是 execution memory：状态、任务顺序、blocker、open decision、candidate next sessions、closeout evidence。
-- 不要把 `Dashboard/` 当成 canonical truth；Dashboard artifact 中的稳定规则如需未来复用，必须通过 Contract Delta Scan 判断是否抽取到 `semx-kb/` JSON truth。
+- 不要把 `Dashboard/` 当成 canonical truth；Dashboard artifact 中的稳定规则如需未来复用，必须通过 Contract Delta Scan 判断是否抽取到 `kb/` JSON truth。
 
 ## Dashboard Session Registry 日常硬门
 
@@ -47,8 +47,8 @@
 
 ## SGC Gate
 
-- 每个 non-trivial Semx task 在 completion、validation、promotion、runtime widening、KB/Dashboard truth placement 或 semantic-risk implementation claim 前，必须运行 SGC v1 proportional check。
-- Canonical truth：`semx-kb/data/strategy/strategy_sgc_structural_contract_v1.json`；阅读面：`semx-kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md`。
+- 每个 non-trivial SGE task 在 completion、validation、promotion、runtime widening、KB/Dashboard truth placement 或 semantic-risk implementation claim 前，必须运行 SGC v1 proportional check。
+- Canonical truth：`kb/data/strategy/strategy_sgc_structural_contract_v1.json`；阅读面：`kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md`。
 - 必检：claim level、evidence layer、forbidden collapses、SI-1..SI-6、completion rule。
 - SGC v1 不启用 SGC v2/v3、numeric score、universal ledger、runtime/schema/acceptance 变更，也不替代 deterministic gates、Validation Agent、Semantic Reviewer 或 closeout evidence。
 
@@ -137,37 +137,36 @@
 - non-trivial governed closeout 进入最终完成态时，无论是否主动写出 `Independent Validation passed`，都必须存在并显式链接可定位的 durable Validation Review / post-closeout reconciliation artifact，包含唯一且无冲突的 passing verdict、唯一 reviewer/source、Read Manifest、实际 closeout、最终 Dashboard/KB 状态和最终 diff。省略 verdict、重复冲突记录、Validation Handoff、Semantic Review、测试通过或 Orchestrator 摘要均不能绕过该证据门禁。
 - Final Validation / Semantic verdict 必须覆盖实际用于关闭任务的 closeout、Dashboard/KB 最终状态和最终 diff。发生在这些文件写入之前、仍记录 closure blocker 的 verdict，只能证明当时已读 package；除非 reviewer 明确读过 closeout draft 且最终内容无实质变化，或补做独立 post-closeout reconciliation，否则不能支撑 `done`。
 - 多 Session final audit 必须提供 Evidence Completeness Matrix，逐项覆盖每个 Session 的技术 must-have、流程 must-have、task topology、Validation/Semantic 时序、closeout、最终父面和 Scope Delta。矩阵不能只是把 MH/AC 合并成“检查过”的关键词索引；每个原始 must-have/AC 必须有独立行，或有明确的分组理由和组内逐项清单，并至少列出验收判定、精确源文件链接、实际结果、状态、阻断/例外、时序/拓扑、claim ceiling 与最终 parent/Closeout 吸收情况。漏审流程 must-have 时不得写 `Scope Delta: 无` 或 audit complete。
-- closeout 若声明 BDD readable cards 已落地，必须把 cards 写入并保留在 `tests/bdd/readable_cards/<gate>/`（或等价受版本控制路径）；仅写入 `.semx/reports/`、`/tmp` 或其他临时 report-dir 不算 durable readable-card evidence。
+- closeout 若声明 BDD readable cards 已落地，必须把 cards 写入并保留在 `tests/bdd/readable_cards/<gate>/`（或等价受版本控制路径）；仅写入 `.sge/reports/`、`/tmp` 或其他临时 report-dir 不算 durable readable-card evidence。
 
 ## KB / Dashboard Review Gate
 
-- 每个 non-trivial task 结束前必须明确判断是否更新 `semx-kb/` 和 `Dashboard/`。
-- 更新 `semx-kb/`：稳定 truth、implementation scope、contract、terminology、rollout policy、artifact semantics 或 future-agent policy 发生变化。
+- 每个 non-trivial task 结束前必须明确判断是否更新 `kb/` 和 `Dashboard/`。
+- 更新 `kb/`：稳定 truth、implementation scope、contract、terminology、rollout policy、artifact semantics 或 future-agent policy 发生变化。
 - 更新 `Dashboard/`：task state、priority、blocker、decision、active work、completion state、closeout evidence 或 concrete next candidate 发生变化。
 - Contract Delta Scan：approved proposal、closeout、reviewed seed、baseline、matrix、contract 或 gate artifact 含稳定规则时，必须分类为 `promote-to-KB`、`Dashboard-only`、`gate-docs later`、`runtime/tests later` 或 `deferred session`。
 - 如果出现 concrete follow-on、deferred remainder 或 later candidate，必须在同一任务中写入或更新 `Dashboard/Sessions.md`；不要只留在聊天或 closeout prose。
 
 ## Repo Checkpoint Entry
 
-- 非平凡 Semx 工作必须使用 `.codex/skills/semx-governed-checkpoints/SKILL.md`。
+- 非平凡 SGE 工作必须使用 `.codex/skills/sge-governed-checkpoints/SKILL.md`。
 - 常用命令：
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode intake-evaluation`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode context-bootstrap`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/context_bootstrap.py validate <packet.json>`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode sgc`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode goal-conformance`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode goal-agent`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode loop-continuation`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode validation-agent`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode semantic`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file <closeout.md>`
-  - `python3 .codex/skills/semx-governed-checkpoints/scripts/phase_workflow.py --phase <Pxx> --stage <c0|a1|a2|c1|a3|a4|closeout|full> --format summary`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode intake-evaluation`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode context-bootstrap`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py validate <packet.json>`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode sgc`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode goal-conformance`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode goal-agent`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode loop-continuation`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode validation-agent`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode semantic`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout`
+  - `python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file <closeout.md>`
 
 ## Detailed Rule Locations
 
-- Workflow/checklists/scripts：`.codex/skills/semx-governed-checkpoints/`
-- Human-AI governance strategy：`semx-kb/data/strategy/strategy_human_ai_development.json`
-- SGC v1 canonical contract：`semx-kb/data/strategy/strategy_sgc_structural_contract_v1.json`
+- Workflow/checklists/scripts：`.codex/skills/sge-governed-checkpoints/`
+- Human-AI governance strategy：`kb/data/strategy/strategy_human_ai_development.json`（如已迁移）
+- SGC v1 canonical contract：`kb/data/strategy/strategy_sgc_structural_contract_v1.json`
 - Dashboard method/rules：`Dashboard/Methodology.md`、`Dashboard/Rules.md`
 - Agent Logs policy/templates：`Dashboard/Agent_Logs/`

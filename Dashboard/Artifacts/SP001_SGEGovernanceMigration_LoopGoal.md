@@ -23,6 +23,7 @@
 - [仓库硬门](../../AGENTS.md)：当前复制自 semx-cli，迁移完成前仍包含待适配项目身份。
 - [Dashboard Rules](../Rules.md)、[Dashboard Methodology](../Methodology.md)、[Dashboard README](../README.md)：当前 Dashboard 表结构、Status vocabulary 和 registry 操作边界。
 - semx-cli `main@19e967a782e2e95d24475770bc234d86ad7c583e` 下的 `.codex/skills/semx-governed-checkpoints/`：本轮 bootstrap checkpoint 与未来迁移来源。
+- semx-cli 同一 revision 下的 `semx-kb/docs/strategy/` 全部 56 个文件表面：本轮仅完成逐文件初筛；真正迁移稳定 truth 时必须追溯对应 `semx-kb/data/strategy/*.json`，不能把 Markdown 阅读面当 canonical authority。
 - 本 Goal 的 [迁移计划](SP001_SGEGovernanceMigration_Plan.md) 与 [Context Bootstrap](SP001_SGEGovernanceMigration_ContextBootstrap.json)。
 
 ### 未读或刻意跳过
@@ -48,6 +49,7 @@
 | MH-08 | 完成身份、schema、ERBE、Goal、lane、context、registry、DKG、语言门禁验收。 | 维护中的 acceptance runner 全绿且证据持久化。 | S-005 / Validation | 未启动 |
 | MH-09 | 保留 Design、Builder、独立 Validation、Closure 与触发式 Semantic Reviewer 时序证据。 | lane card、task identity、Agent Log 和 verdict 可定位。 | 全程 / Orchestrator | S-001 只完成规划落库证据 |
 | MH-10 | 形成中文 closeout、OPCM、Scope Delta、KB/Dashboard review 和 post-closeout reconciliation。 | S-006 最终 artifact 覆盖实际最终状态和 diff。 | S-006 / Closure+Validation | 未启动 |
+| MH-11 | 逐一审计 semx-cli `semx-kb/docs/strategy/` 全部表面并追溯 canonical JSON；只迁移经去项目化改造且有 provenance 的通用策略。 | 56 个文件逐行有 `adapt_extract`、`reference_only`、`remove` 或有界 `migrate_after_refreeze` 裁决；S-002 完成 canonical mapping，S-004 排除 Semx/KYM/TCO/P00-P17/runtime 产品 truth，S-005 验证身份、链接、schema 与 forbidden collapse。 | S-002..S-006 / Design+Builder+Validation | 本轮已完成 docs 表面初筛并登记 Scope Expansion；迁移未启动 |
 
 ## S-001 可观察验收判定
 
@@ -69,11 +71,11 @@
 | Session | 主题 | 依赖 | 主要输出 | 退出条件 |
 | --- | --- | --- | --- | --- |
 | S-001 | Git 种子基线、Loop Goal 与迁移计划落库 | 无 | Goal、Plan、Context、Dashboard entry、S-001 closeout/validation | 只证明规划落库，registry 与独立 Validation 通过 |
-| S-002 | 来源清单、project profile、ERBE 合同与通用 SGE 核心冻结 | S-001 | source manifest、profile、frozen contract/cases/RED | 同 identity contract gates 通过 |
-| S-003 | Governance Skills、schemas、scripts 和 workflow registry 迁移 | S-002 | repo-local Skills 与 deterministic tooling | Skill/interface acceptance 通过 |
-| S-004 | KB、AGENTS、Dashboard tools 整理及污染清除 | S-003 | 新项目 authority surfaces、删除/替代清单 | 身份、路径、KB/Dashboard gates 通过 |
-| S-005 | 集成验收、独立 Validation 与 Semantic Review | S-004 | acceptance evidence、Validation、Semantic Review | blocker 清零或明确终止 |
-| S-006 | closeout、覆盖审计与最终对账 | S-005 | Closeout、OPCM、Scope Delta、post-closeout reconciliation | Goal completion rule 全部满足 |
+| S-002 | 来源清单、project profile、ERBE 合同与通用 SGE 核心冻结 | S-001 | 全量 source manifest、56 个 strategy docs→canonical JSON mapping、profile、frozen contract/cases/RED | 同 identity contract gates 通过，且每个 strategy 表面的 authority/canonical mapping 已冻结 |
+| S-003 | Governance Skills、schemas、scripts、通用 strategy contracts/read models 和 workflow registry 迁移 | S-002 | repo-local Skills、经重新冻结的通用 strategy truth/read models 与 deterministic tooling | Skill/interface/strategy provenance acceptance 通过 |
+| S-004 | KB、AGENTS、Dashboard tools 整理及污染清除 | S-003 | 新项目 authority surfaces、Semx/runtime strategy 删除与替代清单 | 身份、路径、KB/Dashboard gates 通过，排除项不残留为 authority |
+| S-005 | 集成验收、独立 Validation 与 Semantic Review | S-004 | acceptance evidence、56 文件覆盖复核、Validation、Semantic Review | blocker 清零或明确终止；docs/read-model 与 canonical JSON authority 未折叠 |
+| S-006 | closeout、覆盖审计与最终对账 | S-005 | Closeout、MH-11 OPCM、Scope Delta、post-closeout reconciliation | Goal completion rule 全部满足 |
 
 固定依赖为 `S-001 → S-002 → S-003 → S-004 → S-005 → S-006`。Builder 不得修改冻结的 Contract/Cases/RED/claim ceiling；需要变更时走 Contract Patch、Scope Delta 与 re-RED。
 
@@ -97,7 +99,7 @@
 
 只有同时满足以下条件才允许写 `Goal complete`：
 
-1. MH-01..MH-10 均有逐项、可点击且与最终 diff 对齐的证据；
+1. MH-01..MH-11 均有逐项、可点击且与最终 diff 对齐的证据；
 2. 所有相关 Session registry check/validate 通过；
 3. 原始设计摘要与种子基线一致；
 4. 无未批准的 Semx 项目身份或绝对源路径残留；

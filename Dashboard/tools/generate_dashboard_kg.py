@@ -2,7 +2,7 @@
 """Generate a read-only Dashboard governance graph.
 
 The generated graph is a Dashboard read model. Markdown Dashboard files remain
-the authority for execution state; semx-kb remains the authority for canonical
+the authority for execution state; kb remains the authority for canonical
 project truth.
 """
 

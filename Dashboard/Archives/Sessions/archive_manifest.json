@@ -9,11 +9,11 @@
     "source_narrative_line_count": 204,
     "source_narrative_sha256": "fd7730990c5f8b96f7eb949afcd1cb77b09d3c5baa609d03d9175e1ad5c90a5c"
   },
-  "record_count": 6,
+  "record_count": 11,
   "current_count": 5,
-  "archive_count": 1,
-  "index_count": 6,
-  "canonical_key_count": 6,
+  "archive_count": 6,
+  "index_count": 11,
+  "canonical_key_count": 11,
   "historical_id_collision_count": 0,
   "historical_id_collisions": {},
   "current_retention": {
@@ -24,7 +24,7 @@
     "recent_numeric_floor": 450
   },
   "archive_files": {
-    "SP-001.md": 1
+    "SP-001.md": 6
   },
   "legacy_repairs": {
     "S-224": "joined the accidental extra Deliverable cell",

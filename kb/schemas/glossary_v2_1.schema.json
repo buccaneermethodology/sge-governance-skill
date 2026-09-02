@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://semx.local/schemas/glossary_v2_1.schema.json",
-  "title": "Semx Glossary V2.1",
+  "$id": "https://audio-transcriptor.local/schemas/glossary_v2_1.schema.json",
+  "title": "SGE Glossary V2.1",
   "type": "object",
   "additionalProperties": false,
   "required": ["doc_id", "doc_type", "title", "version", "status", "output_path", "metadata", "sections"],

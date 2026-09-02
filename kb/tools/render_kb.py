@@ -34,12 +34,12 @@ DATA_DIR = ROOT / "data"
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Render semx-kb Doc-as-Data JSON into Markdown.")
+    parser = argparse.ArgumentParser(description="Render audio-transcriptor kb Doc-as-Data JSON into Markdown.")
     parser.add_argument(
         "--data-dir",
         type=Path,
         default=DATA_DIR,
-        help="Directory containing semx-kb JSON sources.",
+        help="Directory containing kb JSON sources.",
     )
     return parser.parse_args()
 

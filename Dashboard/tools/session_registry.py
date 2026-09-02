@@ -932,7 +932,7 @@ def rewrite_session_reference_text(
 
 def migrate_references(repo: Path) -> dict[str, object]:
     mapping = reference_map(repo)
-    candidate_paths = sorted((repo / "semx-kb" / "data").rglob("*.json"))
+    candidate_paths = sorted((repo / "kb" / "data").rglob("*.json"))
     candidate_paths += [
         repo / "Dashboard" / filename
         for filename in (

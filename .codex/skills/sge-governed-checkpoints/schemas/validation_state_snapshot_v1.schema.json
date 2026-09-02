@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sge.local/schemas/validation_state_snapshot_v1.schema.json",
+  "title": "SGE Validation State Snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "parent_snapshot",
+    "baseline_revision",
+    "git_observed_facts",
+    "semantic_declarations",
+    "generated_registry",
+    "critical_file_hashes",
+    "validated_scope",
+    "known_blockers",
+    "affected_gates",
+    "last_verdict",
+    "reviewer_source",
+    "created_at",
+    "reopen_triggers",
+    "collection_issues"
+  ],
+  "properties": {
+    "schema_version": { "const": "validation-state-snapshot-v1" },
+    "snapshot_id": { "type": "string", "minLength": 1 },
+    "parent_snapshot": { "type": ["string", "null"] },
+    "baseline_revision": { "type": "string", "minLength": 1 },
+    "git_observed_facts": { "$ref": "#/$defs/gitFacts" },
+    "semantic_declarations": {
+      "type": "object",
+      "minProperties": 13,
+      "required": [
+        "user_instruction",
+        "goal",
+        "governance",
+        "acceptance_criteria",
+        "original_objective",
+        "claim_ceiling",
+        "approval_authority",
+        "truth_placement",
+        "dependency",
+        "execution_topology",
+        "threat_model",
+        "semantic_risk",
+        "patch_consistency"
+      ],
+      "additionalProperties": { "$ref": "#/$defs/versionedDeclaration" }
+    },
+    "generated_registry": { "$ref": "#/$defs/generatedRegistry" },
+    "critical_file_hashes": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/nullableSha256" }
+    },
+    "validated_scope": { "$ref": "#/$defs/stringArray" },
+    "known_blockers": { "$ref": "#/$defs/stringArray" },
+    "affected_gates": { "$ref": "#/$defs/stringArray" },
+    "last_verdict": { "type": "string", "minLength": 1 },
+    "reviewer_source": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "format": "date-time" },
+    "reopen_triggers": { "$ref": "#/$defs/stringArray" },
+    "collection_issues": { "$ref": "#/$defs/stringArray" },
+    "erbe_baseline": { "$ref": "#/$defs/erbeState" },
+    "erbe_delta": { "$ref": "#/$defs/erbeState" }
+  },
+  "allOf": [
+    {
+      "anyOf": [
+        {"not": {"anyOf": [{"required": ["erbe_baseline"]}, {"required": ["erbe_delta"]}]}},
+        {"required": ["erbe_baseline", "erbe_delta"]}
+      ]
+    }
+  ],
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "gitOid": { "type": "string", "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$" },
+    "nullableSha256": {
+      "oneOf": [
+        { "$ref": "#/$defs/sha256" },
+        { "type": "null" }
+      ]
+    },
+    "stringArray": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "versionedDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ref", "revision", "sha256"],
+      "properties": {
+        "ref": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "inventoryItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "status", "kind"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/nullableSha256" },
+        "status": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["tracked", "untracked"] }
+      }
+    },
+    "renameItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "old_path", "sha256", "status", "score", "kind"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "old_path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/nullableSha256" },
+        "status": { "type": "string", "minLength": 1 },
+        "score": { "type": "string", "minLength": 1 },
+        "kind": { "const": "renamed" }
+      }
+    },
+    "gitFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repo",
+        "worktree",
+        "git_common_dir",
+        "baseline_commit",
+        "dirty_state_digest",
+        "tracked_changed",
+        "untracked",
+        "renamed"
+      ],
+      "properties": {
+        "repo": { "type": "string", "minLength": 1 },
+        "worktree": { "type": "string", "minLength": 1 },
+        "git_common_dir": { "type": "string", "minLength": 1 },
+        "baseline_commit": { "$ref": "#/$defs/gitOid" },
+        "dirty_state_digest": { "$ref": "#/$defs/sha256" },
+        "tracked_changed": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/inventoryItem" }
+        },
+        "untracked": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/inventoryItem" }
+        },
+        "renamed": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/renameItem" }
+        }
+      }
+    },
+    "generatedSurface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/$defs/nullableSha256" }
+      }
+    },
+    "generatedRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "registry_id",
+        "revision",
+        "complete",
+        "surfaces",
+        "registry_digest"
+      ],
+      "properties": {
+        "registry_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "string", "minLength": 1 },
+        "complete": { "type": "boolean" },
+        "surfaces": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/generatedSurface" }
+        },
+        "registry_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "erbeIdentity": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["case_identity", "failure_fingerprint"],
+          "properties": {
+            "case_identity": {"type": "string", "minLength": 1},
+            "failure_fingerprint": {"type": "string", "minLength": 1},
+            "expected_failure_code": {"type": "string", "minLength": 1},
+            "contract_revision": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["identity_version", "contract_id", "contract_revision", "contract_sha256", "cases_sha256", "case_ids", "bundle_sha256"],
+          "properties": {
+            "identity_version": {"type": "string", "minLength": 1},
+            "contract_id": {"type": "string", "minLength": 1},
+            "contract_revision": {"type": "string", "minLength": 1},
+            "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "cases_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "case_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        }
+      ]
+    },
+    "erbeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_revision", "frozen_case_identities", "red_identity", "red_status", "green_status", "mutation_status"],
+      "properties": {
+        "contract_revision": {"type": "string", "minLength": 1},
+        "frozen_case_identities": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "red_identity": {"$ref": "#/$defs/erbeIdentity"},
+        "red_status": {"enum": ["not_verified", "verified", "invalid", "killed", "red_verified", "green_verified", "error", "not_performed"]},
+        "green_status": {"enum": ["not_verified", "verified", "invalid", "killed", "red_verified", "green_verified", "error", "not_performed"]},
+        "mutation_status": {"enum": ["not_verified", "verified", "invalid", "killed", "red_verified", "green_verified", "error", "not_performed"]}
+      }
+    }
+  }
+}

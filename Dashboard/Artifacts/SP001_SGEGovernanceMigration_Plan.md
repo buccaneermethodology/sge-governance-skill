@@ -20,6 +20,8 @@
 ### S-002：通用 SGE 核心与项目配置冻结
 
 - 建立 source manifest，记录每个源文件的 `copy/adapt/replace/remove` 裁决。
+- 逐一覆盖固定 semx-cli revision 的 `semx-kb/docs/strategy/` 56 个文件表面，并为 Markdown/JSON/图片分别记录来源摘要、阅读面角色、对应 `semx-kb/data/strategy/*.json` canonical mapping、裁决与目标 artifact；缺少 canonical source 的内容不得直接晋升为新项目稳定 truth。
+- 对 `adapt_extract` 项重新冻结通用不变量；对 `reference_only` 项只保留 provenance/read-manifest；对 `remove` 项记录 Semx 产品耦合与替代机制；只有 ERBE、SGC 等接近通用合同的候选可标 `migrate_after_refreeze`，仍不得原样复制项目身份或路径。
 - 从 semx-cli 迁入 checkpoint references、schemas、scripts，重构为 `.codex/skills/sge-governed-checkpoints/`。
 - 新建 `kb/data/strategy/sge_project_profile_v1.json` 和 schema，固定 `project_id=audio-transcriptor`、`kb_root=kb`、`dashboard_root=Dashboard` 及各 authority 路径。
 - 冻结 ERBE Contract/Cases/RED、Builder write exclusions 和本 Goal claim ceiling。
@@ -30,6 +32,7 @@
 - 将通用 ERBE/Goal Effect/governance integration 放入 Skill 自带 `lib/sge_governance/`，不进入 audio 产品 runtime。
 - 以 profile + workflow registry 驱动的 `workflow_contract.py` 替代 Semx P00-P17 `phase_workflow.py`。
 - 保留并适配 `contract-first-delivery`、`dashboard-governance`、`doc-system-kb-builder`、`exploration-dashboard-synthesizer`、`llm-artifact-evaluator`、`pdi`。
+- 从 strategy 审计中只迁移重新冻结的通用 contract 与 read model：优先覆盖 SGC、ERBE、Human-AI、Acceptance、BDD、Goal Effect、KB Promotion、Semantic Surface，以及 authority/evidence/claim/repair-loop/change-impact 的通用不变量；禁止迁入 P00-P17、P05/M1、Runtime Kernel、SAG ontology、G1-G10、Semx Session 编号或 runner 路径。
 
 ### S-004：KB、Dashboard 与目录整理
 
@@ -37,6 +40,7 @@
 - `kb/docs-system/v1/` 只保留通用 Doc-as-Data、演化协议和模板；删除 Semx compiler/M1/USL/P00-P17 产品内容。
 - 保留并改造 `session_registry.py`、`generate_dashboard_kg.py`；删除 legacy S-485 migrate 路径、Semx panorama、`mermaidGen.py` 和 KYM/TCO visualization/provider 数据。
 - 删除 `.DS_Store`、`__pycache__` 和临时派生数据，并补 `.gitignore`。
+- 按逐文件 strategy inventory 清理 Semx-specific 阅读面、产品 runtime target、旧翻译与图片；对每个删除项写明由哪个通用合同吸收其少量治理价值，避免把“删除产品实现”误写成“原文件毫无价值”。
 
 ### S-005：集成验收、独立 Validation 与 Semantic Review
 
@@ -44,13 +48,22 @@
 - 独立 Validation 从 durable inputs 重算实际候选，不采信 producer terminal status；验证范围覆盖 S-002 至 S-004 产物、原始设计摘要、Dashboard/KB authority、完整 tracked/untracked diff 和所有未关闭 blocker。
 - Semantic Reviewer 同时给出 `Design Freeze Validity` 与 `Implementation Entry Readiness`，覆盖通用核心/profile 边界、truth placement、状态词压缩误读、future-agent misuse 和跨仓库提取的 claim ceiling。
 - 只有 current contract 的 blocker 清零且 registry、DKG、schema、身份与语言门禁全部通过，才可将候选交给 S-006；一般强化建议保留为 follow-on，不冒充当前 blocker。
+- 验证 56/56 strategy 文件覆盖、docs→canonical JSON mapping、source digest/provenance、目标链接、身份隔离与负例；显式拒绝 observation→truth、diff→resolution、advisory→action、request→decision、recorded→approved、approved/authorized→executed 等 forbidden collapse。
 
 ### S-006：最终 closeout、覆盖审计与 post-closeout reconciliation
 
 - 形成中文 Goal closeout、逐项 OPCM、Scope Delta audit、Evidence Completeness Matrix、KB/Dashboard review、Contract Delta Scan 和 Loop completion scan。
 - 将最终 Session/Stage Plan/Big Idea 状态、Artifacts Index、KB truth 和 closeout 对齐；任何 Dashboard registry surface 变化后重跑 `reconcile --check` 与 `validate`，需要 DKG 时从显式输出路径重建并做 focused gate。
 - 独立 post-closeout reconciliation 必须读取实际 closeout、最终 Dashboard/KB 状态与最终 diff，提供唯一且无冲突的 passing verdict；关闭前 Validation 不得替代该证据。
-- 仅当 `MH-01..MH-10`、所有 Session exit criteria 与 Goal completion rule 全部满足时才允许写 `Goal complete`；最终主张仍受 Goal claim ceiling 限制，不包含产品实现、发布或普遍跨仓库成熟性。
+- 仅当 `MH-01..MH-11`、所有 Session exit criteria 与 Goal completion rule 全部满足时才允许写 `Goal complete`；最终主张仍受 Goal claim ceiling 限制，不包含产品实现、发布或普遍跨仓库成熟性。
+
+## Strategy 来源迁移裁决规则
+
+- `migrate_after_refreeze`：仅用于接近通用合同的候选；S-002 仍需追溯 canonical JSON、去 Semx 身份、冻结新 schema/claim ceiling 并 re-RED，不能原样复制。
+- `adapt_extract`：只抽取稳定治理不变量并在 SGE ontology 下重写；源文档、runner、schema 和产品状态不自动迁移。
+- `reference_only`：只进入 provenance、Read Manifest 或反例设计，不进入新 KB truth 或默认 Skill runtime。
+- `remove`：从目标仓库排除；若含少量通用安全原则，inventory 必须指出由哪个通用合同吸收。
+- 本轮逐文件初筛见 [Strategy Source Inventory](SP001_StrategySourceMigration_Inventory.md)。该 inventory 是 S-002 输入，不是迁移批准、canonical truth 或实现证据。
 
 ## 目标目录与保留/删除边界
 

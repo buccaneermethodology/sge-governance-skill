@@ -10,8 +10,8 @@ from typing import Any
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-GLOSSARY_PATH = REPO_ROOT / "semx-kb/data/glossary.json"
-RENDERED_GLOSSARY_PATH = REPO_ROOT / "semx-kb/docs/Glossary.md"
+GLOSSARY_PATH = REPO_ROOT / "data/glossary.json"
+RENDERED_GLOSSARY_PATH = REPO_ROOT / "docs/Glossary.md"
 
 ROOT_KEYS = {
     "doc_id",
@@ -394,7 +394,7 @@ def _source_ref_status(term: str, source_ref: str, repo_root: Path) -> SourceRef
 def _authority_suitability(source_ref: str, repo_boundary: bool) -> str:
     if not repo_boundary:
         return "rejected"
-    if source_ref.startswith("semx-kb/data/") or source_ref.startswith("semx-kb/docs/"):
+    if source_ref.startswith("kb/data/") or source_ref.startswith("kb/docs/"):
         return "canonical_kb"
     if source_ref.startswith("Dashboard/"):
         return "dashboard_provenance"
@@ -429,7 +429,7 @@ def _render_parity(doc: dict[str, Any], rendered_markdown_path: Path | None) -> 
 
 
 def _load_render_kb_module() -> Any:
-    path = REPO_ROOT / "semx-kb/tools/render_kb.py"
+        path = REPO_ROOT / "tools/render_kb.py"
     spec = importlib.util.spec_from_file_location("semx_kb_render_kb", path)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"unable to load render_kb.py from {path}")

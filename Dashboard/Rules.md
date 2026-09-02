@@ -2,11 +2,11 @@
 
 ## Placement Rules
 
-- Put stable truth in `semx-kb/`, not here.
+- Put stable truth in `kb/`, not here.
 - Put implementation tracking, sequencing, blockers, and pending choices here.
 - Put ad hoc one-off work logs in PRs or commits, not here.
 - Put repeatable agent-execution logs in `Dashboard/Agent_Logs/` by default for non-trivial governed multi-agent execution, tracked Session / Stage Plan execution that starts lanes, and triggered Semantic Reviewer lanes.
-- If a row changes project truth, the end state must be reflected in `semx-kb/` or an explicit decision artifact.
+- If a row changes project truth, the end state must be reflected in `kb/` or an explicit decision artifact.
 
 ## Record Types
 
@@ -97,7 +97,7 @@ Do not encode claim ceilings, caveats, boundedness, topology exceptions, approva
 ## Update Rules
 
 - At the start of every user request, run a proportional `Task Intake Evaluation Gate` by default: check objective, source authority, boundaries, material risk, and execution route before action. Simple low-risk tasks may pass silently; persistent edits, proposal/approval text, contracts, KB/Dashboard, acceptance/gate, or semantic-promotion work should make the intake verdict explicit.
-- At the end of every non-trivial task, explicitly review whether `semx-kb/` or `Dashboard/` requires an update.
+- At the end of every non-trivial task, explicitly review whether `kb/` or `Dashboard/` requires an update.
 - For non-trivial Goals, Stage Plans, and tracked Sessions, run the Goal Conformance / Scope Delta Gate after C0 or initial design, before dominant Builder implementation, and before closeout; update Dashboard rows if the result is only a partial or approved-subset completion.
 - Before final closeout, run a `Contract Delta Scan` when an approved proposal, closeout, reviewed seed, accepted baseline, matrix, contract, or acceptance/gate artifact contains stable contract, artifact semantics, trust/disposition, blocking/advisory, promotion, non-goal, reusable terminology, or policy claims. Record the KB JSON source decision: update KB JSON now, keep Dashboard-only with rationale, route to gate docs/runtime/tests, or add a deferred session.
 - Update dashboard rows in the same PR that changes their status.
@@ -134,6 +134,6 @@ Do not encode claim ceilings, caveats, boundedness, topology exceptions, approva
 ## Semx-Specific Boundary
 
 - `Dashboard/` is the execution layer.
-- `semx-kb/` is the canonical semantic and contract layer.
+- `kb/` is the canonical semantic and contract layer.
 - The dashboard may reference KB docs, but it must not redefine them.
 - Stage plans, metrics, risks, exceptions, and agent logs belong to Dashboard governance unless and until they become stable project truth.

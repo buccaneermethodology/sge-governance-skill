@@ -20,7 +20,7 @@ Its purpose is to preserve:
 - traceability across ongoing thinking and implementation
 - optionality for what should happen next
 
-In this repository, the dashboard is the execution layer. Canonical truth still lives in `semx-kb/`.
+In this repository, the dashboard is the execution layer. Canonical truth still lives in `kb/`.
 
 Under the current agentic-execution experiment, the dashboard has three nested responsibilities:
 
@@ -74,7 +74,7 @@ Tools and future agents must resolve a duplicate historical ID to all matching c
 
 ### Session Registry 日常操作
 
-Session registry 是可检查的 execution-memory 投影，而不是 `semx-kb/` 的替代真源。新建、更新、关闭、归档 Session，或改动 current/index/archive/manifest 任一表面时，先运行：
+Session registry 是可检查的 execution-memory 投影，而不是 `kb/` 的替代真源。新建、更新、关闭、归档 Session，或改动 current/index/archive/manifest 任一表面时，先运行：
 
 ```bash
 python3 Dashboard/tools/session_registry.py reconcile --repo . --check
@@ -135,7 +135,7 @@ A stage plan should freeze:
 - which events trigger human checkpoint or exception escalation
 - what exit criteria must be satisfied before promotion
 
-A stage plan is not canonical truth and should not redefine contracts that belong in `semx-kb/`.
+A stage plan is not canonical truth and should not redefine contracts that belong in `kb/`.
 
 ## Goal Conformance And Scope Delta Definition
 
@@ -218,7 +218,7 @@ It is a read-only generated projection over Dashboard execution memory. It helps
 - which rows were reconciled by a Dashboard cleanup
 - which control surfaces and query reports are current
 
-It does not replace Markdown. The Markdown Dashboard remains the editable authority surface for execution state, while DKG-L1 is a generated query/read model. It also does not replace `semx-kb/` or KG-L1: canonical architecture, contract, strategy, and terminology truth still live in `semx-kb/`; DKG-L1 only projects Dashboard governance state.
+It does not replace Markdown. The Markdown Dashboard remains the editable authority surface for execution state, while DKG-L1 is a generated query/read model. It also does not replace `kb/` or KG-L1: canonical architecture, contract, strategy, and terminology truth still live in `kb/`; DKG-L1 only projects Dashboard governance state.
 
 Regenerate both JSON outputs after Dashboard changes:
 
@@ -287,7 +287,7 @@ A `Multi-Agent Activation Gate` is the first control-plane check for tracked or 
 
 A `Dashboard Agent` is a strategic Dashboard steward. Its job is to reconstruct the project panorama, judge Dashboard health, surface stale or misleading rows, and give the human high-quality next-step choices.
 
-For a full refresh, it should use `exploration-dashboard-synthesizer`, then read the current Dashboard surface and relevant `semx-kb/` truth. The report should cover current stage, validation maturity, code/artifact quality, active Stage Plans, stale rows, risks, and open directions.
+For a full refresh, it should use `exploration-dashboard-synthesizer`, then read the current Dashboard surface and relevant `kb/` truth. The report should cover current stage, validation maturity, code/artifact quality, active Stage Plans, stale rows, risks, and open directions.
 
 By default, a Dashboard Agent gives three candidate next moves:
 
@@ -353,12 +353,12 @@ If no plausible next candidate `SP` or no concrete next `Session` exists, the cl
 
 ## Execution-Memory Hardening
 
-This repository now uses one repo-local operational skill at `.codex/skills/semx-governed-checkpoints/` to reinforce two failure-prone checkpoints that were easy to miss when they lived only as long-form rules.
+This repository now uses one repo-local operational skill at `.codex/skills/sge-governed-checkpoints/` to reinforce two failure-prone checkpoints that were easy to miss when they lived only as long-form rules.
 
 - `Pre-freeze oracle review`: when a new golden/oracle fixture is being created, the first AI-authored artifact is a proposal, not a frozen truth. The human should review or approve it unless they explicitly delegate the final semantic choice.
 - `Pre-closeout deferred scan`: before final closeout, explicitly check for narrowed scope, concrete deferred follow-ons, and later candidate sessions so they are recorded in the Dashboard rather than left in chat memory.
 
-The skill is an execution aid, not canonical truth. The truth still lives in `AGENTS.md`, `Dashboard/Rules.md`, and `semx-kb/`; the skill exists to make those rules easier to remember and apply at the right moment.
+The skill is an execution aid, not canonical truth. The truth still lives in `AGENTS.md`, `Dashboard/Rules.md`, and `kb/`; the skill exists to make those rules easier to remember and apply at the right moment.
 
 ## Contract Calibration Before Runtime
 

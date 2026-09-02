@@ -1,0 +1,18 @@
+{
+  "schema_version": "sge_strategy_source_manifest_v1",
+  "manifest_id": "sp001-s002-strategy-sources-v1",
+  "source_repo": "semx-cli",
+  "source_revision": "19e967a782e2e95d24475770bc234d86ad7c583e",
+  "source_surface": "/Users/xiaomei/Documents/projects/semx-cli/semx-kb/docs/strategy/",
+  "source_surface_role": "read-only source inventory; not canonical truth",
+  "inventory_ref": "Dashboard/Artifacts/SP001_StrategySourceMigration_Inventory.md",
+  "counts": {"files": 56, "migrate_after_refreeze": 2, "adapt_extract": 26, "reference_only": 14, "remove": 14},
+  "canonical_source_root": "semx-cli/semx-kb/data/strategy/",
+  "target_rules": {"migrate_after_refreeze": "must map canonical JSON, remove project identity, freeze new contract and re-RED", "adapt_extract": "extract invariants only", "reference_only": "provenance/read-manifest only", "remove": "exclude and record replacement"},
+  "copied_skill": {"source_path": "/Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/", "source_revision": "19e967a782e2e95d24475770bc234d86ad7c583e", "source_bundle_sha256": "01d2da58f9496e1b1667ad9ad21aead4ec5b6d217e0ae9ff6002d99042bce316", "target_path": ".codex/skills/sge-governed-checkpoints/", "target_bundle_sha256": "3213633ea8d430c7f9d986efa4af546d6b7359f2f9c11afcfdb7c5195cfee1b1", "file_inventory_ref": "Dashboard/Artifacts/SP001_SGEGovernanceSkill_ProvenanceInventory.json", "file_inventory": "source/target recursive file lists with per-file sha256 and byte sizes; paths sorted lexicographically", "adaptation": "rename identity to SGE, replace semx-kb roots with profile-driven kb roots, remove phase/P00-P17 runtime workflow"},
+  "provenance_boundary": "Absolute source paths are provenance only and must not enter public export or runtime claims.",
+  "mapping_policy_ref": "kb/data/strategy/sge_strategy_canonical_mapping_v1.json",
+  "mapping_carrier": "Dashboard execution ledger + generic KB mapping policy",
+  "mapping_authority": "每个文件先由 Dashboard inventory 定类；KB mapping 文件只定义通用 policy，不承载逐文件裁决；再按 policy 追溯同 revision 的 data/strategy JSON 或显式 null reason。",
+  "mapping_status": "frozen_for_s002_review"
+}
