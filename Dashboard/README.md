@@ -1,6 +1,6 @@
-# audio-transcriptor Dashboard
+# SGE Governance Dashboard
 
-本目录是 audio-transcriptor 的 execution memory：记录 Big Ideas、Stage Plans、Sessions、决定、风险、例外、验证和 closeout。它不是 canonical truth；稳定架构、治理合同、术语和来源规则位于 `kb/`。
+本目录是 SGE Governance Skill 的 execution memory：记录 Big Ideas、Stage Plans、Sessions、决定、风险、例外、验证和 closeout。它不是 canonical truth；稳定治理合同、术语和来源规则位于 `kb/`。
 
 ## 文件地图
 
@@ -20,4 +20,4 @@
 
 ## 范围声明
 
-当前 SP-001 只迁移 repo-local SGE Governance，不实现音频产品能力、不发布公共 Skill、不写全局目录。KYM/TCO、历史 phase/runtime 与 `run-loop-goal-cycle` 仅作为已记录的排除或未来 optional extension，不是本项目默认 authority。
+当前仓库只维护 SGE Governance Skill，不实现任何具体产品、不写全局目录。KYM/TCO、历史 phase/runtime 与 `run-loop-goal-cycle` 仅作为排除或未来 optional extension，不是默认 authority。

@@ -41,3 +41,4 @@
 | [SP001_S006_GoalClosure_OPCM.md](Artifacts/SP001_S006_GoalClosure_OPCM.md) | SP-001 OPCM/Scope Delta | MH-01..MH-11 逐项覆盖与唯一例外 |
 | [SP001_S006_GoalClosure_Closeout.md](Artifacts/SP001_S006_GoalClosure_Closeout.md) | SP-001 最终中文 closeout | 允许的 repo-local SGE 有界完成主张 |
 | [SP001_S006_GoalClosure_PostCloseoutReconciliation.md](Artifacts/SP001_S006_GoalClosure_PostCloseoutReconciliation.md) | SP-001 最终事后对账 | 唯一最终状态 verdict |
+| [SGEGovernanceRepositoryExtraction_Closeout.md](Artifacts/SGEGovernanceRepositoryExtraction_Closeout.md) | SGE Governance 专用仓库整理收束 | 删除 audio-transcriptor 产品源文件，保留通用 Skill；quick_validate 因缺少 PyYAML 待补跑 |

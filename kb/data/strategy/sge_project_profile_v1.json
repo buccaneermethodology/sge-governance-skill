@@ -1,18 +1,18 @@
 {
   "schema_version": "sge_project_profile_v1",
-  "profile_id": "audio-transcriptor-sge-v1",
-  "project_id": "audio-transcriptor",
+  "profile_id": "sge-governance-skill-v1",
+  "project_id": "sge-governance-skill",
   "skill_id": "sge-governed-checkpoints",
   "roots": {"kb_root": "kb", "dashboard_root": "Dashboard", "skill_root": ".codex/skills/sge-governed-checkpoints"},
   "authority": {
-    "product_design": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md",
+    "product_design": "not_applicable",
     "canonical_truth": "kb/data/strategy/",
     "execution_memory": "Dashboard/",
     "derived_dkg": "not_configured",
     "registry": "Dashboard/tools/session_registry.py"
   },
-  "identity": {"project_name": "audio-transcriptor", "cli_name": "audio-transcript", "forbidden_target_authority_tokens": ["semx", "kym", "tco"]},
-  "acceptance": {"default_mode": "implementation", "claim_ceiling": "repo-local SGE Governance 的有界迁移与本地结构验收；不含产品实现、公共发布或普遍跨仓库成熟性", "required_gates": ["context-bootstrap", "sgc", "goal-conformance", "validation", "semantic", "closeout-language"]},
+  "identity": {"project_name": "sge-governance-skill", "cli_name": "sge-governance-skill", "forbidden_target_authority_tokens": ["semx", "kym", "tco", "audio-transcriptor", "audio-transcript"]},
+  "acceptance": {"default_mode": "implementation", "claim_ceiling": "repo-local SGE Governance Skill 的有界结构、合同和门禁验收；不含任何具体产品实现、公共发布或普遍跨仓库成熟性", "required_gates": ["context-bootstrap", "sgc", "goal-conformance", "validation", "semantic", "closeout-language"]},
   "extensions": {"allowed_disabled_extension_ids": ["build-kym", "build-tco-coverage"], "orchestrator": "run-sge-loop-goal-cycle"},
-  "non_goals": ["audio-transcript CLI implementation", "FFmpeg/Whisper runtime", "provider calls", "global skill synchronization", "public release"]
+  "non_goals": ["具体产品 CLI 实现", "provider calls", "global skill synchronization", "public release without authorization"]
 }

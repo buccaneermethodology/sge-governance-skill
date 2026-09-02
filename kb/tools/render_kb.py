@@ -34,7 +34,7 @@ DATA_DIR = ROOT / "data"
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Render audio-transcriptor kb Doc-as-Data JSON into Markdown.")
+    parser = argparse.ArgumentParser(description="Render SGE Governance kb Doc-as-Data JSON into Markdown.")
     parser.add_argument(
         "--data-dir",
         type=Path,

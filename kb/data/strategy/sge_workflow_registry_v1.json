@@ -1,11 +1,11 @@
 {
   "schema_version": "sge_workflow_registry_v1",
-  "registry_id": "audio-transcriptor-sge-workflows-v1",
+  "registry_id": "sge-governance-skill-workflows-v1",
   "core_skill": ".codex/skills/sge-governed-checkpoints/SKILL.md",
   "profiles": {"implementation": "kb/data/strategy/sge_project_profile_v1.json"},
   "stages": ["intake", "design", "implement", "validate", "closeout"],
   "gates": ["context-bootstrap", "sgc", "goal-conformance", "lane-task-card", "validation-agent", "semantic", "closeout-language"],
-  "truth_boundaries": {"canonical": "kb/data/strategy/", "execution": "Dashboard/", "derived": "not_configured", "product_design": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md"},
+  "truth_boundaries": {"canonical": "kb/data/strategy/", "execution": "Dashboard/", "derived": "not_configured", "product_design": "not_applicable"},
   "optional_extensions": [{"id":"build-kym","enabled_by_default":false,"reason":"领域知识建模，不属于音频项目治理核心"},{"id":"build-tco-coverage","enabled_by_default":false,"reason":"目标/覆盖建模，不属于音频项目治理核心"},{"id":"run-sge-loop-goal-cycle","enabled_by_default":false,"reason":"编排器需在 SP-002 另行冻结"}],
-  "claim_ceiling": "registry 只声明入口和边界，不证明任何产品运行或公共发布。"
+  "claim_ceiling": "registry 只声明 SGE Skill 入口和边界，不证明任何具体产品运行或公共发布。"
 }
