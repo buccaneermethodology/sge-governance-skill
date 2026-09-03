@@ -4,11 +4,11 @@
 
 - Goal ID：`SP-002`
 - Goal 类型：多 Session、连续执行的公共候选与 clean-room 新手验收 Loop Goal
-- 状态：`To do`
+- 初始状态：`To do`；实时执行状态以 `Dashboard/Stage_Plans.md` 与 `Dashboard/Sessions.md` 为 authority，本 Goal 不承载易漂移的动态状态。
 - Base：[`SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md`](SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md)
 - Applied Patch：[`SP002-GP-001`](SP002_SGEOpenSourceNewcomerReadiness_GoalPatch.md)
-- 当前入口：`S-007`
-- 前置条件：SP-001 的 repo-local completion 已由最终独立对账支持；SP-002 仍需用户明确启动授权。
+- 初始入口：`S-007`；后续入口由 Session continuation scan 和 Dashboard 实时状态决定。
+- 前置条件：SP-001 的 repo-local completion 已由最终独立对账支持；用户已在 2026-09-02 明确授权启动并连续执行 SP-002。
 
 ## 关键结论中文展开
 
@@ -33,7 +33,7 @@
 - [SP-002 规划 Context](SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json)：既有 authority、非目标和 source-reading 边界。
 - [SP-002 规划 Closeout](SP002_PlanningAndSP001StrategyExpansion_Closeout.md)：确认原规划只完成 tracking，不等于实施或发布。
 - [当前 KB README](../../kb/README.md)、[KB Promotion Strategy](../../kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md)、[Human-AI Strategy](../../kb/docs/strategy/Strategy_Human_AI_Development.md)、[Semantic Surface Strategy](../../kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md)：truth carrier、公共边界与 execution memory 分层。
-- `semx-cli` 的 [Glossary JSON](../../../../semx-cli/semx-kb/data/glossary.json) 与 [Glossary Markdown](../../../../semx-cli/semx-kb/docs/Glossary.md)：仅作为候选来源；其中 Semx、pipeline、runtime、产品 ontology 必须排除。
+- `semx-cli` 的候选来源 locator 为 `../../../../semx-cli/semx-kb/data/glossary.json` 与 `../../../../semx-cli/semx-kb/docs/Glossary.md`；它们不属于本仓库可点击证据面，其中 Semx、pipeline、runtime、产品 ontology 必须排除。
 
 ### 未读或刻意跳过
 

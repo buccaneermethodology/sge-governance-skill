@@ -1,0 +1,172 @@
+# SGE Governance Glossary v1
+
+_Owner: sge-governance-skill | Version: 1.0.0 | Status: candidate | Updated: 2026-09-02_
+
+## 稳定治理术语
+
+- **Canonical Truth**: 稳定且被指定为权威的事实载体。
+  - Scope: SGE治理
+  - Authority: kb/data/
+  - Not: 执行状态; 候选发布批准
+  - Claim ceiling: 仅支撑其定义的稳定规则
+  - Forbidden overreads: 把Dashboard状态当作canonical truth
+  - Related: Doc as Data
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **KB / Dashboard Truth Split**: KB承载稳定规则，Dashboard承载执行记忆、状态和证据。
+  - Scope: SGE治理
+  - Authority: kb/data/ 与 Dashboard/
+  - Not: 把投影当真源
+  - Claim ceiling: 支撑正确的truth placement
+  - Forbidden overreads: 用Dashboard closeout替代KB规则
+  - Related: Canonical Truth, Closeout
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Doc as Data**: 由结构化JSON真源确定性生成可读文档。
+  - Scope: KB文档
+  - Authority: kb/data/
+  - Not: 手工修改派生Markdown作为权威
+  - Claim ceiling: 支撑renderer一致性
+  - Forbidden overreads: 把渲染通过当作语义正确
+  - Related: Canonical Truth
+  - Source refs: `kb/README.md`
+- **Evidence**: 可定位、可重算并与声明边界匹配的观察或验证材料。
+  - Scope: SGE验收
+  - Authority: 对应artifact与验证报告
+  - Not: 状态标签本身
+  - Claim ceiling: 只支撑所覆盖的事实
+  - Forbidden overreads: 把schema通过当作业务成功
+  - Related: Claim Ceiling, Validation Handoff
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Candidate**: 已构建并可验收、但尚未获得发布批准的候选产物。
+  - Scope: 公共候选
+  - Authority: 执行记忆与manifest
+  - Not: published; production-ready
+  - Claim ceiling: 有界候选证据
+  - Forbidden overreads: 把candidate当成release authorization
+  - Related: Promotion, Claim Ceiling
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Claim Ceiling**: 证据允许表达的最高结论强度。
+  - Scope: 所有治理声明
+  - Authority: Goal/Contract/Validation
+  - Not: 质量评分
+  - Claim ceiling: 不得超过最强可验证证据
+  - Forbidden overreads: 把局部通过扩展为普遍适用
+  - Related: Evidence, Scope Delta
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Scope Delta**: 对原始目标的删除、替换、降级、延期或权限改变的显式记录。
+  - Scope: Goal conformance
+  - Authority: Goal与Dashboard
+  - Not: 隐式缩窄
+  - Claim ceiling: 只能声明已批准或被阻断的范围
+  - Forbidden overreads: 把未批准删项写成完成
+  - Related: Claim Ceiling, Promotion
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Promotion**: 把经过审查的稳定候选事实提升到更高权威层的受治理动作。
+  - Scope: truth placement
+  - Authority: 显式promotion decision
+  - Not: 自动复制Dashboard
+  - Claim ceiling: 仅覆盖被批准的稳定子集
+  - Forbidden overreads: 把候选manifest当作KB法律
+  - Related: Canonical Truth, Candidate
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Session**: Goal DAG中有明确目标、输入、产物和退出条件的执行单元。
+  - Scope: SGE执行
+  - Authority: 项目执行记忆
+  - Not: Goal终止条件
+  - Claim ceiling: 最多关闭本Session范围
+  - Forbidden overreads: Session Done等于Goal complete
+  - Related: Stage Plan, Closeout
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Stage Plan**: 把Goal拆为有依赖关系的Sessions与退出条件的计划。
+  - Scope: SGE规划
+  - Authority: 项目执行记忆
+  - Not: 实现证据
+  - Claim ceiling: 支撑可追踪执行结构
+  - Forbidden overreads: 计划落库等于执行完成
+  - Related: Session, Scope Delta
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Lane Task Card**: 绑定角色、输入digest、写范围和claim ceiling的委派合同。
+  - Scope: 多代理执行
+  - Authority: lane_task_card_v1
+  - Not: 独立验证结论
+  - Claim ceiling: 仅授权card声明的工作
+  - Forbidden overreads: 摘要替代原始证据
+  - Related: Validation Handoff
+  - Source refs: `.codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py`
+- **Validation Handoff**: 交给独立Validation的输入、原始目标、证据、差异和声明边界包。
+  - Scope: SGE验收
+  - Authority: Dashboard closeout
+  - Not: Validation verdict
+  - Claim ceiling: 只证明交接完整
+  - Forbidden overreads: 把handoff当作pass
+  - Related: Evidence, Claim Ceiling
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Semantic Reviewer**: 审查边界、truth placement、演进风险与实现入口语义的独立角色。
+  - Scope: 高语义风险Goal
+  - Authority: 独立review artifact
+  - Not: Builder自审
+  - Claim ceiling: 双verdict：设计冻结有效性与实现入口就绪性
+  - Forbidden overreads: review通过等于发布批准
+  - Related: Design Freeze Validity, Implementation Entry Readiness
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Closeout**: 对实际落地范围、证据、未完成项和后续候选的耐久执行记忆。
+  - Scope: SGE执行
+  - Authority: Dashboard/Artifacts/*_Closeout.md
+  - Not: 自动发布批准
+  - Claim ceiling: 受证据与Goal completion rule约束
+  - Forbidden overreads: Dashboard Done等于生产就绪
+  - Related: Session, Validation Handoff
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Design Freeze Validity**: 判断设计边界、authority、scope delta和claim ceiling是否有效的verdict。
+  - Scope: Semantic Review
+  - Authority: Semantic Reviewer
+  - Not: 实现正确性
+  - Claim ceiling: 只支撑设计层结论
+  - Forbidden overreads: 倒推Builder已完成
+  - Related: Semantic Reviewer
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Implementation Entry Readiness**: 判断Builder能否从最小安全切片开始而不越过边界的verdict。
+  - Scope: Semantic Review
+  - Authority: Semantic Reviewer
+  - Not: 实现结果
+  - Claim ceiling: 支撑进入实现的条件
+  - Forbidden overreads: 把ready当作landed
+  - Related: Minimum Safe Slice
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Minimum Safe Slice**: 能被独立验证且不扩大权限、范围或公共身份的最小实现切片。
+  - Scope: 实现入口
+  - Authority: Design Handoff
+  - Not: 完整产品能力
+  - Claim ceiling: 仅支撑切片范围
+  - Forbidden overreads: 切片通过等于全Goal完成
+  - Related: Implementation Entry Readiness
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **Future-agent Misuse Scenario**: 描述未来Agent可能如何误读持久表面的反例，用于设计防复发边界。
+  - Scope: 治理设计
+  - Authority: Design/Semantic Review
+  - Not: 运行时规则
+  - Claim ceiling: 支撑风险识别
+  - Forbidden overreads: 场景本身不是发生事实
+  - Related: Claim Ceiling
+  - Source refs: `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- **SGC**: 检查声明强度、证据层、不变量和禁止折叠的结构治理合同。
+  - Scope: SGE治理
+  - Authority: kb/data/strategy/strategy_sgc_structural_contract_v1.json
+  - Not: 质量分数
+  - Claim ceiling: 结构性支持
+  - Forbidden overreads: 替代独立Validation
+  - Related: Evidence, Claim Ceiling
+  - Source refs: `kb/data/strategy/strategy_sgc_structural_contract_v1.json`
+- **ERBE**: 先冻结机器可读合同与案例，再以同身份RED/GREEN和独立Validation验收的规范优先方法。
+  - Scope: 高语义风险验收
+  - Authority: Goal Contract/Cases
+  - Not: BDD投影本身
+  - Claim ceiling: 支撑声明行为的可重算验收
+  - Forbidden overreads: producer自报状态不是验证
+  - Related: Evidence, Validation Handoff
+  - Source refs: `kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json`
+
+## Source Scope
+
+- `.codex/skills/sge-governed-checkpoints/SKILL.md`
+- `README.md`
+- `kb/data/strategy/strategy_kb_promotion_and_source_policy.json`

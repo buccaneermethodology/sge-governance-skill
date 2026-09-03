@@ -2,11 +2,11 @@
 
 ## 当前状态
 
-- Status：`To do`
+- Initial Status：`To do`；实时状态以 `Dashboard/Stage_Plans.md` 与 `Dashboard/Sessions.md` 为 authority。
 - 依赖：`SP-001 complete`
-- 当前入口：`S-007`；依赖已满足，但仍需用户明确启动授权，因此当前不自动启动。
+- 初始入口：`S-007`；依赖已满足，用户已于 2026-09-02 明确启动，后续入口由 continuation scan 决定。
 - 正式 Goal：[SP-002 Loop Goal](SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md)。
-- 本阶段计划只定义未来执行边界；不执行、不发布、不写全局 Skills。
+- 本阶段计划冻结执行边界；实际实现与验证记录在各 Session closeout。仍不自动发布、不 push、不写全局 Skills。
 
 ## 目标
 

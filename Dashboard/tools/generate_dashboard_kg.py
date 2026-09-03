@@ -228,7 +228,7 @@ def path_node_id(path: str) -> str:
 def load_session_records(dashboard: Path) -> list[tuple[SessionRecord, str]]:
     located: list[tuple[SessionRecord, str]] = [
         (record, "Dashboard/Sessions.md")
-        for record in parse_registry_file(dashboard / "Sessions.md")
+        for record in parse_registry_file(dashboard / "Sessions.md", allow_empty=True)
     ]
     archive_root = dashboard / "Archives" / "Sessions"
     for path in sorted(archive_root.glob("*.md")):

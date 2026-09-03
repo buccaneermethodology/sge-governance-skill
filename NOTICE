@@ -1,0 +1,5 @@
+SGE Governance Skill 公共候选
+
+本候选按 MIT License 分发。公共 manifest 中的文件来自本仓库通用 SGE
+治理实现；Dashboard、Agent Logs、私有 provenance、历史执行证据和具体产品
+执行面不属于公共导出。发布授权、远端仓库和生产就绪是独立决定。

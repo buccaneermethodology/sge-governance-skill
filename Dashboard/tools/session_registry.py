@@ -319,7 +319,7 @@ def render_archive(records: list[SessionRecord], filename: str) -> str:
     )
 
 
-def parse_registry_file(path: Path) -> list[SessionRecord]:
+def parse_registry_file(path: Path, *, allow_empty: bool = False) -> list[SessionRecord]:
     if not path.is_file() or path.is_symlink():
         raise RegistryError("malformed_registry", f"registry file is not a regular file: {path}")
     records: list[SessionRecord] = []
@@ -374,7 +374,7 @@ def parse_registry_file(path: Path) -> list[SessionRecord]:
         records.append(record)
     if header_count != 1:
         raise RegistryError("malformed_registry", f"{path}: expected exactly one registry header")
-    if not records:
+    if not records and not allow_empty:
         raise RegistryError("malformed_registry", f"{path}: registry table is empty")
     try:
         ensure_unique(records)
@@ -431,7 +431,7 @@ def _collect_authoritative_records(
     repo: Path,
 ) -> tuple[list[SessionRecord], list[SessionRecord], list[Path], Path]:
     dashboard = repo / "Dashboard"
-    current = parse_registry_file(dashboard / "Sessions.md")
+    current = parse_registry_file(dashboard / "Sessions.md", allow_empty=True)
     archive_root = dashboard / "Archives" / "Sessions"
     archive_paths, notes_path = _archive_inventory(archive_root)
     archives: list[SessionRecord] = []

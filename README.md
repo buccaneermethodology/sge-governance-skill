@@ -14,8 +14,18 @@
 python3 .codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py validate <context.json>
 python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate <lane-card.json> --repo .
 python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file <closeout.md>
-python3 Dashboard/tools/doctor.py --repo .
 ```
+
+面向第一次接触 SGE 的用户，请从[中文新手指南](docs/Beginner_Guide_CN.md)或[快速开始](docs/Quick_Start_CN.md)进入。公共候选可用以下命令进行 default-deny 检查和干净导出：
+
+```bash
+python3 tools/sge_public.py doctor
+python3 tools/sge_public.py export /tmp/sge-public-candidate
+```
+
+`public_export_manifest_v1.json` 逐文件记录 source、license、provenance、public 决定和执行上下文边界。导出成功只形成 `candidate_not_approved` 候选，不等于 release authorization。
+
+仅在包含私有 Dashboard 执行面的源仓库维护场景中，再运行 `python3 Dashboard/tools/doctor.py --repo .`；公共导出包不包含该内部 doctor，其自检入口始终是 `python3 tools/sge_public.py doctor`。
 
 ## 边界
 
@@ -28,3 +38,6 @@ python3 Dashboard/tools/doctor.py --repo .
 - `.codex/skills/sge-governed-checkpoints/`：Skill、references、schemas、确定性脚本。
 - `kb/data/strategy/`：SGE canonical strategy contracts 与 generic profile。
 - `Dashboard/`：执行记忆、Validation、closeout 和 provenance 记录。
+- `docs/`：面向新手的公共 companion 文档。
+- `tools/sge_public.py`：可恢复的 doctor/export/bootstrap/install/upgrade/uninstall 入口。
+- `extensions/registry_v1.json`：默认关闭的 domain extension 接口；core 不依赖这些扩展。

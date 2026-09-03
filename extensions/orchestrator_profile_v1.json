@@ -1,0 +1,14 @@
+{
+  "schema_version":"sge_orchestrator_profile_v1",
+  "profile_id":"project-neutral-default",
+  "project_binding":null,
+  "extension_registry":"extensions/registry_v1.json",
+  "decision_hooks":{
+    "continue_session_route":"dispatch_next_ready_session",
+    "reported_terminal_route":"enter_completion_audit",
+    "human_authority_route":"request_single_human_decision",
+    "not_ready_route":"record_dependency_blocker"
+  },
+  "required_terminal_evidence":["authority_ref","validation_verdict"],
+  "claim_ceiling":"routing decisions over supplied governed state; never completion evidence"
+}
