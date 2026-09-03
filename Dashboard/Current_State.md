@@ -19,3 +19,10 @@
 - `SP-002` 当前技术状态为 `candidate_goal_terminal_with_approved_proc01_exception`；批准前 blocked verdict、批准后 Final Validation 与批准后 post-closeout reconciliation 均保留，最终状态已由最新对账吸收。
 - 已落地 license/provenance、default-deny public export、中文 Beginner Guide、install/doctor/bootstrap/upgrade/recoverable uninstall、profile/hooks 编排候选与 optional extension contract；仍不得解释为发布或生产就绪。
 - 权威入口：[SP-002 Loop Goal](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md)、[Execution Context](Artifacts/SP002_Execution_ContextBootstrap.json)、[S-010 UAT](Artifacts/SP002_S010_NewcomerUAT.md)、[Semantic Review](Artifacts/SP002_S011_SemanticReview.md) 与 [SP-002 Stage Plan](Artifacts/SP002_SGEOpenSourceNewcomerReadiness_StagePlan.md)。
+
+## SP-003 Open-source Distribution Architecture
+
+- 新增 `BI-002` 与 `SP-003`，当前均为 `To do`（待启动）；新 Sessions 为 `S-016..S-022`，全部是可追踪的后续入口，未开始实现。
+- 稳定架构合同已进入 [KB strategy](../kb/docs/strategy/Open_Source_Dual_Repo_Distribution.md)：私有 `sge-governance-skill` 是唯一 canonical development source，公开 `bm-sge-governance` 是 exact-allowlist deterministic one-way projection/distribution repo，禁止双向真源。
+- Maintainer surface 包含 allowlist/provenance、fresh-root export、diff、Validation 与 release authority；end-user surface 默认是公开仓 clone 后只带 target 的 install/upgrade，`--source` 仅高级/测试参数。
+- SP-003 当前只完成 Goal/Stage Plan/Session 与稳定规则设计落库；公开仓名称已修订为 `bm-sge-governance`，详见[名称修订收束](Artifacts/SP003_OpenSourceDistributionArchitecture_NameRevision_Closeout.md)。不证明 exporter、installer、UAT、独立 Validation、公开 GitHub 仓库、push、tag、release 或 production readiness。外部动作仍需具体人类授权。

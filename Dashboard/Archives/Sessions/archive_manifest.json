@@ -4,13 +4,13 @@
   "authoritative_surfaces": {
     "current": "Dashboard/Sessions.md",
     "archives": "Dashboard/Archives/Sessions/*.md",
-    "record_set_sha256": "c886e8714c541d0d41184518c9672618372d05eded291cf4c38a31e38f6359fc"
+    "record_set_sha256": "007b942dc5b597c13a9c1c06973475aec65845c6f7a0b2474950ddc8e979607a"
   },
-  "record_count": 15,
-  "current_count": 0,
+  "record_count": 22,
+  "current_count": 7,
   "archive_count": 15,
-  "index_count": 15,
-  "canonical_key_count": 15,
+  "index_count": 22,
+  "canonical_key_count": 22,
   "historical_id_collision_count": 0,
   "historical_id_collisions": {},
   "current_retention": {

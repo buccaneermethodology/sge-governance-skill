@@ -2,6 +2,7 @@
   "schema_version": "kb_render_manifest_v1",
   "documents": [
     {"source": "data/glossary_v1.json", "output": "docs/Glossary.md", "adapter": "sectioned_doc_v1"},
+    {"source": "data/strategy/strategy_open_source_dual_repo_distribution_v1.json", "output": "docs/strategy/Open_Source_Dual_Repo_Distribution.md", "adapter": "sectioned_doc_v1"},
     {
       "source": "data/strategy/strategy_human_ai_development.json",
       "output": "docs/strategy/Strategy_Human_AI_Development.md",
