@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-- Status：`To do`（待启动）；本轮只落库设计，不表示实现、candidate、公开仓或 release 已存在。
+- Status：`Done`（有界完成；S-022 关闭后独立对账已通过），本文件记录的完成仅限本地架构与合同范围，不表示公开仓或 release 已存在。
 - Parent Big Idea：[BI-002](../Big_Ideas.md)；与已收束的 SP-002 并列，SP-002 的候选证据不被改写为本阶段实现证据。
 - 公开仓逻辑名称：`bm-sge-governance`；owner、URL、default branch、GitHub 权限和 release 具体身份均需在后续授权点由人类确认。
 - 私有 canonical source：`sge-governance-skill`；公开仓只能由其 exact-allowlist projection 生成，禁止双向真源。
@@ -16,18 +16,18 @@
 
 | ID | Must-have | 可观察验收 | 设计入口 | 实现状态 |
 | --- | --- | --- | --- | --- |
-| ODA-MH-01 | 双仓 source-of-truth contract | 明确 private canonical → public projection 单向关系与禁止双向编辑 | S-016 | 待实现 |
-| ODA-MH-02 | public content boundary | exact allowlist、default-deny、private residue/unknown/absolute path/symlink 等 fail closed | S-016/S-017 | 待实现 |
-| ODA-MH-03 | deterministic projection pipeline | export→diff→validation→authorized public update 每步可重算、可追溯 | S-016/S-017 | 待实现 |
-| ODA-MH-04 | version/revision/candidate identity | source、manifest、candidate、projection commit、tag/release 互不替代 | S-016/S-019 | 待实现 |
-| ODA-MH-05 | end-user clone/install path | clone `bm-sge-governance` 后默认 current public source，只需 target；`--source` 仅高级/测试 | S-018 | 待实现 |
-| ODA-MH-06 | upgrade/backup/install provenance | install record、backup、rollback、target authority 保留可重算 | S-018 | 待实现 |
-| ODA-MH-07 | maintainer/end-user separation | 普通用户不需要 export/allowlist/release 内部 surface | S-016/S-018 | 待实现 |
-| ODA-MH-08 | external PR return flow | public PR 先回流 private canonical，再重新 export/validation | S-020 | 待实现 |
-| ODA-MH-09 | GitHub permission boundary | push/tag/release 明确权限，CI 默认无发布权，逐次人类授权 | S-019 | 待实现 |
-| ODA-MH-10 | clean-room/UAT/independent validation | maintainer、end-user、负例和回流路径均由独立证据覆盖 | S-021 | 待实现 |
-| ODA-MH-11 | state-axis separation | candidate/validated/approved/published/production/Git mutation 不折叠 | S-019/S-021 | 待实现 |
-| ODA-MH-12 | final governed closeout | OPCM、Scope Delta、中文 closeout、final Validation、post-closeout reconciliation | S-022 | 待实现 |
+| ODA-MH-01 | 双仓 source-of-truth contract | 明确 private canonical → public projection 单向关系与禁止双向编辑 | S-016 | landed（有界本地实现） |
+| ODA-MH-02 | public content boundary | exact allowlist、default-deny、private residue/unknown/absolute path/symlink 等 fail closed | S-016/S-017 | landed（有界本地实现） |
+| ODA-MH-03 | deterministic projection pipeline | export→diff→validation→authorized public update 每步可重算、可追溯 | S-016/S-017 | landed（远端更新仍未执行） |
+| ODA-MH-04 | version/revision/candidate identity | source、manifest、candidate、projection commit、tag/release 互不替代 | S-016/S-019 | landed（有界本地实现） |
+| ODA-MH-05 | end-user clone/install path | clone `bm-sge-governance` 后默认 current public source，只需 target；`--source` 仅高级/测试 | S-018 | landed（有界本地支持） |
+| ODA-MH-06 | upgrade/backup/install provenance | install record、backup、rollback、target authority 保留可重算 | S-018 | landed（有界本地支持） |
+| ODA-MH-07 | maintainer/end-user separation | 普通用户不需要 export/allowlist/release 内部 surface | S-016/S-018 | landed（有界本地实现） |
+| ODA-MH-08 | external PR return flow | public PR 先回流 private canonical，再重新 export/validation | S-020 | landed（合同/Provenance 已落地；真实远端事件非本地执行项） |
+| ODA-MH-09 | GitHub permission boundary | push/tag/release 明确权限，CI 默认无发布权，逐次人类授权 | S-019 | landed（权限合同已落地；具体授权仍属后续 authority） |
+| ODA-MH-10 | clean-room/UAT/independent validation | maintainer、end-user、负例和回流路径均由独立证据覆盖 | S-021 | landed（独立验证为 pass-with-findings，保留 findings） |
+| ODA-MH-11 | state-axis separation | candidate/validated/approved/published/production/Git mutation 不折叠 | S-019/S-021 | landed（有界本地实现） |
+| ODA-MH-12 | final governed closeout | OPCM、Scope Delta、中文 closeout、final Validation、post-closeout reconciliation | S-022 | landed（有界完成；独立对账通过） |
 
 ## Session DAG
 
@@ -39,7 +39,7 @@
 | S-019 | Identity、release 与 GitHub 权限 | revision/candidate/projection/tag/release identity、rights/license、permission/authorization | release governance contract、permission matrix、readback checklist | candidate、approval、push、tag、release、production 状态分离且无默认发布权 |
 | S-020 | External PR 回流维护 | public PR provenance、review、canonical port、re-export、validation | contribution policy、PR provenance record、round-trip evidence | 公开仓修改不直接成为真源；回流后 projection 可重算 |
 | S-021 | Clean-room 与独立验收 | maintainer/end-user UAT、ERBE RED/GREEN、independent Validation、Semantic Review | UAT/Validation/Semantic artifacts、final evidence matrix | 关键正负例由独立 authority 重算；不把测试通过升格为 release |
-| S-022 | Final closure 与 reconciliation | OPCM、Scope Delta、中文 closeout、最终状态、post-closeout 对账 | final closeout、Validation、reconciliation、release decision packet | 只在完整 Goal completion rule 满足时关闭；否则保持 To do/Doing 并记录下一步 |
+| S-022 | Final closure 与 reconciliation | OPCM、Scope Delta、中文 closeout、最终状态、post-closeout 对账 | final closeout、Validation、reconciliation、release decision boundary | Final Validation 与 post-closeout reconciliation 均为 pass_with_bounds；满足本地有界 completion rule |
 
 固定依赖为 `S-016 → S-017 → S-018 → S-019 → S-020 → S-021 → S-022`。每个 Session 的 `Done` 只关闭该 Session 的有界范围；Session closeout 后必须扫描下一 Session，不得把 S-016 设计完成当作 SP-003 完成。
 
@@ -56,4 +56,4 @@
 - 不在本轮创建/修改 Skill、exporter、installer 或 public repo。
 - 不执行 GitHub repo 创建、push、tag、release，不写全局 Skill，不作生产就绪声明。
 - 不把公开仓视作第二编辑真源，不把外部 PR merge 视作 canonical truth。
-- 本 Stage Plan 的最大当前主张仅是：SP-003 的完整实现边界、Sessions、验收、authority 和 claim ceiling 已落库；实现和公开发布尚未发生。
+- 本 Stage Plan 的最大当前主张仅是：SP-003 在声明的本地/合同范围内完成有界实现、evidence、Sessions、验收、authority 和 claim ceiling；真实 PR 回流、具体 GitHub 权利、远端 mutation/read-back、公开仓发布和 production readiness 均未发生。

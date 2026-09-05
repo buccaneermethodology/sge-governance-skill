@@ -20,7 +20,7 @@ python3 tools/sge_public.py doctor
 python3 tools/sge_public.py export /tmp/sge-public-candidate
 ```
 
-成功输出形如 `exported:<文件数>:/tmp/sge-public-candidate`；文件数以当前 manifest 为准。后续安装和升级均以这个 staging 目录作为 `--source`，不直接从包含 Dashboard 的工作树复制。
+成功输出形如 `exported:<文件数>:/tmp/sge-public-candidate`；文件数以当前 manifest 为准。普通用户应先 clone 当前公开仓并在该目录运行安装命令，工具默认把当前公开仓作为 source；`--source` 只用于维护者或测试 alternate source，不是普通用户必需参数。
 
 ## 3. 建立最小项目
 
@@ -33,25 +33,24 @@ python3 tools/sge_public.py bootstrap /tmp/my-sge-project
 ## 4. 安装 core Skill
 
 ```bash
-python3 /tmp/sge-public-candidate/tools/sge_public.py install \
-  --source /tmp/sge-public-candidate \
+cd /tmp/sge-public-candidate
+python3 tools/sge_public.py install \
   --target /tmp/my-sge-project
 ```
 
-成功输出形如 `installed:17:/tmp/my-sge-project`。安装只复制 manifest 允许的 `.codex/skills/sge-governed-checkpoints/` 文件，并写入安装记录。目标项目自己的 `AGENTS.md`、`kb/` 和 `Dashboard/` 仍是该项目的 authority。
+成功输出形如 `installed:17:/tmp/my-sge-project`。普通用户不需要指定 `--source`：命令从当前公开仓目录读取 source；`--source` 只用于维护者、高级诊断或测试 alternate source。安装只复制 manifest 允许的 `.codex/skills/sge-governed-checkpoints/` 文件，并写入包含 candidate、source/manifest identity、文件摘要、写入范围和 target 路径的 install record。目标项目自己的 `AGENTS.md`、`kb/`、`Dashboard/`、Goal 和 Session 仍是该项目的 authority，安装不会覆盖这些表面。
 
 ## 5. 升级并确认可恢复备份
 
 当 staging 中出现经过审查的新候选时运行：
 
 ```bash
-python3 /tmp/sge-public-candidate/tools/sge_public.py upgrade \
-  --source /tmp/sge-public-candidate \
+python3 tools/sge_public.py upgrade \
   --target /tmp/my-sge-project
 find /tmp/my-sge-project/.sge-backups -name SKILL.md -print
 ```
 
-成功输出形如 `upgraded:17:/tmp/my-sge-project`，随后 `find` 应至少显示一个旧 core 的 `SKILL.md`。若新版本有问题，从打印出的 `.sge-backups/<timestamp>/...` 路径恢复。
+成功输出形如 `upgraded:17:/tmp/my-sge-project`，随后 `find` 应至少显示一个旧 core 的 `SKILL.md`。若新版本有问题，从打印出的 `.sge-backups/<timestamp>/...` 路径恢复。升级先保存旧 core 的文件摘要与 backup tree 摘要；复制或记录写入失败时会自动恢复旧 core，原 install record 仍保持有效。这只保证本地事务性的可恢复行为，不是跨平台升级保证。
 
 ## 6. 跑一个最小 Goal
 
@@ -86,4 +85,8 @@ Session 执行提示：
 python3 /tmp/sge-public-candidate/tools/sge_public.py uninstall --target /tmp/my-sge-project
 ```
 
-卸载把已安装 core 移到目标项目 `.sge-trash/`，不删除项目自己的 KB、Dashboard 或 AGENTS.md。需要时可手工移回。
+卸载把已安装 core 移到目标项目 `.sge-trash/`，并把 install record 移为同一时间戳目录下的 `install-record.json`；不删除项目自己的 KB、Dashboard 或 AGENTS.md。需要时可将 core 与 record 一起手工移回。工具只处理自己记录的 core surface；缺少 install record、target layout 不安全或 core 被替换为 symlink 时会拒绝猜测删除范围。
+
+## 9. 边界说明
+
+本指南描述的是当前本地公开 source 的 candidate lifecycle evidence：`doctor`、安装、升级、备份、失败回滚和可恢复卸载。它不证明 GitHub 公开仓已创建或发布，不授予 push/tag/release 权限，也不证明跨平台兼容、license 再分发权或 production readiness。

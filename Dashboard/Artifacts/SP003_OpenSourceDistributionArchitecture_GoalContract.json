@@ -61,73 +61,73 @@
       "evidence": "双仓 KB contract、Loop Goal、Scope/Authority coverage matrix",
       "requirement": "冻结私有 canonical source、公开 projection 与禁止双向真源的 source-of-truth contract。",
       "requirement_id": "ODA-MH-01",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "public boundary contract、allowlist/d deny cases、clean-room export evidence",
       "requirement": "冻结 bm-sge-governance 的 exact-allowlist public content boundary 与 default-deny/private residue 排除面。",
       "requirement_id": "ODA-MH-02",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "maintainer workflow、ERBE cases、independent validation 与 final diff",
       "requirement": "定义 deterministic export→diff→validation→public repo update 流程及每一步的 authority、输入输出和禁止折叠。",
       "requirement_id": "ODA-MH-03",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "identity contract、candidate/release matrix、可重算 manifest",
       "requirement": "定义 source revision、manifest revision、candidate identity、projection commit、tag/release identity 的互不替代关系。",
       "requirement_id": "ODA-MH-04",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "Beginner/Quick Start、install contract、clean-room replay",
       "requirement": "定义公开仓 clone 后的 end-user install 路径：默认 source=current public repo，只需 target，--source 仅作高级/测试入口。",
       "requirement_id": "ODA-MH-05",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "lifecycle contract、install record schema、backup/rollback evidence",
       "requirement": "定义 upgrade、backup、install record、恢复/卸载的 provenance 与 target authority 保留规则。",
       "requirement_id": "ODA-MH-06",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "surface matrix、CLI/docs behavior、UAT negative cases",
       "requirement": "物理和合同上分离 maintainer surface 与 end-user surface，禁止用户承担 export/allowlist/release 内部知识。",
       "requirement_id": "ODA-MH-07",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "contribution policy、PR provenance record、clean-room replay",
       "requirement": "定义 public repo 外部 PR 的 review、回流 canonical、重新 export/validation 的单向贡献路径。",
       "requirement_id": "ODA-MH-08",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "release governance contract、permission matrix、authorization record template",
       "requirement": "冻结 GitHub push/tag/release 权限边界、CI 默认不自动发布与逐次人类授权要求。",
       "requirement_id": "ODA-MH-09",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "ERBE contract/cases、UAT、Validation Handoff、independent review",
       "requirement": "以 clean-room、维护者回归、终端用户 UAT 和 independent validation 验证双仓架构的关键路径与负例。",
       "requirement_id": "ODA-MH-10",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "state-axis matrix、OPCM、Semantic Review、post-closeout reconciliation",
       "requirement": "保持 candidate、validated、approved、published、production-ready、Git mutation 等状态轴分离。",
       "requirement_id": "ODA-MH-11",
-      "status": "pending"
+      "status": "landed"
     },
     {
       "evidence": "SP-003 OPCM、中文 closeout、独立最终对账与 Dashboard 状态",
       "requirement": "完成逐项 Original Plan Coverage Matrix、Scope Delta、中文 closeout、final validation 与 post-closeout reconciliation。",
       "requirement_id": "ODA-MH-12",
-      "status": "pending"
+      "status": "landed"
     }
   ],
   "resolution": {

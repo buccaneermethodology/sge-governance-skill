@@ -4,11 +4,11 @@
   "authoritative_surfaces": {
     "current": "Dashboard/Sessions.md",
     "archives": "Dashboard/Archives/Sessions/*.md",
-    "record_set_sha256": "007b942dc5b597c13a9c1c06973475aec65845c6f7a0b2474950ddc8e979607a"
+    "record_set_sha256": "ee8c0288e90b395607faaf56bd1028a3af727b21ebbb63e497b6a5bef1dc8ca4"
   },
   "record_count": 22,
-  "current_count": 7,
-  "archive_count": 15,
+  "current_count": 0,
+  "archive_count": 22,
   "index_count": 22,
   "canonical_key_count": 22,
   "historical_id_collision_count": 0,
@@ -21,7 +21,8 @@
   },
   "archive_files": {
     "SP-001.md": 10,
-    "SP-002.md": 5
+    "SP-002.md": 5,
+    "SP-003.md": 7
   },
   "claim_ceiling": "CURRENT_SESSION_REGISTRY_PROJECTION_ONLY"
 }

@@ -23,7 +23,7 @@ class PublicCandidateTests(unittest.TestCase):
         data=MOD.load(); allowed=MOD.validate(data)
         self.assertTrue(data["default_deny"]); self.assertNotIn("Dashboard/Sessions.md", allowed)
         with tempfile.TemporaryDirectory() as td:
-            dest=Path(td); MOD.export(dest)
+            dest=Path(td); MOD.export(dest, require_clean=False)
             exported={p.relative_to(dest).as_posix() for p in dest.rglob("*") if p.is_file()}
             self.assertEqual(exported-{"EXPORT_METADATA.json"}, allowed)
 
@@ -47,9 +47,9 @@ class PublicCandidateTests(unittest.TestCase):
             root=Path(td); (root/"bad.txt").write_text("/Users/alice/private", encoding="utf-8")
             old=MOD.ROOT; MOD.ROOT=root
             try:
-                case=json.loads(json.dumps(MOD.load())); case["files"]=[{"path":"bad.txt","license":"MIT","public":True,"execution_context":False}]
+                case=json.loads(json.dumps(MOD.load())); case["files"]=[{"path":"bad.txt","source":"fixture","license":"MIT","provenance":"test fixture","public":True,"execution_context":False}]
                 with self.assertRaises(SystemExit) as cm2: MOD.validate(case)
-                self.assertIn("identity_or_private_residue", str(cm2.exception))
+                self.assertIn("private", str(cm2.exception))
             finally: MOD.ROOT=old
 
     def test_lifecycle_is_recoverable_and_preserves_authority(self):

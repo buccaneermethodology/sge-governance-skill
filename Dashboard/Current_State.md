@@ -22,7 +22,7 @@
 
 ## SP-003 Open-source Distribution Architecture
 
-- 新增 `BI-002` 与 `SP-003`，当前均为 `To do`（待启动）；新 Sessions 为 `S-016..S-022`，全部是可追踪的后续入口，未开始实现。
+- `BI-002` 与 `SP-003` 已在声明的本地/合同范围内 `Done`（有界完成）；S-022 的 Final Validation 与 post-closeout reconciliation 均为 `pass_with_bounds`，MH-08 policy/provenance 和 MH-09 权限合同按本地架构要求落地。不能由本地 evidence 推导公开仓、发布或生产就绪。
 - 稳定架构合同已进入 [KB strategy](../kb/docs/strategy/Open_Source_Dual_Repo_Distribution.md)：私有 `sge-governance-skill` 是唯一 canonical development source，公开 `bm-sge-governance` 是 exact-allowlist deterministic one-way projection/distribution repo，禁止双向真源。
 - Maintainer surface 包含 allowlist/provenance、fresh-root export、diff、Validation 与 release authority；end-user surface 默认是公开仓 clone 后只带 target 的 install/upgrade，`--source` 仅高级/测试参数。
-- SP-003 当前只完成 Goal/Stage Plan/Session 与稳定规则设计落库；公开仓名称已修订为 `bm-sge-governance`，详见[名称修订收束](Artifacts/SP003_OpenSourceDistributionArchitecture_NameRevision_Closeout.md)。不证明 exporter、installer、UAT、独立 Validation、公开 GitHub 仓库、push、tag、release 或 production readiness。外部动作仍需具体人类授权。
+- SP-003 当前已完成 S-016..S-022 的有界本地实现/合同与 evidence；S-016 的 `blocked`/`partial` 历史 verdict 保留，S-017 独立 Validation 为 `pass-with-findings`，S-021 独立 Validation 为 `pass-with-findings`（7 案为 structural_recompute，非 runtime witness），S-021 Semantic 为 `partial/conditional`。S-022 已由 Final Validation 与独立 post-closeout reconciliation 在声明范围内共同收束，`goal_terminal=true`。公开仓名称已修订为 `bm-sge-governance`，详见[名称修订收束](Artifacts/SP003_OpenSourceDistributionArchitecture_NameRevision_Closeout.md)。不证明公开 GitHub 仓库、push、tag、release、逐文件权利批准或 production readiness；外部动作仍需具体人类授权。

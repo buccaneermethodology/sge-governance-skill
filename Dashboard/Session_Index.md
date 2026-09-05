@@ -19,10 +19,10 @@
 | <a id="sp-001-s-013"></a>`SP-001/S-013` | `S-013` | SP-001 | `Done` | [archive](Archives/Sessions/SP-001.md#sp-001-s-013) | — | Semantic-governance canonical truth 恢复 |
 | <a id="sp-001-s-014"></a>`SP-001/S-014` | `S-014` | SP-001 | `Done` | [archive](Archives/Sessions/SP-001.md#sp-001-s-014) | — | 引用、KB/DKG 与标准 doctor 修复 |
 | <a id="sp-001-s-015"></a>`SP-001/S-015` | `S-015` | SP-001 | `Done` | [archive](Archives/Sessions/SP-001.md#sp-001-s-015) | — | 最终集成、OPCM 与 Goal closure |
-| <a id="sp-003-s-016"></a>`SP-003/S-016` | `S-016` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-016) | [SP003 Stage Plan](Artifacts/SP003_OpenSourceDistributionArchitecture_StagePlan.md) | 双仓 source-of-truth 与公共边界冻结 |
-| <a id="sp-003-s-017"></a>`SP-003/S-017` | `S-017` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-017) | — | Maintainer deterministic projection |
-| <a id="sp-003-s-018"></a>`SP-003/S-018` | `S-018` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-018) | — | End-user clone/install/upgrade lifecycle |
-| <a id="sp-003-s-019"></a>`SP-003/S-019` | `S-019` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-019) | — | Identity、license、release 与 GitHub 权限 |
-| <a id="sp-003-s-020"></a>`SP-003/S-020` | `S-020` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-020) | — | External PR 回流 canonical |
-| <a id="sp-003-s-021"></a>`SP-003/S-021` | `S-021` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-021) | — | Clean-room、UAT 与独立验证 |
-| <a id="sp-003-s-022"></a>`SP-003/S-022` | `S-022` | SP-003 | `To do` | [current](Sessions.md#sp-003-s-022) | — | Final OPCM、closeout 与 post-closeout reconciliation |
+| <a id="sp-003-s-016"></a>`SP-003/S-016` | `S-016` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-016) | — | 双仓 source-of-truth 与公共边界冻结 |
+| <a id="sp-003-s-017"></a>`SP-003/S-017` | `S-017` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-017) | — | Maintainer deterministic projection |
+| <a id="sp-003-s-018"></a>`SP-003/S-018` | `S-018` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-018) | — | End-user clone/install/upgrade lifecycle |
+| <a id="sp-003-s-019"></a>`SP-003/S-019` | `S-019` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-019) | — | Identity、license、release 与 GitHub 权限 |
+| <a id="sp-003-s-020"></a>`SP-003/S-020` | `S-020` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-020) | — | External PR 回流 canonical |
+| <a id="sp-003-s-021"></a>`SP-003/S-021` | `S-021` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-021) | — | Clean-room、UAT 与独立验证 |
+| <a id="sp-003-s-022"></a>`SP-003/S-022` | `S-022` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-022) | — | Final OPCM、closeout 与 post-closeout reconciliation |
