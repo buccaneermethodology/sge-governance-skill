@@ -28,6 +28,9 @@ class PublicProjectionTests(unittest.TestCase):
         manifest = {
             "schema_version": "sge_public_export_manifest_v1",
             "candidate_id": "fixture-candidate-v1",
+            "identity_contract": {"private_source_id": "fixture-source", "public_project_id": "fixture-project", "skill_id": "fixture-skill", "candidate_id_field": "candidate_id", "roles_must_be_distinct": True},
+            "provenance_locator_policy": {"allowed_types": ["in_package", "external", "private"], "private_prefixes": ["Dashboard/"], "relative_private_links": "forbidden", "unavailable_source_rule": "typed_private_or_external_only"},
+            "residue_policy": {"deny_tokens_are_controls": ["semx"], "forbidden_active_token_classes": ["product_cli", "product_kb", "product_audio"], "history_surfaces_are_private": ["Dashboard/Archives/"]},
             "status": "candidate_not_approved",
             "license": "MIT",
             "default_deny": True,

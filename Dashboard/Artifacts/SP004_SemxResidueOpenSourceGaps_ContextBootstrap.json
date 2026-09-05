@@ -1,6 +1,6 @@
 {
   "schema_version": "context_bootstrap_v1",
-  "task_id": "sp004-semx-residue-open-source-gaps-goal-design",
+  "task_id": "sp004-semx-residue-open-source-gaps-execution",
   "task_profile": "implementation",
   "raw_user_intent": {
     "authority_role": "authority",
@@ -8,23 +8,31 @@
   },
   "intake_projection": {
     "authority_role": "projection",
-    "summary": "为 Panorama 中十项 Finding 设计一个逐项可追踪、连续执行、受授权边界约束的 Loop Goal；本轮只落地 Goal 设计，不启动清理、发布或远端写入。",
+    "summary": "执行 SP-004 Loop Goal：逐项闭环十项 Finding；先完成本地修复、能力/UAT与候选发布包，C2 前禁止 rights/远端 mutation。",
     "assumptions": [
       "RepositoryCapabilityPanorama.md 是 Dashboard 派生读模型，需由当前 KB、Dashboard、代码和发布合同校准。",
-      "提案编号 SP-004/S-023..S-029 不构成 Session 注册、执行启动或发布授权。"
+      "SP-004/S-023..S-029 已由用户明确启动并注册；C2 仍不构成默认 rights 或远端发布授权。"
     ]
   },
   "boundaries": {
     "write_scope": [
       "Dashboard/Artifacts/SP004_SemxResidueOpenSourceGaps_ContextBootstrap.json",
-      "Dashboard/Artifacts/SP004_SemxResidueOpenSourceGaps_LoopGoal.md"
+      "Dashboard/Artifacts/SP004_SemxResidueOpenSourceGaps_LoopGoal.md",
+      "Dashboard/Artifacts/SP004_S023_Design.md",
+      "Dashboard/Artifacts/SP004_S023_Contract.json",
+      "Dashboard/Artifacts/SP004_S023_Cases.json",
+      "Dashboard/Stage_Plans.md",
+      "Dashboard/Sessions.md",
+      "Dashboard/Session_Index.md",
+      "Dashboard/Current_State.md",
+      "Dashboard/Artifacts/SP004_CycleLedger.json"
     ],
     "forbidden_actions": [
-      "不得修改 kb canonical truth、runtime、tests、public manifest 或现有 Dashboard registry",
-      "不得创建公开仓、commit、push、tag、release、配置远端 CI 或执行 remote read-back",
+      "不得在未完成 S-023 合同与相应 lane handoff 前修改 runtime/tests/public manifest；所有修改须落在当前 Session write scope",
+      "不得在 C2 前创建公开仓、push、tag、release、配置 mutation CI 或执行 remote read-back",
       "不得把 Goal 设计、Panorama finding 或本地检查表述为缺口已修复、rights 已批准或 release 已发布"
     ],
-    "maximum_claim": "形成一份基于当前 checkout 的 proposal-only Loop Goal handoff contract；不证明任何 Finding 已关闭，不授予实现、权利或远端发布 authority。"
+    "maximum_claim": "执行已启动；S-023 最多支持 contract_frozen_for_implementation，不证明任何 Finding 已关闭，不授予 rights 或远端发布 authority。"
   },
   "required_read_set": [
     {"path":"AGENTS.md","revision":"sha256:1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5","applicability":"always","domains":["repo_governance","claim_ceiling","write_conflict"],"reason":"仓库硬门"},
@@ -53,8 +61,8 @@
     "preservation_statement":"十项 Finding 逐项保留；区分 active/public、evidence gap、authority gap、fixture/example 与 historical provenance，并把本地 candidate、权利批准、远端发布和 production readiness 分轴。",
     "missing_evidence_action":"expand_or_report_evidence_gap"
   },
-  "change_impact": {"kb_truth":false,"dashboard_state":false,"contract_or_acceptance":true,"runtime_or_schema":false,"external_side_effect":false,"semantic_risk":"high","write_conflict":true},
-  "topology": {"basis":"change_impact","route":"goal-agent design -> independent goal validation; later execution uses Design/Builder/Validation/Closure plus triggered Semantic Reviewer","reason":"本轮只设计 Goal；后续执行涉及 identity、rights、release 与远端状态，必须使用治理 lanes 和人类授权 checkpoint。"},
+  "change_impact": {"kb_truth":false,"dashboard_state":true,"contract_or_acceptance":true,"runtime_or_schema":true,"external_side_effect":true,"semantic_risk":"high","write_conflict":true},
+  "topology": {"basis":"change_impact","route":"S-023 Design/ERBE/Semantic -> S-024 Builder -> independent Validation -> Closure; later S-025..S-029 continue with C2 authority checkpoint","reason":"本轮已启动执行；涉及 identity、rights、release 与远端状态，必须使用治理 lanes 和 C2 人类授权 checkpoint。"},
   "skipped_reads": [
     {"domain":"remote_release_state","path":"GitHub bm-sge-governance owner/repo/tag/assets/checks","reason":"本轮无远端读取或写入授权；Goal 将其设为执行期 preflight 与人类 checkpoint。"}
   ],

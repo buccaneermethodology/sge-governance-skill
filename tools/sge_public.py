@@ -275,6 +275,24 @@ def _validate_manifest_shape(data: dict[str, Any]) -> list[dict[str, Any]]:
     return normalized
 
 
+def _validate_boundary_policies(data: dict[str, Any]) -> None:
+    identity = data.get("identity_contract")
+    if not isinstance(identity, dict):
+        _fail("identity_matrix_invalid")
+    roles = [identity.get("private_source_id"), identity.get("public_project_id"), identity.get("skill_id"), data.get("candidate_id")]
+    if identity.get("roles_must_be_distinct") is not True or any(not isinstance(value, str) or not value for value in roles) or len(set(roles)) != len(roles):
+        _fail("identity_matrix_invalid")
+    if identity.get("candidate_id_field") != "candidate_id":
+        _fail("identity_matrix_invalid")
+    locator = data.get("provenance_locator_policy")
+    if not isinstance(locator, dict) or set(locator.get("allowed_types", [])) != {"in_package", "external", "private"} or locator.get("relative_private_links") != "forbidden":
+        _fail("provenance_locator_policy_invalid")
+    residue = data.get("residue_policy")
+    classes = set(residue.get("forbidden_active_token_classes", [])) if isinstance(residue, dict) else set()
+    if not {"product_cli", "product_kb", "product_audio"}.issubset(classes) or "semx" not in set(residue.get("deny_tokens_are_controls", [])):
+        _fail("residue_policy_invalid")
+
+
 def validate(data: dict[str, Any], source_root: Path | str | None = None) -> set[str]:
     """Validate the manifest and every allowlisted source object.
 
@@ -285,6 +303,7 @@ def validate(data: dict[str, Any], source_root: Path | str | None = None) -> set
     root = _root(source_root)
     if not root.is_dir() or root.is_symlink():
         _fail("source_root_invalid", root.as_posix())
+    _validate_boundary_policies(data)
     items = _validate_manifest_shape(data)
     allowlisted = {item["path"] for item in items}
     inventory, nested_repos = _walk_inventory(root, allowlisted)

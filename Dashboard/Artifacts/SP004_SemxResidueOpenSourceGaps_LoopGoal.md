@@ -2,12 +2,13 @@
 
 ## Goal 身份与提案状态
 
-- Goal ID：`SP-004`（提案编号，尚未写入 Dashboard registry）。
+- Goal ID：`SP-004`（本轮执行身份；Dashboard registry 注册与 Git 交接受当前权限边界约束）。
 - Session DAG：`S-023 → S-024 → S-025 → S-026 → S-027 → C2 人类授权 → S-028 → S-029`；`S-023..S-029` 均为提案编号，正式登记前必须复核是否冲突。
-- 当前状态：`proposed_for_human_review`（仅供人类审阅的提案）。本文件只证明 Goal handoff contract 已形成，不证明 Goal 已启动、Finding 已关闭、rights 已批准、公开仓已存在或 release 已发布。
+- 当前状态：`executing_with_release_authority_checkpoint`（已由本次用户指令启动；本文件不证明 Finding 已关闭、rights 已批准、公开仓已存在或 release 已发布）。
 - 原始范围：[Repository Capability Panorama 的“Semx 残留与开源缺口”](RepositoryCapabilityPanorama.md#semx-残留与开源缺口)中的 10 项 Finding，逐项保留，不得以 SP-003 的有界完成或一次 grep/doctor 结果整体吸收。
 - 上下文启动证据：[Context Bootstrap](SP004_SemxResidueOpenSourceGaps_ContextBootstrap.json)。
 - `CG skipped: no CG input provided`。
+- 本轮启动时间：2026-09-04；当前 checkout：`sge/sp002`，Git branch 创建因本地 `.git` 写权限失败，已作为执行边界记录，不改变 Goal 范围。
 
 ## 中文任务解释
 

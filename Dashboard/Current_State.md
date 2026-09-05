@@ -26,3 +26,9 @@
 - 稳定架构合同已进入 [KB strategy](../kb/docs/strategy/Open_Source_Dual_Repo_Distribution.md)：私有 `sge-governance-skill` 是唯一 canonical development source，公开 `bm-sge-governance` 是 exact-allowlist deterministic one-way projection/distribution repo，禁止双向真源。
 - Maintainer surface 包含 allowlist/provenance、fresh-root export、diff、Validation 与 release authority；end-user surface 默认是公开仓 clone 后只带 target 的 install/upgrade，`--source` 仅高级/测试参数。
 - SP-003 当前已完成 S-016..S-022 的有界本地实现/合同与 evidence；S-016 的 `blocked`/`partial` 历史 verdict 保留，S-017 独立 Validation 为 `pass-with-findings`，S-021 独立 Validation 为 `pass-with-findings`（7 案为 structural_recompute，非 runtime witness），S-021 Semantic 为 `partial/conditional`。S-022 已由 Final Validation 与独立 post-closeout reconciliation 在声明范围内共同收束，`goal_terminal=true`。公开仓名称已修订为 `bm-sge-governance`，详见[名称修订收束](Artifacts/SP003_OpenSourceDistributionArchitecture_NameRevision_Closeout.md)。不证明公开 GitHub 仓库、push、tag、release、逐文件权利批准或 production readiness；外部动作仍需具体人类授权。
+
+## SP-004 Semx 残留与开源缺口闭环
+
+- SP-004 已由本次用户指令启动；S-023 已完成合同/语义冻结，S-024 已在声明范围内 `Done（有界完成）`，详见 [S-024 中文收束](Artifacts/SP004_S024_Closeout.md) 与独立 [Delta Validation](Artifacts/SP004_S024_DeltaValidationReview.md)。十项 Finding 仍逐项保留，下一 Session 为 S-025；不表示 SP-004 缺口已关闭。
+- 当前 Git branch 仍为 `sge/sp002`，新分支创建因 `.git` 写权限失败；这是 Git provenance/最终 handoff 风险，不是授权远端发布。
+- 下一停点是 S-027/C2：逐文件 rights、具体 owner/repo/tree/tag/payload 和远端 mutation 必须由人类明确授权；未授权时 SP-004 只能保持 `blocked_pending_human_authority` 或 `partial`。

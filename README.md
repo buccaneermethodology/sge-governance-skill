@@ -2,6 +2,8 @@
 
 可复用的 SGE（Semantic Governance Engineering）治理 Skill 仓库。
 
+公共候选的项目身份是 `bm-sge-governance`；本仓库 `sge-governance-skill` 仅是私有 canonical source。二者、Skill 身份与每次 `candidate_id` 必须由独立 gate 分开核对。
+
 核心入口是 [.codex/skills/sge-governed-checkpoints/SKILL.md](.codex/skills/sge-governed-checkpoints/SKILL.md)。它为非平凡任务提供 Context Bootstrap、ERBE specification-first、SGC、Goal Conformance、lane card、独立 Validation、Semantic Review、closeout-language 和 post-closeout 对账门禁。
 
 ## 最小使用

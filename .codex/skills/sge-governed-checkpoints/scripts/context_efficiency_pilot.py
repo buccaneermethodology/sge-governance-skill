@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Adjudicate SP-041 paired rollouts and report measured token deltas."""
+"""Adjudicate paired context rollouts and report measured token deltas."""
 
 from __future__ import annotations
 
@@ -240,6 +240,9 @@ def evaluate_manifest(manifest_path: Path, oracle_path: Path) -> dict[str, Any]:
     oracle = _read_json(oracle_path)
     if manifest.get("schema_version") != "sge-pilot-manifest-v1":
         raise PilotError("unsupported manifest schema")
+    pilot_id = manifest.get("pilot_id", "context-efficiency-pilot-v1")
+    if not isinstance(pilot_id, str) or not pilot_id.strip():
+        raise PilotError("pilot_id must be a non-empty project-neutral identifier")
     required_paths = {
         "baseline_snapshot_path",
         "post_snapshot_path",
@@ -318,7 +321,7 @@ def evaluate_manifest(manifest_path: Path, oracle_path: Path) -> dict[str, Any]:
     if post.get("git_observed_facts", {}).get("dirty_state_digest") != facts.get("dirty_state_digest"):
         raise PilotError("post snapshot dirty digest differs from baseline")
     result = summarize(records)
-    return {"schema_version": "sge-pilot-report-v1", "manifest": str(manifest_path), "oracle": str(oracle_path), "convergence": convergence, "records": records, **result}
+    return {"schema_version": "sge-pilot-report-v1", "pilot_id": pilot_id, "manifest": str(manifest_path), "oracle": str(oracle_path), "convergence": convergence, "records": records, **result}
 
 
 def main(argv: Sequence[str] | None = None) -> int:

@@ -1,5 +1,5 @@
 from __future__ import annotations
-import importlib.util, json, tempfile, unittest
+import importlib.util, json, re, tempfile, unittest
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -26,6 +26,22 @@ class PublicCandidateTests(unittest.TestCase):
             dest=Path(td); MOD.export(dest, require_clean=False)
             exported={p.relative_to(dest).as_posix() for p in dest.rglob("*") if p.is_file()}
             self.assertEqual(exported-{"EXPORT_METADATA.json"}, allowed)
+
+    def test_identity_locator_and_residue_policy_is_explicit(self):
+        data = MOD.load()
+        identity = data["identity_contract"]
+        self.assertTrue(identity["roles_must_be_distinct"])
+        self.assertEqual(len({identity["private_source_id"], identity["public_project_id"], identity["skill_id"], data["candidate_id"]}), 4)
+        self.assertEqual(data["provenance_locator_policy"]["relative_private_links"], "forbidden")
+        self.assertIn("semx", data["residue_policy"]["deny_tokens_are_controls"])
+
+    def test_quick_start_bash_fences_are_shell_only(self):
+        text = (ROOT / "docs/Quick_Start_CN.md").read_text(encoding="utf-8")
+        blocks = re.findall(r"```bash\n(.*?)```", text, flags=re.S)
+        self.assertTrue(blocks)
+        for block in blocks:
+            shell_prefixes = ("python3 ", "find ", "cd ", "#")
+            self.assertFalse(any(line.strip() and not line.lstrip().startswith(shell_prefixes) for line in block.splitlines()))
 
     def test_four_layer_contract_blocks_core_dependency_collapse(self):
         data=json.loads(json.dumps(MOD.load()))

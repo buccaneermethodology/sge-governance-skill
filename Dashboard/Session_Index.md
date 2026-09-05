@@ -26,3 +26,10 @@
 | <a id="sp-003-s-020"></a>`SP-003/S-020` | `S-020` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-020) | — | External PR 回流 canonical |
 | <a id="sp-003-s-021"></a>`SP-003/S-021` | `S-021` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-021) | — | Clean-room、UAT 与独立验证 |
 | <a id="sp-003-s-022"></a>`SP-003/S-022` | `S-022` | SP-003 | `Done` | [archive](Archives/Sessions/SP-003.md#sp-003-s-022) | — | Final OPCM、closeout 与 post-closeout reconciliation |
+| <a id="sp-004-s-023"></a>`SP-004/S-023` | `S-023` | SP-004 | `Done` | [archive](Archives/Sessions/SP-004.md#sp-004-s-023) | — | 现状重基线、合同与裁决冻结 |
+| <a id="sp-004-s-024"></a>`SP-004/S-024` | `S-024` | SP-004 | `Done` | [archive](Archives/Sessions/SP-004.md#sp-004-s-024) | — | active/public 修复与防回归门禁 |
+| <a id="sp-004-s-025"></a>`SP-004/S-025` | `S-025` | SP-004 | `Done` | [archive](Archives/Sessions/SP-004.md#sp-004-s-025) | — | 消费仓 core capability matrix |
+| <a id="sp-004-s-026"></a>`SP-004/S-026` | `S-026` | SP-004 | `Doing` | [current](Sessions.md#sp-004-s-026) | — | 独立可见 clean-room Codex newcomer UAT |
+| <a id="sp-004-s-027"></a>`SP-004/S-027` | `S-027` | SP-004 | `Doing` | [current](Sessions.md#sp-004-s-027) | [Validation Review](Artifacts/SP004_S027_ValidationReview.md) | release candidate、rights 与发布包预检 |
+| <a id="sp-004-s-028"></a>`SP-004/S-028` | `S-028` | SP-004 | `To do` | [current](Sessions.md#sp-004-s-028) | — | 授权范围内远端发布与 read-back |
+| <a id="sp-004-s-029"></a>`SP-004/S-029` | `S-029` | SP-004 | `To do` | [current](Sessions.md#sp-004-s-029) | — | 全量独立终态验证与 Goal 收束 |
