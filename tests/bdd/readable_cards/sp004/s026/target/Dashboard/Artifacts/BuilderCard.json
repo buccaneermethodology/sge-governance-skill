@@ -1,0 +1,74 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "uat-s001-Builder",
+  "session_id": "UAT-S001",
+  "lane": "Builder",
+  "role": "builder",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Goal.md",
+    "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d"
+  },
+  "base_context_refs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84"
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452"
+    },
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968"
+    },
+    {
+      "path": "Dashboard/Artifacts/ContextBuilder.json",
+      "sha256": "6e9678612142400fea4a0054226aa82646f2a68120e065a7a2df9ebe3aaadad6"
+    }
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "uat-s001-Builder",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "AGENTS.md",
+    "kb/data/strategy/profile.json",
+    "Dashboard/Artifacts/Design.md",
+    "Dashboard/Artifacts/ContextBuilder.json"
+  ],
+  "acceptance_criteria_ids": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "write_scope": [
+    "PROJECT_NOTE.md",
+    "Dashboard/Artifacts/Handoff.md",
+    "Dashboard/Artifacts/BuilderLog.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Current_State.md"
+  ],
+  "required_outputs": [
+    "PROJECT_NOTE.md",
+    "Handoff.md",
+    "BuilderLog.md"
+  ],
+  "maximum_claim_ref": {
+    "summary": "仅本地文档示例；不得声称 S-026 UAT 通过或发布。",
+    "authority_ref": "Dashboard/Artifacts/Goal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Goal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "subagent-Builder",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Context.json",
+  "working_directory": ".",
+  "execution_command": "按 Design 实现 PROJECT_NOTE.md 中文三标题说明文档；只做已列写入。保留实读清单、真实命令/输出和 actual file inventory；写 Handoff（含原 Goal M1..M5、Design、最终验证要求与未覆盖项）。Session/Current_State 置待独立验证；不写独立 verdict、Closeout 或 Goal done。ContextBuilder.json 纠正旧 Context 的 Dashboard 影响误标，旧文件保留历史证据。公开 companion /tmp/sp004-s026-01a0744b/candidate/kb 仅只读参考；不读取源仓私有资料。此为最小文档任务，不引入额外 schema/测试框架或递归 agent。主任务同时准备外层 UAT 证据。"
+}

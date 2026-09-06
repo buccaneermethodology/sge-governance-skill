@@ -1,0 +1,93 @@
+{
+  "schema_version": "sge_public_export_manifest_v1",
+  "candidate_id": "sge-governance-public-candidate-v1",
+  "identity_contract": {
+    "private_source_id": "sge-governance-skill",
+    "public_project_id": "bm-sge-governance",
+    "skill_id": "sge-governance",
+    "candidate_id_field": "candidate_id",
+    "roles_must_be_distinct": true
+  },
+  "provenance_locator_policy": {
+    "allowed_types": ["in_package", "external", "private"],
+    "private_prefixes": ["Dashboard/", ".codex/"],
+    "relative_private_links": "forbidden",
+    "unavailable_source_rule": "typed_private_or_external_only"
+  },
+  "residue_policy": {
+    "deny_tokens_are_controls": ["semx"],
+    "forbidden_active_token_classes": ["product_cli", "product_kb", "product_audio"],
+    "history_surfaces_are_private": ["Dashboard/Archives/", "Dashboard/Agent_Logs/", "Dashboard/Artifacts/"]
+  },
+  "status": "candidate_not_approved",
+  "license": "MIT",
+  "default_deny": true,
+  "source_boundary": "当前仓库的通用 SGE core、公共文档与去项目化 glossary；不含 Dashboard/Agent_Logs/历史执行证据",
+  "files": [
+    {"path":"LICENSE","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
+    {"path":"NOTICE","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
+    {"path":"README.md","source":"repository","license":"MIT","provenance":"repo-local public candidate","public":true,"execution_context":false},
+    {"path":"public_export_manifest_v1.json","source":"repository","license":"MIT","provenance":"default-deny public file inventory","public":true,"execution_context":false},
+    {"path":"docs/Beginner_Guide_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
+    {"path":"docs/Quick_Start_CN.md","source":"repository","license":"MIT","provenance":"newcomer companion","public":true,"execution_context":false},
+    {"path":"examples/minimal-project/README.md","source":"repository","license":"MIT","provenance":"minimal consumer example","public":true,"execution_context":false},
+    {"path":"examples/minimal-project/AGENTS.md","source":"repository","license":"MIT","provenance":"minimal consumer example","public":true,"execution_context":false},
+    {"path":"extensions/registry_v1.json","source":"repository","license":"MIT","provenance":"optional extension contract","public":true,"execution_context":false},
+    {"path":"extensions/orchestrator_profile_v1.json","source":"repository","license":"MIT","provenance":"project-neutral orchestrator profile and hook contract","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/SKILL.md","source":"repository","license":"MIT","provenance":"SGE core","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/agents/openai.yaml","source":"repository","license":"MIT","provenance":"Skill interface metadata","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/references/checklists.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md","source":"repository","license":"MIT","provenance":"SGE core reference","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json","source":"repository","license":"MIT","provenance":"SGE core schema","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/context_state.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py","source":"repository","license":"MIT","provenance":"SGE core script","public":true,"execution_context":false},
+    {"path":"kb/data/glossary_v1.json","source":"repository","license":"MIT","provenance":"SGE glossary v1 canonical candidate","public":true,"execution_context":false},
+    {"path":"kb/docs/Glossary.md","source":"repository","license":"MIT","provenance":"generated from glossary_v1.json","public":true,"execution_context":false},
+    {"path":"kb/README.md","source":"repository","license":"MIT","provenance":"public canonical KB guide","public":true,"execution_context":false},
+    {"path":"kb/render_manifest_v1.json","source":"repository","license":"MIT","provenance":"deterministic KB projection manifest","public":true,"execution_context":false},
+    {"path":"kb/tools/render_kb.py","source":"repository","license":"MIT","provenance":"deterministic KB renderer","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/sge_project_profile_v1.json","source":"repository","license":"MIT","provenance":"generic project profile","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/sge_strategy_canonical_mapping_v1.json","source":"repository","license":"MIT","provenance":"reviewed canonical mapping","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/sge_strategy_source_manifest_v1.json","source":"repository","license":"MIT","provenance":"source adjudication manifest","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/sge_workflow_registry_v1.json","source":"repository","license":"MIT","provenance":"generic workflow registry","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json","source":"repository","license":"MIT","provenance":"canonical SGE strategy","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_human_ai_development.json","source":"repository","license":"MIT","provenance":"canonical SGE strategy","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_kb_promotion_and_source_policy.json","source":"repository","license":"MIT","provenance":"canonical SGE strategy","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_semantic_surface_engineering.json","source":"repository","license":"MIT","provenance":"canonical SGE strategy","public":true,"execution_context":false},
+    {"path":"kb/data/strategy/strategy_sgc_structural_contract_v1.json","source":"repository","license":"MIT","provenance":"canonical SGE strategy","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_Human_AI_Development.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
+    {"path":"kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md","source":"repository","license":"MIT","provenance":"generated canonical projection","public":true,"execution_context":false},
+    {"path":"tools/sge_public.py","source":"repository","license":"MIT","provenance":"public lifecycle utility","public":true,"execution_context":false},
+    {"path":"tools/run_sge_loop_goal_cycle.py","source":"repository","license":"MIT","provenance":"profile-driven optional orchestrator","public":true,"execution_context":false}
+  ],
+  "content_policy": {
+    "reject_absolute_home_paths": true,
+    "reject_private_execution_directories": true,
+    "private_identity_policy": "source repository validation only; concrete private tokens are never embedded in the public candidate"
+  },
+  "layer_contract": {
+    "install_order": ["core", "companion", "orchestrator", "domain-extension"],
+    "mappings": [
+      {"prefix":".codex/skills/sge-governed-checkpoints/","layer":"core","requires":[],"optional":false},
+      {"prefix":"tools/run_sge_loop_goal_cycle.py","layer":"orchestrator","requires":["core"],"optional":true},
+      {"prefix":"extensions/orchestrator_profile_v1.json","layer":"orchestrator","requires":["core"],"optional":true},
+      {"prefix":"extensions/registry_v1.json","layer":"domain-extension","requires":["core"],"optional":true},
+      {"prefix":"","layer":"companion","requires":["core"],"optional":false}
+    ],
+    "rule":"first matching prefix wins; every allowlisted file resolves to one declared layer"
+  },
+  "claim_ceiling": "仅支持声明范围内的 public candidate export 与 clean-room 工具验收；不代表发布、生产或任意仓库适用"
+}

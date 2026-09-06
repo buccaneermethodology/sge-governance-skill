@@ -251,6 +251,15 @@ Final Validation 必须：
 - 每个 delta 必须记录 original requirement、reason、replacement、impact、human approval required/status/reference、deferred Session 与 completion impact。
 - 未获人类批准的 material delta 不得进入 completion baseline。人类拒绝发布不是“自动缩窄后完成”；应记录 `release_not_authorized` 并使 full Goal 保持 blocked/partial。
 
+## 本轮人类批准的 Scope Delta 与例外登记（2026-09-06）
+
+| 原始要求 | 批准的变化 | 影响 | 批准状态/证据 | completion 处理 |
+| --- | --- | --- | --- | --- |
+| GAP-MH-03：完整独立 clean-room Codex newcomer UAT | 暂时取消该完整 newcomer flow，不计入本轮 Goal completion blocker；保留既有 S-026 partial transcript 作为历史事实 | 不再以完整 S-026 flow 阻断本轮；不宣称 UAT 通过，也不删除历史证据 | 人类明确批准，见 [S-029 exception approval](SP004_S029_ExceptionApproval.md) | `not_applicable with approved reason`；不得从历史上改写为 pass |
+| S-029 独立 final Validation | 人类批准以例外登记的 `pass_with_bounds` 作为本轮 S-029 verdict | 降低最终 Validation claim；保留独立 lane 工具中断和补偿检查事实 | 人类明确批准，见 [S-029 exception approval](SP004_S029_ExceptionApproval.md) | `exception-recorded`；不宣称无条件独立 pass |
+| S-023 Contract/Cases final RED/GREEN | 允许在无法满足无条件独立 pass 时登记 `pass_with_bounds` | Contract/Cases 仍冻结，边界/identity 不改；最终主张限于本 Goal 的有界证据 | 人类明确批准，见 [S-023 final review](SP004_S023_FinalReview.md) | `pass_with_bounds`；不推广为通用 ERBE 证明 |
+| README public entrypoints | 修复占位符命令并生成 v1.0.2 exact payload | candidate digest、rights、release、CI、read-back 全部重新绑定 | [v1.0.2 authorization](SP004_S029_v1.0.2_AuthorizationRecord.md) | 进入 GAP-MH-02/GAP-MH-06 final evidence |
+
 ## Continuous execution contract
 
 本 Goal 默认连续执行整个 Session DAG。任何单个 Session、lane、closeout 或 post-closeout pass 都不是停止条件。每个 Session closeout 后必须记录：`goal_terminal`、`next_session`、`next_session_ready`、`human_decision_required`。

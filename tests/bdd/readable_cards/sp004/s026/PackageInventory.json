@@ -1,0 +1,236 @@
+{
+  "schema_version": "s026_packaging_inventory_v1",
+  "source_target": "/tmp/sp004-s026-01a0744b/target",
+  "durable_target": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill/tests/bdd/readable_cards/sp004/s026/target",
+  "copy_identical": true,
+  "target_files": [
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+      "bytes": 56946
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+      "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+      "bytes": 283
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+      "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+      "bytes": 76998
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+      "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+      "bytes": 12376
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+      "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+      "bytes": 9408
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+      "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+      "bytes": 3951
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+      "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+      "bytes": 1285
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+      "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+      "bytes": 5192
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+      "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+      "bytes": 8281
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+      "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+      "bytes": 10047
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+      "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+      "bytes": 17148
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+      "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+      "bytes": 47805
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+      "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+      "bytes": 46076
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+      "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+      "bytes": 43507
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+      "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+      "bytes": 24659
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+      "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+      "bytes": 2660
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+      "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+      "bytes": 1637
+    },
+    {
+      "path": ".sge-governance-install.json",
+      "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+      "bytes": 4446
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+      "bytes": 139
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderCard.json",
+      "sha256": "4b34ddb8bf0b74d1ae3cca8b92a1df39b70152544c3030afdf12aeacdde417f1",
+      "bytes": 2679
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderLog.md",
+      "sha256": "2fb52b69f07cf74c74b4a80bbb872092b5257f410614a9081ea9a2e9eed8a58d",
+      "bytes": 10515
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderPrompt.txt",
+      "sha256": "862124e605e37b3e240607ebe35dd863b3f123065c551bb8b08c785accbc194d",
+      "bytes": 1152
+    },
+    {
+      "path": "Dashboard/Artifacts/Closeout.md",
+      "sha256": "4d7989aa0932ac2d68114814ee9bd79c696bcaf5ab4474ba2752d465698e2ff0",
+      "bytes": 8763
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureCard.json",
+      "sha256": "0ded7ccafd2ccd51ebd692d0160358679248aaaac6cac69d66b77cede80b0cb0",
+      "bytes": 2872
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureLog.md",
+      "sha256": "e8a57d51d38b63f4156063d0a8b952e02e7c765262dc54d81720efdbd6b8453b",
+      "bytes": 8480
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosurePrompt.txt",
+      "sha256": "ff1cd8ea9001f4301dc223977384760062d3dcf5097c75a4a8072ae04146322b",
+      "bytes": 1112
+    },
+    {
+      "path": "Dashboard/Artifacts/Context.json",
+      "sha256": "805e35c5af36f47af7e91d65ea5c0541a3535430bab2a261d339d55014899c84",
+      "bytes": 3914
+    },
+    {
+      "path": "Dashboard/Artifacts/ContextBuilder.json",
+      "sha256": "6e9678612142400fea4a0054226aa82646f2a68120e065a7a2df9ebe3aaadad6",
+      "bytes": 3985
+    },
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968",
+      "bytes": 11679
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignCard.json",
+      "sha256": "5d33f1068b47d9f65dbf825efb863feda42b3eae8d9362b41c600143b3cda12d",
+      "bytes": 2290
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignLog.md",
+      "sha256": "9caa98c4284e51d7fd0dd6129cbabd2e26a23cf6c61f1cdeef58756f30417d91",
+      "bytes": 2905
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignPrompt.txt",
+      "sha256": "b4454f98eb720001721a5a29e65b4f822f56cea7ede0fb74ca94b5b5c5b12039",
+      "bytes": 1071
+    },
+    {
+      "path": "Dashboard/Artifacts/Goal.md",
+      "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d",
+      "bytes": 2991
+    },
+    {
+      "path": "Dashboard/Artifacts/Handoff.md",
+      "sha256": "32caec951ef4b2d2653c34b518bbb84036aa6cac3352c0679883e24e12e7a6d1",
+      "bytes": 5995
+    },
+    {
+      "path": "Dashboard/Artifacts/PromptAudit.json",
+      "sha256": "7b556cc5ffa523a009db805989dfe26b1e03d5b956e27e83d0a49b15934e5c8f",
+      "bytes": 1315
+    },
+    {
+      "path": "Dashboard/Artifacts/Review.md",
+      "sha256": "f4dd830a74ae06ac0053297f9d01de557c765f0f50397aa226884398b74bbaa1",
+      "bytes": 12403
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationCard.json",
+      "sha256": "91440ea220c9523c71fb43607e0411852b5c5b663d2344d316c9bbf1cb77fd79",
+      "bytes": 4320
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationLog.md",
+      "sha256": "f3d5901f46fd8314996847563fc941b548a3e30769a05cd40b2f42d14656c0c4",
+      "bytes": 22922
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationPrompt.txt",
+      "sha256": "277a3f3d93ec9ded71a737b11f8466ef40cbf8d11ae4fddc8064d0dacc739249",
+      "bytes": 1395
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationSnapshot.json",
+      "sha256": "fe8c6bf9c970952c5e59927b6b303993e386289bf640b88797ba0776420c6599",
+      "bytes": 28236
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "38f82e275e7485cb274afc86a727d3969f038b7bf9cf0539c5da27e08a965675",
+      "bytes": 458
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "e4b966fb8724c56048843d3668d8563c3e682ae871c911dd33ae5e34eebe406e",
+      "bytes": 278
+    },
+    {
+      "path": "PROJECT_NOTE.md",
+      "sha256": "f79de0bce4711a7fcd839618c9d4a61db961698ce4cb761fde269e0c536d9eb1",
+      "bytes": 1923
+    },
+    {
+      "path": "README.md",
+      "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+      "bytes": 86
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+      "bytes": 227
+    }
+  ],
+  "independent_final_reconciliation": false,
+  "reason": "来源任务明确要求现在结束；本检查仅 UAT 执行者包装一致性自检",
+  "created_at": "2026-09-06T01:46:18.529132+00:00"
+}

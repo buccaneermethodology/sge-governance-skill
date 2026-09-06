@@ -1,0 +1,112 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "uat-s001-Validation",
+  "session_id": "UAT-S001",
+  "lane": "Validation",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Goal.md",
+    "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d"
+  },
+  "base_context_refs": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84"
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452"
+    },
+    {
+      "path": "Dashboard/Artifacts/ContextBuilder.json",
+      "sha256": "6e9678612142400fea4a0054226aa82646f2a68120e065a7a2df9ebe3aaadad6"
+    },
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968"
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignLog.md",
+      "sha256": "9caa98c4284e51d7fd0dd6129cbabd2e26a23cf6c61f1cdeef58756f30417d91"
+    },
+    {
+      "path": "Dashboard/Artifacts/Handoff.md",
+      "sha256": "32caec951ef4b2d2653c34b518bbb84036aa6cac3352c0679883e24e12e7a6d1"
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderLog.md",
+      "sha256": "2fb52b69f07cf74c74b4a80bbb872092b5257f410614a9081ea9a2e9eed8a58d"
+    },
+    {
+      "path": "Dashboard/Artifacts/Closeout.md",
+      "sha256": "4d7989aa0932ac2d68114814ee9bd79c696bcaf5ab4474ba2752d465698e2ff0"
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureLog.md",
+      "sha256": "e8a57d51d38b63f4156063d0a8b952e02e7c765262dc54d81720efdbd6b8453b"
+    },
+    {
+      "path": "PROJECT_NOTE.md",
+      "sha256": "f79de0bce4711a7fcd839618c9d4a61db961698ce4cb761fde269e0c536d9eb1"
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "e4b966fb8724c56048843d3668d8563c3e682ae871c911dd33ae5e34eebe406e"
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "38f82e275e7485cb274afc86a727d3969f038b7bf9cf0539c5da27e08a965675"
+    }
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "uat-s001-Validation",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "AGENTS.md",
+    "kb/data/strategy/profile.json",
+    "Dashboard/Artifacts/ContextBuilder.json",
+    "Dashboard/Artifacts/Design.md",
+    "Dashboard/Artifacts/DesignLog.md",
+    "Dashboard/Artifacts/Handoff.md",
+    "Dashboard/Artifacts/BuilderLog.md",
+    "Dashboard/Artifacts/Closeout.md",
+    "Dashboard/Artifacts/ClosureLog.md",
+    "PROJECT_NOTE.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Current_State.md"
+  ],
+  "acceptance_criteria_ids": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "write_scope": [
+    "Dashboard/Artifacts/Review.md",
+    "Dashboard/Artifacts/ValidationLog.md",
+    "Dashboard/Artifacts/ValidationSnapshot.json"
+  ],
+  "required_outputs": [
+    "Review.md",
+    "ValidationLog.md",
+    "ValidationSnapshot.json"
+  ],
+  "maximum_claim_ref": {
+    "summary": "仅本地文档示例；不得声称 S-026 UAT 通过或发布。",
+    "authority_ref": "Dashboard/Artifacts/Goal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Goal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "subagent-Validation",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Context.json",
+  "working_directory": ".",
+  "execution_command": "独立初轮 Validation：从 target durable inputs 读原 Goal M1..M5、实际文件/草稿/日志/最终父面，按当前五项逐项判定。执行说明中实际命令、链接/正文边界核验，同一存在性检查在 target 正例与隔离空临时目录缺 PROJECT_NOTE 负例执行；不能只凭结构或生产者自报。运行实际 closeout-language，核对保护输入与完整 inventory。输出中文 Review、真实命令日志、包含 baseline_revision/inventory/未关闭项的 ValidationSnapshot。草稿待 final/reconciliation 是既有流程，不引入额外 hardening；给明确初轮 bounded verdict 与 M5 待后置对账，不替代外层 S-026 verdict。只写卡内三个文件，不改 Builder/Closeout/Goal/KB/core，不递归 agents；公开 /tmp/sp004-s026-01a0744b/candidate/kb 为只读参考。主任务并行归档 UAT 命令证据。"
+}

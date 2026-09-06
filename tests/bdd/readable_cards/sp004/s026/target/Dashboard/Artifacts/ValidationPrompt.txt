@@ -1,0 +1,8 @@
+工作目录：/tmp/sp004-s026-01a0744b/target
+Lane Task Card: Dashboard/Artifacts/ValidationCard.json
+Card SHA-256: a6524c6e2d338e67149358ae02bbc93ee335da42b5f533ca3caba47d363629f2
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/ValidationCard.json --repo . --expected-card-sha256 a6524c6e2d338e67149358ae02bbc93ee335da42b5f533ca3caba47d363629f2
+Lane: Validation | Session: UAT-S001 | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: 独立初轮 Validation：从 target durable inputs 读原 Goal M1..M5、实际文件/草稿/日志/最终父面，按当前五项逐项判定。执行说明中实际命令、链接/正文边界核验，同一存在性检查在 target 正例与隔离空临时目录缺 PROJECT_NOTE 负例执行；不能只凭结构或生产者自报。运行实际 closeout-language，核对保护输入与完整 inventory。输出中文 Review、真实命令日志、包含 baseline_revision/inventory/未关闭项的 ValidationSnapshot。草稿待 final/reconciliation 是既有流程，不引入额外 hardening；给明确初轮 bounded verdict 与 M5 待后置对账，不替代外层 S-026 verdict。只写卡内三个文件，不改 Builder/Closeout/Goal/KB/core，不递归 agents；公开 /tmp/sp004-s026-01a0744b/candidate/kb 为只读参考。主任务并行归档 UAT 命令证据。

@@ -1,0 +1,33 @@
+{
+  "schema_version": "sp004_s028_v1_0_1_remote_readback_v1",
+  "repo": "buccaneermethodology/bm-sge-governance",
+  "source_commit": "9a4fc8f78c58b23f51d92e642e298395ee435c6d",
+  "refs": {
+    "main": "9a4fc8f78c58b23f51d92e642e298395ee435c6d",
+    "v1.0.1": "9a4fc8f78c58b23f51d92e642e298395ee435c6d"
+  },
+  "release": {
+    "url": "https://github.com/buccaneermethodology/bm-sge-governance/releases/tag/v1.0.1",
+    "draft": false,
+    "prerelease": false,
+    "target": "main"
+  },
+  "candidate": {
+    "file_count": 48,
+    "tree_sha256": "d84b83cbe264e123a94422ca987bda99345ffa50b8df427e4c94635de5d0c160",
+    "sha256sums_cmp": "pass"
+  },
+  "assets": {
+    "candidate_archive_sha256": "d11217e6c5f34fe7f39608e68939d5978cf276696968243eadc15f1136f0a3ec",
+    "sha256sums_sha256": "c6fca388e2e38d8e333c56b6e9c4c1363c48e8686a94eb637d1e74fe43c9b241",
+    "workflow_sha256": "981ca9608d2a960eeaa316140216c5bdd2ced88b73c75fc271f556279972c55d",
+    "content_readback": "pass"
+  },
+  "ci": {
+    "run_id": 34003056713,
+    "head_sha": "9a4fc8f78c58b23f51d92e642e298395ee435c6d",
+    "conclusion": "success"
+  },
+  "verdict": "pass_with_bounds",
+  "claim_ceiling": "exact authorized v1.0.1 release and CI/read-back verified; not production_ready or universally applicable"
+}

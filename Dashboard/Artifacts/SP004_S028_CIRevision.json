@@ -1,0 +1,12 @@
+{
+  "schema_version": "sp004_s028_ci_revision_v1",
+  "previous_release": "v1.0.0",
+  "revised_release": "v1.0.1",
+  "workflow": ".github/workflows/candidate-checks.yml",
+  "source_commit": "9a4fc8f78c58b23f51d92e642e298395ee435c6d",
+  "candidate_tree_sha256": "d84b83cbe264e123a94422ca987bda99345ffa50b8df427e4c94635de5d0c160",
+  "candidate_file_count": 48,
+  "ci_run": {"id": 34003056713, "conclusion": "success", "job": "deterministic-public-candidate"},
+  "local_checks": {"public_doctor": "pass", "unittest": "32 passed"},
+  "claim_ceiling": "exact v1.0.1 revised release payload with CI evidence; not production_ready"
+}

@@ -1,0 +1,8 @@
+工作目录：/tmp/sp004-s026-01a0744b/target
+Lane Task Card: Dashboard/Artifacts/ClosureCard.json
+Card SHA-256: d5d3e83cd7d5a5763852491127962badcbed9a64871f870ffb998f2932b1f80e
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/ClosureCard.json --repo . --expected-card-sha256 d5d3e83cd7d5a5763852491127962badcbed9a64871f870ffb998f2932b1f80e
+Lane: Closure | Session: UAT-S001 | Role: closure
+Mode: full_baseline
+Working directory: .
+Execute: 在 target 保存中文 Closeout 草稿（明确 draft，未作最终完成声明）与 ClosureLog，按 M1..M5 写逐项实际源链接、结果、时序/owner、阻断、claim ceiling、父面吸收；链接 Handoff/Goal/Design/预期 Review/Reconciliation。运行实际 closeout-language gate 并记录结果。Review/Reconciliation 尚不存在时必须说明未满足，禁止预告其 verdict。仅创建这两个文件，不改 Builder/Goal/KB/core/Session。本 lane 完成后主任务启动独立 Validation，之后按新卡更新最终稿。主任务同时整理 UAT transcript 与归档输入。

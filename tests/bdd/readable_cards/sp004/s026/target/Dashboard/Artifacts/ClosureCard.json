@@ -1,0 +1,80 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "uat-s001-Closure",
+  "session_id": "UAT-S001",
+  "lane": "Closure",
+  "role": "closure",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Goal.md",
+    "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d"
+  },
+  "base_context_refs": [
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968"
+    },
+    {
+      "path": "Dashboard/Artifacts/Handoff.md",
+      "sha256": "32caec951ef4b2d2653c34b518bbb84036aa6cac3352c0679883e24e12e7a6d1"
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderLog.md",
+      "sha256": "2fb52b69f07cf74c74b4a80bbb872092b5257f410614a9081ea9a2e9eed8a58d"
+    },
+    {
+      "path": "PROJECT_NOTE.md",
+      "sha256": "f79de0bce4711a7fcd839618c9d4a61db961698ce4cb761fde269e0c536d9eb1"
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "e4b966fb8724c56048843d3668d8563c3e682ae871c911dd33ae5e34eebe406e"
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "38f82e275e7485cb274afc86a727d3969f038b7bf9cf0539c5da27e08a965675"
+    }
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "uat-s001-Closure",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Design.md",
+    "Dashboard/Artifacts/Handoff.md",
+    "Dashboard/Artifacts/BuilderLog.md",
+    "PROJECT_NOTE.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Current_State.md"
+  ],
+  "acceptance_criteria_ids": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "write_scope": [
+    "Dashboard/Artifacts/Closeout.md",
+    "Dashboard/Artifacts/ClosureLog.md"
+  ],
+  "required_outputs": [
+    "Closeout.md",
+    "ClosureLog.md"
+  ],
+  "maximum_claim_ref": {
+    "summary": "仅本地文档示例；不得声称 S-026 UAT 通过或发布。",
+    "authority_ref": "Dashboard/Artifacts/Goal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Goal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "subagent-Closure",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Context.json",
+  "working_directory": ".",
+  "execution_command": "在 target 保存中文 Closeout 草稿（明确 draft，未作最终完成声明）与 ClosureLog，按 M1..M5 写逐项实际源链接、结果、时序/owner、阻断、claim ceiling、父面吸收；链接 Handoff/Goal/Design/预期 Review/Reconciliation。运行实际 closeout-language gate 并记录结果。Review/Reconciliation 尚不存在时必须说明未满足，禁止预告其 verdict。仅创建这两个文件，不改 Builder/Goal/KB/core/Session。本 lane 完成后主任务启动独立 Validation，之后按新卡更新最终稿。主任务同时整理 UAT transcript 与归档输入。"
+}

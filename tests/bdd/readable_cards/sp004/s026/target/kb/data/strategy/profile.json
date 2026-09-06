@@ -1,0 +1,9 @@
+{
+  "schema_version": "sge_project_profile_v1",
+  "project_id": "target",
+  "authority": {
+    "canonical_truth": "kb/data/",
+    "execution_memory": "Dashboard/"
+  },
+  "claim_ceiling": "repo-local governance skeleton only"
+}

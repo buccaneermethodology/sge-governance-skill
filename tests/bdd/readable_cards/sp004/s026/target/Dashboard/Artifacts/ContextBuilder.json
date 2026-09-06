@@ -1,0 +1,122 @@
+{
+  "schema_version": "context_bootstrap_v1",
+  "task_id": "uat-s001",
+  "task_profile": "implementation",
+  "raw_user_intent": {
+    "text": "在 fresh target 完成 Goal.md M1..M5 的最小中文项目说明文档示例与一个独立验证 Session；该例只是 S-026 外层 UAT 的子实验。",
+    "authority_role": "authority"
+  },
+  "intake_projection": {
+    "summary": "execute：低风险最小文档示例；Design/Builder/Validation/Closure 按写入与独立验证需要启动。",
+    "authority_role": "projection",
+    "assumptions": [
+      "本任务是独立创建的用户可见 task；无来源任务历史，但系统注入仓库规则与通用 memory，不能称完全无项目上下文。"
+    ]
+  },
+  "boundaries": {
+    "write_scope": [
+      "PROJECT_NOTE.md",
+      "Dashboard/Artifacts/",
+      "Dashboard/Sessions.md",
+      "Dashboard/Current_State.md"
+    ],
+    "forbidden_actions": [
+      "修改 core/profile",
+      "远端/发布/产品实现"
+    ],
+    "maximum_claim": "本次目标项目的文档示例"
+  },
+  "required_read_set": [
+    {
+      "path": "AGENTS.md",
+      "revision": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+      "applicability": "required",
+      "reason": "目标项目文档示例输入",
+      "domains": [
+        "task"
+      ]
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "revision": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+      "applicability": "required",
+      "reason": "目标项目文档示例输入",
+      "domains": [
+        "task"
+      ]
+    },
+    {
+      "path": "Dashboard/Artifacts/Goal.md",
+      "revision": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d",
+      "applicability": "required",
+      "reason": "目标项目文档示例输入",
+      "domains": [
+        "task"
+      ]
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "revision": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+      "applicability": "required",
+      "reason": "目标项目文档示例输入",
+      "domains": [
+        "task"
+      ]
+    }
+  ],
+  "conditional_read_set": [
+    {
+      "trigger_id": "drift",
+      "mode": "deterministic",
+      "condition": "card or source digest changes",
+      "action": "revalidate and rebaseline",
+      "can_suppress_deterministic": false
+    },
+    {
+      "trigger_id": "gap",
+      "mode": "evidence_backed_agent_evaluated",
+      "condition": "public documentation dependency missing",
+      "action": "expand public inputs or report gap",
+      "can_suppress_deterministic": false
+    }
+  ],
+  "semantic_refresh": {
+    "required_when_digest_unchanged": true,
+    "anchors": [
+      "objective",
+      "authority",
+      "claim_ceiling",
+      "critical_dependencies"
+    ],
+    "result": "目标是目标项目文档示例；不扩大到产品或公开发布；每条 M1..M5 待验证。"
+  },
+  "epistemic_search_space": {
+    "required_domains": [
+      "task"
+    ],
+    "preservation_statement": "保持完整 discovery/Goal/Session/Validation/closeout 与 copy-paste 验收面。",
+    "missing_evidence_action": "expand_or_report_evidence_gap"
+  },
+  "change_impact": {
+    "kb_truth": false,
+    "dashboard_state": true,
+    "contract_or_acceptance": false,
+    "runtime_or_schema": false,
+    "external_side_effect": false,
+    "semantic_risk": "low",
+    "write_conflict": false
+  },
+  "topology": {
+    "basis": "change_impact",
+    "route": "Design/Builder/Validation/Closure subagents, fresh context",
+    "reason": "UAT 执行任务独立；独立 validation 尚未启动，不虚构空 lane。"
+  },
+  "skipped_reads": [],
+  "validation_evidence_surfaces": [
+    "original objective",
+    "acceptance criteria",
+    "actual diff",
+    "final state"
+  ],
+  "supersedes": "Context.json：保留 Design 当时实读输入；ContextBuilder.json 是 Builder 起的修正启动包，不改变 M1..M5。"
+}

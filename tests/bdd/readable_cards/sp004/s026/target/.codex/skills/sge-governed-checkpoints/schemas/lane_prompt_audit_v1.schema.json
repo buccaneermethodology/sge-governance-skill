@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lane_prompt_audit_v1.schema.json",
+  "title": "SGE Lane Prompt Audit v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "stable_sources", "prompts", "allowed_boilerplate"],
+  "properties": {
+    "schema_version": {"const": "lane_prompt_audit_v1"},
+    "stable_sources": {"type": "array", "items": {"$ref": "#/$defs/digestedRef"}},
+    "prompts": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["lane", "source_type", "path", "sha256"], "properties": {"lane": {"type": "string", "minLength": 1}, "source_type": {"enum": ["prompt_artifact", "codex_rollout_user_messages"]}, "path": {"type": "string", "minLength": 1, "description": "Repo-relative for prompt_artifact; repo-relative or absolute read-only path for codex_rollout_user_messages."}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}},
+    "allowed_boilerplate": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {"digestedRef": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}}
+}

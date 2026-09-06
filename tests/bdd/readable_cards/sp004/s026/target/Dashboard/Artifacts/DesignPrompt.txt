@@ -1,0 +1,8 @@
+工作目录：/tmp/sp004-s026-01a0744b/target
+Lane Task Card: Dashboard/Artifacts/DesignCard.json
+Card SHA-256: d8c942ab386f0e9657e0b22d40602f84a252d6314dc2f7b8fb10dc445cafb85c
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/DesignCard.json --repo . --expected-card-sha256 d8c942ab386f0e9657e0b22d40602f84a252d6314dc2f7b8fb10dc445cafb85c
+Lane: Design | Session: UAT-S001 | Role: design
+Mode: full_baseline
+Working directory: .
+Execute: 仅在目标项目工作。读取 Goal 和已安装 Skill，建立已读/未读清单。为 M1..M5 保存中文 Design.md：最小文档内容、预期文件、Builder write exclusions、Validation Handoff、验收表、范围与 ERBE/semantic 判断；不得实现 PROJECT_NOTE 或修改 Goal/core/profile。记录真实命令/观察到 DesignLog.md。目标未安装 companion KB 时将 /tmp/sp004-s026-01a0744b/candidate/kb/ 视为公开只读参考，不能借用源仓私有历史。完成设计后返回；主任务并行执行公开 Quick Start lifecycle 采集。

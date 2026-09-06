@@ -1,0 +1,8 @@
+工作目录：/tmp/sp004-s026-01a0744b/target
+Lane Task Card: Dashboard/Artifacts/BuilderCard.json
+Card SHA-256: 38ae231a39fddf8c2e0777ed97763b1641dba2fb8e6f29b2a2e6a0c619e9f310
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/BuilderCard.json --repo . --expected-card-sha256 38ae231a39fddf8c2e0777ed97763b1641dba2fb8e6f29b2a2e6a0c619e9f310
+Lane: Builder | Session: UAT-S001 | Role: builder
+Mode: full_baseline
+Working directory: .
+Execute: 按 Design 实现 PROJECT_NOTE.md 中文三标题说明文档；只做已列写入。保留实读清单、真实命令/输出和 actual file inventory；写 Handoff（含原 Goal M1..M5、Design、最终验证要求与未覆盖项）。Session/Current_State 置待独立验证；不写独立 verdict、Closeout 或 Goal done。ContextBuilder.json 纠正旧 Context 的 Dashboard 影响误标，旧文件保留历史证据。公开 companion /tmp/sp004-s026-01a0744b/candidate/kb 仅只读参考；不读取源仓私有资料。此为最小文档任务，不引入额外 schema/测试框架或递归 agent。主任务同时准备外层 UAT 证据。

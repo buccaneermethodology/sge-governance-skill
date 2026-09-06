@@ -29,6 +29,6 @@
 
 ## SP-004 Semx 残留与开源缺口闭环
 
-- SP-004 已由本次用户指令启动；S-023 已完成合同/语义冻结，S-024 已在声明范围内 `Done（有界完成）`，详见 [S-024 中文收束](Artifacts/SP004_S024_Closeout.md) 与独立 [Delta Validation](Artifacts/SP004_S024_DeltaValidationReview.md)。十项 Finding 仍逐项保留，下一 Session 为 S-025；不表示 SP-004 缺口已关闭。
+- SP-004 已在用户批准的 Scope Delta 与例外范围内 `Done（pass_with_bounds）`。S-026 完整 newcomer flow 暂时记为 `not_applicable`，历史 task/UAT partial 保留；S-023 以 [Final Review](Artifacts/SP004_S023_FinalReview.md) 登记有界通过。README 已修复，v1.0.2 48-file exact candidate、CI、Release 与 remote read-back 见 [v1.0.2 read-back](Artifacts/SP004_S029_v1.0.2_RemoteReadback.json)。最终收束见 [S-029 Final Closeout](Artifacts/SP004_S029_FinalCloseout.md) 与 [post-closeout reconciliation](Artifacts/SP004_S029_PostCloseoutReconciliation_v2.md)。
 - 当前 Git branch 仍为 `sge/sp002`，新分支创建因 `.git` 写权限失败；这是 Git provenance/最终 handoff 风险，不是授权远端发布。
-- 下一停点是 S-027/C2：逐文件 rights、具体 owner/repo/tree/tag/payload 和远端 mutation 必须由人类明确授权；未授权时 SP-004 只能保持 `blocked_pending_human_authority` 或 `partial`。
+- S-028 的 CI workflow 修订、v1.0.1 exact payload 与远端 read-back，及后续 v1.0.2 README 修订 payload 均按人类授权完成。SP-004 当前 `goal_terminal=true`，但 claim ceiling 仍是批准例外下的 `pass_with_bounds`；不表示完整 newcomer readiness、无条件独立 Validation 或 production readiness。

@@ -1,0 +1,15 @@
+{
+  "schema_version": "sp004_s028_remote_readback_v1",
+  "repo": "buccaneermethodology/bm-sge-governance",
+  "remote_url": "https://github.com/buccaneermethodology/bm-sge-governance.git",
+  "branch": {"name": "main", "sha": "35747db7b769a1f6c25bec57263257100d1fb445", "matches_authorized_source": true},
+  "tag": {"name": "v1.0.0", "dereferenced_sha": "35747db7b769a1f6c25bec57263257100d1fb445", "matches_main": true},
+  "release": {"name": "bm-sge-governance v1.0.0", "draft": false, "prerelease": false, "target": "main", "url": "https://github.com/buccaneermethodology/bm-sge-governance/releases/tag/v1.0.0"},
+  "assets": [
+    {"name": "sge-governance-v1.0.0-candidate.tar.gz", "github_digest": "sha256:d11217e6c5f34fe7f39608e68939d5978cf276696968243eadc15f1136f0a3ec", "local_digest": "sha256:d11217e6c5f34fe7f39608e68939d5978cf276696968243eadc15f1136f0a3ec", "match": true},
+    {"name": "SHA256SUMS", "github_digest": "sha256:c6fca388e2e38d8e333c56b6e9c4c1363c48e8686a94eb637d1e74fe43c9b241", "local_digest": "sha256:c6fca388e2e38d8e333c56b6e9c4c1363c48e8686a94eb637d1e74fe43c9b241", "match": true, "downloaded_and_compared": true}
+  ],
+  "ci": {"run_count": 0, "verdict": "not_run", "reason": "authorized exact payload has no workflow file"},
+  "readback_verdict": "pass_with_bounds",
+  "does_not_prove": ["public CI passed", "production_ready", "all-platform applicability", "SP-004 Goal complete"]
+}

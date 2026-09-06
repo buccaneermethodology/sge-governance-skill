@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lane_task_card_v1.schema.json",
+  "title": "SGE Lane Task Card v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "card_id", "session_id", "lane", "role", "source_goal", "base_context_refs", "mode", "snapshot", "delta_read_set", "acceptance_criteria_ids", "write_scope", "required_outputs", "maximum_claim_ref", "forbidden_claims_ref", "topology", "rebaseline_ref", "working_directory", "execution_command"],
+  "properties": {
+    "schema_version": {"const": "lane_task_card_v1"},
+    "card_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "minLength": 1},
+    "lane": {"type": "string", "minLength": 1},
+    "role": {"enum": ["design", "builder", "validation", "semantic", "closure"]},
+    "source_goal": {"$ref": "#/$defs/digestedRef"},
+    "base_context_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/digestedRef"}},
+    "mode": {"enum": ["full_baseline", "delta"]},
+    "snapshot": {"type": "object", "additionalProperties": false, "required": ["snapshot_id", "parent_snapshot_ref"], "properties": {"snapshot_id": {"type": "string", "minLength": 1}, "parent_snapshot_ref": {"type": ["string", "null"]}}},
+    "delta_read_set": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "acceptance_criteria_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "write_scope": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "required_outputs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "maximum_claim_ref": {"$ref": "#/$defs/claimRef"},
+    "forbidden_claims_ref": {"type": "string", "minLength": 1},
+    "topology": {"type": "object", "additionalProperties": false, "required": ["fork_context", "user_visible_required", "user_visible", "task_id", "worktree"], "properties": {"fork_context": {"const": false}, "user_visible_required": {"type": "boolean"}, "user_visible": {"type": "boolean"}, "task_id": {"type": "string", "minLength": 1}, "worktree": {"type": "string", "minLength": 1}}},
+    "rebaseline_ref": {"type": "string", "minLength": 1},
+    "working_directory": {"type": "string", "minLength": 1},
+    "execution_command": {"type": "string", "minLength": 1},
+    "erbe_contract_ref": {"$ref": "#/$defs/digestedRef"},
+    "erbe_case_refs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/digestedRef"}},
+    "red_evidence_ref": {"$ref": "#/$defs/digestedRef"},
+    "frozen_inputs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/digestedRef"}},
+    "builder_write_exclusions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "red_identity": {"$ref": "#/$defs/redIdentity"}
+  },
+  "allOf": [
+    {
+      "anyOf": [
+        {"not": {"anyOf": [
+          {"required": ["erbe_contract_ref"]},
+          {"required": ["erbe_case_refs"]},
+          {"required": ["red_evidence_ref"]},
+          {"required": ["frozen_inputs"]},
+          {"required": ["builder_write_exclusions"]},
+          {"required": ["red_identity"]}
+        ]}},
+        {"required": ["erbe_contract_ref", "erbe_case_refs", "red_evidence_ref", "frozen_inputs", "builder_write_exclusions", "red_identity"]}
+      ]
+    }
+  ],
+  "$defs": {
+    "digestedRef": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}},
+    "claimRef": {"type": "object", "additionalProperties": false, "required": ["summary", "authority_ref"], "properties": {"summary": {"type": "string", "minLength": 1}, "authority_ref": {"type": "string", "minLength": 1}}},
+    "redIdentity": {
+      "oneOf": [
+        {"type": "string", "minLength": 1},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["case_identity", "failure_fingerprint"],
+          "properties": {
+            "case_identity": {"type": "string", "minLength": 1},
+            "failure_fingerprint": {"type": "string", "minLength": 1},
+            "expected_failure_code": {"type": "string", "minLength": 1},
+            "contract_revision": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["identity_version", "contract_id", "contract_revision", "contract_sha256", "cases_sha256", "case_ids", "bundle_sha256"],
+          "properties": {
+            "identity_version": {"type": "string", "minLength": 1},
+            "contract_id": {"type": "string", "minLength": 1},
+            "contract_revision": {"type": "string", "minLength": 1},
+            "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "cases_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            "case_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+            "bundle_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        }
+      ]
+    }
+  }
+}

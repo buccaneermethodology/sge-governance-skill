@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sge.local/schemas/goal_patch_v1.schema.json",
+  "title": "SGE Goal Patch v1",
+  "x-protected-targets": [
+    "goal_id",
+    "mission",
+    "must_have_ledger",
+    "claim_policy",
+    "completion_rule",
+    "approval_authorities",
+    "approval_registry",
+    "approved_scope_delta_registry"
+  ],
+  "x-immutable-targets": ["goal_id"],
+  "x-approval-source-policy": "A non-null approval_ref is valid only when the referenced Goal registry entry has verified codex_user_message_v1 provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "patch_id",
+    "base_goal_id",
+    "base_revision",
+    "base_digest",
+    "sequence",
+    "target_section",
+    "replacement",
+    "reason",
+    "scope_delta",
+    "approval_ref",
+    "conflicts_with"
+  ],
+  "properties": {
+    "schema_version": {"const": "goal_patch_v1"},
+    "patch_id": {"type": "string", "minLength": 1},
+    "base_goal_id": {"type": "string", "minLength": 1},
+    "base_revision": {"type": "string", "minLength": 1},
+    "base_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sequence": {"type": "integer", "minimum": 1},
+    "target_section": {"type": "string", "minLength": 1},
+    "replacement": true,
+    "reason": {"type": "string", "minLength": 1},
+    "scope_delta": {
+      "oneOf": [
+        {"const": "none"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scope_delta_id", "description", "impact"],
+          "properties": {
+            "scope_delta_id": {"type": "string", "minLength": 1},
+            "description": {"type": "string", "minLength": 1},
+            "impact": {
+              "enum": ["narrowed", "replaced", "deferred", "authority_changed", "claim_changed"]
+            }
+          }
+        }
+      ]
+    },
+    "approval_ref": {"type": ["string", "null"]},
+    "conflicts_with": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "target_section": {
+            "not": {"enum": ["claim_policy", "completion_rule"]}
+          }
+        },
+        "required": ["target_section"]
+      },
+      "then": {
+        "properties": {
+          "replacement": {"$ref": "#/$defs/nonAuthorityValue"}
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonAuthorityValue": {
+      "x-key-normalization": "Unicode NFKC, casefold, remove non-alphanumeric characters",
+      "x-authority-carrier-policy": "Forbidden normalized carrier keys fail closed recursively",
+      "anyOf": [
+        {"type": ["string", "number", "boolean", "null"]},
+        {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonAuthorityValue"}
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "not": {
+              "anyOf": [
+                {
+                  "pattern": "^[cC][lL][aA][iI][mM](?:[_-]?(?:[iI][dD][sS]?|[pP][oO][lL][iI][cC][yY]|[sS][tT][aA][tT][eE][mM][eE][nN][tT][sS]?|[sS]))?$"
+                },
+                {
+                  "pattern": "^[cC][oO][mM][pP][lL][eE][tT][iI][oO][nN](?:[_-]?(?:[cC][lL][aA][iI][mM](?:[_-]?[iI][dD])?[sS]?|[rR][uU][lL][eE]|[sS][tT][aA][tT][eE]|[sS][tT][aA][tT][uU][sS]|[vV][eE][rR][dD][iI][cC][tT]))?$"
+                },
+                {
+                  "pattern": "^[aA][uU][tT][hH][oO][rR][iI][tT][yY][_-]?[cC][lL][aA][iI][mM]$"
+                },
+                {
+                  "pattern": "^[aA][lL][lL][oO][wW][eE][dD][_-]?[cC][lL][aA][iI][mM][_-]?[iI][dD][sS]$"
+                },
+                {
+                  "pattern": "^[fF][iI][nN][aA][lL][_-]?[vV][eE][rR][dD][iI][cC][tT]$"
+                }
+              ]
+            }
+          },
+          "additionalProperties": {"$ref": "#/$defs/nonAuthorityValue"}
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "lane_prompt_audit_v1",
+  "stable_sources": [
+    {
+      "path": "Dashboard/Artifacts/Goal.md",
+      "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d"
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447"
+    }
+  ],
+  "prompts": [
+    {
+      "lane": "BuilderPrompt",
+      "source_type": "prompt_artifact",
+      "path": "Dashboard/Artifacts/BuilderPrompt.txt",
+      "sha256": "862124e605e37b3e240607ebe35dd863b3f123065c551bb8b08c785accbc194d"
+    },
+    {
+      "lane": "ClosurePrompt",
+      "source_type": "prompt_artifact",
+      "path": "Dashboard/Artifacts/ClosurePrompt.txt",
+      "sha256": "ff1cd8ea9001f4301dc223977384760062d3dcf5097c75a4a8072ae04146322b"
+    },
+    {
+      "lane": "DesignPrompt",
+      "source_type": "prompt_artifact",
+      "path": "Dashboard/Artifacts/DesignPrompt.txt",
+      "sha256": "b4454f98eb720001721a5a29e65b4f822f56cea7ede0fb74ca94b5b5c5b12039"
+    },
+    {
+      "lane": "ValidationPrompt",
+      "source_type": "prompt_artifact",
+      "path": "Dashboard/Artifacts/ValidationPrompt.txt",
+      "sha256": "277a3f3d93ec9ded71a737b11f8466ef40cbf8d11ae4fddc8064d0dacc739249"
+    }
+  ],
+  "allowed_boilerplate": []
+}

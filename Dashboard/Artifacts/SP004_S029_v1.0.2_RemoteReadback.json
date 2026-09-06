@@ -1,0 +1,15 @@
+{
+  "schema_version": "sp004_s029_v1_0_2_remote_readback_v1",
+  "repo": "buccaneermethodology/bm-sge-governance",
+  "remote_url": "https://github.com/buccaneermethodology/bm-sge-governance.git",
+  "source_branch": "main",
+  "source_commit": "fe5bd2d7aae16e06c9432b1ed275aebc1700aff0",
+  "tag": {"name": "v1.0.2", "object": "27f53727629afedde4141f1580dd7931b64bbc4f", "target_commit": "fe5bd2d7aae16e06c9432b1ed275aebc1700aff0"},
+  "candidate": {"file_count": 48, "tree_sha256": "f1af43dbf62deeaa113589dfd0c2d1c090940b33730753a273643ddadedbe81", "archive_sha256": "92d36c2d3a26c58be6fc615d33e559ddfa50a9d66785f4664cfd01374bcbaa93"},
+  "release": {"url": "https://github.com/buccaneermethodology/bm-sge-governance/releases/tag/v1.0.2", "draft": false, "prerelease": false, "assets": ["sge-governance-v1.0.2-candidate.tar.gz", "SHA256SUMS", "candidate-checks.yml"]},
+  "asset_sha256": {"sge-governance-v1.0.2-candidate.tar.gz": "92d36c2d3a26c58be6fc615d33e559ddfa50a9d66785f4664cfd01374bcbaa93", "SHA256SUMS": "7ec9d16fa4b5dce0d45df897d8333561888dc94f2620a6465f91899af24193b1", "candidate-checks.yml": "981ca9608d2a960eeaa316140216c5bdd2ced88b73c75fc271f556279972c55d"},
+  "ci": {"run_id": 34006120851, "head_sha": "fe5bd2d7aae16e06c9432b1ed275aebc1700aff0", "conclusion": "success"},
+  "readback": {"main_tag_release_assets_checksum_workflow_cmp": "pass", "candidate_archive_cmp": "pass", "sha256sums_cmp": "pass", "workflow_cmp": "pass"},
+  "verdict": "pass_with_bounds",
+  "claim_ceiling": "exact authorized v1.0.2 release and remote read-back verified; not production_ready or universally applicable"
+}

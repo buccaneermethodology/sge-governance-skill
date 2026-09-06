@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sge.local/schemas/goal_contract_v1.schema.json",
+  "title": "SGE Canonical Goal Contract v1",
+  "x-protected-targets": [
+    "goal_id",
+    "mission",
+    "must_have_ledger",
+    "claim_policy",
+    "completion_rule",
+    "approval_authorities",
+    "approval_registry",
+    "approved_scope_delta_registry"
+  ],
+  "x-immutable-targets": ["goal_id"],
+  "x-approval-source-policy": "Protected patches require live verification of a human-owned Codex thread (session_meta.thread_source=user), source thread identity, user-message provenance, and explicit token bindings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "goal_id",
+    "revision",
+    "mission",
+    "must_have_ledger",
+    "sections",
+    "claim_policy",
+    "completion_rule",
+    "approval_authorities",
+    "approval_registry",
+    "approved_scope_delta_registry"
+  ],
+  "properties": {
+    "schema_version": {"const": "goal_contract_v1"},
+    "goal_id": {"type": "string", "minLength": 1},
+    "revision": {"type": "string", "minLength": 1},
+    "mission": {"type": "string", "minLength": 1},
+    "must_have_ledger": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/mustHave"}
+    },
+    "sections": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "allOf": [
+          {"pattern": "^[A-Za-z][A-Za-z0-9_-]*$"},
+          {
+            "not": {
+              "enum": [
+                "schema_version",
+                "goal_id",
+                "revision",
+                "mission",
+                "must_have_ledger",
+                "sections",
+                "claim_policy",
+                "completion_rule",
+                "approval_authorities",
+                "approval_registry",
+                "approved_scope_delta_registry",
+                "resolution"
+              ]
+            }
+          }
+        ]
+      },
+      "additionalProperties": {"$ref": "#/$defs/nonAuthorityValue"}
+    },
+    "claim_policy": {"$ref": "#/$defs/claimPolicy"},
+    "completion_rule": {"$ref": "#/$defs/completionRule"},
+    "approval_authorities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/authority"}
+    },
+    "approval_registry": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/approval"}
+    },
+    "approved_scope_delta_registry": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "resolution": {"$ref": "#/$defs/resolution"}
+  },
+  "$defs": {
+    "nonAuthorityValue": {
+      "x-key-normalization": "Unicode NFKC, casefold, remove non-alphanumeric characters",
+      "x-authority-carrier-policy": "Forbidden normalized carrier keys fail closed recursively",
+      "anyOf": [
+        {"type": ["string", "number", "boolean", "null"]},
+        {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonAuthorityValue"}
+        },
+        {
+          "type": "object",
+          "propertyNames": {
+            "not": {
+              "anyOf": [
+                {
+                  "pattern": "^[cC][lL][aA][iI][mM](?:[_-]?(?:[iI][dD][sS]?|[pP][oO][lL][iI][cC][yY]|[sS][tT][aA][tT][eE][mM][eE][nN][tT][sS]?|[sS]))?$"
+                },
+                {
+                  "pattern": "^[cC][oO][mM][pP][lL][eE][tT][iI][oO][nN](?:[_-]?(?:[cC][lL][aA][iI][mM](?:[_-]?[iI][dD])?[sS]?|[rR][uU][lL][eE]|[sS][tT][aA][tT][eE]|[sS][tT][aA][tT][uU][sS]|[vV][eE][rR][dD][iI][cC][tT]))?$"
+                },
+                {
+                  "pattern": "^[aA][uU][tT][hH][oO][rR][iI][tT][yY][_-]?[cC][lL][aA][iI][mM]$"
+                },
+                {
+                  "pattern": "^[aA][lL][lL][oO][wW][eE][dD][_-]?[cC][lL][aA][iI][mM][_-]?[iI][dD][sS]$"
+                },
+                {
+                  "pattern": "^[fF][iI][nN][aA][lL][_-]?[vV][eE][rR][dD][iI][cC][tT]$"
+                }
+              ]
+            }
+          },
+          "additionalProperties": {"$ref": "#/$defs/nonAuthorityValue"}
+        }
+      ]
+    },
+    "mustHave": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement_id", "requirement", "evidence", "status"],
+      "properties": {
+        "requirement_id": {"type": "string", "minLength": 1},
+        "requirement": {"type": "string", "minLength": 1},
+        "evidence": {"type": "string", "minLength": 1},
+        "status": {
+          "enum": ["pending", "landed", "blocked", "approved_deferred", "not_applicable"]
+        }
+      }
+    },
+    "claimDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "statement"],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1}
+      }
+    },
+    "claimStatement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_id", "disposition"],
+      "properties": {
+        "claim_id": {"type": "string", "minLength": 1},
+        "disposition": {"enum": ["allowed", "forbidden"]}
+      }
+    },
+    "claimPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claim_definitions", "allowed_claim_ids", "claim_statements"],
+      "properties": {
+        "claim_definitions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/claimDefinition"}
+        },
+        "allowed_claim_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "claim_statements": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/claimStatement"}
+        }
+      }
+    },
+    "completionRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["completion_claim_id", "required_status"],
+      "properties": {
+        "completion_claim_id": {"type": "string", "minLength": 1},
+        "required_status": {"const": "landed"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_kind", "authority_id"],
+      "properties": {
+        "authority_kind": {"const": "human"},
+        "authority_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "approval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "approval_id",
+        "authority_kind",
+        "authority_id",
+        "status",
+        "base_digest",
+        "revision",
+        "allowed_patch_ids",
+        "allowed_targets",
+        "scope_delta_ids",
+        "provenance"
+      ],
+      "properties": {
+        "approval_id": {"type": "string", "minLength": 1},
+        "authority_kind": {"const": "human"},
+        "authority_id": {"type": "string", "minLength": 1},
+        "status": {"const": "approved"},
+        "base_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "revision": {"type": "string", "minLength": 1},
+        "allowed_patch_ids": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "allowed_targets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "scope_delta_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "provenance": {"$ref": "#/$defs/approvalProvenance"}
+      }
+    },
+    "approvalProvenance": {
+      "x-message-hash-semantics": "SHA-256 of concatenated UTF-8 text content from the uniquely hash-bound user message in turn_id",
+      "x-rollout-path-policy": "Resolver defaults to Codex session roots; synthetic roots require explicit caller injection",
+      "x-source-thread-policy": "Exactly one session_meta is required; thread_source must be user and source_thread_id must equal payload.id or the legacy payload.session_id fallback",
+      "x-token-prefix": "SGE_GOAL_PATCH_APPROVAL_V1 ",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_kind",
+        "rollout_path",
+        "source_thread_id",
+        "turn_id",
+        "message_sha256",
+        "approval_token"
+      ],
+      "properties": {
+        "source_kind": {"const": "codex_user_message_v1"},
+        "rollout_path": {"type": "string", "minLength": 1},
+        "source_thread_id": {"type": "string", "minLength": 1},
+        "turn_id": {"type": "string", "minLength": 1},
+        "message_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "approval_token": {"type": "string", "minLength": 1}
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base_revision", "base_digest", "applied_patch_ids"],
+      "properties": {
+        "base_revision": {"type": "string", "minLength": 1},
+        "base_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "applied_patch_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
