@@ -1,0 +1,30 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s016-independent-validation-v1",
+  "session_id": "SP-003/S-016",
+  "lane": "S-016 independent design handoff validation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md", "sha256": "330ab4bc5906c4a61df5dc9cf3b80cee155c7f9ad4c3d301f9481fb0767e2800"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md", "sha256": "2254d01c5d95ee82438f14860bdf554cc6f582d836667649fe77397b32e16bd9"},
+    {"path": "kb/data/strategy/strategy_open_source_dual_repo_distribution_v1.json", "sha256": "fd92c9eedfdf858c9ba5cfc490ed70b36e8ffbda0d69e1c9c10f85c464979420"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s016-validation-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["ODA-MH-01", "ODA-MH-02", "ODA-MH-04", "ODA-MH-07", "ODA-MH-11", "S016-AC-01", "S016-AC-02", "S016-AC-03", "PROC-02", "PROC-03"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json"],
+  "required_outputs": ["建立完整 Read Manifest，读取原始 Goal、Stage Plan、S-016 Design/ERBE/Semantic Review、Dashboard/KB 与当前 diff", "同时检查原始 ODA-MH-01..12 与 S-016 revised design，识别 scope narrowing/overclaim", "独立判断 S-016 设计交接与 ERBE 输入是否满足当前合同；不能把 design/schema/card pass 当行为验证", "分别报告 Validation Reviewer、Adversarial Tester、Governance Architect findings，并给出 partial/blocked/pass-with-findings verdict", "记录 CG skipped: no CG input provided 与 S-017 continuation evidence"],
+  "maximum_claim_ref": {"summary": "只验证 S-016 设计交接与 ERBE 输入的有界一致性；不声称实现、candidate、公开仓、发布、生产就绪或 SP-003 完成。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s016-validation-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationReview.md Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json"
+}

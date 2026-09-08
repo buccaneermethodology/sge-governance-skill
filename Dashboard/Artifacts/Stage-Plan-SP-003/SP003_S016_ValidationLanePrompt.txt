@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationLaneTaskCard.json
+Card SHA-256: 3d7786f2fc5c400992cdf9e5e07975bee741051776448a093ec9547a183b49f0
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationLaneTaskCard.json --repo . --expected-card-sha256 3d7786f2fc5c400992cdf9e5e07975bee741051776448a093ec9547a183b49f0
+Lane: S-016 independent design handoff validation | Session: SP-003/S-016 | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: git diff -- Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationReview.md Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json

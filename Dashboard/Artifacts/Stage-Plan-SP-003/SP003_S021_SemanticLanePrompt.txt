@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticLaneTaskCard.json
+Card SHA-256: a1a4280daadea1c8a732c7c47e85a78945c5ee26468ce8721427da20636cfa25
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticLaneTaskCard.json --repo . --expected-card-sha256 a1a4280daadea1c8a732c7c47e85a78945c5ee26468ce8721427da20636cfa25
+Lane: S-021 ODA semantic review | Session: SP-003/S-021 | Role: semantic
+Mode: full_baseline
+Working directory: .
+Execute: python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode semantic && git diff --check

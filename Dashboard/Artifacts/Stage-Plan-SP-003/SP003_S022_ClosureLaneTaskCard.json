@@ -1,0 +1,68 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s022-closure-final-state-v1",
+  "session_id": "SP-003/S-022",
+  "lane": "S-022 final closure state absorption",
+  "role": "closure",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+    "sha256": "330ab4bc5906c4a61df5dc9cf3b80cee155c7f9ad4c3d301f9481fb0767e2800"
+  },
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_Final_OPCM.md", "sha256": "4d70be77755df6ac03f66ff5c3fa411954ada77cc5c321b1d185f4eb53bf7bc4"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_Closeout.md", "sha256": "af8db6dce6791bf758efab89c7f87abc8198a193e8eb4edf585967d24d72f521"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_PostCloseoutReconciliation.md", "sha256": "a726981227a5dcda4b352aaa7b7131c12a46c176e6356430f67d7ab92e1ef4db"},
+    {"path": "Dashboard/Sessions.md", "sha256": "e7e99abeeaa9ca489a9fbe92aa429a3a107dd93a6c29706d4b8200e4c5f48d70"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "56ec1cd61884e98baaab0b360e008b4b5b78b8cf0132cc09f2037dd156e613c2"},
+    {"path": "Dashboard/Current_State.md", "sha256": "c7e3e4438df903b0d133ed083c73898807b30507ff4a9bf5292c4185754e347a"},
+    {"path": "Dashboard/Big_Ideas.md", "sha256": "3704eadc52b8f8376e3a649fd2702b8e57e4f7716d27e4b99e5274e888a8cc14"},
+    {"path": "Dashboard/Session_Index.md", "sha256": "211bc0428548fa7fc697b905cb6c05bdbf1a7ae2158b7f4b398de3b78fa81b75"},
+    {"path": "Dashboard/Archives/Sessions/archive_manifest.json", "sha256": "c14084d1a7595ef47f5922ce6fa2e18a263b99eef63d82078bfcd5500ac49247"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s022-closure-final-state-2026-09-04", "parent_snapshot_ref": null},
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_*",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Big_Ideas.md",
+    "Dashboard/Archives/Sessions/archive_manifest.json",
+    "git status --short",
+    "git diff -- Dashboard"
+  ],
+  "acceptance_criteria_ids": ["ODA-MH-12", "PROC-01..04", "completion rule"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_Final_OPCM.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_PostCloseoutReconciliation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Big_Ideas.md"
+  ],
+  "required_outputs": [
+    "把 ODA-MH-01..12 与流程 must-have 的实际状态吸收到 OPCM、Closeout 和 Goal/Stage Plan",
+    "形成唯一一致的 S-022 final state；不得把外部 GitHub 权限或远端动作写成已完成",
+    "保留历史 blocked/partial/pass-with-findings 事实，并以可点击源文件链接说明证据边界",
+    "更新 Dashboard 父面与 Session 状态；按 registry 规则只让 reconcile 维护派生 Session Index",
+    "记录 CG skipped: no CG input provided；不创建或修改 public GitHub repo"
+  ],
+  "maximum_claim_ref": {
+    "summary": "仅吸收 S-022 的本地最终状态；不得替代独立 Final Validation 或 post-closeout reconciliation，不支持 GitHub 发布或 production-ready。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s022-closure-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_FinalValidation.md",
+  "working_directory": ".",
+  "execution_command": "python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S022_Closeout.md && git diff --check"
+}

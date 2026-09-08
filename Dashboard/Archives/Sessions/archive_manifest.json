@@ -4,11 +4,7 @@
   "authoritative_surfaces": {
     "current": "Dashboard/Sessions.md",
     "archives": "Dashboard/Archives/Sessions/*.md",
-<<<<<<< HEAD
-    "record_set_sha256": "d139cdedf1febcd3ec58cb917fd1ee46de037131d8d708a3a901b8df7b6556af"
-=======
-    "record_set_sha256": "58a350536458bbf31fbeddadc97d630097ec175a7873132161698ffdcd60a8f6"
->>>>>>> codex/sp001-quality-recovery
+    "record_set_sha256": "7bb20575e2dfcd4418b589a83331d2f5260a93a3da794b897e9dad60f7258306"
   },
   "record_count": 29,
   "current_count": 0,

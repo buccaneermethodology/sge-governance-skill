@@ -1,0 +1,28 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s016-dual-repo-design-v1",
+  "session_id": "SP-003/S-016",
+  "lane": "S-016 dual-repository contract design",
+  "role": "design",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md", "sha256": "330ab4bc5906c4a61df5dc9cf3b80cee155c7f9ad4c3d301f9481fb0767e2800"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "kb/data/strategy/strategy_open_source_dual_repo_distribution_v1.json", "sha256": "fd92c9eedfdf858c9ba5cfc490ed70b36e8ffbda0d69e1c9c10f85c464979420"},
+    {"path": "public_export_manifest_v1.json", "sha256": "3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path": "tools/sge_public.py", "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s016-design-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["ODA-MH-01", "ODA-MH-02", "ODA-MH-04", "ODA-MH-07", "ODA-MH-11", "S016-AC-01", "S016-AC-02", "S016-AC-03"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json"],
+  "required_outputs": ["冻结 private canonical -> public projection 的 source-of-truth contract", "冻结 public content boundary、maintainer/end-user surface 与 identity/state axes", "定义至少 10 个关键正负例、invariants、forbidden collapses 与 oracle owner", "给出后续 S-017..S-022 的 implementation ladder、Validation focus 与 future-agent misuse mitigations", "明确 CG skipped: no CG input provided"],
+  "maximum_claim_ref": {"summary": "只形成 S-016 Design/ERBE handoff；不声称 exporter、installer、candidate、公开仓、发布或生产就绪。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s016-design-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json"
+}

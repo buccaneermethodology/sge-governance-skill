@@ -1,0 +1,50 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "repository-capability-panorama-post-closeout-v1",
+  "session_id": "ADHOC/REPOSITORY-CAPABILITY-PANORAMA",
+  "lane": "能力全景最终收束复核",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Design.md",
+    "sha256": "2aaa245234f4c0f6510b50714c782c82118ce9ec159162a5a8adfbf990fd2d9c"
+  },
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_DeltaValidationReview.md", "sha256": "3b45a26ae654dcc3841f62e7700a220dee5ebee33b1e9854200bdf86f6f7d004"},
+    {"path": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_DeltaValidationStateSnapshot.json", "sha256": "850edad71bed4830fa6323c071dbd348f90efb6bed63fdcfe9a7cad8783ab9db"},
+    {"path": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Closeout.md", "sha256": "868fd41250c1ecd693bec9f85f633eaacf4322fdb3dc9b1078c5d69fea409a3d"}
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "repository-capability-panorama-post-closeout-2026-09-05",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_DeltaValidationStateSnapshot.json"
+  },
+  "delta_read_set": [
+    "更新后的 Closeout",
+    "Delta Validation Review/State Snapshot",
+    "最终 RepositoryCapabilityPanorama* inventory",
+    "Dashboard registry 与 KB render 状态",
+    "closeout-language 与 git diff/status"
+  ],
+  "acceptance_criteria_ids": ["PAN-DESIGN-01", "PAN-DESIGN-02", "PAN-DESIGN-03", "PAN-DESIGN-04"],
+  "write_scope": ["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_PostCloseoutReconciliation.md"],
+  "required_outputs": [
+    "明确读取实际用于收束的 Closeout、最终 Dashboard/KB 状态与最终 diff",
+    "确认 Delta Validation 的唯一 reviewer/verdict 无冲突且原始目标覆盖未回退",
+    "给出唯一 post-closeout verdict，并保持 candidate_not_approved 发布边界"
+  ],
+  "maximum_claim_ref": {
+    "summary": "最多确认本次全景与当前 checkout 审计在有界范围内完成；不授予公开发布、rights 或生产就绪结论。",
+    "authority_ref": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Design.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "repository-capability-panorama-post-closeout",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_DeltaValidationStateSnapshot.json",
+  "working_directory": ".",
+  "execution_command": "只读复核更新后的 closeout、最终 Dashboard/KB 与 diff；只写 PostCloseoutReconciliation.md"
+}

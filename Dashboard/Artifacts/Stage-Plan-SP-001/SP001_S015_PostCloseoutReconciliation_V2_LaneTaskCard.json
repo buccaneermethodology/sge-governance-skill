@@ -39,19 +39,19 @@
     },
     {
       "path": "Dashboard/Current_State.md",
-      "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"
+      "sha256": "c7e3e4438df903b0d133ed083c73898807b30507ff4a9bf5292c4185754e347a"
     },
     {
       "path": "Dashboard/Stage_Plans.md",
-      "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"
+      "sha256": "56ec1cd61884e98baaab0b360e008b4b5b78b8cf0132cc09f2037dd156e613c2"
     },
     {
       "path": "Dashboard/Sessions.md",
-      "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"
+      "sha256": "e7e99abeeaa9ca489a9fbe92aa429a3a107dd93a6c29706d4b8200e4c5f48d70"
     },
     {
       "path": "Dashboard/Session_Index.md",
-      "sha256": "f31c93b61f29c359cb2b842d6323a6cdb5dcc953f4ef9b22c60f45781a6308d7"
+      "sha256": "211bc0428548fa7fc697b905cb6c05bdbf1a7ae2158b7f4b398de3b78fa81b75"
     },
     {
       "path": "Dashboard/Archives/Sessions/SP-001.md",
@@ -59,15 +59,15 @@
     },
     {
       "path": "Dashboard/Archives/Sessions/archive_manifest.json",
-      "sha256": "ac015192a399c521db106028d71e0ffe5d016cf46b91ca93d6a54a5ce08523ad"
+      "sha256": "c14084d1a7595ef47f5922ce6fa2e18a263b99eef63d82078bfcd5500ac49247"
     },
     {
       "path": "Dashboard/Big_Ideas.md",
-      "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"
+      "sha256": "3704eadc52b8f8376e3a649fd2702b8e57e4f7716d27e4b99e5274e888a8cc14"
     },
     {
       "path": "Dashboard/Artifacts_Index.md",
-      "sha256": "1f75bedb46907368a19ad991bd97e24fe85faf7b5e7df22c6b5f55a6091da9a3"
+      "sha256": "e15db3a7c25baa4f95a4888f8c8d9031e8dc81d60c3dbf2fc0837b13c9553aca"
     },
     {
       "path": "Dashboard/tools/quality_recovery_erbe.py",
@@ -75,7 +75,7 @@
     },
     {
       "path": "Dashboard/tools/session_registry.py",
-      "sha256": "ffe22afa397a9171a501439cc6c0167158a7d449c787ca1546ab72383dc3c2a7"
+      "sha256": "3f86b8bd27044910971c82befbd3dfc6d8e7b01fe0bd398db13915e9bcb95ac4"
     },
     {
       "path": "tests/test_session_registry.py",

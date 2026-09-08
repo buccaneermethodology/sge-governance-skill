@@ -1,0 +1,33 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp002-s011-approved-exception-post-closeout-v1",
+  "session_id":"SP-002/S-011",
+  "lane":"SP-002 post-closeout reconciliation after approved PROC-01 exception",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","sha256":"f5748bbe772bd0f7cd115959902b80c515c9f7377bfbe3c182c200820dc83508"},
+  "base_context_refs":[
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_GoalPatch.md","sha256":"3f3a3043adbdbfd0b6f0d106412ed6941a0f7cbb8bec59705530362d88646123"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PROC01_TopologyException_Approval.md","sha256":"d104243bec97df4ee1026cc7de4531f0ca35cf9d7232a9a0fe5a41ac62f9c8ed"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_FinalClosure_OPCM.md","sha256":"024f8b4afed7125ae989726dde4745e41c61dd9b08031878cbdf85c4c1fdd43b"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_FinalClosure_Closeout.md","sha256":"f77b7a20bc2918459bcd4b92ff5a0895542eff0460cabd2f3d184f0db6ad028d"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_ApprovedException_FinalValidation.md","sha256":"07b8d97885a94ab7c8050f9b60e5b06c000a90aaa0dcd8b9ae1195332026f649"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_PostCloseoutReconciliation_Delta.md","sha256":"8a2640ac825ba4481aa0cee6d4c1eccf2c5be88c1797fc15703f4358dc64ec34"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_CycleLedger.json","sha256":"00c09b041687fad2e752828446eec349139917c5815ec9a720f9b41c042d9942"},
+    {"path":"Dashboard/Current_State.md","sha256":"c7e3e4438df903b0d133ed083c73898807b30507ff4a9bf5292c4185754e347a"},
+    {"path":"Dashboard/Stage_Plans.md","sha256":"56ec1cd61884e98baaab0b360e008b4b5b78b8cf0132cc09f2037dd156e613c2"},
+    {"path":"Dashboard/Sessions.md","sha256":"e7e99abeeaa9ca489a9fbe92aa429a3a107dd93a6c29706d4b8200e4c5f48d70"},
+    {"path":"Dashboard/Archives/Sessions/archive_manifest.json","sha256":"c14084d1a7595ef47f5922ce6fa2e18a263b99eef63d82078bfcd5500ac49247"}
+  ],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp002-s011-approved-exception-post-closeout-2026-09-03","parent_snapshot_ref":null},
+  "delta_read_set":["git status --short","git diff","Dashboard/Session_Index.md","Dashboard/Archives/Sessions/SP-002.md","README.md","kb/render_manifest_v1.json","public_export_manifest_v1.json","kb/data/glossary_v1.json","kb/docs/Glossary.md","tests","tools","docs","examples","extensions","LICENSE","NOTICE"],
+  "acceptance_criteria_ids":["SP002-MH-01..12","PROC-01..05","completion rule","final diff","closeout-language"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_ApprovedException_PostCloseoutReconciliation.md"],
+  "required_outputs":["中文Read Manifest与Evidence Completeness Matrix","核对批准后Final Validation、Closeout、OPCM、Dashboard/KB与完整diff","确认PROC-01批准的有界影响与原始事实保留","唯一最终verdict；只有全部completion rule满足才可pass，否则blocked/partial","不得批准release/production/push/tag"],
+  "maximum_claim_ref":{"summary":"最多确认批准后当前候选状态与Goal evidence的一致性；不授权release/production。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PROC01_TopologyException_Approval.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp002-s011-approved-exception-post-closeout","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PROC01_TopologyException_Approval.md",
+  "working_directory":".",
+  "execution_command":"python3 Dashboard/tools/session_registry.py reconcile --repo . --check && python3 Dashboard/tools/session_registry.py validate --repo . && python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_FinalClosure_Closeout.md && python3 -m unittest discover -s tests -p 'test_*.py' && python3 Dashboard/tools/doctor.py --repo . --json-out /tmp/sp002-doctor-approved-post.json && python3 tools/sge_public.py doctor && python3 kb/tools/render_kb.py --check && python3 Dashboard/tools/sge/s002_erbe_acceptance.py --phase red && python3 Dashboard/tools/sge/s002_erbe_acceptance.py --phase green && git diff --check"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp004-s024-pdi-repair-v1",
+  "session_id":"SP-004/S-024",
+  "lane":"S-024 PDI blocker repair",
+  "role":"builder",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md","sha256":"b4c4bd4804f78e2ed1b0e97a6747ae5b0b64f41824d5f9bfa0f8615d1a1dbefb"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationReview.md","sha256":"b26b877f74e495abe48c39fab175ff3dcebff572cb27ac7178038a7c1d95eebb"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationStateSnapshot.json","sha256":"5d2d11e5b839f481029fbe1ec5da623df92ae45e17ec062bdfb5e3e073284287"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Contract.json","sha256":"be41cdac960aaca5f56b21cc7dd1a0bd6efa7e5ac1929478ba78a0fd778ad0bb"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Cases.json","sha256":"4ffb3b1a23071238295184bee5567945ec3d4ec2ca6ea33b41bb584428262fb3"}],
+  "mode":"delta",
+  "snapshot":{"snapshot_id":"sp004-s024-pdi-repair-2026-09-05","parent_snapshot_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationStateSnapshot.json"},
+  "delta_read_set":["Validation blockers 1-3","Dashboard/tools/doctor.py","public_export_manifest_v1.json","tools/sge_public.py","tests/test_repository_quality.py","tests/test_public_candidate.py","tests/test_public_projection.py","tests/bdd/readable_cards/sp004/identity-locator-residue.md","S-023 Contract/Cases"],
+  "acceptance_criteria_ids":["GAP-MH-07","GAP-MH-09","GAP-MH-10","S024-AC-01","S024-AC-02"],
+  "write_scope":["Dashboard/tools/doctor.py","tests/test_repository_quality.py","tests/test_public_candidate.py","tests/test_public_projection.py","tests/bdd/readable_cards/sp004/identity-locator-residue.md","Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_PDIRepair.md","Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ERBE_RED_GREEN.json"],
+  "required_outputs":["typed locator inventory/resolver covering Archives/Agent_Logs/Artifacts","deny-token presence/classification fail-closed check and negative fixture","same frozen case identity RED/GREEN evidence with environment error separation","full PDI fields and recurrence prevention"],
+  "maximum_claim_ref":{"summary":"最多支持修复 S-024 Validation blockers 并提供可重算证据；不支持 Goal complete、rights、release 或远端。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationReview.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp004-s024-pdi-repair-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationStateSnapshot.json",
+  "working_directory":".",
+  "execution_command":"python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_PDIRepairLaneTaskCard.json --repo . --expected-card-sha256 <rendered-card-sha256> && python3 -m unittest discover -s tests -p 'test_*.py' && python3 Dashboard/tools/doctor.py --repo . && git diff --check"
+}

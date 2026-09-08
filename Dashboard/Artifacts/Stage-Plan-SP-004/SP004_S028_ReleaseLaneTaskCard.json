@@ -1,0 +1,25 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp004-s028-authorized-release-v1",
+  "session_id": "SP-004/S-028",
+  "lane": "S-028 授权范围内远端发布与 read-back",
+  "role": "closure",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md", "sha256": "b4c4bd4804f78e2ed1b0e97a6747ae5b0b64f41824d5f9bfa0f8615d1a1dbefb"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S027_ReleaseCandidatePreflight.json", "sha256": "66d967a848e234e3acfbee9e5ddc93c55021e2cdbf75dc5609982dd5aa461052"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_AuthorizationRecord.md", "sha256": "fffb51935a26c133f93bd52bbf9a9d9eacde086cee205d26e855cd219f0df77a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S027_SHA256SUMS.txt", "sha256": "c6fca388e2e38d8e333c56b6e9c4c1363c48e8686a94eb637d1e74fe43c9b241"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp004-s028-authorized-release-baseline-2026-09-05", "parent_snapshot_ref": null},
+  "delta_read_set": ["S-027 preflight", "S-027 Validation Review", "S-028 authorization", "candidate SHA256SUMS", "remote main/tag/release/CI"],
+  "acceptance_criteria_ids": ["GAP-MH-06", "GAP-MH-05", "AC-09", "AC-10", "AC-11", "SGC-SI-1..SI-6"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_AuthorizationRecord.md", "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_ReleaseNotes.md", "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_ReleaseLaneTaskCard.json", "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_ExecutionTranscript.json", "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_RemoteReadback.json"],
+  "required_outputs": ["authorization reference", "push/tag/release commands and return codes", "remote commit/tree/tag/assets identity", "CI result", "checksum read-back", "deviation or rollback record"],
+  "maximum_claim_ref": {"summary": "最多支持 exact authorized v1.0.0 release 的 remote read-back；不支持 production_ready 或普遍适用。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S028_AuthorizationRecord.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "orchestrator-authorized-release", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S025_FinalValidationStateSnapshot.json",
+  "working_directory": ".",
+  "execution_command": "仅按授权 exact payload 执行 push main、tag v1.0.0、GitHub release 与 remote read-back；任何 identity/checksum/CI 偏差立即停止。"
+}

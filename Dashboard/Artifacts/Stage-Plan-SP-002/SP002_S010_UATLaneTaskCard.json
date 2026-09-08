@@ -1,0 +1,31 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp002-s010-newcomer-uat-v1",
+  "session_id":"SP-002/S-010",
+  "lane":"S-010 independent newcomer clean-room UAT",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","sha256":"f5748bbe772bd0f7cd115959902b80c515c9f7377bfbe3c182c200820dc83508"},
+  "base_context_refs":[
+    {"path":"AGENTS.md","sha256":"1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_GoalPatch.md","sha256":"3f3a3043adbdbfd0b6f0d106412ed6941a0f7cbb8bec59705530362d88646123"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json","sha256":"32ad71959ffef6cd5e02088f1344460334997cfa52b5efcf71f90a38f19eaa93"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Cases.json","sha256":"4d16d33b2b2b9df1ae8085bfdbb61f39c8800bb9182034f5fd9c8f7f47eb3189"},
+    {"path":"public_export_manifest_v1.json","sha256":"3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path":"docs/Beginner_Guide_CN.md","sha256":"5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91"},
+    {"path":"docs/Quick_Start_CN.md","sha256":"d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e"},
+    {"path":"tools/sge_public.py","sha256":"1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path":"tools/run_sge_loop_goal_cycle.py","sha256":"5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef"}
+  ],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp002-s010-uat-baseline-2026-09-02","parent_snapshot_ref":null},
+  "delta_read_set":[],
+  "acceptance_criteria_ids":["SP002-MH-04","SP002-MH-05","SP002-MH-07","SP002-MH-09","SP002-C01","SP002-C02","SP002-C05","SP002-C06","SP002-C07"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md"],
+  "required_outputs":["从空目录按Quick Start逐步重放", "验证安装、doctor、bootstrap、upgrade、recoverable uninstall", "检查新手可读性、错误恢复、私有身份/绝对路径残留", "给出blocking findings、修复建议与有界verdict"],
+  "maximum_claim_ref":{"summary":"最多确认当前候选在实际重放的clean-room新手路径中可用；不批准发布、生产或普遍适用。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp002-s010-uat-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json",
+  "working_directory":".",
+  "execution_command":"python3 tools/sge_public.py doctor && python3 -m unittest tests.test_public_candidate tests.test_loop_orchestrator"
+}

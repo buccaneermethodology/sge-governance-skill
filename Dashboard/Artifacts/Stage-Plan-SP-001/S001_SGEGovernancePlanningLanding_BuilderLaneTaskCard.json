@@ -14,7 +14,7 @@
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md", "sha256": "4cd28b556487996788b252eb0391fe2cac438b5ed1995b1a0caa5b8c8248e72d"},
-    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "Dashboard/Decisions.md", "sha256": "57d3b5b4487b46647dc4cd9b62f857b4ec1048cdc378221ddb43cc7f0cb862c9"},
     {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"}
   ],
   "mode": "full_baseline",

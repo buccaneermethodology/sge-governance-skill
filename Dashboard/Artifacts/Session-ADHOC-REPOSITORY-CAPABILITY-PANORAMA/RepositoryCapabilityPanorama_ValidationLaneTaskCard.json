@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"repository-capability-panorama-final-validation-v1",
+  "session_id":"ADHOC/REPOSITORY-CAPABILITY-PANORAMA",
+  "lane":"能力全景独立最终验证",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Design.md","sha256":"2aaa245234f4c0f6510b50714c782c82118ce9ec159162a5a8adfbf990fd2d9c"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Data.json","sha256":"f38f99036d927ce8c3b75c532e6f0291b948405ae8d534ee98d62f70ab6f4b57"},{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama.md","sha256":"51923fef6752ac5afe8adbb4da7b55e267712683c3568dd24c153350a89ce558"},{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama.html","sha256":"24fc6a26f3ac107ae26bb5a117271b49cc21163dcb42de22f51e2ff017bd80d6"},{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Audit_Report.md","sha256":"f62e1ad881dfe4efb0ba38a4e5e2b74a52ee63485061d177f74a0d6dd39bb670"},{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Closeout.md","sha256":"868fd41250c1ecd693bec9f85f633eaacf4322fdb3dc9b1078c5d69fea409a3d"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"repository-capability-panorama-final-validation-2026-09-04","parent_snapshot_ref":null},
+  "delta_read_set":["original user request","AGENTS.md","SGE checkpoint Skill and SGC","Context/Design/lane cards/prompts/audit","Data/Markdown/HTML/Audit/Generator/Closeout","README/docs/public manifest/core Skill/tools/extensions/tests","Dashboard Current State/Stage Plans/Sessions/registry","kb canonical strategy/rendered docs","git final diff"],
+  "acceptance_criteria_ids":["PAN-DESIGN-01","PAN-DESIGN-02","PAN-DESIGN-03","PAN-DESIGN-04"],
+  "write_scope":["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ValidationReview.md","Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ValidationStateSnapshot.json"],
+  "required_outputs":["中文大白话解释任务声称什么、不证明什么","完整 Read Manifest 与原始目标逐项覆盖","独立重算 JSON/HTML/links/gates/CLI/残留分类/公开身份与最终 diff","blocking/non-blocking findings、Builder/Closure exception 影响、SGC SI-1..SI-6 与唯一 verdict","若有阻断不得修改 Builder 产物，不得给 pass/done"],
+  "maximum_claim_ref":{"summary":"只在当前 checkout、最终 closeout 与实际 diff 范围内给独立 verdict；不证明正式开源发布。","authority_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_Design.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"repository-capability-panorama-final-validation","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json",
+  "working_directory":".",
+  "execution_command":"只读验证最终全景 package 与 closeout，写 ValidationReview 和 snapshot；不得修复 Builder/Closure 产物"
+}

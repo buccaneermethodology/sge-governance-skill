@@ -1,0 +1,31 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s021-independent-validation-v1",
+  "session_id": "SP-003/S-021",
+  "lane": "S-021 clean-room and UAT independent validation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_CleanRoom_UAT.md", "sha256": "38902d2ce6457a33033312c09cfe68a001394cb1fc45b98eaf854ba31579dbf3"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ERBE_RED_GREEN.json", "sha256": "4c5d2f1b1cbcadb0f94aa794b2f670a1955de1f75c21e5f25ed00e30f4724f4c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticReview.md", "sha256": "9c5759b9fc9266e671256a365938afe1383c69e5a425111cd2a6192b70b15f05"},
+    {"path": "tools/sge_public.py", "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path": "tests/test_public_candidate.py", "sha256": "77a6ed0d716ee98a74a94b17489dd8ec15bad45cc88983cd3c79b47b93de13dd"},
+    {"path": "tests/test_public_projection.py", "sha256": "db9858ed3fec9531d083bbc8031cf50d38bfc66baca2f6bf326d0b8eb3bd8f92"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s021-validation-rebaseline-2-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": ["fresh temporary projection and consumer roots", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_*", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S018_LifecycleEvidence.json", "git status --short", "git diff"],
+  "acceptance_criteria_ids": ["ODA-MH-10", "ODA-MH-11", "S021-AC-01", "S021-AC-02", "S021-AC-03", "PROC-03", "SGC SI-1..SI-6"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ValidationStateSnapshot.json"],
+  "required_outputs": ["中文 Read Manifest 与原始目标覆盖", "独立重算 clean-room maintainer/end-user paths、ERBE same-case RED/GREEN、state/permission boundaries", "对 frozen C04、C07、C08、C11、C12、C13、C14 逐案执行或从 durable inputs 独立重算，并记录每案的 predicate、expected、witness 与结果", "检查 Semantic Review 的双 verdict 与 UAT claim ceiling，不把 producer UAT 当独立 Validation", "唯一 Validation verdict、Closeout language verdict、后续字段；不改 Builder/Goal/KB/Dashboard registry，不执行远端动作"],
+  "maximum_claim_ref": {"summary": "最多支持 S-021 声明的本地 clean-room/UAT 与状态边界的独立验证；不支持 GitHub、release、production 或 SP-003 completion。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s021-independent-validation-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticReview.md",
+  "working_directory": ".",
+  "execution_command": "python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && python3 -m py_compile tools/sge_public.py && git diff --check"
+}

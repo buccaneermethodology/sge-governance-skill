@@ -40,7 +40,7 @@
 
 ## Validation Handoff
 
-原始 ODA-MH-01..12 逐项覆盖见 [Goal Design Closeout](../Artifacts/SP003_OpenSourceDistributionArchitecture_GoalDesign_Closeout.md)。独立 lane 必须同时检查 Goal Contract、Goal Patch、Stage Plan、Dashboard/KB 最终状态、实际 diff、closeout-language 和“计划不等于实现”的 claim ceiling。
+原始 ODA-MH-01..12 逐项覆盖见 [Goal Design Closeout](../Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalDesign_Closeout.md)。独立 lane 必须同时检查 Goal Contract、Goal Patch、Stage Plan、Dashboard/KB 最终状态、实际 diff、closeout-language 和“计划不等于实现”的 claim ceiling。
 
 ## 公开仓名称修订（本次任务）
 

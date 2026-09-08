@@ -1,0 +1,32 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s021-evidence-repair-v1",
+  "session_id": "SP-003/S-021",
+  "lane": "S-021 evidence and ERBE repair",
+  "role": "builder",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_CleanRoom_UAT.md", "sha256": "38902d2ce6457a33033312c09cfe68a001394cb1fc45b98eaf854ba31579dbf3"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ERBE_RED_GREEN.json", "sha256": "4c5d2f1b1cbcadb0f94aa794b2f670a1955de1f75c21e5f25ed00e30f4724f4c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ValidationReview.md", "sha256": "693a26f6dd1f9d94919f81961ba6f893c4ebcba1f7c3bf47c31640ccf9c100d6"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticReview.md", "sha256": "9c5759b9fc9266e671256a365938afe1383c69e5a425111cd2a6192b70b15f05"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json", "sha256": "db8f8b37b109d12cf33b88db27d2d2530cfca25fa689026a28414cf2e713c799"},
+    {"path": "tests/test_public_candidate.py", "sha256": "77a6ed0d716ee98a74a94b17489dd8ec15bad45cc88983cd3c79b47b93de13dd"},
+    {"path": "tests/test_public_projection.py", "sha256": "db9858ed3fec9531d083bbc8031cf50d38bfc66baca2f6bf326d0b8eb3bd8f92"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s021-evidence-repair-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_CleanRoom_UAT.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ERBE_RED_GREEN.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_SemanticReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json", "tests/test_public_candidate.py", "tests/test_public_projection.py"],
+  "acceptance_criteria_ids": ["ODA-MH-10", "S021-AC-01", "S021-AC-02", "S021-AC-03", "INV-07", "PROC-03"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_CleanRoom_UAT.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ERBE_RED_GREEN.json"],
+  "required_outputs": ["修复 UAT 测试范围与 14/14 对账", "为 S-021-AC-01..03 写入可定位 predicate/expected/witness", "以 C01-C14 为唯一 frozen identity，保留 CR/NEG 作为局部 witness 别名并显式映射", "不修改 S-016 frozen Contract/Cases、代码、Goal、Dashboard registry 或远端"],
+  "maximum_claim_ref": {"summary": "最多形成可由后续独立 Validation 重算的 S-021 本地 evidence package；不支持 release、GitHub、production 或 SP-003 completion。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_ValidationStateSnapshot.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s021-evidence-repair-agent", "worktree": "."},
+  "working_directory": ".",
+  "execution_command": "python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && git diff --check"
+}

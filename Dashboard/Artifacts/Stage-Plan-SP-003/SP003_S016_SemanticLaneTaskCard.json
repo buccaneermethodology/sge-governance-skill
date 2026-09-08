@@ -1,0 +1,27 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s016-semantic-review-v1",
+  "session_id": "SP-003/S-016",
+  "lane": "S-016 semantic architecture review",
+  "role": "semantic",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "kb/data/strategy/strategy_open_source_dual_repo_distribution_v1.json", "sha256": "fd92c9eedfdf858c9ba5cfc490ed70b36e8ffbda0d69e1c9c10f85c464979420"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s016-semantic-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["ODA-MH-01", "ODA-MH-02", "ODA-MH-04", "ODA-MH-07", "ODA-MH-11", "S016-AC-01", "S016-AC-02", "S016-AC-03"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md"],
+  "required_outputs": ["执行 Semantic Architecture Review 与 Frame-First Review", "分别给出 Design Freeze Validity 与 Implementation Entry Readiness verdict", "检查 truth carrier、God Object/semantic bureaucracy、half-schema、invariants、capability algebra、negative space 与 promotion boundary", "至少记录三类 future-agent misuse scenario 与缓解", "明确是否允许 S-016 Builder entry 或列出 blocker/P1 follow-up"],
+  "maximum_claim_ref": {"summary": "只给出 S-016 设计语义复核与实现入口判断；不声称实现、独立 Validation、candidate、发布或生产就绪。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s016-semantic-reviewer", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md"
+}

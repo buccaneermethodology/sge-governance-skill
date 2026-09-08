@@ -1,6 +1,6 @@
 Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ClosureLaneTaskCard.json
-Card SHA-256: 83e561eb4c9b5d19af1dcb8ec8c94af66b533b9883f3a0c2339f7f3f9af0c95f
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ClosureLaneTaskCard.json --repo . --expected-card-sha256 83e561eb4c9b5d19af1dcb8ec8c94af66b533b9883f3a0c2339f7f3f9af0c95f
+Card SHA-256: d0a8cd63cc528f0df1a28cbe90f683985b0576b5880e8b3251ae11c59f81b5b4
+Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ClosureLaneTaskCard.json --repo . --expected-card-sha256 d0a8cd63cc528f0df1a28cbe90f683985b0576b5880e8b3251ae11c59f81b5b4
 Lane: S-001 planning landing closure draft | Session: SP-001/S-001 | Role: closure
 Mode: full_baseline
 Working directory: .

@@ -10,7 +10,7 @@
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md", "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"},
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
     {"path": "Dashboard/tools/quality_recovery_erbe.py", "sha256": "447960916fa3f667ef75ddc479327e7d875c15875baa9db050ffc9973ddfb863"},
-    {"path": "Dashboard/tools/session_registry.py", "sha256": "ffe22afa397a9171a501439cc6c0167158a7d449c787ca1546ab72383dc3c2a7"},
+    {"path": "Dashboard/tools/session_registry.py", "sha256": "3f86b8bd27044910971c82befbd3dfc6d8e7b01fe0bd398db13915e9bcb95ac4"},
     {"path": "tests/test_session_registry.py", "sha256": "5c8594a66229183caf958fc39c0a22f16c7435e2820823361ba0053a45b88bf1"}
   ],
   "mode": "delta",

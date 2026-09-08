@@ -1,6 +1,6 @@
 Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationLaneTaskCard.json
-Card SHA-256: ce4a7bb54a4606da543f654d699e8ce68b526503922957c0f70bd526174bc9f0
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationLaneTaskCard.json --repo . --expected-card-sha256 ce4a7bb54a4606da543f654d699e8ce68b526503922957c0f70bd526174bc9f0
+Card SHA-256: 660dfe02baffefa9a59c111357918be34253f7fedb3c79da4c68af44aa429808
+Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationLaneTaskCard.json --repo . --expected-card-sha256 660dfe02baffefa9a59c111357918be34253f7fedb3c79da4c68af44aa429808
 Lane: S-001 planning landing independent validation | Session: SP-001/S-001 | Role: validation
 Mode: full_baseline
 Working directory: .

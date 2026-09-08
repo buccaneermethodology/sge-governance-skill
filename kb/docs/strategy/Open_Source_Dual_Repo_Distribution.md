@@ -53,9 +53,9 @@ clean-room、维护者回归、终端用户 UAT、ERBE 与 independent Validatio
 ## Source Scope
 
 - `AGENTS.md`
-- `Dashboard/Artifacts/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md`
-- `Dashboard/Artifacts/SP002_S011_FinalClosure_OPCM.md`
-- `Dashboard/Artifacts/SP003_OpenSourceDistributionArchitecture_GoalContract_Base.json`
+- `Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_FinalClosure_OPCM.md`
+- `Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract_Base.json`
 - `public_export_manifest_v1.json`
 - `tools/sge_public.py`
 

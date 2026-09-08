@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp004-s023-semantic-review-v1",
+  "session_id":"SP-004/S-023",
+  "lane":"S-023 pre-Builder Semantic Review",
+  "role":"semantic",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md","sha256":"b4c4bd4804f78e2ed1b0e97a6747ae5b0b64f41824d5f9bfa0f8615d1a1dbefb"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Design.md","sha256":"49f85a286b175150648e5cfe7f2d76d9eba1ea10d0a08a179014894030c67b3e"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Contract.json","sha256":"be41cdac960aaca5f56b21cc7dd1a0bd6efa7e5ac1929478ba78a0fd778ad0bb"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Cases.json","sha256":"4ffb3b1a23071238295184bee5567945ec3d4ec2ca6ea33b41bb584428262fb3"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp004-s023-semantic-2026-09-04","parent_snapshot_ref":null},
+  "delta_read_set":["SP004 Goal","S-023 Design/Contract/Cases","SP-003 dual-repo strategy and closeout","public manifest","current Dashboard state"],
+  "acceptance_criteria_ids":["S023-AC-01","S023-AC-02","SGC-SI-1..SI-6"],
+  "write_scope":[],
+  "required_outputs":["Frame-first semantic review","Design Freeze Validity","Implementation Entry Readiness","ontology/truth placement/invariant/failure taxonomy/transfer rules","future-agent misuse scenarios","state-word compression scan"],
+  "maximum_claim_ref":{"summary":"只支持语义设计边界与实现入口复核，不支持修复、验证、rights 或发布。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Design.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp004-s023-semantic-reviewer","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Design.md",
+  "working_directory":".",
+  "execution_command":"python3 -m json.tool Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Contract.json && python3 -m json.tool Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Cases.json"
+}

@@ -1,0 +1,3004 @@
+{
+  "schema_version": "sp004_s026_uat_transcript_v1",
+  "status": "partial",
+  "task_id": "01a0744b-2796-7183-b10a-4c5d5b4cb3a6",
+  "source_task_id": "01a07029-0b7d-7723-b1d1-abcb5169d5ec",
+  "worktree": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill",
+  "source_head": "35747db7b769a1f6c25bec57263257100d1fb445",
+  "source_preparation": "git archive HEAD to fresh source; no product edits, no commit or remote",
+  "source_archive_sha256": "1328e0e4c8bbef440580fb0313e51c8f44c69c9b989ca364975159f74bb613d6",
+  "fresh_base": "/tmp/sp004-s026-01a0744b",
+  "candidate": "/tmp/sp004-s026-01a0744b/candidate",
+  "target": "/tmp/sp004-s026-01a0744b/target",
+  "context_limit": "未继承来源任务对话；系统注入源仓 AGENTS/skill catalog/memory，预检读取源仓 contract/closeout；不称完全零项目背景。",
+  "card_digest_algorithm": "canonical JSON SHA-256; distinct from raw file SHA-256",
+  "card_digest": "0cf1ae4d0b95f6e0494fdcc8391b714eeb27f3018389103c8730a00bb58eb2fe",
+  "rendered_prompt": "Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_CleanRoomUATLaneTaskCard.json\nCard SHA-256: 0cf1ae4d0b95f6e0494fdcc8391b714eeb27f3018389103c8730a00bb58eb2fe\nVerify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_CleanRoomUATLaneTaskCard.json --repo . --expected-card-sha256 0cf1ae4d0b95f6e0494fdcc8391b714eeb27f3018389103c8730a00bb58eb2fe\nLane: S-026 独立可见 clean-room Codex newcomer UAT | Session: SP-004/S-026 | Role: validation\nMode: full_baseline\nWorking directory: .\nExecute: 等待真实用户可见 task/thread ID 后，再用本 card digest 生成 UAT delegation prompt；不得由主线程模拟。\n",
+  "preflight_findings": [
+    {
+      "code": "pending_topology",
+      "observed": "renderer rejected user_visible=false",
+      "resolution": "来源任务明确授权更新实际 task topology 后 validate/render 通过"
+    },
+    {
+      "code": "raw_vs_canonical_digest",
+      "observed": "首次将 raw file hash 传给 expected-card-sha256 被拒",
+      "resolution": "读取 renderer canonical JSON digest 后验证通过"
+    }
+  ],
+  "steps": [
+    {
+      "label": "doctor",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "doctor"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0/public_doctor:pass",
+      "returncode": 0,
+      "stdout": "public_doctor:pass\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "export",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "export",
+        "/tmp/sp004-s026-01a0744b/candidate"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0/exported:48；manifest 48 个文件加 metadata",
+      "returncode": 0,
+      "stdout": "exported:48:/private/tmp/sp004-s026-01a0744b/candidate\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "EXPORT_METADATA.json",
+          "sha256": "2d6e525ed2ee0ca6acfcac99d9b3645f34285a2033a44b6885f1018a7b57d5fb",
+          "bytes": 16782
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "4572972dea724a82a7b73968bf05f7c607272a1bab5fa420faa2d216c6e20efb",
+          "bytes": 1084
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "5dae6d435e2e349d407580bcd6f6baa76a1323791f1e5281579f46fb7d78c02a",
+          "bytes": 311
+        },
+        {
+          "path": "README.md",
+          "sha256": "e46f93164d18b7140daec4e2b688b3c83ba0e25db66b818f12a6744ca007d26f",
+          "bytes": 3109
+        },
+        {
+          "path": "docs/Beginner_Guide_CN.md",
+          "sha256": "5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91",
+          "bytes": 4956
+        },
+        {
+          "path": "docs/Quick_Start_CN.md",
+          "sha256": "d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e",
+          "bytes": 1418
+        },
+        {
+          "path": "examples/minimal-project/AGENTS.md",
+          "sha256": "2ba2b197b3258cc5c91647b6a78dc038fee17ddded1004652e15a0efe6f9c049",
+          "bytes": 263
+        },
+        {
+          "path": "examples/minimal-project/README.md",
+          "sha256": "c9ca9e8accbfd4d2b50e04e08cfd2d3ba2b58422f0e8d396d9be63505beae145",
+          "bytes": 196
+        },
+        {
+          "path": "extensions/orchestrator_profile_v1.json",
+          "sha256": "68ac7e55a9c88505c5024ce20db2d2705399347badbb1268f85de5aa7ed2949f",
+          "bytes": 594
+        },
+        {
+          "path": "extensions/registry_v1.json",
+          "sha256": "17e4384952ac323b841d156bc7c0697b1f92ebbd7113430a5660ce477691a685",
+          "bytes": 1077
+        },
+        {
+          "path": "kb/README.md",
+          "sha256": "e6bc2a484d162b12c92147ec0c3918d49a4104da3249e63ea153323251870928",
+          "bytes": 1414
+        },
+        {
+          "path": "kb/data/glossary_v1.json",
+          "sha256": "4a22263d4063fed67f53a1cabfd5d3cd386463ea2f9920ef3bc7f4cdbe4bd7db",
+          "bytes": 9963
+        },
+        {
+          "path": "kb/data/strategy/sge_project_profile_v1.json",
+          "sha256": "f0f746539bb2bc4d46915b3981cc42d93e75d51bda7f71e4efc72606012d6ad3",
+          "bytes": 1279
+        },
+        {
+          "path": "kb/data/strategy/sge_strategy_canonical_mapping_v1.json",
+          "sha256": "8f6f0e21fc6e4cce4277d191ae29a55e238de935003d5c7879e71e01ad2532d2",
+          "bytes": 3042
+        },
+        {
+          "path": "kb/data/strategy/sge_strategy_source_manifest_v1.json",
+          "sha256": "f67bfa7d7e84bb1483423065c109f8e3740415de52a2bc57f3197ea45d3acb85",
+          "bytes": 2254
+        },
+        {
+          "path": "kb/data/strategy/sge_workflow_registry_v1.json",
+          "sha256": "43c0950d36b8307753650986a9bab066a913701b35735c3c0a2d3bc0b6a086fa",
+          "bytes": 1093
+        },
+        {
+          "path": "kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+          "sha256": "9f208bd7c50c6529cbb2eb411f79870d0e328a8a731e353e1782c9efc581609a",
+          "bytes": 1971
+        },
+        {
+          "path": "kb/data/strategy/strategy_human_ai_development.json",
+          "sha256": "82fcb94425450d56e4bb7f6cd8502c3293d9066112a7dc900d7ca258128e3d77",
+          "bytes": 4330
+        },
+        {
+          "path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
+          "sha256": "b69e90f5a535a05af0debeaa28ee43e33ff9916f30bc06ffd5959c1e96b0cf2a",
+          "bytes": 3403
+        },
+        {
+          "path": "kb/data/strategy/strategy_semantic_surface_engineering.json",
+          "sha256": "4f1760772e1c01c0685827e74c9bbc5647610f97b684b7f73dc9253a1a98e885",
+          "bytes": 5021
+        },
+        {
+          "path": "kb/data/strategy/strategy_sgc_structural_contract_v1.json",
+          "sha256": "b76bee86f9b2f269d6ef1449277b4974b1a9eceb624fbeea6c7bfd8687042199",
+          "bytes": 17862
+        },
+        {
+          "path": "kb/docs/Glossary.md",
+          "sha256": "be7f2888b1be55dc3ed1b7dd489c9bf4ef03f41598bfa7f0ae1ee1c244936f16",
+          "bytes": 8267
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
+          "sha256": "f1e20e878e48d63be4fbe791c91c96b85a859dfa9f624cf4962d39a60ed8f602",
+          "bytes": 1707
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_Human_AI_Development.md",
+          "sha256": "2f23e005660126ad61ec9ae40f35276a0b70d2fc8eb2be22e9b51a6cb5cc0697",
+          "bytes": 3012
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
+          "sha256": "f446f6422ea7cd86171ae842b86f27ac6d487b1e3b3776e9bf986188a0019a69",
+          "bytes": 2501
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md",
+          "sha256": "f09f0f9afdd7d841c01af816a0e374b7fcad99af503a3b36768da2d42636909e",
+          "bytes": 13746
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md",
+          "sha256": "0f9056f0912282bf224fe13bb16b1fae47b097335d337b6690a56a2c2dc2aa05",
+          "bytes": 3921
+        },
+        {
+          "path": "kb/render_manifest_v1.json",
+          "sha256": "bd031f3ea6b788fb6258879fd8ea939c70abc4e166c6ff9299b5add485f6c0b1",
+          "bytes": 1351
+        },
+        {
+          "path": "kb/tools/render_kb.py",
+          "sha256": "9c16a69eb9df2ba14dfa9c78131945e37e9776b38afbb3cbee88c7489aa2dcc5",
+          "bytes": 16765
+        },
+        {
+          "path": "public_export_manifest_v1.json",
+          "sha256": "228b28ec802553421b2d590ae289ce4c3609e18afa0a4b0a29b841fc228d5ece",
+          "bytes": 11050
+        },
+        {
+          "path": "tools/run_sge_loop_goal_cycle.py",
+          "sha256": "5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef",
+          "bytes": 1516
+        },
+        {
+          "path": "tools/sge_public.py",
+          "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f",
+          "bytes": 36229
+        }
+      ]
+    },
+    {
+      "label": "bootstrap",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "bootstrap",
+        "/tmp/sp004-s026-01a0744b/target"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/candidate",
+      "expected": "exit 0；五个目标项目文件",
+      "returncode": 0,
+      "stdout": "bootstrapped:/tmp/sp004-s026-01a0744b/target\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ]
+    },
+    {
+      "label": "install",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "install",
+        "--target",
+        "/tmp/sp004-s026-01a0744b/target"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/candidate",
+      "expected": "exit 0/installed:17；core 17 文件及 install record",
+      "returncode": 0,
+      "stdout": "installed:17:/private/tmp/sp004-s026-01a0744b/target\n",
+      "stderr": "",
+      "before_inventory": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ],
+      "after_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-governance-install.json",
+          "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+          "bytes": 4446
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ]
+    },
+    {
+      "label": "bootstrap_negative",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "bootstrap",
+        "/tmp/sp004-s026-01a0744b/target"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/candidate",
+      "expected": "nonzero/destination_must_be_empty；文件不变",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "destination_must_be_empty\n",
+      "before_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-governance-install.json",
+          "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+          "bytes": 4446
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ],
+      "after_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-governance-install.json",
+          "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+          "bytes": 4446
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ],
+      "file_inventory_unchanged": true
+    },
+    {
+      "label": "install_negative",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "install",
+        "--target",
+        "/tmp/sp004-s026-01a0744b/target"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/candidate",
+      "expected": "nonzero/already_installed；文件不变",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "already_installed\n",
+      "before_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-governance-install.json",
+          "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+          "bytes": 4446
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ],
+      "after_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-governance-install.json",
+          "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+          "bytes": 4446
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+          "bytes": 227
+        }
+      ],
+      "file_inventory_unchanged": true
+    },
+    {
+      "label": "intake_entry",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+        "--mode",
+        "intake-evaluation"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0；打印清单，不是验收 verdict",
+      "returncode": 0,
+      "stdout": "Task Intake Evaluation Guard\n- Default every user request to evaluate-then-execute; if the user explicitly asks to execute directly, only skip visible evaluation prose while still doing the internal minimum check and required hard gates.\n- Minimum check: objective, source authority, repo/KB/Dashboard boundary, material risks or missing information, and action decision.\n- Keep it proportional: trivial low-risk commands can use a very light implicit check; non-trivial repo, proposal, approval, contract, KB, Dashboard, acceptance/gate, or semantic-promotion work needs an explicit evaluation verdict before edits.\n- Direct-execution requests do not bypass safety, destructive-action approval, higher-priority instructions, source-of-truth boundaries, or high-risk contract/KB/acceptance checks.\n- If an artifact asks to evaluate reasonableness, do not treat it as implementation approval until the evaluation verdict is stated.\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "workflow_full",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+        "--stage",
+        "full"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "公开 Skill full workflow 应从 target authority 运行；缺依赖必须报告",
+      "returncode": 0,
+      "stdout": "SGE Workflow Contract v1\n- intake: 确认 Raw User Intent、authority、边界、风险和执行路线\n- design: 冻结最小安全切片、合同、验收、不变量和 Builder write exclusions\n- implement: 按 resolved Goal、lane card 和 design handoff 实施，不越过 claim ceiling\n- validate: 独立从 durable inputs 重算证据，检查原始目标、forbidden collapses 和最终 diff\n- closeout: 运行 registry、closeout-language、KB/Dashboard review、OPCM 与 post-closeout reconciliation\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "target_context",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+        "validate",
+        "Dashboard/Artifacts/Context.json"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0；目标项目 context 有效",
+      "returncode": 0,
+      "stdout": "{\n  \"boundaries\": {\n    \"forbidden_actions\": [\n      \"修改 core/profile\",\n      \"远端/发布/产品实现\"\n    ],\n    \"maximum_claim\": \"本次目标项目的文档示例\",\n    \"write_scope\": [\n      \"PROJECT_NOTE.md\",\n      \"Dashboard/Artifacts/\",\n      \"Dashboard/Sessions.md\",\n      \"Dashboard/Current_State.md\"\n    ]\n  },\n  \"change_impact\": {\n    \"contract_or_acceptance\": false,\n    \"dashboard_state\": false,\n    \"external_side_effect\": false,\n    \"kb_truth\": false,\n    \"runtime_or_schema\": false,\n    \"semantic_risk\": \"low\",\n    \"write_conflict\": false\n  },\n  \"conditional_read_set\": [\n    {\n      \"action\": \"revalidate and rebaseline\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"card or source digest changes\",\n      \"mode\": \"deterministic\",\n      \"trigger_id\": \"drift\"\n    },\n    {\n      \"action\": \"expand public inputs or report gap\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"public documentation dependency missing\",\n      \"mode\": \"evidence_backed_agent_evaluated\",\n      \"trigger_id\": \"gap\"\n    }\n  ],\n  \"epistemic_search_space\": {\n    \"missing_evidence_action\": \"expand_or_report_evidence_gap\",\n    \"preservation_statement\": \"保持完整 discovery/Goal/Session/Validation/closeout 与 copy-paste 验收面。\",\n    \"required_domains\": [\n      \"task\"\n    ]\n  },\n  \"intake_projection\": {\n    \"assumptions\": [\n      \"本任务是独立创建的用户可见 task；无来源任务历史，但系统注入仓库规则与通用 memory，不能称完全无项目上下文。\"\n    ],\n    \"authority_role\": \"projection\",\n    \"summary\": \"execute：低风险最小文档示例；Design/Builder/Validation/Closure 按写入与独立验证需要启动。\"\n  },\n  \"raw_user_intent\": {\n    \"authority_role\": \"authority\",\n    \"text\": \"执行 SP-004/S-026 独立可见 clean-room Codex newcomer UAT；使用 fresh target；验证卡摘要；完成公开入口 discovery、Goal、Session、handoff、独立 Validation、中文 closeout 并保留正负 transcript。\"\n  },\n  \"required_read_set\": [\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"AGENTS.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"kb/data/strategy/profile.json\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Goal.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \".codex/skills/sge-governed-checkpoints/SKILL.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447\"\n    }\n  ],\n  \"schema_version\": \"context_bootstrap_v1\",\n  \"semantic_refresh\": {\n    \"anchors\": [\n      \"objective\",\n      \"authority\",\n      \"claim_ceiling\",\n      \"critical_dependencies\"\n    ],\n    \"required_when_digest_unchanged\": true,\n    \"result\": \"目标是目标项目文档示例；不扩大到产品或公开发布；每条 M1..M5 待验证。\"\n  },\n  \"skipped_reads\": [],\n  \"task_id\": \"uat-s001\",\n  \"task_profile\": \"implementation\",\n  \"topology\": {\n    \"basis\": \"change_impact\",\n    \"reason\": \"UAT 执行任务独立；独立 validation 尚未启动，不虚构空 lane。\",\n    \"route\": \"Design/Builder/Validation/Closure subagents, fresh context\"\n  },\n  \"validation_evidence_surfaces\": [\n    \"original objective\",\n    \"acceptance criteria\",\n    \"actual diff\",\n    \"final state\"\n  ]\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "audit_Design",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+        "audit",
+        "Dashboard/Artifacts/PromptAudit.json",
+        "--repo",
+        "."
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0，委派无长段重复",
+      "returncode": 0,
+      "stdout": "{\n  \"advisory_findings\": [],\n  \"blocking_findings\": [],\n  \"duplicate_blocks\": 0,\n  \"estimated_duplicate_characters\": 0,\n  \"prompt_bytes\": [\n    {\n      \"bytes\": 1071,\n      \"lane\": \"DesignPrompt\",\n      \"source\": \"Dashboard/Artifacts/DesignPrompt.txt\"\n    }\n  ],\n  \"schema_version\": \"lane_prompt_audit_v1\",\n  \"verdict\": \"pass\"\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "quick_start_bash_fence_copy_paste",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "zsh",
+        "-e",
+        "-c",
+        "python3 tools/sge_public.py doctor\npython3 tools/sge_public.py export /tmp/sp004-s026-01a0744b/quick-candidate\npython3 tools/sge_public.py bootstrap /tmp/sp004-s026-01a0744b/quick-target\ncd /tmp/sp004-s026-01a0744b/quick-candidate\npython3 tools/sge_public.py install --target /tmp/sp004-s026-01a0744b/quick-target\npython3 /tmp/sp004-s026-01a0744b/quick-target/.codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode intake-evaluation\npython3 tools/sge_public.py upgrade --target /tmp/sp004-s026-01a0744b/quick-target\nfind /tmp/sp004-s026-01a0744b/quick-target/.sge-backups -name SKILL.md -print\npython3 tools/sge_public.py uninstall --target /tmp/sp004-s026-01a0744b/quick-target\n"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0；doctor/export/bootstrap/install/intake/upgrade/find/uninstall 完整按块执行；只替换两个临时路径",
+      "returncode": 0,
+      "stdout": "public_doctor:pass\nexported:48:/private/tmp/sp004-s026-01a0744b/quick-candidate\nbootstrapped:/tmp/sp004-s026-01a0744b/quick-target\ninstalled:17:/private/tmp/sp004-s026-01a0744b/quick-target\nTask Intake Evaluation Guard\n- Default every user request to evaluate-then-execute; if the user explicitly asks to execute directly, only skip visible evaluation prose while still doing the internal minimum check and required hard gates.\n- Minimum check: objective, source authority, repo/KB/Dashboard boundary, material risks or missing information, and action decision.\n- Keep it proportional: trivial low-risk commands can use a very light implicit check; non-trivial repo, proposal, approval, contract, KB, Dashboard, acceptance/gate, or semantic-promotion work needs an explicit evaluation verdict before edits.\n- Direct-execution requests do not bypass safety, destructive-action approval, higher-priority instructions, source-of-truth boundaries, or high-risk contract/KB/acceptance checks.\n- If an artifact asks to evaluate reasonableness, do not treat it as implementation approval until the evaluation verdict is stated.\nupgraded:17:/private/tmp/sp004-s026-01a0744b/quick-target\n/tmp/sp004-s026-01a0744b/quick-target/.sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/SKILL.md\nuninstalled_recoverable:/private/tmp/sp004-s026-01a0744b/quick-target/.sge-trash/20260906T012430495306Z/sge-governed-checkpoints\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": [
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/install-record.json",
+          "sha256": "c31bc56da43f591c3072b6cd0aa0107929f0bb31d328127ed2f588cb8e57c328",
+          "bytes": 7446
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4ce880963eb4d3b7ec774b117d8f198f46d261793a80287aea73329f311ef090",
+          "bytes": 233
+        }
+      ]
+    },
+    {
+      "label": "uninstall_negative",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "uninstall",
+        "--target",
+        "/tmp/sp004-s026-01a0744b/quick-target"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/quick-candidate",
+      "expected": "nonzero/uninstall_requires_install_record，目标不变",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "uninstall_requires_install_record\n",
+      "before_inventory": [
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/install-record.json",
+          "sha256": "c31bc56da43f591c3072b6cd0aa0107929f0bb31d328127ed2f588cb8e57c328",
+          "bytes": 7446
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4ce880963eb4d3b7ec774b117d8f198f46d261793a80287aea73329f311ef090",
+          "bytes": 233
+        }
+      ],
+      "after_inventory": [
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-backups/20260906T012430454891Z/.codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/install-record.json",
+          "sha256": "c31bc56da43f591c3072b6cd0aa0107929f0bb31d328127ed2f588cb8e57c328",
+          "bytes": 7446
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-trash/20260906T012430495306Z/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "4ce880963eb4d3b7ec774b117d8f198f46d261793a80287aea73329f311ef090",
+          "bytes": 233
+        }
+      ],
+      "file_inventory_unchanged": true
+    },
+    {
+      "label": "projection_verify",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        "tools/sge_public.py",
+        "verify",
+        "--source",
+        "/tmp/sp004-s026-01a0744b/source",
+        "--destination",
+        "/tmp/sp004-s026-01a0744b/candidate"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0；冻结 candidate tree 相同",
+      "returncode": 0,
+      "stdout": "{\n  \"files\": [\n    \".codex/skills/sge-governed-checkpoints/SKILL.md\",\n    \".codex/skills/sge-governed-checkpoints/agents/openai.yaml\",\n    \".codex/skills/sge-governed-checkpoints/references/checklists.md\",\n    \".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md\",\n    \".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json\",\n    \".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json\",\n    \".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json\",\n    \".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json\",\n    \".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json\",\n    \".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/context_state.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py\",\n    \".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py\",\n    \"LICENSE\",\n    \"NOTICE\",\n    \"README.md\",\n    \"docs/Beginner_Guide_CN.md\",\n    \"docs/Quick_Start_CN.md\",\n    \"examples/minimal-project/AGENTS.md\",\n    \"examples/minimal-project/README.md\",\n    \"extensions/orchestrator_profile_v1.json\",\n    \"extensions/registry_v1.json\",\n    \"kb/README.md\",\n    \"kb/data/glossary_v1.json\",\n    \"kb/data/strategy/sge_project_profile_v1.json\",\n    \"kb/data/strategy/sge_strategy_canonical_mapping_v1.json\",\n    \"kb/data/strategy/sge_strategy_source_manifest_v1.json\",\n    \"kb/data/strategy/sge_workflow_registry_v1.json\",\n    \"kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json\",\n    \"kb/data/strategy/strategy_human_ai_development.json\",\n    \"kb/data/strategy/strategy_kb_promotion_and_source_policy.json\",\n    \"kb/data/strategy/strategy_semantic_surface_engineering.json\",\n    \"kb/data/strategy/strategy_sgc_structural_contract_v1.json\",\n    \"kb/docs/Glossary.md\",\n    \"kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md\",\n    \"kb/docs/strategy/Strategy_Human_AI_Development.md\",\n    \"kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md\",\n    \"kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md\",\n    \"kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md\",\n    \"kb/render_manifest_v1.json\",\n    \"kb/tools/render_kb.py\",\n    \"public_export_manifest_v1.json\",\n    \"tools/run_sge_loop_goal_cycle.py\",\n    \"tools/sge_public.py\"\n  ],\n  \"tree_sha256\": \"d84b83cbe264e123a94422ca987bda99345ffa50b8df427e4c94635de5d0c160\"\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "beginner_bash_fences_copy_paste",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "zsh",
+        "-e",
+        "-c",
+        "python3 tools/sge_public.py doctor\n\npython3 tools/sge_public.py export /tmp/sp004-s026-01a0744b/beginner-candidate\n\npython3 tools/sge_public.py bootstrap /tmp/sp004-s026-01a0744b/beginner-target\n\ncd /tmp/sp004-s026-01a0744b/beginner-candidate\npython3 tools/sge_public.py install \\\n  --target /tmp/sp004-s026-01a0744b/beginner-target\n\npython3 tools/sge_public.py upgrade \\\n  --target /tmp/sp004-s026-01a0744b/beginner-target\nfind /tmp/sp004-s026-01a0744b/beginner-target/.sge-backups -name SKILL.md -print\n\npython3 /tmp/sp004-s026-01a0744b/beginner-candidate/tools/sge_public.py uninstall --target /tmp/sp004-s026-01a0744b/beginner-target\n"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0；指南 bash fences 逐块执行，只替换两个临时路径；第6步文本提示由目标 Session 单独执行",
+      "returncode": 0,
+      "stdout": "public_doctor:pass\nexported:48:/private/tmp/sp004-s026-01a0744b/beginner-candidate\nbootstrapped:/tmp/sp004-s026-01a0744b/beginner-target\ninstalled:17:/private/tmp/sp004-s026-01a0744b/beginner-target\nupgraded:17:/private/tmp/sp004-s026-01a0744b/beginner-target\n/tmp/sp004-s026-01a0744b/beginner-target/.sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/SKILL.md\nuninstalled_recoverable:/private/tmp/sp004-s026-01a0744b/beginner-target/.sge-trash/20260906T012550652481Z/sge-governed-checkpoints\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": [
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-backups/20260906T012550613286Z/.codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/install-record.json",
+          "sha256": "40b19c824bd0f186ac80b5a716ff79cbe8ad604c70a14f19acfb010fa390f7ec",
+          "bytes": 7452
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".sge-trash/20260906T012550652481Z/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+          "bytes": 139
+        },
+        {
+          "path": "Dashboard/Current_State.md",
+          "sha256": "1e5cf8adc1209e80648bc5b232a0916649604424223904cf098e044ba78cf9c9",
+          "bytes": 38
+        },
+        {
+          "path": "Dashboard/Sessions.md",
+          "sha256": "a0e098baf07ac990213961e83ae31aa20e0c3717afd2e51744c26a91276ca5b9",
+          "bytes": 64
+        },
+        {
+          "path": "README.md",
+          "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+          "bytes": 86
+        },
+        {
+          "path": "kb/data/strategy/profile.json",
+          "sha256": "2798996e814d0085efcefd7deb97a43a0ab768c89318b4183522b27612594f48",
+          "bytes": 236
+        }
+      ]
+    },
+    {
+      "label": "readme_template_bash_parse",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "zsh",
+        "-n",
+        "-c",
+        "python3 .codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py validate <context.json>\npython3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate <lane-card.json> --repo .\npython3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout-language --file <closeout.md>\n"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "README 模板含 <context.json>/<lane-card.json>/<closeout.md>；未实例化可能 shell parse 失败，不作为 Quick Start 成功",
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "zsh:2: parse error near `\\n'\n",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "context_builder_rebaseline",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+        "validate",
+        "Dashboard/Artifacts/ContextBuilder.json"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0；Dashboard 影响纠正",
+      "returncode": 0,
+      "stdout": "{\n  \"boundaries\": {\n    \"forbidden_actions\": [\n      \"修改 core/profile\",\n      \"远端/发布/产品实现\"\n    ],\n    \"maximum_claim\": \"本次目标项目的文档示例\",\n    \"write_scope\": [\n      \"PROJECT_NOTE.md\",\n      \"Dashboard/Artifacts/\",\n      \"Dashboard/Sessions.md\",\n      \"Dashboard/Current_State.md\"\n    ]\n  },\n  \"change_impact\": {\n    \"contract_or_acceptance\": false,\n    \"dashboard_state\": true,\n    \"external_side_effect\": false,\n    \"kb_truth\": false,\n    \"runtime_or_schema\": false,\n    \"semantic_risk\": \"low\",\n    \"write_conflict\": false\n  },\n  \"conditional_read_set\": [\n    {\n      \"action\": \"revalidate and rebaseline\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"card or source digest changes\",\n      \"mode\": \"deterministic\",\n      \"trigger_id\": \"drift\"\n    },\n    {\n      \"action\": \"expand public inputs or report gap\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"public documentation dependency missing\",\n      \"mode\": \"evidence_backed_agent_evaluated\",\n      \"trigger_id\": \"gap\"\n    }\n  ],\n  \"epistemic_search_space\": {\n    \"missing_evidence_action\": \"expand_or_report_evidence_gap\",\n    \"preservation_statement\": \"保持完整 discovery/Goal/Session/Validation/closeout 与 copy-paste 验收面。\",\n    \"required_domains\": [\n      \"task\"\n    ]\n  },\n  \"intake_projection\": {\n    \"assumptions\": [\n      \"本任务是独立创建的用户可见 task；无来源任务历史，但系统注入仓库规则与通用 memory，不能称完全无项目上下文。\"\n    ],\n    \"authority_role\": \"projection\",\n    \"summary\": \"execute：低风险最小文档示例；Design/Builder/Validation/Closure 按写入与独立验证需要启动。\"\n  },\n  \"raw_user_intent\": {\n    \"authority_role\": \"authority\",\n    \"text\": \"在 fresh target 完成 Goal.md M1..M5 的最小中文项目说明文档示例与一个独立验证 Session；该例只是 S-026 外层 UAT 的子实验。\"\n  },\n  \"required_read_set\": [\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"AGENTS.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"kb/data/strategy/profile.json\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Goal.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \".codex/skills/sge-governed-checkpoints/SKILL.md\",\n      \"reason\": \"目标项目文档示例输入\",\n      \"revision\": \"43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447\"\n    }\n  ],\n  \"schema_version\": \"context_bootstrap_v1\",\n  \"semantic_refresh\": {\n    \"anchors\": [\n      \"objective\",\n      \"authority\",\n      \"claim_ceiling\",\n      \"critical_dependencies\"\n    ],\n    \"required_when_digest_unchanged\": true,\n    \"result\": \"目标是目标项目文档示例；不扩大到产品或公开发布；每条 M1..M5 待验证。\"\n  },\n  \"skipped_reads\": [],\n  \"supersedes\": \"Context.json：保留 Design 当时实读输入；ContextBuilder.json 是 Builder 起的修正启动包，不改变 M1..M5。\",\n  \"task_id\": \"uat-s001\",\n  \"task_profile\": \"implementation\",\n  \"topology\": {\n    \"basis\": \"change_impact\",\n    \"reason\": \"UAT 执行任务独立；独立 validation 尚未启动，不虚构空 lane。\",\n    \"route\": \"Design/Builder/Validation/Closure subagents, fresh context\"\n  },\n  \"validation_evidence_surfaces\": [\n    \"original objective\",\n    \"acceptance criteria\",\n    \"actual diff\",\n    \"final state\"\n  ]\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "audit_Builder",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+        "audit",
+        "Dashboard/Artifacts/PromptAudit.json",
+        "--repo",
+        "."
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0，委派无长段重复",
+      "returncode": 0,
+      "stdout": "{\n  \"advisory_findings\": [],\n  \"blocking_findings\": [],\n  \"duplicate_blocks\": 0,\n  \"estimated_duplicate_characters\": 0,\n  \"prompt_bytes\": [\n    {\n      \"bytes\": 1152,\n      \"lane\": \"BuilderPrompt\",\n      \"source\": \"Dashboard/Artifacts/BuilderPrompt.txt\"\n    },\n    {\n      \"bytes\": 1071,\n      \"lane\": \"DesignPrompt\",\n      \"source\": \"Dashboard/Artifacts/DesignPrompt.txt\"\n    }\n  ],\n  \"schema_version\": \"lane_prompt_audit_v1\",\n  \"verdict\": \"pass\"\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "readme_export_fence",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "zsh",
+        "-e",
+        "-c",
+        "python3 tools/sge_public.py doctor\npython3 tools/sge_public.py export /tmp/sp004-s026-01a0744b/readme-candidate"
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/source",
+      "expected": "exit 0；README 第二 bash fence 仅替换临时路径",
+      "returncode": 0,
+      "stdout": "public_doctor:pass\nexported:48:/private/tmp/sp004-s026-01a0744b/readme-candidate\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": [
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+          "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+          "bytes": 56946
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+          "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+          "bytes": 283
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+          "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+          "bytes": 76998
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+          "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+          "bytes": 12376
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+          "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+          "bytes": 9408
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+          "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+          "bytes": 3951
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+          "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+          "bytes": 1285
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+          "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+          "bytes": 5192
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+          "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+          "bytes": 8281
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+          "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+          "bytes": 10047
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+          "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+          "bytes": 17148
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+          "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+          "bytes": 47805
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+          "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+          "bytes": 46076
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+          "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+          "bytes": 43507
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+          "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+          "bytes": 24659
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+          "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+          "bytes": 2660
+        },
+        {
+          "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+          "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+          "bytes": 1637
+        },
+        {
+          "path": "EXPORT_METADATA.json",
+          "sha256": "1cacc2444acdb9db5ba270718f98efa79a165e738f908afd8f1ff92070b84863",
+          "bytes": 16782
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "4572972dea724a82a7b73968bf05f7c607272a1bab5fa420faa2d216c6e20efb",
+          "bytes": 1084
+        },
+        {
+          "path": "NOTICE",
+          "sha256": "5dae6d435e2e349d407580bcd6f6baa76a1323791f1e5281579f46fb7d78c02a",
+          "bytes": 311
+        },
+        {
+          "path": "README.md",
+          "sha256": "e46f93164d18b7140daec4e2b688b3c83ba0e25db66b818f12a6744ca007d26f",
+          "bytes": 3109
+        },
+        {
+          "path": "docs/Beginner_Guide_CN.md",
+          "sha256": "5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91",
+          "bytes": 4956
+        },
+        {
+          "path": "docs/Quick_Start_CN.md",
+          "sha256": "d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e",
+          "bytes": 1418
+        },
+        {
+          "path": "examples/minimal-project/AGENTS.md",
+          "sha256": "2ba2b197b3258cc5c91647b6a78dc038fee17ddded1004652e15a0efe6f9c049",
+          "bytes": 263
+        },
+        {
+          "path": "examples/minimal-project/README.md",
+          "sha256": "c9ca9e8accbfd4d2b50e04e08cfd2d3ba2b58422f0e8d396d9be63505beae145",
+          "bytes": 196
+        },
+        {
+          "path": "extensions/orchestrator_profile_v1.json",
+          "sha256": "68ac7e55a9c88505c5024ce20db2d2705399347badbb1268f85de5aa7ed2949f",
+          "bytes": 594
+        },
+        {
+          "path": "extensions/registry_v1.json",
+          "sha256": "17e4384952ac323b841d156bc7c0697b1f92ebbd7113430a5660ce477691a685",
+          "bytes": 1077
+        },
+        {
+          "path": "kb/README.md",
+          "sha256": "e6bc2a484d162b12c92147ec0c3918d49a4104da3249e63ea153323251870928",
+          "bytes": 1414
+        },
+        {
+          "path": "kb/data/glossary_v1.json",
+          "sha256": "4a22263d4063fed67f53a1cabfd5d3cd386463ea2f9920ef3bc7f4cdbe4bd7db",
+          "bytes": 9963
+        },
+        {
+          "path": "kb/data/strategy/sge_project_profile_v1.json",
+          "sha256": "f0f746539bb2bc4d46915b3981cc42d93e75d51bda7f71e4efc72606012d6ad3",
+          "bytes": 1279
+        },
+        {
+          "path": "kb/data/strategy/sge_strategy_canonical_mapping_v1.json",
+          "sha256": "8f6f0e21fc6e4cce4277d191ae29a55e238de935003d5c7879e71e01ad2532d2",
+          "bytes": 3042
+        },
+        {
+          "path": "kb/data/strategy/sge_strategy_source_manifest_v1.json",
+          "sha256": "f67bfa7d7e84bb1483423065c109f8e3740415de52a2bc57f3197ea45d3acb85",
+          "bytes": 2254
+        },
+        {
+          "path": "kb/data/strategy/sge_workflow_registry_v1.json",
+          "sha256": "43c0950d36b8307753650986a9bab066a913701b35735c3c0a2d3bc0b6a086fa",
+          "bytes": 1093
+        },
+        {
+          "path": "kb/data/strategy/strategy_erbe_specification_first_acceptance_v1.json",
+          "sha256": "9f208bd7c50c6529cbb2eb411f79870d0e328a8a731e353e1782c9efc581609a",
+          "bytes": 1971
+        },
+        {
+          "path": "kb/data/strategy/strategy_human_ai_development.json",
+          "sha256": "82fcb94425450d56e4bb7f6cd8502c3293d9066112a7dc900d7ca258128e3d77",
+          "bytes": 4330
+        },
+        {
+          "path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
+          "sha256": "b69e90f5a535a05af0debeaa28ee43e33ff9916f30bc06ffd5959c1e96b0cf2a",
+          "bytes": 3403
+        },
+        {
+          "path": "kb/data/strategy/strategy_semantic_surface_engineering.json",
+          "sha256": "4f1760772e1c01c0685827e74c9bbc5647610f97b684b7f73dc9253a1a98e885",
+          "bytes": 5021
+        },
+        {
+          "path": "kb/data/strategy/strategy_sgc_structural_contract_v1.json",
+          "sha256": "b76bee86f9b2f269d6ef1449277b4974b1a9eceb624fbeea6c7bfd8687042199",
+          "bytes": 17862
+        },
+        {
+          "path": "kb/docs/Glossary.md",
+          "sha256": "be7f2888b1be55dc3ed1b7dd489c9bf4ef03f41598bfa7f0ae1ee1c244936f16",
+          "bytes": 8267
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_ERBE_Specification_First_Acceptance_V1.md",
+          "sha256": "f1e20e878e48d63be4fbe791c91c96b85a859dfa9f624cf4962d39a60ed8f602",
+          "bytes": 1707
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_Human_AI_Development.md",
+          "sha256": "2f23e005660126ad61ec9ae40f35276a0b70d2fc8eb2be22e9b51a6cb5cc0697",
+          "bytes": 3012
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_KB_Promotion_and_Source_Policy.md",
+          "sha256": "f446f6422ea7cd86171ae842b86f27ac6d487b1e3b3776e9bf986188a0019a69",
+          "bytes": 2501
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_SGC_Structural_Contract_V1.md",
+          "sha256": "f09f0f9afdd7d841c01af816a0e374b7fcad99af503a3b36768da2d42636909e",
+          "bytes": 13746
+        },
+        {
+          "path": "kb/docs/strategy/Strategy_Semantic_Surface_Engineering.md",
+          "sha256": "0f9056f0912282bf224fe13bb16b1fae47b097335d337b6690a56a2c2dc2aa05",
+          "bytes": 3921
+        },
+        {
+          "path": "kb/render_manifest_v1.json",
+          "sha256": "bd031f3ea6b788fb6258879fd8ea939c70abc4e166c6ff9299b5add485f6c0b1",
+          "bytes": 1351
+        },
+        {
+          "path": "kb/tools/render_kb.py",
+          "sha256": "9c16a69eb9df2ba14dfa9c78131945e37e9776b38afbb3cbee88c7489aa2dcc5",
+          "bytes": 16765
+        },
+        {
+          "path": "public_export_manifest_v1.json",
+          "sha256": "228b28ec802553421b2d590ae289ce4c3609e18afa0a4b0a29b841fc228d5ece",
+          "bytes": 11050
+        },
+        {
+          "path": "tools/run_sge_loop_goal_cycle.py",
+          "sha256": "5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef",
+          "bytes": 1516
+        },
+        {
+          "path": "tools/sge_public.py",
+          "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f",
+          "bytes": 36229
+        }
+      ]
+    },
+    {
+      "label": "audit_Closure",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+        "audit",
+        "Dashboard/Artifacts/PromptAudit.json",
+        "--repo",
+        "."
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0，委派无长段重复",
+      "returncode": 0,
+      "stdout": "{\n  \"advisory_findings\": [],\n  \"blocking_findings\": [],\n  \"duplicate_blocks\": 0,\n  \"estimated_duplicate_characters\": 0,\n  \"prompt_bytes\": [\n    {\n      \"bytes\": 1152,\n      \"lane\": \"BuilderPrompt\",\n      \"source\": \"Dashboard/Artifacts/BuilderPrompt.txt\"\n    },\n    {\n      \"bytes\": 1112,\n      \"lane\": \"ClosurePrompt\",\n      \"source\": \"Dashboard/Artifacts/ClosurePrompt.txt\"\n    },\n    {\n      \"bytes\": 1071,\n      \"lane\": \"DesignPrompt\",\n      \"source\": \"Dashboard/Artifacts/DesignPrompt.txt\"\n    }\n  ],\n  \"schema_version\": \"lane_prompt_audit_v1\",\n  \"verdict\": \"pass\"\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "audit_Validation",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+        "audit",
+        "Dashboard/Artifacts/PromptAudit.json",
+        "--repo",
+        "."
+      ],
+      "cwd": "/tmp/sp004-s026-01a0744b/target",
+      "expected": "exit 0，委派无长段重复",
+      "returncode": 0,
+      "stdout": "{\n  \"advisory_findings\": [],\n  \"blocking_findings\": [],\n  \"duplicate_blocks\": 0,\n  \"estimated_duplicate_characters\": 0,\n  \"prompt_bytes\": [\n    {\n      \"bytes\": 1152,\n      \"lane\": \"BuilderPrompt\",\n      \"source\": \"Dashboard/Artifacts/BuilderPrompt.txt\"\n    },\n    {\n      \"bytes\": 1112,\n      \"lane\": \"ClosurePrompt\",\n      \"source\": \"Dashboard/Artifacts/ClosurePrompt.txt\"\n    },\n    {\n      \"bytes\": 1071,\n      \"lane\": \"DesignPrompt\",\n      \"source\": \"Dashboard/Artifacts/DesignPrompt.txt\"\n    },\n    {\n      \"bytes\": 1395,\n      \"lane\": \"ValidationPrompt\",\n      \"source\": \"Dashboard/Artifacts/ValidationPrompt.txt\"\n    }\n  ],\n  \"schema_version\": \"lane_prompt_audit_v1\",\n  \"verdict\": \"pass\"\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "outer_draft_language_negative",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+        "--mode",
+        "closeout-language",
+        "--file",
+        "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md"
+      ],
+      "cwd": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill",
+      "expected": "nonzero；draft language verdict pending 阻止最终完成措辞；不是实现失败",
+      "returncode": 1,
+      "stdout": "Closeout language check failed:\n- Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md:43: Closeout language verdict must be passing before final completion: `Closeout language verdict`：`pending（待本报告最终写入后执行语言门禁）`。\n- Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md: Validation Handoff `Closeout language verdict` must be an explicit passing verdict.\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "outer_final_language",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+        "--mode",
+        "closeout-language",
+        "--file",
+        "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md"
+      ],
+      "cwd": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill",
+      "expected": "exit 0；语言门不等于 UAT 完成",
+      "returncode": 0,
+      "stdout": "Closeout language check passed: Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "outer_final_context",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "python3",
+        ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+        "validate",
+        "Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATStateSnapshot.json"
+      ],
+      "cwd": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill",
+      "expected": "exit 0；结构门不替代未完成流程",
+      "returncode": 0,
+      "stdout": "{\n  \"boundaries\": {\n    \"forbidden_actions\": [\n      \"修改 frozen card/contract\",\n      \"源仓 runtime/KB 修改\",\n      \"release/remote/global install\",\n      \"把预检当 UAT 通过\"\n    ],\n    \"maximum_claim\": \"preflight blocker observed; no UAT result yet\",\n    \"write_scope\": [\n      \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATTranscript.json\",\n      \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATReview.md\",\n      \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATStateSnapshot.json\",\n      \"tests/bdd/readable_cards/sp004/\"\n    ]\n  },\n  \"candidate_fingerprint\": {\n    \"candidate_id\": \"sge-governance-public-candidate-v1\",\n    \"source_head\": \"35747db7b769a1f6c25bec57263257100d1fb445\",\n    \"tree_sha256\": \"d84b83cbe264e123a94422ca987bda99345ffa50b8df427e4c94635de5d0c160\"\n  },\n  \"card_canonical_sha256\": \"0cf1ae4d0b95f6e0494fdcc8391b714eeb27f3018389103c8730a00bb58eb2fe\",\n  \"change_impact\": {\n    \"contract_or_acceptance\": false,\n    \"dashboard_state\": false,\n    \"external_side_effect\": false,\n    \"kb_truth\": false,\n    \"runtime_or_schema\": false,\n    \"semantic_risk\": \"low\",\n    \"write_conflict\": false\n  },\n  \"conditional_read_set\": [\n    {\n      \"action\": \"revalidate and rebaseline\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"card or source digest changes\",\n      \"mode\": \"deterministic\",\n      \"trigger_id\": \"drift\"\n    },\n    {\n      \"action\": \"expand public inputs or report gap\",\n      \"can_suppress_deterministic\": false,\n      \"condition\": \"public documentation dependency missing\",\n      \"mode\": \"evidence_backed_agent_evaluated\",\n      \"trigger_id\": \"gap\"\n    }\n  ],\n  \"durable_target_inventory_ref\": \"tests/bdd/readable_cards/sp004/s026/PackageInventory.json\",\n  \"epistemic_search_space\": {\n    \"missing_evidence_action\": \"expand_or_report_evidence_gap\",\n    \"preservation_statement\": \"保持完整 discovery/Goal/Session/Validation/closeout 与 copy-paste 验收面。\",\n    \"required_domains\": [\n      \"acceptance\",\n      \"baseline\",\n      \"candidate\",\n      \"claim\",\n      \"entry\",\n      \"governance\",\n      \"objective\",\n      \"task\"\n    ]\n  },\n  \"execution_status\": \"stopped_on_explicit_instruction\",\n  \"independent_validation\": {\n    \"path\": \"tests/bdd/readable_cards/sp004/s026/target/Dashboard/Artifacts/Review.md\",\n    \"reviewer\": \"/root/uat_validation\",\n    \"scope\": \"M1-M4 local document example; M5 unfinished\",\n    \"verdict\": \"partial\"\n  },\n  \"intake_projection\": {\n    \"assumptions\": [\n      \"本任务是独立创建的用户可见 task；无来源任务历史，但系统注入仓库规则与通用 memory，不能称完全无项目上下文。\"\n    ],\n    \"authority_role\": \"projection\",\n    \"summary\": \"execute：来源任务已明确授权修复实际 topology；canonical card digest 验证通过。执行 fresh target 的公开流程并保留 outer UAT 缺口。\"\n  },\n  \"post_closeout_reconciliation\": \"not_performed\",\n  \"raw_user_intent\": {\n    \"authority_role\": \"authority\",\n    \"text\": \"执行 SP-004/S-026 独立可见 clean-room Codex newcomer UAT；使用 fresh target；验证卡摘要；完成公开入口 discovery、Goal、Session、handoff、独立 Validation、中文 closeout 并保留正负 transcript。\"\n  },\n  \"required_read_set\": [\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"governance\"\n      ],\n      \"path\": \"AGENTS.md\",\n      \"reason\": \"governance\",\n      \"revision\": \"1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"governance\"\n      ],\n      \"path\": \".codex/skills/sge-governed-checkpoints/SKILL.md\",\n      \"reason\": \"governance\",\n      \"revision\": \"43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"task\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_CleanRoomUATLaneTaskCard.json\",\n      \"reason\": \"task\",\n      \"revision\": \"cb721470564003fe07fe86e9b8fee263a9c1bc5f136783ebbde5204d2c7c8407\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"objective\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md\",\n      \"reason\": \"objective\",\n      \"revision\": \"f7e55d3e1cb0d8284d8be9e16534fae34d75ac863fcb410430847f4dfbd11a08\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"acceptance\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Contract.json\",\n      \"reason\": \"acceptance\",\n      \"revision\": \"da0d15e9ef0a2ee1dc4bbdc5cf2137e3da8757251a6a9a07c3595ce1cf42a8b2\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"baseline\"\n      ],\n      \"path\": \"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S025_Closeout.md\",\n      \"reason\": \"baseline\",\n      \"revision\": \"ab8c8e3554df24f53337d98f0686745129763a0ed97753e38e805303b77a79b1\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"candidate\"\n      ],\n      \"path\": \"public_export_manifest_v1.json\",\n      \"reason\": \"candidate\",\n      \"revision\": \"228b28ec802553421b2d590ae289ce4c3609e18afa0a4b0a29b841fc228d5ece\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"entry\"\n      ],\n      \"path\": \"README.md\",\n      \"reason\": \"entry\",\n      \"revision\": \"e46f93164d18b7140daec4e2b688b3c83ba0e25db66b818f12a6744ca007d26f\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"entry\"\n      ],\n      \"path\": \"docs/Quick_Start_CN.md\",\n      \"reason\": \"entry\",\n      \"revision\": \"d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"entry\"\n      ],\n      \"path\": \"docs/Beginner_Guide_CN.md\",\n      \"reason\": \"entry\",\n      \"revision\": \"5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91\"\n    },\n    {\n      \"applicability\": \"required\",\n      \"domains\": [\n        \"claim\"\n      ],\n      \"path\": \"kb/data/strategy/strategy_sgc_structural_contract_v1.json\",\n      \"reason\": \"claim\",\n      \"revision\": \"b76bee86f9b2f269d6ef1449277b4974b1a9eceb624fbeea6c7bfd8687042199\"\n    }\n  ],\n  \"schema_version\": \"context_bootstrap_v1\",\n  \"semantic_refresh\": {\n    \"anchors\": [\n      \"objective\",\n      \"authority\",\n      \"claim_ceiling\",\n      \"critical_dependencies\"\n    ],\n    \"required_when_digest_unchanged\": true,\n    \"result\": \"原始 S-026 全范围保持；source refs 匹配；目标候选冻结；启动上下文非完全零背景为已知证据限制。\"\n  },\n  \"sgc_check\": {\n    \"SI-1\": \"正文待独立语义核验；结构不替代意义\",\n    \"SI-2\": \"命令/输出/文件清单可定位\",\n    \"SI-3\": \"执行证据留 Dashboard 与 readable case projection；KB 不改\",\n    \"SI-4\": \"独立初轮 Review 已落盘；最终 reconciliation 未执行\",\n    \"SI-5\": \"外层保持 partial，不越级声明完成\",\n    \"SI-6\": \"原始 S-026 全范围逐项保留未满足项\",\n    \"claim_level\": \"execution_bound\",\n    \"completion_rule\": \"full original objective remains unsatisfied\",\n    \"evidence_layer\": \"actual local transcript; outer UAT not complete\",\n    \"forbidden_collapses\": \"禁止 CLI/sample success 替代 original UAT\"\n  },\n  \"skipped_reads\": [],\n  \"task_id\": \"sp004-s026-independent-uat-preflight\",\n  \"task_profile\": \"validation\",\n  \"termination\": {\n    \"action\": \"已中断独立 Validation agent，不再等待；其已落盘初轮 Review/Log/Snapshot 原样保留。\",\n    \"instruction\": \"请现在结束当前 task：落盘已有 partial UAT package、独立 Validation/closeout（若未完成则明确 blocked/partial），不要继续等待子任务。返回所有 durable artifact 路径与唯一 verdict。\",\n    \"kind\": \"explicit_stop\",\n    \"source_task\": \"01a07029-0b7d-7723-b1d1-abcb5169d5ec\"\n  },\n  \"topology\": {\n    \"basis\": \"change_impact\",\n    \"reason\": \"UAT 执行任务独立；独立 validation 尚未启动，不虚构空 lane。\",\n    \"route\": \"独立用户可见 UAT task；target 内独立 Design/Builder/Validation/Closure subagents\"\n  },\n  \"unfinished_required_outputs\": [\n    \"最终 Closeout/两父面吸收初轮 Review\",\n    \"独立 post-closeout Reconciliation\",\n    \"严格零背景 UAT\",\n    \"README 原样 placeholder 复制执行\"\n  ],\n  \"unique_uat_verdict\": \"partial\",\n  \"validation_evidence_surfaces\": [\n    \"original objective\",\n    \"acceptance criteria\",\n    \"actual diff\",\n    \"final state\"\n  ]\n}\n",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    },
+    {
+      "label": "final_diff_whitespace",
+      "input_origin": "独立 UAT task 实际执行；非人类手工键入",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill",
+      "expected": "exit 0；仅 whitespace 检查",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "before_inventory": [],
+      "after_inventory": []
+    }
+  ],
+  "goal_input": {
+    "origin": "公开指南第 6 步由独立 UAT Codex 选择并执行；不是人类重新键入 slash command",
+    "text": "/goal 请在当前仓库建立一个最小、可验证的 Goal。先读取 AGENTS.md 与项目 profile，明确原始目标、非目标、claim ceiling、一个 Session、Validation Handoff 和终止条件；不要把计划落库表述为实现完成。",
+    "native_tool": "create_goal 已实际调用；UI slash-command parser 未测试",
+    "goal_file": "target/Dashboard/Artifacts/Goal.md"
+  },
+  "skill_discovery": {
+    "method": "公开 README 链接 → install 到 target .codex/skills → 读取 YAML name/description 与 workflow/checklists",
+    "discovered_name": "sge-governed-checkpoints",
+    "installed_path": "/tmp/sp004-s026-01a0744b/target/.codex/skills/sge-governed-checkpoints/SKILL.md",
+    "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+    "ui_skill_menu_discovery": "not_tested",
+    "system_preloaded_skill_catalog": true
+  },
+  "candidate_fingerprint": "d84b83cbe264e123a94422ca987bda99345ffa50b8df427e4c94635de5d0c160",
+  "public_fences": {
+    "Quick_Start_CN": 1,
+    "Beginner_Guide_CN": 6,
+    "README": 2,
+    "readme_template_substitution_required": true
+  },
+  "task_inputs": [
+    {
+      "source": "source task delegated initial request",
+      "text": "执行 SP-004/S-026 的独立可见 clean-room Codex newcomer UAT；完整流程与有界 verdict。",
+      "exact_input_available_in_native_task": true
+    },
+    {
+      "source": "source task repair instruction",
+      "text": "已确认实际用户可见 task，授权只修复 topology 并以 renderer digest 继续。",
+      "topology_scope_change": "none"
+    }
+  ],
+  "native_goal_created": true,
+  "lanes": [
+    {
+      "name": "Design",
+      "agent": "/root/uat_design",
+      "fork_turns": "none",
+      "status": "completed_design_only"
+    },
+    {
+      "name": "Builder",
+      "agent": "/root/uat_builder",
+      "fork_turns": "none",
+      "status": "completed_builder_handoff"
+    },
+    {
+      "name": "Closure",
+      "agent": "/root/uat_closure",
+      "fork_turns": "none",
+      "status": "completed_closure_draft"
+    },
+    {
+      "name": "Validation",
+      "agent": "/root/uat_validation",
+      "fork_turns": "none",
+      "status": "durable_initial_partial_review_present; agent_interrupted_on_explicit_stop"
+    }
+  ],
+  "expected_functional_artifacts": [
+    "target/AGENTS.md",
+    "target/README.md",
+    "target/kb/data/strategy/profile.json",
+    "target/.sge-governance-install.json",
+    "target/.codex/skills/sge-governed-checkpoints/SKILL.md",
+    "target/Dashboard/Artifacts/Goal.md",
+    "target/Dashboard/Artifacts/ContextBuilder.json",
+    "target/Dashboard/Artifacts/Design.md",
+    "target/PROJECT_NOTE.md",
+    "target/Dashboard/Artifacts/Handoff.md",
+    "target/Dashboard/Artifacts/BuilderLog.md",
+    "target/Dashboard/Artifacts/Closeout.md",
+    "target/Dashboard/Artifacts/Review.md",
+    "target/Dashboard/Artifacts/Reconciliation.md",
+    "target/Dashboard/Sessions.md",
+    "target/Dashboard/Current_State.md"
+  ],
+  "observed_functional_files_before_validation": [
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+      "bytes": 56946
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+      "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+      "bytes": 283
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+      "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+      "bytes": 76998
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+      "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+      "bytes": 12376
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+      "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+      "bytes": 9408
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+      "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+      "bytes": 3951
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+      "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+      "bytes": 1285
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+      "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+      "bytes": 5192
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+      "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+      "bytes": 8281
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+      "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+      "bytes": 10047
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+      "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+      "bytes": 17148
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+      "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+      "bytes": 47805
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+      "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+      "bytes": 46076
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+      "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+      "bytes": 43507
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+      "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+      "bytes": 24659
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+      "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+      "bytes": 2660
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+      "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+      "bytes": 1637
+    },
+    {
+      "path": ".sge-governance-install.json",
+      "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+      "bytes": 4446
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+      "bytes": 139
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderCard.json",
+      "sha256": "4b34ddb8bf0b74d1ae3cca8b92a1df39b70152544c3030afdf12aeacdde417f1",
+      "bytes": 2679
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderLog.md",
+      "sha256": "2fb52b69f07cf74c74b4a80bbb872092b5257f410614a9081ea9a2e9eed8a58d",
+      "bytes": 10515
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderPrompt.txt",
+      "sha256": "862124e605e37b3e240607ebe35dd863b3f123065c551bb8b08c785accbc194d",
+      "bytes": 1152
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureCard.json",
+      "sha256": "0ded7ccafd2ccd51ebd692d0160358679248aaaac6cac69d66b77cede80b0cb0",
+      "bytes": 2872
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosurePrompt.txt",
+      "sha256": "ff1cd8ea9001f4301dc223977384760062d3dcf5097c75a4a8072ae04146322b",
+      "bytes": 1112
+    },
+    {
+      "path": "Dashboard/Artifacts/Context.json",
+      "sha256": "805e35c5af36f47af7e91d65ea5c0541a3535430bab2a261d339d55014899c84",
+      "bytes": 3914
+    },
+    {
+      "path": "Dashboard/Artifacts/ContextBuilder.json",
+      "sha256": "6e9678612142400fea4a0054226aa82646f2a68120e065a7a2df9ebe3aaadad6",
+      "bytes": 3985
+    },
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968",
+      "bytes": 11679
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignCard.json",
+      "sha256": "5d33f1068b47d9f65dbf825efb863feda42b3eae8d9362b41c600143b3cda12d",
+      "bytes": 2290
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignLog.md",
+      "sha256": "9caa98c4284e51d7fd0dd6129cbabd2e26a23cf6c61f1cdeef58756f30417d91",
+      "bytes": 2905
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignPrompt.txt",
+      "sha256": "b4454f98eb720001721a5a29e65b4f822f56cea7ede0fb74ca94b5b5c5b12039",
+      "bytes": 1071
+    },
+    {
+      "path": "Dashboard/Artifacts/Goal.md",
+      "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d",
+      "bytes": 2991
+    },
+    {
+      "path": "Dashboard/Artifacts/Handoff.md",
+      "sha256": "32caec951ef4b2d2653c34b518bbb84036aa6cac3352c0679883e24e12e7a6d1",
+      "bytes": 5995
+    },
+    {
+      "path": "Dashboard/Artifacts/PromptAudit.json",
+      "sha256": "33ba32e62cf4fe9dcb0e9e5a20d79d7400db5cfc1eaf45d55e32e94177108203",
+      "bytes": 1087
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "38f82e275e7485cb274afc86a727d3969f038b7bf9cf0539c5da27e08a965675",
+      "bytes": 458
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "e4b966fb8724c56048843d3668d8563c3e682ae871c911dd33ae5e34eebe406e",
+      "bytes": 278
+    },
+    {
+      "path": "PROJECT_NOTE.md",
+      "sha256": "f79de0bce4711a7fcd839618c9d4a61db961698ce4cb761fde269e0c536d9eb1",
+      "bytes": 1923
+    },
+    {
+      "path": "README.md",
+      "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+      "bytes": 86
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+      "bytes": 227
+    }
+  ],
+  "known_findings": [
+    {
+      "id": "UAT-F01",
+      "status": "unresolved",
+      "summary": "真实任务没有继承来源对话，但启动系统注入仓库 AGENTS/Skill catalog/memory；严格零背景不成立。",
+      "scope": "GAP-MH-03"
+    },
+    {
+      "id": "UAT-F02",
+      "status": "unresolved",
+      "summary": "README 原样 placeholder bash fence 在 zsh -n 失败；Quick Start 与新手指南 fences 成功不覆盖此缺口。",
+      "scope": "GAP-MH-02/AC-03"
+    },
+    {
+      "id": "UAT-F03",
+      "status": "coverage_limit",
+      "summary": "文件式 Skill discovery 与 create_goal 实际执行；未验证 UI Skill 菜单或 slash parser，输入不是另一次真实人类键入。",
+      "scope": "GAP-MH-03/AC-04"
+    },
+    {
+      "id": "UAT-F04",
+      "status": "repaired_in_example",
+      "summary": "初始 target Context Dashboard impact 误标；ContextBuilder 同时把 impact 改 true 与 raw_user_intent 改为明确 M1..M5 子实验文本。保留旧 Context，原始外层 S-026 要求不变；不能只描述为一个布尔纠错。",
+      "scope": "execution-quality"
+    }
+  ],
+  "context_observations": [
+    {
+      "lane": "UAT root",
+      "observation": "系统注入源仓规则、技能目录与 memory；执行过 registry quick memory pass，未继承来源任务对话。"
+    },
+    {
+      "lane": "Design",
+      "observation": "未读取 source 私有历史或 memory 文件；系统上下文仍可能包含规则。"
+    },
+    {
+      "lane": "Closure",
+      "observation": "报告执行过 MEMORY.md 的 SP-004/S-026 关键词搜索，未使用其事实决定目标结果；不声称完全零背景。"
+    }
+  ],
+  "unique_uat_verdict": "partial",
+  "termination": {
+    "kind": "explicit_stop",
+    "source_task": "01a07029-0b7d-7723-b1d1-abcb5169d5ec",
+    "instruction": "请现在结束当前 task：落盘已有 partial UAT package、独立 Validation/closeout（若未完成则明确 blocked/partial），不要继续等待子任务。返回所有 durable artifact 路径与唯一 verdict。",
+    "action": "已中断独立 Validation agent，不再等待；其已落盘初轮 Review/Log/Snapshot 原样保留。"
+  },
+  "durable_target": "/Users/xiaomei/.codex/worktrees/d441/sge-governance-skill/tests/bdd/readable_cards/sp004/s026/target",
+  "final_actual_target_inventory": [
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/SKILL.md",
+      "sha256": "43691bbf4ec8c88dbc6b19308f887d180ed4ca268c13e48a430b5fcb66a0c447",
+      "bytes": 56946
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/agents/openai.yaml",
+      "sha256": "3b02bac8217fc05631972619c3963f6d024578908b90cf3e0f03fdd809a6e186",
+      "bytes": 283
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/checklists.md",
+      "sha256": "24fffc584d41cc6010c887790098db033a9ded1eda78709f7ae5c249b6f4c484",
+      "bytes": 76998
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/references/context-efficient-goal-validation.md",
+      "sha256": "103d53f87816749aad8bf0b5506ddbdbb58c9996d31fe84e54af3adf08ab7863",
+      "bytes": 12376
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_contract_v1.schema.json",
+      "sha256": "87ceeda6e0d53946170f401e61dbb9aa08c8d720ad7903d1f4811b2efce7d565",
+      "bytes": 9408
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/goal_patch_v1.schema.json",
+      "sha256": "01f3da80e1a604b1bf858b5a6a15537b2995ff030291a8a38de56c95e95ad23e",
+      "bytes": 3951
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_prompt_audit_v1.schema.json",
+      "sha256": "9a4904c1884e2dab6f44186b53e2b649e5e67ae14c8f860b725c11092986bb26",
+      "bytes": 1285
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/lane_task_card_v1.schema.json",
+      "sha256": "086c9e47880dc295fea964fb8c9a11bb304d44e7aef59832865e8472393d120a",
+      "bytes": 5192
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/schemas/validation_state_snapshot_v1.schema.json",
+      "sha256": "7bf99314f198d3930b72603bc4f247a1cf472d0f1bdaa94f2b49ba22b27d264e",
+      "bytes": 8281
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_bootstrap.py",
+      "sha256": "6189a068457762ebf146e85c0233da4e41c48134381b88205e166d7bbb31ca41",
+      "bytes": 10047
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_efficiency_pilot.py",
+      "sha256": "78dc6a10010b155c60d7d0551bc8cb84e078da1e0de0099a71eeec753df73c20",
+      "bytes": 17148
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/context_state.py",
+      "sha256": "c002c7b5801cbecabd1a813a5e3a4b0c9c4817a438ba1ff6d43f3cd530bd3030",
+      "bytes": 47805
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/goal_patch.py",
+      "sha256": "242f3316833881f7e11a3285e4fc3c3fe81e169525bef2cdc9ded7ee5d870b36",
+      "bytes": 46076
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py",
+      "sha256": "d67b4b7b9f22f901c2a15b5b86878f526370bee469eac27e57a7303758314a01",
+      "bytes": 43507
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py",
+      "sha256": "6a26de820a1ef2439dbae13f6e5ac2d8b5eee1c850aa4cd5342bc3cba457ed5a",
+      "bytes": 24659
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/profile_validator.py",
+      "sha256": "e6d4e4d52d6caab0909ce327b85e997d9949c9f2e79cf80e83f1133f2b75ce08",
+      "bytes": 2660
+    },
+    {
+      "path": ".codex/skills/sge-governed-checkpoints/scripts/workflow_contract.py",
+      "sha256": "34e01d56dcc5c222d8965781410e6a5905a12d51a01f1af53c842211cf996c79",
+      "bytes": 1637
+    },
+    {
+      "path": ".sge-governance-install.json",
+      "sha256": "792962aa5a287441234cc7a25d9afd8ee276f4894ce74b30fbb44a09d8bf588b",
+      "bytes": 4446
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "f18e2b2c111f9f0aab77c23606db5c5a4032bca3fb0c21efc5c28d134dd2ca84",
+      "bytes": 139
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderCard.json",
+      "sha256": "4b34ddb8bf0b74d1ae3cca8b92a1df39b70152544c3030afdf12aeacdde417f1",
+      "bytes": 2679
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderLog.md",
+      "sha256": "2fb52b69f07cf74c74b4a80bbb872092b5257f410614a9081ea9a2e9eed8a58d",
+      "bytes": 10515
+    },
+    {
+      "path": "Dashboard/Artifacts/BuilderPrompt.txt",
+      "sha256": "862124e605e37b3e240607ebe35dd863b3f123065c551bb8b08c785accbc194d",
+      "bytes": 1152
+    },
+    {
+      "path": "Dashboard/Artifacts/Closeout.md",
+      "sha256": "4d7989aa0932ac2d68114814ee9bd79c696bcaf5ab4474ba2752d465698e2ff0",
+      "bytes": 8763
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureCard.json",
+      "sha256": "0ded7ccafd2ccd51ebd692d0160358679248aaaac6cac69d66b77cede80b0cb0",
+      "bytes": 2872
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosureLog.md",
+      "sha256": "e8a57d51d38b63f4156063d0a8b952e02e7c765262dc54d81720efdbd6b8453b",
+      "bytes": 8480
+    },
+    {
+      "path": "Dashboard/Artifacts/ClosurePrompt.txt",
+      "sha256": "ff1cd8ea9001f4301dc223977384760062d3dcf5097c75a4a8072ae04146322b",
+      "bytes": 1112
+    },
+    {
+      "path": "Dashboard/Artifacts/Context.json",
+      "sha256": "805e35c5af36f47af7e91d65ea5c0541a3535430bab2a261d339d55014899c84",
+      "bytes": 3914
+    },
+    {
+      "path": "Dashboard/Artifacts/ContextBuilder.json",
+      "sha256": "6e9678612142400fea4a0054226aa82646f2a68120e065a7a2df9ebe3aaadad6",
+      "bytes": 3985
+    },
+    {
+      "path": "Dashboard/Artifacts/Design.md",
+      "sha256": "d69da82c143a49f86b1b125fd4bb558dad65edb4bd6417977842f724e9051968",
+      "bytes": 11679
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignCard.json",
+      "sha256": "5d33f1068b47d9f65dbf825efb863feda42b3eae8d9362b41c600143b3cda12d",
+      "bytes": 2290
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignLog.md",
+      "sha256": "9caa98c4284e51d7fd0dd6129cbabd2e26a23cf6c61f1cdeef58756f30417d91",
+      "bytes": 2905
+    },
+    {
+      "path": "Dashboard/Artifacts/DesignPrompt.txt",
+      "sha256": "b4454f98eb720001721a5a29e65b4f822f56cea7ede0fb74ca94b5b5c5b12039",
+      "bytes": 1071
+    },
+    {
+      "path": "Dashboard/Artifacts/Goal.md",
+      "sha256": "0c6e153142c2fc0e58b3b862b62b2a12337dc4a720fbf989a4503d8fb109892d",
+      "bytes": 2991
+    },
+    {
+      "path": "Dashboard/Artifacts/Handoff.md",
+      "sha256": "32caec951ef4b2d2653c34b518bbb84036aa6cac3352c0679883e24e12e7a6d1",
+      "bytes": 5995
+    },
+    {
+      "path": "Dashboard/Artifacts/PromptAudit.json",
+      "sha256": "7b556cc5ffa523a009db805989dfe26b1e03d5b956e27e83d0a49b15934e5c8f",
+      "bytes": 1315
+    },
+    {
+      "path": "Dashboard/Artifacts/Review.md",
+      "sha256": "f4dd830a74ae06ac0053297f9d01de557c765f0f50397aa226884398b74bbaa1",
+      "bytes": 12403
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationCard.json",
+      "sha256": "91440ea220c9523c71fb43607e0411852b5c5b663d2344d316c9bbf1cb77fd79",
+      "bytes": 4320
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationLog.md",
+      "sha256": "f3d5901f46fd8314996847563fc941b548a3e30769a05cd40b2f42d14656c0c4",
+      "bytes": 22922
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationPrompt.txt",
+      "sha256": "277a3f3d93ec9ded71a737b11f8466ef40cbf8d11ae4fddc8064d0dacc739249",
+      "bytes": 1395
+    },
+    {
+      "path": "Dashboard/Artifacts/ValidationSnapshot.json",
+      "sha256": "fe8c6bf9c970952c5e59927b6b303993e386289bf640b88797ba0776420c6599",
+      "bytes": 28236
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "38f82e275e7485cb274afc86a727d3969f038b7bf9cf0539c5da27e08a965675",
+      "bytes": 458
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "e4b966fb8724c56048843d3668d8563c3e682ae871c911dd33ae5e34eebe406e",
+      "bytes": 278
+    },
+    {
+      "path": "PROJECT_NOTE.md",
+      "sha256": "f79de0bce4711a7fcd839618c9d4a61db961698ce4cb761fde269e0c536d9eb1",
+      "bytes": 1923
+    },
+    {
+      "path": "README.md",
+      "sha256": "10f578751518dc5bef9d5c5556ef071ed247d742e8720f0673da79e2ccc3b9dd",
+      "bytes": 86
+    },
+    {
+      "path": "kb/data/strategy/profile.json",
+      "sha256": "4df99da2635a0936723e0207b9b59c1bb12c9e72c9e93614329b187fb4e84452",
+      "bytes": 227
+    }
+  ],
+  "expected_actual_inventory": [
+    {
+      "path": "target/AGENTS.md",
+      "exists": true
+    },
+    {
+      "path": "target/README.md",
+      "exists": true
+    },
+    {
+      "path": "target/kb/data/strategy/profile.json",
+      "exists": true
+    },
+    {
+      "path": "target/.sge-governance-install.json",
+      "exists": true
+    },
+    {
+      "path": "target/.codex/skills/sge-governed-checkpoints/SKILL.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Goal.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/ContextBuilder.json",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Design.md",
+      "exists": true
+    },
+    {
+      "path": "target/PROJECT_NOTE.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Handoff.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/BuilderLog.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Closeout.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Review.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Artifacts/Reconciliation.md",
+      "exists": false
+    },
+    {
+      "path": "target/Dashboard/Sessions.md",
+      "exists": true
+    },
+    {
+      "path": "target/Dashboard/Current_State.md",
+      "exists": true
+    }
+  ],
+  "unfinished_required_outputs": [
+    "最终 Closeout/两父面吸收初轮 Review",
+    "独立 post-closeout Reconciliation",
+    "严格零背景 UAT",
+    "README 原样 placeholder 复制执行"
+  ],
+  "claim_ceiling": "本次冻结候选的部分执行与初轮独立验证证据；不支持完整 S-026 UAT 通过、全局 newcomer readiness、发布或生产"
+}

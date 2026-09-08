@@ -1,0 +1,30 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp002-s011-semantic-v1",
+  "session_id":"SP-002/S-011",
+  "lane":"SP-002 final semantic boundary review",
+  "role":"semantic",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","sha256":"f5748bbe772bd0f7cd115959902b80c515c9f7377bfbe3c182c200820dc83508"},
+  "base_context_refs":[
+    {"path":"AGENTS.md","sha256":"1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S007_Design.md","sha256":"b758530e0007edd589eb170e362f958a4479cf2bff4a0e208943acac4f48ab28"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json","sha256":"32ad71959ffef6cd5e02088f1344460334997cfa52b5efcf71f90a38f19eaa93"},
+    {"path":"public_export_manifest_v1.json","sha256":"3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path":"kb/data/glossary_v1.json","sha256":"4a22263d4063fed67f53a1cabfd5d3cd386463ea2f9920ef3bc7f4cdbe4bd7db"},
+    {"path":"kb/docs/Glossary.md","sha256":"be7f2888b1be55dc3ed1b7dd489c9bf4ef03f41598bfa7f0ae1ee1c244936f16"},
+    {"path":"extensions/registry_v1.json","sha256":"17e4384952ac323b841d156bc7c0697b1f92ebbd7113430a5660ce477691a685"},
+    {"path":"tools/run_sge_loop_goal_cycle.py","sha256":"5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef"}
+  ],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp002-semantic-baseline-2026-09-02","parent_snapshot_ref":null},
+  "delta_read_set":[],
+  "acceptance_criteria_ids":["SP002-MH-01","SP002-MH-02","SP002-MH-03","SP002-MH-06","SP002-MH-08","SP002-MH-10","SP002-MH-11","SP002-MH-12","PROC-02"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_SemanticReview.md"],
+  "required_outputs":["给出Design Freeze Validity与Implementation Entry Readiness双verdict", "检查公共/私有authority、glossary ontology、四层依赖、optional extension和claim ceiling", "执行状态词压缩误读测试与至少三个future-agent misuse scenarios", "列出blocking/nonblocking findings和不得宣称的边界"],
+  "maximum_claim_ref":{"summary":"只给出当前 public candidate 的独立语义边界复核；不批准发布、Git、生产或普遍适用。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp002-s011-semantic-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json",
+  "working_directory":".",
+  "execution_command":"python3 tools/sge_public.py doctor && python3 kb/tools/render_kb.py --check"
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s017-independent-validation-v1",
+  "session_id": "SP-003/S-017",
+  "lane": "S-017 independent projection validation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json", "sha256": "17a591498939a790c5f8e4247eb72014fc6bb686c90b1596de8dede1450e3a37"},
+    {"path": "public_export_manifest_v1.json", "sha256": "3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path": "tools/sge_public.py", "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path": "tests/test_public_candidate.py", "sha256": "77a6ed0d716ee98a74a94b17489dd8ec15bad45cc88983cd3c79b47b93de13dd"},
+    {"path": "tests/test_public_projection.py", "sha256": "db9858ed3fec9531d083bbc8031cf50d38bfc66baca2f6bf326d0b8eb3bd8f92"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp003-s017-validation-revalidation-2026-09-03", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ValidationStateSnapshot.json"},
+  "delta_read_set": ["tools/sge_public.py", "tests/test_public_candidate.py", "tests/test_public_projection.py", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionContract.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json", "git status --short", "fresh temporary source/destination/consumer roots"],
+  "acceptance_criteria_ids": ["ODA-MH-02", "ODA-MH-03", "S017-AC-01", "S017-AC-02", "S017-AC-03", "PROC-03", "SGC SI-1..SI-6"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ValidationStateSnapshot.json"],
+  "required_outputs": ["中文 Read Manifest，读取原始 Goal、S-016 设计/验证、S-017 实际 diff、合同和 Dashboard/KB", "独立重算 fresh-root exact allowlist、inventory、metadata、tree/file-set digest 与 projection verify", "独立执行正例和 unknown/path/symlink/private/binary/LFS/nested-repo/dirty-tree/digest-drift 负例", "覆盖 S-017 原始 ODA-MH-01..12 与 Session 流程边界，明确未覆盖的 S-018..S-022 remainder", "给出唯一 Validation verdict、claim ceiling、Closeout language verdict 与 continuation fields；不得修改 Builder 产物，不得执行远端动作"],
+  "maximum_claim_ref": {"summary": "最多支持 S-017 maintainer local deterministic projection 的独立验证结论；不支持 end-user lifecycle 完成、批准、公开仓、release、GitHub mutation、production 或 SP-003 完成。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s017-independent-validation-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_BuilderLaneTaskCard.json",
+  "working_directory": ".",
+  "execution_command": "python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && python3 -m py_compile tools/sge_public.py && git diff --check"
+}

@@ -1,0 +1,29 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s016-closure-v1",
+  "session_id": "SP-003/S-016",
+  "lane": "S-016 bounded closeout",
+  "role": "closure",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md", "sha256": "330ab4bc5906c4a61df5dc9cf3b80cee155c7f9ad4c3d301f9481fb0767e2800"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md", "sha256": "2254d01c5d95ee82438f14860bdf554cc6f582d836667649fe77397b32e16bd9"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationReview.md", "sha256": "3b02f2a9e3e7203cf184ee28a15312db7359d72ce0265b6f7b78c89c76637ae5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json", "sha256": "17a591498939a790c5f8e4247eb72014fc6bb686c90b1596de8dede1450e3a37"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp003-s016-closure-baseline-2026-09-03", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json"},
+  "delta_read_set": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationReview.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json", "Dashboard/Big_Ideas.md", "Dashboard/Stage_Plans.md", "Dashboard/Sessions.md", "Dashboard/Current_State.md"],
+  "acceptance_criteria_ids": ["ODA-MH-01", "ODA-MH-02", "ODA-MH-04", "ODA-MH-07", "ODA-MH-11", "ODA-MH-12", "PROC-01", "PROC-02", "PROC-03", "PROC-04"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Closeout.md"],
+  "required_outputs": ["用中文记录 S-016 bounded outcome、原始目标覆盖、Scope Delta、Design Delta、Lane 启动与例外、设计交接、Validation Handoff 与唯一 verdict", "明确 Semantic partial/conditional、Validation blocked 与未证明的实现/发布边界", "记录 next-session scan 的 goal_terminal、next_session、next_session_ready、human_decision_required", "保留 `CG skipped: no CG input provided`、KB/Dashboard review 与 closeout-language 待运行状态"],
+  "maximum_claim_ref": {"summary": "只关闭 S-016 的有界设计交接记录；不得声称 S-016 通过独立验证、SP-003 完成、candidate、发布或生产就绪。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s016-closure-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Closeout.md"
+}

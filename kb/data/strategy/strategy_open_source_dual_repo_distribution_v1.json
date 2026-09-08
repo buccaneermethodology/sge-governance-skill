@@ -9,7 +9,7 @@
   "metadata":{
     "owner":"sge-governance-skill",
     "updated_at":"2026-09-03",
-    "source_scope":["AGENTS.md","Dashboard/Artifacts/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","Dashboard/Artifacts/SP002_S011_FinalClosure_OPCM.md","Dashboard/Artifacts/SP003_OpenSourceDistributionArchitecture_GoalContract_Base.json","public_export_manifest_v1.json","tools/sge_public.py"],
+    "source_scope":["AGENTS.md","Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S011_FinalClosure_OPCM.md","Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract_Base.json","public_export_manifest_v1.json","tools/sge_public.py"],
     "depends_on_docs":["sge-strategy-kb-promotion-and-source-policy","sge-strategy-human-ai-development"],
     "tags":["strategy","open-source","dual-repository","public-projection","release-governance"],
     "promotion_state":"candidate_not_approved",

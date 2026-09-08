@@ -4,7 +4,7 @@ from __future__ import annotations
 import argparse, importlib.util, json, subprocess, sys, tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
-CASES=json.loads((ROOT/"Dashboard/Artifacts/SP002_ERBE_Cases.json").read_text(encoding="utf-8"))
+CASES=json.loads((ROOT/"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Cases.json").read_text(encoding="utf-8"))
 
 def run(cmd): return subprocess.run(cmd,cwd=ROOT,capture_output=True,text=True)
 def load_public_module():

@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_EvidenceRepairLaneTaskCard.json
+Card SHA-256: 57a811424154d4c0ba84e16758a4045d3cb43c0e07937fd63adf2629bbe98a25
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S021_EvidenceRepairLaneTaskCard.json --repo . --expected-card-sha256 57a811424154d4c0ba84e16758a4045d3cb43c0e07937fd63adf2629bbe98a25
+Lane: S-021 evidence and ERBE repair | Session: SP-003/S-021 | Role: builder
+Mode: full_baseline
+Working directory: .
+Execute: python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && git diff --check

@@ -1,0 +1,29 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s018-end-user-lifecycle-builder-v1",
+  "session_id": "SP-003/S-018",
+  "lane": "S-018 end-user lifecycle",
+  "role": "builder",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json", "sha256": "db8f8b37b109d12cf33b88db27d2d2530cfca25fa689026a28414cf2e713c799"},
+    {"path": "tools/sge_public.py", "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path": "docs/Beginner_Guide_CN.md", "sha256": "5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91"},
+    {"path": "docs/Quick_Start_CN.md", "sha256": "d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s018-builder-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["ODA-MH-05", "ODA-MH-06", "ODA-MH-07", "S018-AC-01", "S018-AC-02", "S018-AC-03"],
+  "write_scope": ["tools/sge_public.py", "docs/Beginner_Guide_CN.md", "docs/Quick_Start_CN.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S018_LifecycleContract.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S018_LifecycleEvidence.json"],
+  "required_outputs": ["普通用户默认使用当前公开仓 source，只需 target；--source 仅高级/测试", "install/upgrade/doctor/uninstall 的 target authority、backup、record、rollback/recoverable 行为可重算", "中文 lifecycle contract、clean-room evidence 与明确不支持的跨平台/生产主张", "不执行 GitHub create/push/tag/release/read-back"],
+  "maximum_claim_ref": {"summary": "只支撑本地 public source 的 end-user lifecycle candidate evidence；不支撑公开仓已发布、跨平台或 production readiness。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s018-builder-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json",
+  "working_directory": ".",
+  "execution_command": "python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor && git diff --check"
+}

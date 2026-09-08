@@ -1,0 +1,24 @@
+{
+  "schema_version":"lane_task_card_v1","card_id":"sp002-s010-final-uat-v2","session_id":"SP-002/S-010","lane":"S-010 final rebaseline newcomer UAT","role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","sha256":"f5748bbe772bd0f7cd115959902b80c515c9f7377bfbe3c182c200820dc83508"},
+  "base_context_refs":[
+    {"path":"AGENTS.md","sha256":"1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json","sha256":"32ad71959ffef6cd5e02088f1344460334997cfa52b5efcf71f90a38f19eaa93"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Cases.json","sha256":"4d16d33b2b2b9df1ae8085bfdbb61f39c8800bb9182034f5fd9c8f7f47eb3189"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md","sha256":"3eb9098951e2153e6dcda64c58b2337d295db89048c20a657d5cc1ba09ffbf71"},
+    {"path":"public_export_manifest_v1.json","sha256":"3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path":"docs/Beginner_Guide_CN.md","sha256":"5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91"},
+    {"path":"docs/Quick_Start_CN.md","sha256":"d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e"},
+    {"path":"tools/sge_public.py","sha256":"1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path":"tools/run_sge_loop_goal_cycle.py","sha256":"5763b2d2af83ab2d5518724091b94b64d1d3a5241e7cab329af0bc45a22a67ef"},
+    {"path":"extensions/registry_v1.json","sha256":"17e4384952ac323b841d156bc7c0697b1f92ebbd7113430a5660ce477691a685"},
+    {"path":"extensions/orchestrator_profile_v1.json","sha256":"68ac7e55a9c88505c5024ce20db2d2705399347badbb1268f85de5aa7ed2949f"}
+  ],
+  "mode":"full_baseline","snapshot":{"snapshot_id":"sp002-s010-final-uat-rebaseline-2026-09-02","parent_snapshot_ref":null},"delta_read_set":[],
+  "acceptance_criteria_ids":["SP002-MH-04","SP002-MH-05","SP002-MH-07","SP002-MH-08","SP002-MH-09","SP002-MH-12","SP002-C01..C11"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md"],
+  "required_outputs":["从新空目录按最终文档重放完整lifecycle","验证48项以上最终manifest的四层、身份、可选扩展和profile/hooks","执行负例与ERBE GREEN交叉核对","追加final UAT verdict和剩余边界"],
+  "maximum_claim_ref":{"summary":"最多确认最终当前快照的clean-room newcomer path有界通过；不批准release、production或SP-002最终关闭。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp002-s010-uat-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_ERBE_Contract.json","working_directory":".","execution_command":"python3 Dashboard/tools/sge/s002_erbe_acceptance.py --phase green && python3 -m unittest tests.test_public_candidate tests.test_loop_orchestrator"
+}

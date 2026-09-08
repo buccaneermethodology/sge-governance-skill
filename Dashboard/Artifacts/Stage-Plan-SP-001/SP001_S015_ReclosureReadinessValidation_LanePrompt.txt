@@ -1,6 +1,6 @@
 Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation_LaneTaskCard.json
-Card SHA-256: bef85e1f8f042be89756dffbd393109b53cd8810737252ab30906e6760294721
-Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation_LaneTaskCard.json --repo . --expected-card-sha256 bef85e1f8f042be89756dffbd393109b53cd8810737252ab30906e6760294721
+Card SHA-256: c3dbbc00c22789806cd207680e77172b54de4cd3b4eea0c4755869aada18fcb0
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation_LaneTaskCard.json --repo . --expected-card-sha256 c3dbbc00c22789806cd207680e77172b54de4cd3b4eea0c4755869aada18fcb0
 Lane: SP-001 RB-01 RB-02 reclosure readiness validation | Session: SP-001/S-015 | Role: validation
 Mode: delta
 Working directory: .

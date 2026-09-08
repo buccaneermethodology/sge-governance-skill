@@ -8,9 +8,9 @@
   "base_context_refs": [
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md", "sha256": "99d96fe2faa3219d61871fbd70153998c8fe91f4ecc93297d44abf86a3b52288"},
     {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
-    {"path": "Dashboard/Big_Ideas.md", "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"},
-    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
-    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"}
+    {"path": "Dashboard/Big_Ideas.md", "sha256": "3704eadc52b8f8376e3a649fd2702b8e57e4f7716d27e4b99e5274e888a8cc14"},
+    {"path": "Dashboard/Current_State.md", "sha256": "c7e3e4438df903b0d133ed083c73898807b30507ff4a9bf5292c4185754e347a"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "56ec1cd61884e98baaab0b360e008b4b5b78b8cf0132cc09f2037dd156e613c2"}
   ],
   "mode": "delta",
   "snapshot": {"snapshot_id": "sp001-s015-reclosure-readiness-validation-2026-09-02", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md"},

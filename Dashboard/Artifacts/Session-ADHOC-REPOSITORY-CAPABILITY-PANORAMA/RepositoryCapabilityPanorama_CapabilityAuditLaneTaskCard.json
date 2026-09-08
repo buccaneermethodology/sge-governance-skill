@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"repository-capability-panorama-capability-audit-v1",
+  "session_id":"ADHOC/REPOSITORY-CAPABILITY-PANORAMA",
+  "lane":"能力与小白入口审计",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md","sha256":"e45d6cbd9e2b223e66e40dfc0911bd29a658b08c513ab29355266ae187236bee"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json","sha256":"a9d92aa320eaaf19814d5249859690fc8a5b15519c3ef97f04e41758d077c4fd"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"repository-capability-audit-2026-09-04","parent_snapshot_ref":null},
+  "delta_read_set":["README.md","docs",".codex/skills/sge-governed-checkpoints","kb/data/strategy","kb/docs/strategy","tools","extensions","tests","public_export_manifest_v1.json"],
+  "acceptance_criteria_ids":["PAN-CAP-01","PAN-CAP-02","PAN-CAP-03"],
+  "write_scope":[],
+  "required_outputs":["按核心 Skill、治理能力、工具、schema、编排器、扩展、文档与测试分组的完整能力清单","面向小白的真实最短使用路径和限制","缺失、重复、仅候选或未执行能力的边界"],
+  "maximum_claim_ref":{"summary":"只读审计当前 checkout 的能力和用户入口，不证明所有能力已做真实端到端执行。","authority_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"repository-capability-audit","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-CAPABILITY-PANORAMA/RepositoryCapabilityPanorama_ContextBootstrap.json",
+  "working_directory":".",
+  "execution_command":"只读审计能力清单和小白入口；返回证据化结果，不得编辑文件"
+}

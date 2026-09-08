@@ -1,0 +1,30 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp003-s017-deterministic-projection-builder-v1",
+  "session_id": "SP-003/S-017",
+  "lane": "S-017 maintainer deterministic projection",
+  "role": "builder",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_GoalContract.json", "sha256": "245d9fd4f54cc3b0d33b4d14f4669addb58ff7715e6f6a5d50da3e436500e9a5"},
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_StagePlan.md", "sha256": "3f81c6901f09c95cbcc2afc88e1d64ca6fb5b8c0ac477b581e6581fa6e92ef32"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md", "sha256": "1fabdb994256e2f633fc9e8e4b4ef3339f270b65796c14427b945e12d6400855"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Contract.json", "sha256": "5c174ff324dbf6cedcd889a13c71f632ac68b5e826d68eb5df4cd67c2144ae38"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ERBE_Cases.json", "sha256": "d608b11f0cc5985d208d18cb1869a9bac5521c6ab36ad229e893c35d9d20385c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_SemanticReview.md", "sha256": "2254d01c5d95ee82438f14860bdf554cc6f582d836667649fe77397b32e16bd9"},
+    {"path": "public_export_manifest_v1.json", "sha256": "3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path": "tools/sge_public.py", "sha256": "1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {"snapshot_id": "sp003-s017-builder-baseline-2026-09-03", "parent_snapshot_ref": null},
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["ODA-MH-02", "ODA-MH-03", "S017-AC-01", "S017-AC-02", "S017-AC-03"],
+  "write_scope": ["tools/sge_public.py", "tests/test_public_candidate.py", "tests/test_public_projection.py", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionContract.md", "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S017_ProjectionEvidence.json"],
+  "required_outputs": ["实现 fresh-root、exact allowlist、default-deny、完整 tree inventory 与未知/路径/对象类型/私有 residue fail-closed", "生成可重算 projection metadata，分离 source/manifest/tool/export-run/candidate identity，保持不生成 projection_commit/release_tag", "补充 unknown、absolute path、symlink/gitlink/LFS/nested repo/unexpected binary、dirty tree、digest drift 与 destination safety negative cases", "保持本 Session 无 GitHub create/push/tag/release/read-back；candidate 仅为本地 projection evidence", "同步或说明 maintained non-unit gate 的 BDD 影响"],
+  "maximum_claim_ref": {"summary": "只支撑 S-017 maintainer local deterministic projection candidate evidence；不支撑 end-user lifecycle、license rights、release、GitHub mutation 或 production。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_Design.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_OpenSourceDistributionArchitecture_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp003-s017-builder-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-003/SP003_S016_ValidationStateSnapshot.json",
+  "working_directory": ".",
+  "execution_command": "python3 -m unittest tests.test_public_candidate tests.test_public_projection && python3 tools/sge_public.py doctor"
+}

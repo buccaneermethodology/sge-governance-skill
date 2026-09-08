@@ -1,0 +1,29 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp002-s010-newcomer-delta-uat-v1",
+  "session_id":"SP-002/S-010",
+  "lane":"S-010 B1/B2 repair delta UAT",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md","sha256":"f5748bbe772bd0f7cd115959902b80c515c9f7377bfbe3c182c200820dc83508"},
+  "base_context_refs":[
+    {"path":"AGENTS.md","sha256":"1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md","sha256":"3eb9098951e2153e6dcda64c58b2337d295db89048c20a657d5cc1ba09ffbf71"},
+    {"path":"public_export_manifest_v1.json","sha256":"3a5dc8478098a19e4c52103c7fbeef28501b692c39d995bbaaa81c8557f5d38b"},
+    {"path":"docs/Beginner_Guide_CN.md","sha256":"5e4cf2b5e3ac2bcbccce3000a8aa850b64ecff303aa97f15d6880a0002d6ae91"},
+    {"path":"docs/Quick_Start_CN.md","sha256":"d33dd3449756e3e17bab04e1de2832e47f0d5f3e2084a81d24033fe96e80ca3e"},
+    {"path":"tools/sge_public.py","sha256":"1852bd84facb06802476d9872e1afc1fa67f725248a64ac4410abd795bf7427f"},
+    {"path":"tests/test_public_candidate.py","sha256":"77a6ed0d716ee98a74a94b17489dd8ec15bad45cc88983cd3c79b47b93de13dd"}
+  ],
+  "mode":"delta",
+  "snapshot":{"snapshot_id":"sp002-s010-delta-uat-2026-09-02","parent_snapshot_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md"},
+  "delta_read_set":["public_export_manifest_v1.json","tools/sge_public.py","docs/Beginner_Guide_CN.md","docs/Quick_Start_CN.md","tests/test_public_candidate.py"],
+  "acceptance_criteria_ids":["B1","B2","SP002-MH-04","SP002-MH-05","SP002-MH-07","SP002-MH-09"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md"],
+  "required_outputs":["独立复现B1/B2修复", "从新空目录仅依文档重放完整lifecycle", "重新扫描导出包含manifest自身的私有身份和绝对路径", "把delta verdict追加到原UAT artifact"],
+  "maximum_claim_ref":{"summary":"只确认B1/B2及受影响S-010范围是否关闭；不批准release或SP-002最终完成。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp002-s010-uat-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-002/SP002_S010_NewcomerUAT.md",
+  "working_directory":".",
+  "execution_command":"python3 tools/sge_public.py doctor && python3 -m unittest tests.test_public_candidate"
+}

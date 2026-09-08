@@ -4,7 +4,7 @@
 
 | 用例 | 操作/前提 | 预期 | 实际证据 | 边界 |
 | --- | --- | --- | --- | --- |
-| 安装正例 | fresh target bootstrap → install | 5 个骨架文件 + 17 个 core 文件 + install record | [transcript](../../../../../Dashboard/Artifacts/SP004_S026_UATTranscript.json) 的 bootstrap/install 步骤 | 本次本地 candidate |
+| 安装正例 | fresh target bootstrap → install | 5 个骨架文件 + 17 个 core 文件 + install record | [transcript](../../../../../Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S026_UATTranscript.json) 的 bootstrap/install 步骤 | 本次本地 candidate |
 | 非空 bootstrap | 已有 target 再 bootstrap | 拒绝且文件不变 | transcript bootstrap_negative：destination_must_be_empty | 不证明所有覆盖风险 |
 | 重复安装 | 已有 managed core 再 install | 拒绝且文件不变 | transcript install_negative：already_installed | 本次目标 |
 | 重复卸载 | Quick Start 已卸载后再 uninstall | 拒绝且文件不变 | transcript uninstall_negative：uninstall_requires_install_record | 不猜测删除范围 |

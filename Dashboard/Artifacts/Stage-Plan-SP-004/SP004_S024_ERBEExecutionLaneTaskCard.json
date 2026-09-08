@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp004-s024-erbe-execution-v1",
+  "session_id":"SP-004/S-024",
+  "lane":"S-024 ERBE case execution",
+  "role":"builder",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md","sha256":"b4c4bd4804f78e2ed1b0e97a6747ae5b0b64f41824d5f9bfa0f8615d1a1dbefb"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Contract.json","sha256":"be41cdac960aaca5f56b21cc7dd1a0bd6efa7e5ac1929478ba78a0fd778ad0bb"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Cases.json","sha256":"4ffb3b1a23071238295184bee5567945ec3d4ec2ca6ea33b41bb584428262fb3"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_DeltaValidationReview.md","sha256":"ee05f70de81602e21d588b0e268177807c658410d48efd390faec0e705b4d88b"}],
+  "mode":"delta",
+  "snapshot":{"snapshot_id":"sp004-s024-erbe-execution-2026-09-05","parent_snapshot_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationStateSnapshot.json"},
+  "delta_read_set":["S-023 frozen Contract/Cases","PDI repair","Delta Validation blocker","doctor.py/test fixtures","public manifest"],
+  "acceptance_criteria_ids":["GAP-MH-07","GAP-MH-09","GAP-MH-10","ERBE trusted RED/GREEN"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ERBEExecutionEvidence.md","Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ERBEExecutionTranscript.json"],
+  "required_outputs":["真实执行 runner identity 与 execution_verdict","SP004-RED-03/05/06 trusted RED failure fingerprints","同一 identity 的 SP004-GREEN-07/09/10 independent recompute","environment/fixture/path error separation","raw observations and command transcript"],
+  "maximum_claim_ref":{"summary":"最多支持三项 S-024 blocker 的 frozen-case execution evidence；不支持 S-024 全部完成、rights、release 或 Goal complete。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S023_Cases.json"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_SemxResidueOpenSourceGaps_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp004-s024-erbe-execution-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ValidationStateSnapshot.json",
+  "working_directory":".",
+  "execution_command":"python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ERBEExecutionLaneTaskCard.json --repo . --expected-card-sha256 <rendered-card-sha256> && python3 -m json.tool Dashboard/Artifacts/Stage-Plan-SP-004/SP004_S024_ERBEExecutionTranscript.json && git diff --check"
+}

@@ -1,6 +1,6 @@
 Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json
-Card SHA-256: 96b3322f72579ec0e424c070ae4f34512ce2ef6531221a6f053b71d41f5c75d6
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json --repo . --expected-card-sha256 96b3322f72579ec0e424c070ae4f34512ce2ef6531221a6f053b71d41f5c75d6
+Card SHA-256: 4013b393c4ddd426c3ebfeeb708d9d612f8105a4adf53a2b59e5c0ef5b02898d
+Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json --repo . --expected-card-sha256 4013b393c4ddd426c3ebfeeb708d9d612f8105a4adf53a2b59e5c0ef5b02898d
 Lane: S-001 final-state post-closeout reconciliation | Session: SP-001/S-001 | Role: validation
 Mode: delta
 Working directory: .

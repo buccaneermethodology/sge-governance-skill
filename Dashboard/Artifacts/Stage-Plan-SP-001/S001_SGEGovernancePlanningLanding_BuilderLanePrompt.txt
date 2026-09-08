@@ -1,6 +1,6 @@
 Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_BuilderLaneTaskCard.json
-Card SHA-256: 7a1518f3402cfd8a26f6164dc3b6d0b63e92c70011866ca9bb85466a7b357e00
-Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_BuilderLaneTaskCard.json --repo . --expected-card-sha256 7a1518f3402cfd8a26f6164dc3b6d0b63e92c70011866ca9bb85466a7b357e00
+Card SHA-256: 27f3ba5873bf8e8b77dafaa0846ad217f63df59f82626201e7f14e3ba6360e82
+Verify: python3 /Users/xiaomei/Documents/projects/semx-cli/.codex/skills/semx-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_BuilderLaneTaskCard.json --repo . --expected-card-sha256 27f3ba5873bf8e8b77dafaa0846ad217f63df59f82626201e7f14e3ba6360e82
 Lane: S-001 planning landing blocker repair | Session: SP-001/S-001 | Role: builder
 Mode: full_baseline
 Working directory: .
