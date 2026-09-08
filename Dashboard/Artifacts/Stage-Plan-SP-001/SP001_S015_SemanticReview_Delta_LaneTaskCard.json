@@ -1,0 +1,28 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-semantic-review-delta-v1",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 Semantic blocker-fix delta review",
+  "role": "semantic",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Round1.md", "sha256": "b8843879fcf6059a76360cd2409dbf49f06b4b906638f3c28ee10c4885316b41"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md", "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"},
+    {"path": "kb/data/strategy/strategy_human_ai_development.json", "sha256": "fbbc9f4ff48b3e26876655d969090cb05de417dd28fcc15874211ea1e9924131"},
+    {"path": "kb/data/strategy/strategy_semantic_surface_engineering.json", "sha256": "b1e4b0d6b1d16ed55943ee963f43da75c58e28ceca3f07c3ab4bbe40e3bbce3f"},
+    {"path": "kb/data/strategy/strategy_kb_promotion_and_source_policy.json", "sha256": "b50f47cb6a1404d282de157436bcf7132abf8c3918a0248672514fb1af241539"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp001-s015-semantic-delta-2026-09-02", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Round1.md"},
+  "delta_read_set": ["kb/data/strategy/strategy_human_ai_development.json", "kb/data/strategy/strategy_semantic_surface_engineering.json", "kb/data/strategy/strategy_kb_promotion_and_source_policy.json", "kb/docs/strategy", "kb/render_manifest_v1.json", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SemanticGovernance_Closeout.md", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md", "Dashboard/Agent_Logs/2026-09-02__SP-001-S012-S014__builder.md", "git diff"],
+  "acceptance_criteria_ids": ["SEM-B01 taxonomy", "SEM-B02 candidate-state", "SEM-B03 graph-ontology", "SEM-B04 topology-disposition"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Delta.md"],
+  "required_outputs": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Delta.md", "Design Freeze Validity", "Implementation Entry Readiness", "remaining blocker and promotion wording"],
+  "maximum_claim_ref": {"summary": "判断 reviewed_candidate 是否可进入明确 promotion 步骤；不直接关闭 SP-001。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Round1.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp001-s015-semantic-delta", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 kb/tools/render_kb.py --check"
+}

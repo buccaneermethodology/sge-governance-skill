@@ -1,0 +1,47 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-design-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 planning landing design review",
+  "role": "design",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Rules.md", "sha256": "fb86b3143636dee7941541134031c928d405fe09daf128c6ff98835cd27a4aa2"},
+    {"path": "Dashboard/Methodology.md", "sha256": "90ce8ff7d5fb10d5927120a8ba607bdf74c986d5557757623a50c35fc0b8b600"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-design-baseline-2026-09-01",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [],
+  "acceptance_criteria_ids": ["MH-01", "MH-07", "MH-09", "MH-10", "S001-AC-01", "S001-AC-02", "S001-AC-03"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md"],
+  "required_outputs": [
+    "用中文解释 S-001 实际落库什么、明确不证明什么",
+    "审查 Goal、Plan、Context 与 Dashboard row mapping 是否保持原始范围和状态边界",
+    "给出 S-001 closeout 和独立 Validation 必须覆盖的证据清单",
+    "指出会导致 SP-001 被误读为已启动或已完成的 blocker"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只形成 S-001 规划落库 Design Review，不实施迁移，不批准 Goal completion。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-design-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard"
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp001-s005-integration-validation-v1",
+  "session_id":"SP-001/S-005",
+  "lane":"S-005 final integration validation",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md","sha256":"7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S005_IntegrationValidation_ContextBootstrap.json","sha256":"a253729684141ba4701ab37d48e3907db0958e069e0b4beb6a2489eaf787f2c9"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S002_SGECore_ValidationReview.md","sha256":"29640da8215a65750d808d63133d97e9406c548987d0ee34001a853fec4151d2"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S003_GovernanceTooling_ValidationReview.md","sha256":"d586c3cc18339cf340fe5acacb3498b545da16beebc2e1869816e2f67a6e59b1"},{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S004_SemanticCleanup_ValidationReview.md","sha256":"b1638e5573310538808a52d8dbecd358da5c74e0172dbde6e1a2c567919df322"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp001-s005-final-integration-2026-09-01","parent_snapshot_ref":null},
+  "delta_read_set":["AGENTS.md","kb",".codex/skills/sge-governed-checkpoints","Dashboard/Artifacts/Stage-Plan-SP-001/SP001_*","Dashboard/Sessions.md","Dashboard/Current_State.md","Dashboard/Stage_Plans.md","Dashboard/Decisions.md","Dashboard/Exceptions.md"],
+  "acceptance_criteria_ids":["MH-01","MH-02","MH-03","MH-04","MH-05","MH-06","MH-07","MH-08","MH-09","MH-10","MH-11"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S005_*","Dashboard/Sessions.md","Dashboard/Current_State.md"],
+  "required_outputs":["Evidence Completeness Matrix","独立 Validation Review","Semantic Review","中文 closeout"],
+  "maximum_claim_ref":{"summary":"仅证明本仓库 repo-local SGE Governance 迁移的最终有界验收，不证明产品可用或公共发布。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp001-s005-validation-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S005_IntegrationValidation_ContextBootstrap.json",
+  "working_directory":".",
+  "execution_command":"python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode validation-agent"
+}

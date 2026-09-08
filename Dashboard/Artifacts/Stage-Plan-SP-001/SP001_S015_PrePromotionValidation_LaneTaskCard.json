@@ -1,0 +1,93 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-pre-promotion-validation-v1",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 pre-promotion independent validation",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_Round1.md",
+      "sha256": "8019b5d138d029fd0baec3e75220b730c411edab9b3fc739ebdce60594423f0a"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_TopologyReconciliation.md",
+      "sha256": "779582392c6b6a1958e02384eebe00215599c870ad51df64463ec6061d535937"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+      "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+      "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_DoctorReport.json",
+      "sha256": "42688b4058cec2143e8e53229594b65cd33223603e24717b2904d9ee3f82ef2f"
+    }
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "sp001-s015-pre-promotion-validation-2026-09-02",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_Round1.md"
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_GoalPatch.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_Round1.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_Delta.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_TopologyReconciliation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S012_QualityRecovery_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SemanticGovernance_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S014_ToolchainQuality_Closeout.md",
+    "Dashboard/Agent_Logs/2026-09-02__SP-001-S012-S014__builder.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_DoctorReport.json",
+    "kb/data/strategy/strategy_human_ai_development.json",
+    "kb/data/strategy/strategy_semantic_surface_engineering.json",
+    "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
+    "kb/docs/strategy",
+    "Dashboard current state and session surfaces",
+    "git status and complete diff"
+  ],
+  "acceptance_criteria_ids": [
+    "VAL-B01 final semantic artifact",
+    "VAL-B02 OPCM closeout language",
+    "VAL-B03 topology disposition",
+    "VAL-B04 durable ERBE RED evidence",
+    "VAL-B05 tombstone claim boundary",
+    "VAL-B06 dynamic reference evidence",
+    "MH-01..MH-15 and original objective coverage",
+    "promotion eligibility only"
+  ],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PrePromotionValidation.md"
+  ],
+  "required_outputs": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PrePromotionValidation.md",
+    "Read Manifest",
+    "Round1 blocker disposition",
+    "original objective and OPCM verdict",
+    "promotion eligibility verdict",
+    "remaining blockers before active write"
+  ],
+  "maximum_claim_ref": {
+    "summary": "最多判断当前 reviewed_candidate package 是否允许进入显式 active promotion；不执行 promotion、不关闭 Session/SP。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_TopologyReconciliation.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "sp001-s015-pre-promotion-validation",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 Dashboard/tools/doctor.py --repo ."
+}

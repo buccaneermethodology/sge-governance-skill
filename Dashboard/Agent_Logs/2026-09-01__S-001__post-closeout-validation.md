@@ -4,10 +4,10 @@
 
 - Session：`SP-001/S-001`
 - Lane：final-state post-closeout reconciliation
-- Card：[Post-closeout Validation Task Card](../Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json)
+- Card：[Post-closeout Validation Task Card](../Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutValidationLaneTaskCard.json)
 - Expected card SHA-256：`1b0368ab583b0384c122eab9a7558dcd21f940bb8b7d2817a5d472bcbe9f5053`
 - Card validation：`pass`
-- Write scope：仅本日志与 [Post-closeout Reconciliation](../Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md)。
+- Write scope：仅本日志与 [Post-closeout Reconciliation](../Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md)。
 
 ## 独立读取与重算
 
@@ -24,7 +24,7 @@
 
 - Blocking findings：无。
 - Non-blocking：closeout OPCM 少量关闭前欠声明、初始 Design/Builder 无实时 log、legacy manifest/DKG deferred gap、最终提交待 Orchestrator。
-- 输出：[S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md](../Artifacts/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md)
+- 输出：[S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md](../Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md)
 - 唯一 final-state verdict：`pass-with-findings`。
 
 该 verdict 只证明 `S-001` 规划落库完成且 `SP-001` 迁移未启动；不启动 S-002，不证明治理迁移或产品能力。

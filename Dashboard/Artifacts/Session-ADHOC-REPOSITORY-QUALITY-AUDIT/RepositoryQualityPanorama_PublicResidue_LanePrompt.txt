@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_PublicResidue_LaneTaskCard.json
+Card SHA-256: 3572225a5578f9899959f1b743f625633fb684573dd626383a76b254372271da
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_PublicResidue_LaneTaskCard.json --repo . --expected-card-sha256 3572225a5578f9899959f1b743f625633fb684573dd626383a76b254372271da
+Lane: 公共仓库身份与残留审计 | Session: ADHOC/REPOSITORY-QUALITY-AUDIT | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: rg -n -i 'semx|S-384|kym|tco|P00|P17|audio-transcriptor|/Users/' . --glob '!Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_*'

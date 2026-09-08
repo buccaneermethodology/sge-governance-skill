@@ -1,0 +1,58 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-repair-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 validation blocker repair",
+  "role": "builder",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md", "sha256": "4cd28b556487996788b252eb0391fe2cac438b5ed1995b1a0caa5b8c8248e72d"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md", "sha256": "6e5f6fa694b36e5e3c6856015e3cc1d12b12ded11f58549707aa6d9d2699f1cc"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md", "sha256": "3a7466f917a046562a03fc3bfa163e78a060e676c8c234021870cc9d3eba94d1"}
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-repair-delta-2026-09-01",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-03", "MH-09", "MH-10", "B-01", "B-02", "B-03"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__builder-repair.md"
+  ],
+  "required_outputs": [
+    "逐字恢复本轮完整 Raw User Intent authority，不用 intake 摘要替换原文",
+    "补齐迁移计划的 S-005、S-006、目标目录清单、接口变化表和逐项验收矩阵，保持不启动迁移的边界",
+    "在 closeout 记录 Design Delta 有、Goal Scope Delta 无，并解释 manifest 延后至 S-004 的理由和 Semantic Reviewer 裁决",
+    "消除 closeout 中语言门已通过与仍 pending 的矛盾，并把完整计划表述与修复后的证据对齐",
+    "生成 builder-repair Agent Log，列出实际修复和重跑门禁，不伪造历史 lane 日志"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只修复首轮 Validation 的 B-01..B-03；保持 S-001=Doing，不启动 S-002，不改变 parent Goal 范围。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-builder-repair-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md"
+}

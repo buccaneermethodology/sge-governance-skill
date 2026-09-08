@@ -1,0 +1,66 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-closure-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 planning landing closure draft",
+  "role": "closure",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "Dashboard/Rules.md", "sha256": "fb86b3143636dee7941541134031c928d405fe09daf128c6ff98835cd27a4aa2"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md", "sha256": "4cd28b556487996788b252eb0391fe2cac438b5ed1995b1a0caa5b8c8248e72d"},
+    {"path": "Dashboard/Sessions.md", "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"},
+    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
+    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-closure-baseline-2026-09-01",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/*S001*",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/*SP001*",
+    "Dashboard/Big_Ideas.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/Decisions.md",
+    "Dashboard/Exceptions.md",
+    "Dashboard/Archives/Sessions/*"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-02", "S001-AC-03", "MH-01", "MH-07", "MH-09", "MH-10"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__closure.md"
+  ],
+  "required_outputs": [
+    "生成中文 closeout 草案，包含关键结论、落地范围、非目标、Lane、验证交接包、OPCM、Scope Delta、证据、门禁、语义复核、KB/Dashboard、后续候选",
+    "OPCM 逐项列出 MH-01..10 与 S001-AC-01..03，区分 S-001 landed 和 parent Goal not started",
+    "记录 DKG 因缺少 Quality_Metrics.md 无法生成，作为 S-004 已计划修复项而非 S-001 完成证据",
+    "生成 closure Agent Log，记录可见操作与证据，不声称模型私有思维"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只生成 S-001 规划落库 closeout 草案；最终 verdict 仍由独立 Validation 决定。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-closure-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard"
+}

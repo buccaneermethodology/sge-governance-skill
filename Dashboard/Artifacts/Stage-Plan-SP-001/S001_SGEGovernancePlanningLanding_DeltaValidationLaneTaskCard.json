@@ -1,0 +1,60 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-delta-validation-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 planning landing blocker-fix delta validation",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md", "sha256": "3a7466f917a046562a03fc3bfa163e78a060e676c8c234021870cc9d3eba94d1"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md", "sha256": "6e5f6fa694b36e5e3c6856015e3cc1d12b12ded11f58549707aa6d9d2699f1cc"},
+    {"path": "Dashboard/Agent_Logs/2026-09-01__S-001__builder-repair.md", "sha256": "27c9104c3d132152ddd9820b29b26ecbe97b88295c2582ccb4367d82859c638e"},
+    {"path": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md", "sha256": "3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4"}
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-delta-validation-2026-09-01",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__builder-repair.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_*LaneTaskCard.json",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_*LanePrompt.txt"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-03", "MH-09", "MH-10", "B-01", "B-02", "B-03"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__validation.md"
+  ],
+  "required_outputs": [
+    "在原 Validation Review 中追加独立 delta round，逐项裁决 B-01..B-03 是否关闭并说明实际重算证据",
+    "确认 Raw User Intent 与用户消息逐字一致，Plan 的目录/接口/S005/S006/验收矩阵完整且不把后续工作冒充已实现",
+    "确认 Design Delta 有、Goal Scope Delta 无的分类与 Semantic Reviewer no-escalation 理由成立",
+    "重跑 Context、registry、closeout-language、links、seed digest、tracked/untracked inventory 和 git diff check",
+    "给出是否允许 Orchestrator 执行 S-001 Doing-to-Done 状态收束的关闭前 verdict；不得冒充关闭后 reconciliation"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只验证 B-01..B-03 修复并决定是否允许 S-001 状态收束；不得声明 SP-001/治理迁移/产品完成。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-delta-validation-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md"
+}

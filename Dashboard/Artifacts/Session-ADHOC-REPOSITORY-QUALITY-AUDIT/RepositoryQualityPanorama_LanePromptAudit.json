@@ -1,0 +1,13 @@
+{
+  "schema_version":"lane_prompt_audit_v1",
+  "stable_sources":[
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md","sha256":"e45d6cbd9e2b223e66e40dfc0911bd29a658b08c513ab29355266ae187236bee"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_ContextBootstrap.json","sha256":"0cc41aa689402dfe12051e228ca857c509ed85b43aad11b4e8cb3de55c3a618c"}
+  ],
+  "prompts":[
+    {"lane":"公共仓库身份与残留审计","source_type":"prompt_artifact","path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_PublicResidue_LanePrompt.txt","sha256":"f46a9f2bca1d5ebe8776b11c643d5e73ea43538bf7e82631fe6b304339165c31"},
+    {"lane":"SP-001 Session 与 artifact 完整性审计","source_type":"prompt_artifact","path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_SP001_LanePrompt.txt","sha256":"1fec89fc783e10cdef326c5d1522ed674c96892ca7ba284f30a3dd893dc67b8c"},
+    {"lane":"引用完整性与其他一致性审计","source_type":"prompt_artifact","path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_References_LanePrompt.txt","sha256":"7855678f2f6f830e422b67f2b617962ea00ad437d956c85ddc2b3484368f7a58"}
+  ],
+  "allowed_boilerplate":[]
+}

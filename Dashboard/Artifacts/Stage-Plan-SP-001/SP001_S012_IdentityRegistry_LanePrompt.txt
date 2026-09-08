@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S012_IdentityRegistry_LaneTaskCard.json
+Card SHA-256: 7437e899c9570ccb7993ea13382fc225aaec92457283e8ce45f3e89aaf1b867f
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S012_IdentityRegistry_LaneTaskCard.json --repo . --expected-card-sha256 7437e899c9570ccb7993ea13382fc225aaec92457283e8ce45f3e89aaf1b867f
+Lane: active-public 身份与 registry 修复设计审计 | Session: SP-001/S-012 | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: python3 Dashboard/tools/session_registry.py validate --repo .

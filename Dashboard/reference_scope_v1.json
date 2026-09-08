@@ -12,10 +12,10 @@
     "Dashboard/Stage_Plans.md",
     "Dashboard/Sessions.md",
     "Dashboard/Artifacts_Index.md",
-    "Dashboard/Artifacts/S001_*.md",
-    "Dashboard/Artifacts/SP001_*.md",
-    "Dashboard/Artifacts/SP002_*.md",
-    "Dashboard/Artifacts/Tombstones/*.md"
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_*.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_*.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_*.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/Tombstones/*.md"
   ],
   "canonical_json_patterns": [
     "kb/data/strategy/*.json"

@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_References_LaneTaskCard.json
+Card SHA-256: b7a12748c4c44e38e2e566fe5cf4ac37b1ceb76d5f06d4a0d4a62cf5aa550546
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_References_LaneTaskCard.json --repo . --expected-card-sha256 b7a12748c4c44e38e2e566fe5cf4ac37b1ceb76d5f06d4a0d4a62cf5aa550546
+Lane: 引用完整性与其他一致性审计 | Session: ADHOC/REPOSITORY-QUALITY-AUDIT | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: python3 Dashboard/tools/session_registry.py reconcile --repo . --check

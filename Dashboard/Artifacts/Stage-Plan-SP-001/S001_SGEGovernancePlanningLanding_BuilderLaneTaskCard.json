@@ -1,0 +1,60 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-builder-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 planning landing blocker repair",
+  "role": "builder",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Rules.md", "sha256": "fb86b3143636dee7941541134031c928d405fe09daf128c6ff98835cd27a4aa2"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md", "sha256": "4cd28b556487996788b252eb0391fe2cac438b5ed1995b1a0caa5b8c8248e72d"},
+    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-builder-baseline-2026-09-01",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "Dashboard/Decisions.md",
+    "Dashboard/Exceptions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Archives/Sessions/archive_manifest.json"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-02", "S001-AC-03"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "Dashboard/Decisions.md",
+    "Dashboard/Exceptions.md"
+  ],
+  "required_outputs": [
+    "在 Loop Goal 中定义 S001-AC-01..03 的可观察判定",
+    "把 Decisions Status 修正为 Dashboard 四态 vocabulary",
+    "在 EX-001 中说明现有 archive manifest 的 Semx/S-485 provenance 是待 S-004 修复的派生工具限制，不是 S-001 provenance",
+    "确认 reconcile 后 Session_Index anchors 已存在，无需修改 registry 派生文件"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只修复 S-001 规划落库 blocker，不启动 S-002，不改 registry 工具或 KB truth。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-builder-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git diff -- Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md Dashboard/Decisions.md Dashboard/Exceptions.md"
+}

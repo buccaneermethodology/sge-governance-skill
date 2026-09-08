@@ -1,0 +1,38 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-final-integrated-semantic-v1",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 final integrated semantic review before state closure",
+  "role": "semantic",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostPromotionValidation.md", "sha256": "02e1532630b00bd654dbac1d335ce15feb8f27e3121cd03577d6caa6b4aa2ad9"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_TopologyReconciliation.md", "sha256": "779582392c6b6a1958e02384eebe00215599c870ad51df64463ec6061d535937"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md", "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp001-s015-final-integrated-semantic-2026-09-02", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview_TopologyReconciliation.md"},
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_KBPromotionDecision.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostPromotionValidation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SemanticGovernance_Closeout.md",
+    "Dashboard/Agent_Logs/2026-09-02__SP-001-S012-S014__builder.md",
+    "kb/data/strategy/strategy_human_ai_development.json",
+    "kb/data/strategy/strategy_semantic_surface_engineering.json",
+    "kb/data/strategy/strategy_kb_promotion_and_source_policy.json",
+    "kb/docs/strategy",
+    "Dashboard current state and complete diff"
+  ],
+  "acceptance_criteria_ids": ["active truth placement", "state compression safety", "future-agent misuse", "bounded topology exception", "Design Freeze Validity", "Implementation Entry Readiness", "controlled state closure readiness"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview.md"],
+  "required_outputs": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview.md", "Design Freeze Validity", "Implementation Entry Readiness", "state wording verdict", "allowed state mutations", "remaining post-closeout prerequisites"],
+  "maximum_claim_ref": {"summary": "最多确认 active semantic package 可进入受控状态收束；不预先证明 mutation 后状态或 post-closeout。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostPromotionValidation.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp001-s015-final-integrated-semantic", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 kb/tools/render_kb.py --check"
+}

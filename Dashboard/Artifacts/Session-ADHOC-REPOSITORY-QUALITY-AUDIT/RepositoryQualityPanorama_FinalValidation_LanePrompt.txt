@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation_LaneTaskCard.json
+Card SHA-256: 244f833dfd26725222ea5d390335af731b87d20c7d3c01cd4557ec1e7620ca14
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation_LaneTaskCard.json --repo . --expected-card-sha256 244f833dfd26725222ea5d390335af731b87d20c7d3c01cd4557ec1e7620ca14
+Lane: 全景与审计报告 final-state reconciliation | Session: ADHOC/REPOSITORY-QUALITY-AUDIT | Role: validation
+Mode: full_baseline
+Working directory: .
+Execute: python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode validation-agent

@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"repository-quality-panorama-sp001-evidence-v1",
+  "session_id":"ADHOC/REPOSITORY-QUALITY-AUDIT",
+  "lane":"SP-001 Session 与 artifact 完整性审计",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md","sha256":"e45d6cbd9e2b223e66e40dfc0911bd29a658b08c513ab29355266ae187236bee"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_ContextBootstrap.json","sha256":"0cc41aa689402dfe12051e228ca857c509ed85b43aad11b4e8cb3de55c3a618c"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"repository-quality-sp001-evidence-2026-09-01","parent_snapshot_ref":null},
+  "delta_read_set":["Dashboard/Stage_Plans.md","Dashboard/Sessions.md","Dashboard/Session_Index.md","Dashboard/Archives/Sessions/SP-001.md","Dashboard/Artifacts/Stage-Plan-SP-001/SP001_*","Dashboard/Artifacts/Stage-Plan-SP-001/S001_*","Dashboard/Agent_Logs","kb","tests",".codex/skills/sge-governed-checkpoints"],
+  "acceptance_criteria_ids":["AUDIT-SP001-S001","AUDIT-SP001-S002","AUDIT-SP001-S003","AUDIT-SP001-S004","AUDIT-SP001-S005","AUDIT-SP001-S006","AUDIT-SP001-S012"],
+  "write_scope":[],
+  "required_outputs":["逐 Session evidence matrix","状态与实际 artifact/门禁差距","SP-001 整体最大可支持结论"],
+  "maximum_claim_ref":{"summary":"逐项审计 SP-001 durable evidence；不得把子 Session Done 推定为 Stage Plan 完成。","authority_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"repository-sp001-evidence-validation","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_ContextBootstrap.json",
+  "working_directory":".",
+  "execution_command":"python3 Dashboard/tools/session_registry.py validate --repo ."
+}
