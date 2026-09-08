@@ -1,0 +1,21 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"sp001-s006-goal-closure-v1",
+  "session_id":"SP-001/S-006",
+  "lane":"S-006 goal closure",
+  "role":"closure",
+  "source_goal":{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md","sha256":"7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs":[{"path":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S006_GoalClosure_ContextBootstrap.json","sha256":"f8d7ca0798d5681a65443da7bd984519ae8a023e2d61f3653e8052e56eb33627"}],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"sp001-s006-final-2026-09-01","parent_snapshot_ref":null},
+  "delta_read_set":["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S00*","Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_*","Dashboard/Stage_Plans.md","Dashboard/Sessions.md","Dashboard/Current_State.md","kb",".codex/skills/sge-governed-checkpoints","AGENTS.md"],
+  "acceptance_criteria_ids":["MH-01","MH-02","MH-03","MH-04","MH-05","MH-06","MH-07","MH-08","MH-09","MH-10","MH-11"],
+  "write_scope":["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S006_*","Dashboard/Stage_Plans.md","Dashboard/Sessions.md","Dashboard/Current_State.md"],
+  "required_outputs":["OPCM","Scope Delta audit","中文 Goal closeout","post-closeout reconciliation"],
+  "maximum_claim_ref":{"summary":"仅按 Final Loop Goal completion rule 评估 SP-001，不证明产品或公共发布。","authority_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"sp001-s006-closure-agent","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S005_IntegrationValidation_ValidationReview.md",
+  "working_directory":".",
+  "execution_command":"python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode closeout"
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-validation-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 planning landing independent validation",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "AGENTS.md", "sha256": "1362597c1fa59259b09004f7b52aebb4a485eab7c6ac944596d124e0827ed6a5"},
+    {"path": "Dashboard/Rules.md", "sha256": "fb86b3143636dee7941541134031c928d405fe09daf128c6ff98835cd27a4aa2"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Design.md", "sha256": "4cd28b556487996788b252eb0391fe2cac438b5ed1995b1a0caa5b8c8248e72d"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md", "sha256": "6e5f6fa694b36e5e3c6856015e3cc1d12b12ded11f58549707aa6d9d2699f1cc"},
+    {"path": "Dashboard/Agent_Logs/2026-09-01__S-001__closure.md", "sha256": "9ed39109191b94e6150c5b741fca008ec51a74ee439f9cc2979e40e654229c26"},
+    {"path": "Dashboard/Sessions.md", "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"},
+    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
+    {"path": "Dashboard/Artifacts_Index.md", "sha256": "1f75bedb46907368a19ad991bd97e24fe85faf7b5e7df22c6b5f55a6091da9a3"},
+    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"},
+    {"path": "Dashboard/Session_Index.md", "sha256": "f31c93b61f29c359cb2b842d6323a6cdb5dcc953f4ef9b22c60f45781a6308d7"},
+    {"path": "Dashboard/Archives/Sessions/archive_manifest.json", "sha256": "ac015192a399c521db106028d71e0ffe5d016cf46b91ca93d6a54a5ce08523ad"},
+    {"path": "Dashboard/Archives/Sessions/Legacy_Execution_Notes.md", "sha256": "ad7d64476ed7defc172a74dc25b52f0c4b1141367fbf743b6461ce17e8fffcca"},
+    {"path": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md", "sha256": "3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4"}
+  ],
+  "mode": "full_baseline",
+  "snapshot": {
+    "snapshot_id": "s001-planning-landing-validation-baseline-2026-09-01",
+    "parent_snapshot_ref": null
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/*S001*",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/*SP001*",
+    "Dashboard/Agent_Logs/*S-001*",
+    "Dashboard/Big_Ideas.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/Decisions.md",
+    "Dashboard/Exceptions.md",
+    "Dashboard/Archives/Sessions/*",
+    "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-02", "S001-AC-03", "MH-01", "MH-02", "MH-03", "MH-04", "MH-05", "MH-06", "MH-07", "MH-08", "MH-09", "MH-10"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__validation.md"
+  ],
+  "required_outputs": [
+    "按固定 Validation Agent Prompt 输出中文任务理解、完整 Read Manifest、Evidence Completeness、blocking/non-blocking findings、Scope narrowing/overclaim、gate sufficiency、KB/Dashboard split、repair 与 verdict",
+    "独立重算 seed/current 原始设计摘要、Context validator、registry check/validate、closeout-language、Markdown links、tracked/untracked diff 与 S-002 未启动状态",
+    "逐项审查 MH-01..10 与 S001-AC-01..03 OPCM；区分 S-001 关闭判定和 parent SP-001 未启动",
+    "只在全部当前关闭前置满足时给出允许 Orchestrator 执行 Doing-to-Done 状态收束的有界 verdict；不得把该 verdict 冒充关闭后最终 reconciliation",
+    "记录 Semantic Reviewer trigger 裁决、DKG 缺失的 blocker admissibility 与任何需修复项"
+  ],
+  "maximum_claim_ref": {
+    "summary": "只对 S-001 规划落库候选给独立关闭前 Validation；不得声明 SP-001、SGE 迁移或产品实现完成。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-planning-landing-validation-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "git status --short"
+}

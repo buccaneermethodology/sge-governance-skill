@@ -1,0 +1,48 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp002-planning-sp001-strategy-expansion-post-closeout-validation-v1",
+  "session_id": "SP-002/planning-intake",
+  "lane": "SP-002 planning and SP-001 strategy expansion final-state post-closeout reconciliation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_StrategySourceMigration_Inventory.md", "sha256": "963a94a7c924ea4c8a6fc9c713dff5d6924bda78a41ccf97e819225e0e221916"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_Closeout.md", "sha256": "785ac35808ac09a6ef000a515ca4c31833105b042dde0580d6be1e51189e3e63"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md", "sha256": "17e3586d36797f052074bf0b94b81d76fafe1c989a1f08f2300e4999321fe08c"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_SGEOpenSourceNewcomerReadiness_ContextBootstrap.json", "sha256": "66cc0e08b2c7723804271a402c7ae3a3f36e1ca5eacd1bc7484acfc49b65b5d1"},
+    {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"},
+    {"path": "Dashboard/Artifacts_Index.md", "sha256": "1f75bedb46907368a19ad991bd97e24fe85faf7b5e7df22c6b5f55a6091da9a3"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"},
+    {"path": "Dashboard/Sessions.md", "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"},
+    {"path": "Dashboard/Session_Index.md", "sha256": "f31c93b61f29c359cb2b842d6323a6cdb5dcc953f4ef9b22c60f45781a6308d7"},
+    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
+    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "Dashboard/Big_Ideas.md", "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"},
+    {"path": "Dashboard/Archives/Sessions/archive_manifest.json", "sha256": "ac015192a399c521db106028d71e0ffe5d016cf46b91ca93d6a54a5ce08523ad"},
+    {"path": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md", "sha256": "3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp002-planning-sp001-strategy-expansion-final-state", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md"},
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md",
+    "Dashboard/Exceptions.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_PostCloseoutValidationLaneTaskCard.json",
+    "final tracked/untracked inventory"
+  ],
+  "acceptance_criteria_ids": ["B-01", "B-02", "B-03", "EX-002-final-state", "closeout-final-state", "write-scope-final-state"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_PostCloseoutReconciliation.md"],
+  "required_outputs": [
+    "独立读取实际 closeout、首轮+delta Review、EX-002=Done、Artifacts Index、parent/session/index 与最终 diff",
+    "重跑 Context、registry、closeout-language、inventory 2/26/14/14、design digest、links、git diff check 与 write-scope scan",
+    "确认唯一 final-state verdict 只支持规划落库，不支持 SP 启动、迁移、开源或新手可用",
+    "如 final-state surface 产生新 blocker，必须 blocked；不得沿用先前 pass"
+  ],
+  "maximum_claim_ref": {"summary": "只确认 SP-002 tracker 与 SP-001 MH-11 规划落库的最终 Dashboard/closeout 状态；不扩大到实施。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_Closeout.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp002-planning-sp001-strategy-expansion-post-closeout-validation-agent", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-002/SP002_PlanningAndSP001StrategyExpansion_ValidationReview.md",
+  "working_directory": ".",
+  "execution_command": "git status --short"
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "s001-sge-governance-planning-landing-post-closeout-validation-v1",
+  "session_id": "SP-001/S-001",
+  "lane": "S-001 final-state post-closeout reconciliation",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_Plan.md", "sha256": "e37a2c8d45e6b3d489e48ce5e23003ab1b27968bc245da17ed9d49dc9bab946a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_ContextBootstrap.json", "sha256": "2221a24d2db98de8916b6f9c8848176b5e7cfbf6d031e891622cae85e15cb926"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md", "sha256": "6e5f6fa694b36e5e3c6856015e3cc1d12b12ded11f58549707aa6d9d2699f1cc"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md", "sha256": "3a7466f917a046562a03fc3bfa163e78a060e676c8c234021870cc9d3eba94d1"},
+    {"path": "Dashboard/Sessions.md", "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"},
+    {"path": "Dashboard/Archives/Sessions/SP-001.md", "sha256": "5e58b12895b4ccf17d23813a6c8e529a6ef9afc64e9582cbac327d459847df20"},
+    {"path": "Dashboard/Archives/Sessions/archive_manifest.json", "sha256": "ac015192a399c521db106028d71e0ffe5d016cf46b91ca93d6a54a5ce08523ad"},
+    {"path": "Dashboard/Session_Index.md", "sha256": "f31c93b61f29c359cb2b842d6323a6cdb5dcc953f4ef9b22c60f45781a6308d7"},
+    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
+    {"path": "Dashboard/Artifacts_Index.md", "sha256": "1f75bedb46907368a19ad991bd97e24fe85faf7b5e7df22c6b5f55a6091da9a3"},
+    {"path": "Dashboard/Exceptions.md", "sha256": "1b6d96803afd352764fd2cd12c099cf8fc94ca8ea12c7394b55c549082896608"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"},
+    {"path": "Dashboard/Big_Ideas.md", "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"},
+    {"path": "Dashboard/Decisions.md", "sha256": "33858a7ac92f15bf308dc9b189af2bc351a4a20e45617ceae92201820f1746dd"},
+    {"path": "kb/bm-doc/audio-transcriptor-skill_design_v1.0.md", "sha256": "3ca2d5f98991b05612b06647e25e65319c0850d6909a14e760aa095f433d17f4"}
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "s001-final-state-post-closeout-2026-09-01",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md"
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Archives/Sessions/SP-001.md",
+    "Dashboard/Archives/Sessions/archive_manifest.json",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/Exceptions.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Big_Ideas.md",
+    "Dashboard/Decisions.md"
+  ],
+  "acceptance_criteria_ids": ["S001-AC-01", "S001-AC-02", "S001-AC-03", "MH-01", "MH-07", "MH-09", "MH-10"],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_PostCloseoutReconciliation.md",
+    "Dashboard/Agent_Logs/2026-09-01__S-001__post-closeout-validation.md"
+  ],
+  "required_outputs": [
+    "独立读取实际 closeout、最终 Dashboard/KB 状态、registry archive projection、完整 tracked/untracked diff 和所有关闭证据",
+    "确认 S-001=Done 只表示规划落库，BI/SP/S002 仍 To do，且 Current Entry=S-002 不等于迁移启动",
+    "重跑 Context、registry check/validate、closeout-language、links、seed/current design digest、git diff check 与身份/越界 inventory",
+    "核对 OPCM、Scope Delta、Design Delta、KB/Dashboard review、Semantic trigger 和 DKG deferred gap 无冲突",
+    "给出唯一 final-state verdict，说明它支持什么、不证明什么；如 mandatory evidence 不全则 fail/blocked，不得迁就完成措辞"
+  ],
+  "maximum_claim_ref": {
+    "summary": "最多确认 S-001 规划落库完成且 SP-001 迁移未启动；不得声明 Goal、SGE 迁移或产品完成。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "s001-final-state-post-closeout-validation-agent",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/S001_SGEGovernancePlanningLanding_ValidationReview.md",
+  "working_directory": ".",
+  "execution_command": "git status --short"
+}

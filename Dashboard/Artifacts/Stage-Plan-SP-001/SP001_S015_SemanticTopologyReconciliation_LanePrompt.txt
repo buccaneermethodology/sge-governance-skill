@@ -1,0 +1,7 @@
+Lane Task Card: Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticTopologyReconciliation_LaneTaskCard.json
+Card SHA-256: 002f786c1e28a8918b3c442cf98d8ca0baa2322287ee78b921536d2e3de51895
+Verify: python3 .codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py validate Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticTopologyReconciliation_LaneTaskCard.json --repo . --expected-card-sha256 002f786c1e28a8918b3c442cf98d8ca0baa2322287ee78b921536d2e3de51895
+Lane: SP-001 Semantic topology reconciliation | Session: SP-001/S-015 | Role: semantic
+Mode: delta
+Working directory: .
+Execute: python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode semantic

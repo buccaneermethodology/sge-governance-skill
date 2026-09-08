@@ -1,0 +1,15 @@
+{
+  "schema_version": "lane_prompt_audit_v1",
+  "stable_sources": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ContextBootstrap.json", "sha256": "4adbaf39f3d5996ff9808f3c177573a448a2b8253e93e5d42e96180277961947"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json", "sha256": "92485283a8c4433a40ea583a25f62c009ad87ad121f7f4d5d7e9407485967a5f"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Cases.json", "sha256": "39bd8502b7677450e7739df719190aacb5e2e0f19d42fb95eabae1a326405642"}
+  ],
+  "prompts": [
+    {"lane": "active-public 身份与 registry 修复设计审计", "source_type": "prompt_artifact", "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S012_IdentityRegistry_LanePrompt.txt", "sha256": "3ed8436ef410a27aedfb9b0596d4a50e91078ea8d40df65bdbb03050eb65c085"},
+    {"lane": "semantic-governance canonical 来源逐节审计", "source_type": "prompt_artifact", "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S013_SourceAudit_LanePrompt.txt", "sha256": "9887c151404383054dc757a86d38e4bf23db7e8c5eb12541bb41af00b1bc7075"},
+    {"lane": "引用、KB-DKG 与 doctor 工具链设计", "source_type": "prompt_artifact", "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S014_ToolchainDesign_LanePrompt.txt", "sha256": "fb916ae1947034e207453ffd7eda9e1f9955ddf4edd8b438cd87224955b3c299"}
+  ],
+  "allowed_boilerplate": []
+}

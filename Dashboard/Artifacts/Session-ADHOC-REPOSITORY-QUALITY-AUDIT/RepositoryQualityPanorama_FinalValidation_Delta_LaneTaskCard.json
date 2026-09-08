@@ -1,0 +1,26 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"repository-quality-panorama-final-validation-delta-v1",
+  "session_id":"ADHOC/REPOSITORY-QUALITY-AUDIT",
+  "lane":"全景筛选与 Source model 修复 delta validation",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md","sha256":"e45d6cbd9e2b223e66e40dfc0911bd29a658b08c513ab29355266ae187236bee"},
+  "base_context_refs":[
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation.md","sha256":"80ac3ab8117a82ad34dfddcb0b6f21d8bfaaf10b119ad3e3032d4e5927c011e1"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Generator.py","sha256":"959522a0ee222a6976ff2a7924478d54d270b73ba65c2877487d069dcc8f5b0d"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Data.json","sha256":"9c6cc7e21e93fd4738c5b755eb8e71c16c62a10de88db1daf3935cddc880d71a"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama.html","sha256":"22ff86d4b0c16155dee2904013e9c7031e2dbc8c43253b6eb14aeae8b2cdc900"}
+  ],
+  "mode":"delta",
+  "snapshot":{"snapshot_id":"repository-quality-panorama-final-validation-delta-2026-09-02","parent_snapshot_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation.md"},
+  "delta_read_set":["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Generator.py","Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Data.json","Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama.html","Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Report.md","Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation.md","git status/diff"],
+  "acceptance_criteria_ids":["PANORAMA-SP-FILTER","PANORAMA-SURFACE-FILTER","PANORAMA-SOURCE-MANIFEST","PANORAMA-EMBEDDED-EQUIVALENCE"],
+  "write_scope":["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation_Delta.md"],
+  "required_outputs":["修复项逐项重算","未关闭 blocker","最终交付 verdict 与仓库 claim boundary"],
+  "maximum_claim_ref":{"summary":"最多确认全景 HTML/data contract 修复后通过；仓库自身仍为 consistency fail、SP-001/public-ready blocked。","authority_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Report.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"repository-quality-panorama-final-validation-delta","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation.md",
+  "working_directory":".",
+  "execution_command":"python3 -m json.tool Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Data.json"
+}

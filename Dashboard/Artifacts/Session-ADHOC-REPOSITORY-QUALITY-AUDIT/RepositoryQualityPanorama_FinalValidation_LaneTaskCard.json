@@ -1,0 +1,25 @@
+{
+  "schema_version":"lane_task_card_v1",
+  "card_id":"repository-quality-panorama-final-validation-v1",
+  "session_id":"ADHOC/REPOSITORY-QUALITY-AUDIT",
+  "lane":"全景与审计报告 final-state reconciliation",
+  "role":"validation",
+  "source_goal":{"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md","sha256":"e45d6cbd9e2b223e66e40dfc0911bd29a658b08c513ab29355266ae187236bee"},
+  "base_context_refs":[
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation_ContextBootstrap.json","sha256":"f0f6605bdb3c8fd4fde2365a59724b9cecd6dc3d1151f31a207ad010bb5d84da"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Report.md","sha256":"bb47cde94b5222c17c2405c9ec7e2337c8c89c918de84f7e2c70fb119d8bf7eb"},
+    {"path":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Data.json","sha256":"9c6cc7e21e93fd4738c5b755eb8e71c16c62a10de88db1daf3935cddc880d71a"}
+  ],
+  "mode":"full_baseline",
+  "snapshot":{"snapshot_id":"repository-quality-panorama-final-validation-2026-09-02","parent_snapshot_ref":null},
+  "delta_read_set":["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_*","Dashboard/Current_State.md","Dashboard/Big_Ideas.md","Dashboard/Stage_Plans.md","Dashboard/Sessions.md","Dashboard/Session_Index.md","Dashboard/Archives/Sessions/archive_manifest.json","Dashboard/Artifacts/Stage-Plan-SP-001/SP001_*","kb",".codex/skills/sge-governed-checkpoints","tests","git status/diff"],
+  "acceptance_criteria_ids":["PANORAMA-HTML","AUDIT-PUBLIC","AUDIT-SP001","AUDIT-REFERENCES","AUDIT-OTHER-QUALITY","CLAIM-BOUNDARY"],
+  "write_scope":["Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation.md"],
+  "required_outputs":["中文任务理解与 Read Manifest","Evidence Completeness","Blocking/Non-blocking findings","原目标覆盖与 overclaim 检查","最终 verdict"],
+  "maximum_claim_ref":{"summary":"最多确认本次全景/审计交付准确且可用；不得把交付通过写成仓库、SP-001 或 public-ready 通过。","authority_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Design.md"},
+  "forbidden_claims_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_Audit_Report.md",
+  "topology":{"fork_context":false,"user_visible_required":false,"user_visible":false,"task_id":"repository-quality-panorama-final-validation","worktree":"."},
+  "rebaseline_ref":"Dashboard/Artifacts/Session-ADHOC-REPOSITORY-QUALITY-AUDIT/RepositoryQualityPanorama_FinalValidation_ContextBootstrap.json",
+  "working_directory":".",
+  "execution_command":"python3 .codex/skills/sge-governed-checkpoints/scripts/guardrail_checklist.py --mode validation-agent"
+}

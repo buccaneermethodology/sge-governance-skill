@@ -8,7 +8,7 @@
 - `Stage_Plans.md`：冻结批次范围和依赖。
 - `Sessions.md`：可关闭的执行单元；完整历史在 `Archives/Sessions/`。
 - `Decisions.md`、`Risks.md`、`Exceptions.md`：决策、风险与例外登记。
-- `Artifacts/`：Context、合同、Validation、Semantic Review、closeout 等持久证据。
+- `Artifacts/`：Context、合同、Validation、Semantic Review、closeout 等持久证据；根目录是定位面，具体文件按 owner 收束到 [Artifacts 批次索引](Artifacts/README.md) 下的 `Stage-Plan-SP-001`、`Stage-Plan-SP-002`、`Stage-Plan-SP-003` 或审计 Session 批次。
 - `tools/`：registry、DKG 与 SGE 辅助工具。
 
 ## 使用顺序

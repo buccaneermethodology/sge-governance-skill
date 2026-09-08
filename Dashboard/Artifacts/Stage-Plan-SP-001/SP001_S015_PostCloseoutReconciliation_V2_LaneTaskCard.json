@@ -1,0 +1,149 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-post-closeout-reconciliation-v2",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 final post-closeout evidence reconciliation v2",
+  "role": "validation",
+  "source_goal": {
+    "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md",
+    "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"
+  },
+  "base_context_refs": [
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation.md",
+      "sha256": "ab1f56b02f1f2b9c0025d42a8f1ac0d2e08ca0588ae1a3c43f77a8277c47e5f3"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md",
+      "sha256": "3a61dfcce16b9aae36be677ac1207331609373a640fa5aba1da7d1508fde6c1a"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+      "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+      "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidationReview.md",
+      "sha256": "d74fb42a1d21c0437d04bf5230fcd1ec5012a47c54e2eded65765c228c9b806e"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview.md",
+      "sha256": "59de131afb79cc295cef8e496a1e527275be34e03542faed32cbf1ce4870b93e"
+    },
+    {
+      "path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_DoctorReport.json",
+      "sha256": "42688b4058cec2143e8e53229594b65cd33223603e24717b2904d9ee3f82ef2f"
+    },
+    {
+      "path": "Dashboard/Current_State.md",
+      "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"
+    },
+    {
+      "path": "Dashboard/Stage_Plans.md",
+      "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"
+    },
+    {
+      "path": "Dashboard/Sessions.md",
+      "sha256": "a0965b4335adbb08eb065486109f73b93d2ee521768bcc636e55dfcf4b7b2718"
+    },
+    {
+      "path": "Dashboard/Session_Index.md",
+      "sha256": "f31c93b61f29c359cb2b842d6323a6cdb5dcc953f4ef9b22c60f45781a6308d7"
+    },
+    {
+      "path": "Dashboard/Archives/Sessions/SP-001.md",
+      "sha256": "5e58b12895b4ccf17d23813a6c8e529a6ef9afc64e9582cbac327d459847df20"
+    },
+    {
+      "path": "Dashboard/Archives/Sessions/archive_manifest.json",
+      "sha256": "ac015192a399c521db106028d71e0ffe5d016cf46b91ca93d6a54a5ce08523ad"
+    },
+    {
+      "path": "Dashboard/Big_Ideas.md",
+      "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"
+    },
+    {
+      "path": "Dashboard/Artifacts_Index.md",
+      "sha256": "1f75bedb46907368a19ad991bd97e24fe85faf7b5e7df22c6b5f55a6091da9a3"
+    },
+    {
+      "path": "Dashboard/tools/quality_recovery_erbe.py",
+      "sha256": "447960916fa3f667ef75ddc479327e7d875c15875baa9db050ffc9973ddfb863"
+    },
+    {
+      "path": "Dashboard/tools/session_registry.py",
+      "sha256": "ffe22afa397a9171a501439cc6c0167158a7d449c787ca1546ab72383dc3c2a7"
+    },
+    {
+      "path": "tests/test_session_registry.py",
+      "sha256": "5c8594a66229183caf958fc39c0a22f16c7435e2820823361ba0053a45b88bf1"
+    }
+  ],
+  "mode": "delta",
+  "snapshot": {
+    "snapshot_id": "sp001-s015-final-post-closeout-v2-2026-09-02",
+    "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation.md"
+  },
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidationReview.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_DoctorReport.json",
+    "Dashboard/Current_State.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Archives/Sessions/SP-001.md",
+    "Dashboard/Archives/Sessions/archive_manifest.json",
+    "Dashboard/Big_Ideas.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/tools/quality_recovery_erbe.py",
+    "Dashboard/tools/session_registry.py",
+    "tests/test_session_registry.py",
+    "git status --short",
+    "git diff --no-ext-diff",
+    "untracked files in final repository diff"
+  ],
+  "acceptance_criteria_ids": [
+    "unique final evidence verdict",
+    "final Dashboard and KB state binding",
+    "full tracked and untracked diff reconciliation",
+    "actual registry 5 current plus 10 archive",
+    "nonzero doctor tests and current public identity scan",
+    "SP-002 remains To do and is not auto-started",
+    "bounded Builder Single-Agent Exception is preserved",
+    "ERBE final_evidence_complete evidence contract"
+  ],
+  "write_scope": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md"
+  ],
+  "required_outputs": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md",
+    "## Read Manifest",
+    "## 唯一 Final Verdict",
+    "exact final_evidence_verdict line",
+    "all ERBE required binding markers",
+    "one conflict-free pass or blocked conclusion"
+  ],
+  "maximum_claim_ref": {
+    "summary": "最多确认 repo-local SP-001 有界完成证据是否闭合；不证明 SP-002、公共发布、Git 提交、push、release、全局 Skill 安装或 production readiness。",
+    "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json"
+  },
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {
+    "fork_context": false,
+    "user_visible_required": false,
+    "user_visible": false,
+    "task_id": "sp001-s015-final-post-closeout-reconciliation-v2",
+    "worktree": "."
+  },
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 Dashboard/tools/quality_recovery_erbe.py --phase full --output Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Report.json"
+}

@@ -91,7 +91,7 @@ def red_zero_tests(doctor: Any) -> str | None:
 
 
 def red_final_evidence() -> str | None:
-    card = ROOT / "Dashboard/Artifacts/SP001_S012_Genericity_LaneTaskCard.json"
+    card = ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S012_Genericity_LaneTaskCard.json"
     result = run(
         [sys.executable, str(ROOT / ".codex/skills/sge-governed-checkpoints/scripts/lane_task_card.py"), "validate", str(card), "--repo", str(ROOT)],
         ROOT,
@@ -134,9 +134,9 @@ def final_evidence_status(path: Path) -> tuple[bool, str]:
 def green_current(doctor: Any) -> tuple[str, dict[str, Any]]:
     doctor_report = doctor.run_doctor(ROOT, ROOT / "tests")
     required = [
-        ROOT / "Dashboard/Artifacts/SP001_S015_FinalValidationReview.md",
-        ROOT / "Dashboard/Artifacts/SP001_S015_SemanticReview.md",
-        ROOT / "Dashboard/Artifacts/SP001_S015_PostCloseoutReconciliation.md",
+        ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidationReview.md",
+        ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_SemanticReview.md",
+        ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md",
     ]
     missing = [path.relative_to(ROOT).as_posix() for path in required if not path.is_file()]
     post_closeout_ok, post_closeout_reason = final_evidence_status(required[-1])
@@ -149,8 +149,8 @@ def green_current(doctor: Any) -> tuple[str, dict[str, Any]]:
 
 
 def execute(phase: str) -> dict[str, Any]:
-    contract = json.loads((ROOT / "Dashboard/Artifacts/SP001_QualityRecovery_ERBE_Contract.json").read_text(encoding="utf-8"))
-    cases_doc = json.loads((ROOT / "Dashboard/Artifacts/SP001_QualityRecovery_ERBE_Cases.json").read_text(encoding="utf-8"))
+    contract = json.loads((ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json").read_text(encoding="utf-8"))
+    cases_doc = json.loads((ROOT / "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Cases.json").read_text(encoding="utf-8"))
     expected = {case["case_id"]: case for case in cases_doc["cases"]}
     expected_ids = {f"QR-RED-0{number}" for number in range(1, 7)} | {"QR-GREEN-01"}
     contract_valid = contract.get("status") == "frozen" and set(expected) == expected_ids

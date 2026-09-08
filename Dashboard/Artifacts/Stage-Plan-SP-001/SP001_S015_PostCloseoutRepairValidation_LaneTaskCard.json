@@ -1,0 +1,42 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-post-closeout-repair-validation-v1",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 post-closeout blocker repair delta validation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md", "sha256": "3a61dfcce16b9aae36be677ac1207331609373a640fa5aba1da7d1508fde6c1a"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md", "sha256": "79e449d2bcbf9952f88925209384ad800623d2ccfa313249a81624b14850be62"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
+    {"path": "Dashboard/tools/quality_recovery_erbe.py", "sha256": "447960916fa3f667ef75ddc479327e7d875c15875baa9db050ffc9973ddfb863"},
+    {"path": "Dashboard/tools/session_registry.py", "sha256": "ffe22afa397a9171a501439cc6c0167158a7d449c787ca1546ab72383dc3c2a7"},
+    {"path": "tests/test_session_registry.py", "sha256": "5c8594a66229183caf958fc39c0a22f16c7435e2820823361ba0053a45b88bf1"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp001-s015-post-closeout-repair-validation-2026-09-02", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md"},
+  "delta_read_set": [
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_Closeout.md",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md",
+    "Dashboard/Current_State.md",
+    "Dashboard/Stage_Plans.md",
+    "Dashboard/Sessions.md",
+    "Dashboard/Session_Index.md",
+    "Dashboard/Artifacts_Index.md",
+    "Dashboard/tools/quality_recovery_erbe.py",
+    "Dashboard/tools/session_registry.py",
+    "tests/test_session_registry.py",
+    "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_DoctorReport.json",
+    "git status and complete repair diff"
+  ],
+  "acceptance_criteria_ids": ["B-01 closeout dynamic inventory", "B-02 OPCM final absorption", "B-03 SP-002 readiness wording", "B-04 Artifacts Index current judgment", "B-05 ERBE final evidence fail-closed", "registry one-pass apply and reverse-link stability", "nonterminal rollback"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md"],
+  "required_outputs": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md", "B-01..B-05 disposition", "negative regression verdict", "whether controlled state re-closure is allowed", "remaining blockers"],
+  "maximum_claim_ref": {"summary": "最多确认 B-01..B-05 修复允许重新执行受控状态收束；不预先证明 re-closure 或 final post-closeout。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutReconciliation.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp001-s015-post-closeout-repair-validation", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 Dashboard/tools/quality_recovery_erbe.py --phase full"
+}

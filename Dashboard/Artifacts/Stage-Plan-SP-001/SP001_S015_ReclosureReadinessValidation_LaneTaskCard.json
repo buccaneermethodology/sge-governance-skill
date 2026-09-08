@@ -1,0 +1,27 @@
+{
+  "schema_version": "lane_task_card_v1",
+  "card_id": "sp001-s015-reclosure-readiness-validation-v1",
+  "session_id": "SP-001/S-015",
+  "lane": "SP-001 RB-01 RB-02 reclosure readiness validation",
+  "role": "validation",
+  "source_goal": {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_SGEGovernanceMigration_LoopGoal.md", "sha256": "7e65566480056258433bdbeb7795357c92e09386b127d539735328275aedb881"},
+  "base_context_refs": [
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md", "sha256": "99d96fe2faa3219d61871fbd70153998c8fe91f4ecc93297d44abf86a3b52288"},
+    {"path": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "sha256": "ece19e953789f78e7cdf5a6cee55b82e0b16c680fdca7295d979abba5f0d3941"},
+    {"path": "Dashboard/Big_Ideas.md", "sha256": "a0f73cdee6ccbd6794f717e3e6e0de0afb9d6573854a06ccedcd20f232ceceb9"},
+    {"path": "Dashboard/Current_State.md", "sha256": "cd0ac598318c5937882f74e3ff63da95fe7121a594edbe31d0ef7b5139448389"},
+    {"path": "Dashboard/Stage_Plans.md", "sha256": "812b99eb9e027142bbb54e18738cc93510f438c617cf104c51dfbbf2954e8f5f"}
+  ],
+  "mode": "delta",
+  "snapshot": {"snapshot_id": "sp001-s015-reclosure-readiness-validation-2026-09-02", "parent_snapshot_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md"},
+  "delta_read_set": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalClosure_OPCM.md", "Dashboard/Big_Ideas.md", "Dashboard/Current_State.md", "Dashboard/Stage_Plans.md", "Dashboard/Sessions.md", "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md", "git diff"],
+  "acceptance_criteria_ids": ["RB-01 OPCM rollback absorption", "RB-02 BI-001 live Next Step", "nonterminal surfaces consistent", "controlled reclosure readiness only"],
+  "write_scope": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation.md"],
+  "required_outputs": ["Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_ReclosureReadinessValidation.md", "RB-01 RB-02 disposition", "reclosure allowed or blocked verdict"],
+  "maximum_claim_ref": {"summary": "最多确认允许重新执行受控状态收束；不证明 reclosure 后状态或 final post-closeout。", "authority_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_PostCloseoutRepairValidation.md"},
+  "forbidden_claims_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_QualityRecovery_ERBE_Contract.json",
+  "topology": {"fork_context": false, "user_visible_required": false, "user_visible": false, "task_id": "sp001-s015-reclosure-readiness-validation", "worktree": "."},
+  "rebaseline_ref": "Dashboard/Artifacts/Stage-Plan-SP-001/SP001_S015_FinalValidation_ContextBootstrap.json",
+  "working_directory": ".",
+  "execution_command": "python3 Dashboard/tools/quality_recovery_erbe.py --phase full"
+}
